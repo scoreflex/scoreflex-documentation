@@ -1,0 +1,4 @@
+[[guide-chat]]
+== Chat
+
+TODO blah

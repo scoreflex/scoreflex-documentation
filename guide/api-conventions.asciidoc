@@ -1,0 +1,92 @@
+[[guide-api-conventions]]
+== API conventions
+
+TODO blah
+
+=== HTTP verbs
+
+TODO blah
+
+=== Errors
+
+TODO blah
+
+==== HTTP statuses
+
+TODO blah
+
+==== Structure
+
+TODO blah
+
+==== Reference
+
+TODO blah
+
+=== Pretty printing
+
+TODO blah
+
+=== Pagination
+
+TODO blah
+
+=== Partial response
+
+TODO blah
+
+=== Booleans
+
+TODO blah
+
+=== Timestamps
+
+TODO blah
+
+=== Durations
+
+TODO blah
+
+=== Internationalization
+
+TODO blah
+
+=== Geography
+
+TODO blah
+
+==== Request parameters
+
+TODO blah
+
+==== Attributes
+
+TODO blah
+
+=== Versioning
+
+TODO blah
+
+=== Proxy
+
+TODO blah
+
+=== Cross Origin Resource Sharing
+
+TODO blah
+
+=== JSON object updates
+
+TODO blah
+
+=== Matchmaking
+
+TODO blah
+
+==== PlayerFilter
+
+TODO blah
+
+===== Attributes
+
+TODO blah

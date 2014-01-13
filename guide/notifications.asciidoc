@@ -1,0 +1,28 @@
+[[guide-notifications]]
+== Notifications
+
+TODO blah
+
+=== Overview
+
+TODO blah
+
+=== Scoreflex Notifications
+
+TODO blah
+
+=== Developer To Players Notifications
+
+TODO blah
+
+=== Players To Players Notifications
+
+TODO blah
+
+=== Android Push Notifications
+
+TODO blah
+
+=== iOS Push Notifications
+
+TODO blah

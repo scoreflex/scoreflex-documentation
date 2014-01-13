@@ -1,0 +1,24 @@
+[[guide-players]]
+== Players
+
+TODO blah
+
+=== Overview
+
+TODO blah
+
+=== Attributes
+
+TODO blah
+
+=== Guest
+
+TODO blah
+
+=== Authentication
+
+TODO blah
+
+=== Friends and contacts
+
+TODO blah

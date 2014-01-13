@@ -1,0 +1,19 @@
+[[getting-started]]
+= Getting started
+
+[partintro]
+--
+TODO blah
+--
+
+== <<android,Android>>
+
+TODO blah
+
+== <<ios,iOS>>
+
+TODO blah
+
+== <<web,Web>>
+
+TODO blah

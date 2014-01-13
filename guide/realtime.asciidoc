@@ -1,0 +1,64 @@
+[[guide-realtime]]
+== Realtime gaming
+
+TODO blah
+
+=== Concepts
+
+TODO blah
+
+==== Overview
+
+TODO blah
+
+==== Realtime connections and player sessions
+
+TODO blah
+
+==== Rooms
+
+TODO blah
+
+===== Room's configuration and properties
+
+TODO blah
+
+===== Different kinds of rooms
+
+TODO blah
+
+==== Matchmaking and invitations
+
+TODO blah
+
+===== Matchmaking
+
+TODO blah
+
+===== Invitations
+
+TODO blah
+
+==== Lifecycle of a realtime multiplayer game
+
+TODO blah
+
+==== Advanced topics
+
+TODO blah
+
+===== Authoritative server and custom game logic
+
+TODO blah
+
+===== Reconnection and sessions's locality
+
+TODO blah
+
+===== Transport layers
+
+TODO blah
+
+===== Low-level protocol
+
+TODO blah

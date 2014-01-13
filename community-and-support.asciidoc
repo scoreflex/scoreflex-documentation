@@ -1,0 +1,27 @@
+[[community-and-support]]
+= Community and support
+
+[partintro]
+--
+TODO blah
+--
+
+== Mailing list
+
+TODO blah
+
+== Follow us
+
+TODO blah
+
+== IRC
+
+TODO blah
+
+== Source code
+
+TODO blah
+
+== Issues and feature requests
+
+TODO blah

@@ -1,0 +1,168 @@
+[[guide-challenges]]
+== Challenges
+
+TODO blah
+
+=== Concepts
+
+TODO blah
+
+==== Overview
+
+TODO blah
+
+==== Lifecycle
+
+TODO blah
+
+==== Configuration
+
+TODO blah
+
+===== Participants
+
+TODO blah
+
+===== Seed
+
+TODO blah
+
+===== Turns
+
+TODO blah
+
+===== End conditions
+
+TODO blah
+
+===== Outcome
+
+TODO blah
+
+===== Replayable
+
+TODO blah
+
+==== Request
+
+TODO blah
+
+==== Instance
+
+TODO blah
+
+==== Turn message
+
+TODO blah
+
+==== Replay
+
+TODO blah
+
+==== Elo leaderboard
+
+TODO blah
+
+=== Interact
+
+TODO blah
+
+==== Creating a challenge config
+
+TODO blah
+
+==== Editing a challenge config
+
+TODO blah
+
+==== Handling challenge start
+
+TODO blah
+
+==== Implementing challenge into the game
+
+TODO blah
+
+=== Reference
+
+TODO blah
+
+==== ChallengeConfig
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeRequest
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeInstance
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== State
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeTurn
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeReplay
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeReplayMessage
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah

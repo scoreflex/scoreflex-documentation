@@ -1,0 +1,70 @@
+[[guide-concepts]]
+== Concepts
+
+TODO blah
+
+=== Overview
+
+TODO blah
+
+=== API organization
+
+TODO blah
+
+=== API clients
+
+TODO blah
+
+=== Sandbox and development workflow
+
+TODO blah
+
+==== Description
+
+TODO blah
+
+==== Development workflow
+
+TODO blah
+
+==== Sandbox limitations
+
+TODO blah
+
+=== Security
+
+TODO blah
+
+==== HTTP/HTTPS calls
+
+TODO blah
+
+==== API access
+
+TODO blah
+
+===== Access token and sid
+
+TODO blah
+
+===== Authentication
+
+TODO blah
+
+===== Signature
+
+TODO blah
+
+==== Management API access
+
+TODO blah
+
+// API conventions was here
+
+=== Web endpoints
+
+TODO blah
+
+==== Callbacks
+
+TODO blah

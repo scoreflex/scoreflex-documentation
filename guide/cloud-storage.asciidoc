@@ -1,0 +1,12 @@
+[[guide-cloud-storage]]
+== Cloud storage
+
+TODO blah
+
+=== Game storage
+
+TODO blah
+
+=== Player storage
+
+TODO blah
