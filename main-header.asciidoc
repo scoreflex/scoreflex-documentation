@@ -1,3 +1,4 @@
 = Scoreflex Documentation
 Scoreflex team <contact@scoreflex.com>
-v0.1, 2014-01, Draft
+v0.1, 2014-01:
+Draft
