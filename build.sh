@@ -7,7 +7,7 @@ set -v
 # Generate toc
 echo "Generating ToC"
 asciidoc --backend docbook -o index.xml main-html.asciidoc
-./toc.py index.xml
+./toc.py index.xml > toc.html
 
 # Generate each HTML files
 find -type f -name '*.asciidoc' -not -name 'main*' | while read f; do

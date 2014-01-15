@@ -88,7 +88,7 @@ class TocEntry():
         if chunkPageParent is self:
             glue = ''
             selfPart = ''
-        return parentParts + glue + selfPart
+        return parentParts + '.html' + glue + selfPart
 
     def __str__(self):
         parts = []
@@ -122,6 +122,27 @@ class TocEntry():
         def print_me(item):
             print str(item)
         self.walk(print_me)
+
+    def write_html(self, f, indent=0):
+        strIndent = '  ' * indent
+        if not self.is_root():
+            f.write('%s<li>\n' % strIndent)
+            indent += 1
+            strIndent = '  ' * indent
+            clazz = ''
+            if len(self.children) > 0:
+                f.write('%s<span class="openable">%s</span>\n' % (strIndent, self.title.encode('utf-8')))
+            else:
+                f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link().encode('utf-8'), self.title.encode('utf-8')))
+        if len(self.children) > 0:
+            f.write('%s<ul class="menuRetractable">\n' % strIndent)
+            for child in self.children:
+                child.write_html(f, indent+1)
+            f.write('%s</ul>\n' % strIndent)
+        if not self.is_root():
+            indent -= 1
+            strIndent = '  ' * indent
+            f.write('%s</li>\n' % strIndent)
 
 
 
@@ -203,7 +224,8 @@ def main(args):
 
     dom = minidom.parse(sys.argv[1])
     toc = extractToc(dom)
-    toc.rec_print()
+    #toc.rec_print()
+    toc.write_html(sys.stdout)
 
     return 0
 
