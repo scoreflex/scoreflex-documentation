@@ -50,6 +50,11 @@ class TocEntry():
         while not curr.is_root():
             parentParts.append(curr.id)
             curr = curr.parent
+        # Simplify prefix repetitions
+        for i, part in enumerate(parentParts):
+            if i+1 < len(parentParts):
+                if part.startswith(parentParts[i+1]):
+                    parentParts[i] = parentParts[i][len(parentParts[i+1])+1:]
         parentParts.reverse()
         parentParts = '/'.join(parentParts)
         # Add the id of self directly, no hierarchy
