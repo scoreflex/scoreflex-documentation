@@ -1,4 +1,5 @@
 [[guide-games]]
+[role="chunk-page"]
 == Games
 
 TODO blah

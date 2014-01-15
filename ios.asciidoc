@@ -6,18 +6,10 @@
 TODO blah
 --
 
-== Getting started
+include::ios/getting-started.asciidoc[]
 
-TODO blah
+include::ios/developers-guide.asciidoc[]
 
-== Developer's guide
+include::ios/sdk.asciidoc[]
 
-TODO blah
-
-== SDK
-
-TODO blah
-
-== API reference
-
-TODO blah
+include::ios/api-reference.asciidoc[]

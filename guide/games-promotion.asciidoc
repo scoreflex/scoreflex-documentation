@@ -1,4 +1,5 @@
 [[guide-games-promotion]]
+[role="chunk-page"]
 == Games promotion
 
 TODO blah

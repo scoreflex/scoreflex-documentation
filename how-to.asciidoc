@@ -1,4 +1,5 @@
 [[how-to]]
+[role="chunk-page chunk-toc"]
 = How To
 
 [partintro]

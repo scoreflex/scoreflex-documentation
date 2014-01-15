@@ -1,5 +1,5 @@
-[[guide-search]]
+[[web-sdk]]
 [role="chunk-page"]
-== Search
+== SDK
 
 TODO blah

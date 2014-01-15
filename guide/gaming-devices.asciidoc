@@ -1,4 +1,5 @@
-[[gaming-devices]]
+[[guide-gaming-devices]]
+[role="chunk-page"]
 == Gaming devices
 
 TODO blah

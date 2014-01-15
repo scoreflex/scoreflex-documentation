@@ -1,4 +1,5 @@
 [[guide-concepts]]
+[role="chunk-page"]
 == Concepts
 
 TODO blah
@@ -15,6 +16,7 @@ TODO blah
 
 TODO blah
 
+[role="chunk-toc"]
 === Sandbox and development workflow
 
 TODO blah
@@ -31,6 +33,7 @@ TODO blah
 
 TODO blah
 
+[role="chunk-toc"]
 === Security
 
 TODO blah
@@ -61,6 +64,7 @@ TODO blah
 
 // API conventions was here
 
+[role="chunk-toc"]
 === Web endpoints
 
 TODO blah

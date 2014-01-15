@@ -238,7 +238,7 @@ TODO blah
 
 TODO blah
 
-==== Friends & contacts
+==== Friends and contacts
 
 TODO blah
 
@@ -566,11 +566,11 @@ TODO blah
 
 TODO blah
 
-====== Authoritative server & custom game logic
+====== Authoritative server and custom game logic
 
 TODO blah
 
-====== Reconnection & sessions’s locality
+====== Reconnection and sessions's locality
 
 TODO blah
 

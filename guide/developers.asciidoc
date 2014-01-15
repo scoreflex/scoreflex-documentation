@@ -1,4 +1,5 @@
 [[guide-developers]]
+[role="chunk-page"]
 == Developers
 
 TODO blah

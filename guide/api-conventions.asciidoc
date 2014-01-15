@@ -1,4 +1,5 @@
 [[guide-api-conventions]]
+[role="chunk-page"]
 == API conventions
 
 TODO blah
@@ -7,6 +8,7 @@ TODO blah
 
 TODO blah
 
+[role="chunk-toc"]
 === Errors
 
 TODO blah
@@ -51,6 +53,7 @@ TODO blah
 
 TODO blah
 
+[role="chunk-toc"]
 === Geography
 
 TODO blah
@@ -79,6 +82,7 @@ TODO blah
 
 TODO blah
 
+[role="chunk-toc"]
 === Matchmaking
 
 TODO blah

@@ -1,4 +1,5 @@
 [[guide-players]]
+[role="chunk-page"]
 == Players
 
 TODO blah

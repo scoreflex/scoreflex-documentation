@@ -1,4 +1,5 @@
 [[guide-chat]]
+[role="chunk-page"]
 == Chat
 
 TODO blah

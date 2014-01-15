@@ -1,4 +1,5 @@
 [[guide-news-feed]]
+[role="chunk-page"]
 == News feed
 
 TODO blah

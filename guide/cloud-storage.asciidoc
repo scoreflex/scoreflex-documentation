@@ -1,4 +1,5 @@
 [[guide-cloud-storage]]
+[role="chunk-page"]
 == Cloud storage
 
 TODO blah

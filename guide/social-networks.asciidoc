@@ -1,4 +1,5 @@
 [[guide-social-networks]]
+[role="chunk-page"]
 == Social networks
 
 TODO blah

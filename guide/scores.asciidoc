@@ -3,14 +3,8 @@
 
 TODO blah
 
-=== Concept
+include::scores/concepts.asciidoc[]
 
-TODO blah
+include::scores/interact.asciidoc[]
 
-=== Interactions
-
-TODO blah
-
-=== Reference
-
-TODO blah
+include::scores/reference.asciidoc[]

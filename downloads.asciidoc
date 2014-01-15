@@ -1,4 +1,5 @@
 [[downloads]]
+[role="chunk-page chunk-toc"]
 = Downloads
 
 [partintro]

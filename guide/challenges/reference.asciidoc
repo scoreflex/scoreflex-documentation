@@ -1,0 +1,84 @@
+[role="chunk-page chunk-toc"]
+=== Reference
+
+TODO blah
+
+==== ChallengeConfig
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeRequest
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeInstance
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== State
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeTurn
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeReplay
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah
+
+==== ChallengeReplayMessage
+
+TODO blah
+
+===== Attributes
+
+TODO blah
+
+===== Methods
+
+TODO blah

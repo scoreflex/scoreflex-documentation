@@ -1,5 +1,5 @@
-[[guide-search]]
+[[android-sdk]]
 [role="chunk-page"]
-== Search
+== SDK
 
 TODO blah

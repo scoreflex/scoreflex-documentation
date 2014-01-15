@@ -6,14 +6,14 @@
 TODO blah
 --
 
-== Android link
+== <<android-api-reference,Android>>
 
 TODO blah
 
-== iOS link
+== <<ios-api-reference,iOS>>
 
 TODO blah
 
-== Web link
+== <<web-api-reference,Web>>
 
 TODO blah

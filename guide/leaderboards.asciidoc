@@ -1,68 +1,10 @@
-[[leaderboards]]
+[[guide-leaderboards]]
 == Leaderboards
 
 TODO blah
 
-=== Concepts
+include::leaderboards/concepts.asciidoc[]
 
-TODO blah
+include::leaderboards/interact.asciidoc[]
 
-==== Overview
-
-TODO blah
-
-==== Lifecycle
-
-TODO blah
-
-==== Configuration
-
-TODO blah
-
-===== Score order
-
-TODO blah
-
-===== Score formatting
-
-TODO blah
-
-===== Filters and modes
-
-TODO blah
-
-===== Internationalization
-
-TODO blah
-
-=== Interactions
-
-TODO blah
-
-==== Creation
-
-TODO blah
-
-==== Update
-
-TODO blah
-
-==== Display
-
-TODO blah
-
-==== Moderation
-
-TODO blah
-
-=== Reference
-
-TODO blah
-
-==== Attributes
-
-TODO blah
-
-==== Hierarchical structure
-
-TODO blah
+include::leaderboards/reference.asciidoc[]

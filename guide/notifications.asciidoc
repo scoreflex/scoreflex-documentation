@@ -1,4 +1,5 @@
 [[guide-notifications]]
+[role="chunk-page"]
 == Notifications
 
 TODO blah

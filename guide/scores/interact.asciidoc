@@ -1,5 +1,4 @@
-[[guide-search]]
 [role="chunk-page"]
-== Search
+=== Interact
 
 TODO blah

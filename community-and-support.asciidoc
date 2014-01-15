@@ -1,4 +1,5 @@
 [[community-and-support]]
+[role="chunk-page chunk-toc"]
 = Community and support
 
 [partintro]

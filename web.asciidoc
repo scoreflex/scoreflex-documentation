@@ -6,18 +6,10 @@
 TODO blah
 --
 
-== Getting started
+include::web/getting-started.asciidoc[]
 
-TODO blah
+include::web/developers-guide.asciidoc[]
 
-== Developer's guide
+include::web/sdk.asciidoc[]
 
-TODO blah
-
-== SDK
-
-TODO blah
-
-== API reference
-
-TODO blah
+include::web/api-reference.asciidoc[]

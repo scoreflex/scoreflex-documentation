@@ -1,5 +1,5 @@
-[[guide-search]]
+[[ios-sdk]]
 [role="chunk-page"]
-== Search
+== SDK
 
 TODO blah

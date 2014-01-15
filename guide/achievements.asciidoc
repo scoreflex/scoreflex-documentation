@@ -1,4 +1,5 @@
 [[guide-achievements]]
+[role="chunk-page"]
 == Achievements
 
 TODO blah

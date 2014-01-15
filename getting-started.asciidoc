@@ -6,14 +6,14 @@
 TODO blah
 --
 
-== <<android,Android>>
+== <<android-getting-started,Android>>
 
 TODO blah
 
-== <<ios,iOS>>
+== <<ios-getting-started,iOS>>
 
 TODO blah
 
-== <<web,Web>>
+== <<web-getting-started,Web>>
 
 TODO blah

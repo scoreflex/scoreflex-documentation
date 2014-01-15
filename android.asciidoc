@@ -6,18 +6,10 @@
 TODO blah
 --
 
-== Getting started
+include::android/getting-started.asciidoc[]
 
-TODO blah
+include::android/developers-guide.asciidoc[]
 
-== Developer's guide
+include::android/sdk.asciidoc[]
 
-TODO blah
-
-== SDK
-
-TODO blah
-
-== API reference
-
-TODO blah
+include::android/api-reference.asciidoc[]
