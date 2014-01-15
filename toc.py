@@ -17,6 +17,7 @@ class TocEntry():
         self.parent = None
         self.id = id
         self.title = title
+        self.linkedTo = None
         self.chunkPage = False
         self.chunkToc = False
         self.children = []
@@ -28,14 +29,37 @@ class TocEntry():
     def is_root(self):
         return self.parent is None # or self.id is None
 
+    def get_root(self):
+        if self.is_root():
+            return self
+        else:
+            return self.parent.get_root()
+
     def depth(self):
         if self.is_root():
             return 0
         return 1 + self.parent.depth()
 
+    def walk_id(self, id):
+        match = []
+        def callback(entry):
+            if entry.id == id:
+                match.append(entry)
+                raise StopIteration
+            return True
+        self.walk(callback)
+        if len(match) < 1:
+            return None
+        return match[0]
+
     def link(self):
         if self.is_root():
             return ''
+        if self.linkedTo is not None:
+            target = self.get_root().walk_id(self.linkedTo)
+            if target is None:
+                return '[BROKEN_LINK]'
+            return target.link()
         # Get where the page starts
         chunkPageParent = self
         while not chunkPageParent.is_root():
@@ -73,13 +97,26 @@ class TocEntry():
             parts.append(curr.title.encode('utf-8'))
             curr = curr.parent
         parts.reverse()
-        return ' / '.join(parts) + (' […]' if self.chunkToc else '') + (' [PAGE]' if self.chunkPage else '') + (' [LEAF]' if len(self.children) == 0 else '') + ' #' + unicode(self.id).encode('utf-8') + ' href:' + self.link().encode('utf-8')
+        return ' / '.join(parts) \
+            + (' […]' if self.chunkToc else '') \
+            + (' [PAGE]' if self.chunkPage else '') \
+            + (' [LEAF]' if len(self.children) == 0 else '') \
+            + (' [LINK]' if self.linkedTo is not None else '') \
+            + ' #' + unicode(self.id).encode('utf-8') \
+            + ' href:' + self.link().encode('utf-8')
 
     def walk(self, callback):
-        if self.id is not None:
-            callback(self)
+        try:
+            self.__walk(callback)
+        except StopIteration:
+            pass
+
+    def __walk(self, callback):
+        if not self.is_root():
+            if callback(self) == False:
+                return
         for child in self.children:
-            child.walk(callback)
+            child.__walk(callback)
 
     def rec_print(self):
         def print_me(item):
@@ -112,6 +149,15 @@ def shouldChunkToc(node):
 def shouldChunkPage(node):
     return 'chunk-page' in node.getAttribute('role')
 
+def getLinkedId(node):
+    if not 'section-link' in node.getAttribute('role'):
+        return None
+    for title in node.childNodes:
+        if not isNodeTag(title, 'title'): continue
+        for link in title.childNodes:
+            if not isNodeTag(link, 'link'): continue
+            return link.getAttribute('linkend')
+
 def parseLevels(node, levels, currToc):
     sublevels = levels[1:]
     if len(sublevels) == 0: sublevels = levels
@@ -120,10 +166,11 @@ def parseLevels(node, levels, currToc):
         partId = part.getAttribute('id')
         partTitle = getTitle(part)
         childToc = TocEntry(partId, partTitle)
+        childToc.linkedTo = getLinkedId(part)
         childToc.chunkPage = shouldChunkPage(part)
         childToc.chunkToc = shouldChunkToc(part)
         currToc.append(childToc)
-        if auto_generated_id.match(partId):
+        if auto_generated_id.match(partId) and childToc.linkedTo is None:
             print 'NOTE:', str(childToc), 'has an auto-generated id!'
             if auto_generated_id_conflict.match(partId):
                 print 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'

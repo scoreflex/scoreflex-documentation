@@ -6,14 +6,17 @@
 TODO blah
 --
 
+[role="section-link"]
 == <<android-api-reference,Android>>
 
 TODO blah
 
+[role="section-link"]
 == <<ios-api-reference,iOS>>
 
 TODO blah
 
+[role="section-link"]
 == <<web-api-reference,Web>>
 
 TODO blah
