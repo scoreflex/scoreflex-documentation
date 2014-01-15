@@ -4,93 +4,115 @@
 
 TODO blah
 
+[[guide-api-conventions-http-verbs]]
 === HTTP verbs
 
 TODO blah
 
+[[guide-api-conventions-errors]]
 [role="chunk-toc"]
 === Errors
 
 TODO blah
 
+[[guide-api-conventions-errors-http-statuses]]
 ==== HTTP statuses
 
 TODO blah
 
+[[guide-api-conventions-errors-structure]]
 ==== Structure
 
 TODO blah
 
+[[guide-api-conventions-errors-reference]]
 ==== Reference
 
 TODO blah
 
+[[guide-api-conventions-prett-printing]]
 === Pretty printing
 
 TODO blah
 
+[[guide-api-conventions-pagination]]
 === Pagination
 
 TODO blah
 
+[[guide-api-conventions-partial-response]]
 === Partial response
 
 TODO blah
 
+[[guide-api-conventions-booleans]]
 === Booleans
 
 TODO blah
 
+[[guide-api-conventions-timestamps]]
 === Timestamps
 
 TODO blah
 
+[[guide-api-conventions-durations]]
 === Durations
 
 TODO blah
 
+[[guide-api-conventions-internationalization]]
 === Internationalization
 
 TODO blah
 
+[[guide-api-conventions-geography]]
 [role="chunk-toc"]
 === Geography
 
 TODO blah
 
+[[guide-api-conventions-geography-request-parameters]]
 ==== Request parameters
 
 TODO blah
 
+[[guide-api-conventions-geography-attributes]]
 ==== Attributes
 
 TODO blah
 
+[[guide-api-conventions-versioning]]
 === Versioning
 
 TODO blah
 
+[[guide-api-conventions-proxy]]
 === Proxy
 
 TODO blah
 
+[[guide-api-conventions-cross-origin-resource-sharing]]
 === Cross Origin Resource Sharing
 
 TODO blah
 
+[[guide-api-conventions-json-object-updates]]
 === JSON object updates
 
 TODO blah
 
+[[guide-api-conventions-matchmaking]]
 [role="chunk-toc"]
 === Matchmaking
 
 TODO blah
 
+[[guide-api-conventions-matchmaking-playerfilter]]
 ==== PlayerFilter
 
 TODO blah
 
+[[guide-api-conventions-matchmaking-playerfilter-attributes]]
 ===== Attributes
 
 TODO blah

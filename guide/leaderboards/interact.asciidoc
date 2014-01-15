@@ -1,20 +1,25 @@
+[[guide-leaderboards-interact]]
 [role="chunk-page chunk-toc"]
 === Interact
 
 TODO blah
 
-==== Creation
+[[guide-leaderboards-interact-create]]
+==== Create
 
 TODO blah
 
+[[guide-leaderboards-interact-update]]
 ==== Update
 
 TODO blah
 
+[[guide-leaderboards-interact-display]]
 ==== Display
 
 TODO blah
 
-==== Moderation
+[[guide-leaderboards-interact-moderate]]
+==== Moderate
 
 TODO blah

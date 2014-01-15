@@ -4,22 +4,27 @@
 
 TODO blah
 
+[[guide-players-overview]]
 === Overview
 
 TODO blah
 
+[[guide-players-attributes]]
 === Attributes
 
 TODO blah
 
+[[guide-players-guest]]
 === Guest
 
 TODO blah
 
+[[guide-players-authentication]]
 === Authentication
 
 TODO blah
 
+[[guide-players-friends-and-contacts]]
 === Friends and contacts
 
 TODO blah

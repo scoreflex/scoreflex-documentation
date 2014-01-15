@@ -1,3 +1,4 @@
+[[guide-scores-concepts]]
 [role="chunk-page"]
 === Concepts
 

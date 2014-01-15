@@ -7,22 +7,27 @@
 TODO blah
 --
 
+[[community-and-support-mailing-list]]
 == Mailing list
 
 TODO blah
 
+[[community-and-support-follow-us]]
 == Follow us
 
 TODO blah
 
+[[community-and-support-irc]]
 == IRC
 
 TODO blah
 
+[[community-and-support-source-code]]
 == Source code
 
 TODO blah
 
+[[community-and-support-issues-and-feature-requests]]
 == Issues and feature requests
 
 TODO blah

@@ -1,84 +1,105 @@
+[[guide-challenges-reference]]
 [role="chunk-page chunk-toc"]
 === Reference
 
 TODO blah
 
+[[guide-challenges-reference-challengeconfig]]
 ==== ChallengeConfig
 
 TODO blah
 
+[[guide-challenges-reference-challengeconfig-attributes]]
 ===== Attributes
 
 TODO blah
 
+[[guide-challenges-reference-challengeconfig-methods]]
 ===== Methods
 
 TODO blah
 
+[[guide-challenges-reference-challengerequest]]
 ==== ChallengeRequest
 
 TODO blah
 
+[[guide-challenges-reference-challengerequest-attributes]]
 ===== Attributes
 
 TODO blah
 
+[[guide-challenges-reference-challengerequest-methods]]
 ===== Methods
 
 TODO blah
 
+[[guide-challenges-reference-challengeinstance]]
 ==== ChallengeInstance
 
 TODO blah
 
+[[guide-challenges-reference-challengeinstance-attributes]]
 ===== Attributes
 
 TODO blah
 
+[[guide-challenges-reference-challengeinstance-methods]]
 ===== Methods
 
 TODO blah
 
+[[guide-challenges-reference-state]]
 ==== State
 
 TODO blah
 
+[[guide-challenges-reference-state-methods]]
 ===== Methods
 
 TODO blah
 
+[[guide-challenges-reference-challengeturn]]
 ==== ChallengeTurn
 
 TODO blah
 
+[[guide-challenges-reference-challengeturn-attributes]]
 ===== Attributes
 
 TODO blah
 
+[[guide-challenges-reference-challengeturn-methods]]
 ===== Methods
 
 TODO blah
 
+[[guide-challenges-reference-challengereplay]]
 ==== ChallengeReplay
 
 TODO blah
 
+[[guide-challenges-reference-challengereplay-attributes]]
 ===== Attributes
 
 TODO blah
 
+[[guide-challenges-reference-challengereplay-methods]]
 ===== Methods
 
 TODO blah
 
+[[guide-challenges-reference-challengereplaymessage]]
 ==== ChallengeReplayMessage
 
 TODO blah
 
+[[guide-challenges-reference-challengereplaymessage-attributes]]
 ===== Attributes
 
 TODO blah
 
+[[guide-challenges-reference-challengereplaymessage-methods]]
 ===== Methods
 
 TODO blah

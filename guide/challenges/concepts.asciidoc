@@ -1,60 +1,75 @@
+[[guide-challenges-concepts]]
 [role="chunk-page chunk-toc"]
 === Concepts
 
 TODO blah
 
+[[guide-challenges-concepts-overview]]
 ==== Overview
 
 TODO blah
 
+[[guide-challenges-concepts-lifecycle]]
 ==== Lifecycle
 
 TODO blah
 
+[[guide-challenges-concepts-configuration]]
 ==== Configuration
 
 TODO blah
 
+[[guide-challenges-concepts-configuration-participants]]
 ===== Participants
 
 TODO blah
 
+[[guide-challenges-concepts-configuration-seed]]
 ===== Seed
 
 TODO blah
 
+[[guide-challenges-concepts-configuration-turns]]
 ===== Turns
 
 TODO blah
 
+[[guide-challenges-concepts-configuration-end-conditions]]
 ===== End conditions
 
 TODO blah
 
+[[guide-challenges-concepts-configuration-outcome]]
 ===== Outcome
 
 TODO blah
 
+[[guide-challenges-concepts-configuration-replayable]]
 ===== Replayable
 
 TODO blah
 
+[[guide-challenges-concepts-request]]
 ==== Request
 
 TODO blah
 
+[[guide-challenges-concepts-instance]]
 ==== Instance
 
 TODO blah
 
+[[guide-challenges-concepts-turn-message]]
 ==== Turn message
 
 TODO blah
 
+[[guide-challenges-concepts-replay]]
 ==== Replay
 
 TODO blah
 
+[[guide-challenges-concepts-elo-leaderboard]]
 ==== Elo leaderboard
 
 TODO blah

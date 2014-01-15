@@ -1,12 +1,15 @@
+[[guide-leaderboards-reference]]
 [role="chunk-page chunk-toc"]
 === Reference
 
 TODO blah
 
+[[guide-leaderboards-reference-attributes]]
 ==== Attributes
 
 TODO blah
 
+[[guide-leaderboards-reference-hierarchical-structure]]
 ==== Hierarchical structure
 
 TODO blah

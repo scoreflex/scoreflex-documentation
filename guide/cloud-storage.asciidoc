@@ -4,10 +4,12 @@
 
 TODO blah
 
+[[guide-cloud-storage-game-storage]]
 === Game storage
 
 TODO blah
 
+[[guide-cloud-storage-player-storage]]
 === Player storage
 
 TODO blah

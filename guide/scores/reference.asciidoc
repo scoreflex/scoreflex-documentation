@@ -1,3 +1,4 @@
+[[guide-scores-reference]]
 [role="chunk-page chunk-toc"]
 === Reference
 

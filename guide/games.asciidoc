@@ -4,10 +4,12 @@
 
 TODO blah
 
+[[guide-games-overview]]
 === Overview
 
 TODO blah
 
+[[guide-games-attributes]]
 === Attributes
 
 TODO blah

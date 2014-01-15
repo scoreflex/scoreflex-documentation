@@ -1,32 +1,40 @@
+[[guide-leaderboards-concepts]]
 [role="chunk-page chunk-toc"]
 === Concepts
 
 TODO blah
 
+[[guide-leaderboards-concepts-overview]]
 ==== Overview
 
 TODO blah
 
+[[guide-leaderboards-concepts-lifecycle]]
 ==== Lifecycle
 
 TODO blah
 
+[[guide-leaderboards-concepts-configuration]]
 ==== Configuration
 
 TODO blah
 
+[[guide-leaderboards-concepts-configuration-score-order]]
 ===== Score order
 
 TODO blah
 
+[[guide-leaderboards-concepts-configuration-score-formatting]]
 ===== Score formatting
 
 TODO blah
 
+[[guide-leaderboards-concepts-configuration-filters-and-modes]]
 ===== Filters and modes
 
 TODO blah
 
+[[guide-leaderboards-concepts-configuration-internationalization]]
 ===== Internationalization
 
 TODO blah

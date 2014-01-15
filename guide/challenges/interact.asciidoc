@@ -1,20 +1,25 @@
+[[guide-challenges-interact]]
 [role="chunk-page chunk-toc"]
 === Interact
 
 TODO blah
 
+[[guide-challenges-interact-creating-a-challenge-config]]
 ==== Creating a challenge config
 
 TODO blah
 
+[[guide-challenges-interact-editing-a-challenge-config]]
 ==== Editing a challenge config
 
 TODO blah
 
+[[guide-challenges-interact-handling-challenge-start]]
 ==== Handling challenge start
 
 TODO blah
 
+[[guide-challenges-interact-implementing-challenge-into-the-game]]
 ==== Implementing challenge into the game
 
 TODO blah
