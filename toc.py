@@ -52,17 +52,19 @@ class TocEntry():
             return None
         return match[0]
 
-    def link(self):
+    def link(self, linkRoot=None):
         if self.is_root():
             return ''
+        if self is linkRoot:
+            return '#'
         if self.linkedTo is not None:
             target = self.get_root().walk_id(self.linkedTo)
             if target is None:
                 return '[BROKEN_LINK]'
-            return target.link()
+            return target.link(linkRoot)
         # Get where the page starts
         chunkPageParent = self
-        while not chunkPageParent.is_root():
+        while not chunkPageParent.is_root() and chunkPageParent is not linkRoot:
             if chunkPageParent.chunkPage:
                 break
             chunkPageParent = chunkPageParent.parent
@@ -71,7 +73,7 @@ class TocEntry():
             chunkPageParent = self
         parentParts = []
         curr = chunkPageParent
-        while not curr.is_root():
+        while not curr.is_root() and curr is not linkRoot:
             parentParts.append(curr.id)
             curr = curr.parent
         # Simplify prefix repetitions
@@ -81,6 +83,8 @@ class TocEntry():
                     parentParts[i] = parentParts[i][len(parentParts[i+1])+1:]
         parentParts.reverse()
         parentParts = '/'.join(parentParts)
+        if len(parentParts) > 0:
+            parentParts += '.html'
         # Add the id of self directly, no hierarchy
         # unless self is a page itself
         glue = '#'
@@ -88,7 +92,7 @@ class TocEntry():
         if chunkPageParent is self:
             glue = ''
             selfPart = ''
-        return parentParts + '.html' + glue + selfPart
+        return parentParts + glue + selfPart
 
     def __str__(self):
         parts = []
@@ -123,7 +127,8 @@ class TocEntry():
             print str(item)
         self.walk(print_me)
 
-    def write_html(self, f, indent=0):
+    def write_html(self, f, tocRoot=None, indent=0):
+        if tocRoot is None: tocRoot = self
         strIndent = '  ' * indent
         if not self.is_root():
             f.write('%s<li>\n' % strIndent)
@@ -132,14 +137,14 @@ class TocEntry():
             clazz = ''
             if len(self.children) > 0:
                 f.write('%s<span class="openable">\n' % strIndent)
-                f.write('%s  <a href="%s">%s</a>\n' % (strIndent, self.link().encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s  <a href="%s">%s</a>\n' % (strIndent, self.link(tocRoot).encode('utf-8'), self.title.encode('utf-8')))
                 f.write('%s</span>\n' % strIndent)
             else:
-                f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link().encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(tocRoot).encode('utf-8'), self.title.encode('utf-8')))
         if len(self.children) > 0:
             f.write('%s<ul class="menuRetractable">\n' % strIndent)
             for child in self.children:
-                child.write_html(f, indent+1)
+                child.write_html(f, tocRoot, indent+1)
             f.write('%s</ul>\n' % strIndent)
         if not self.is_root():
             indent -= 1
@@ -181,7 +186,7 @@ def getLinkedId(node):
             if not isNodeTag(link, 'link'): continue
             return link.getAttribute('linkend')
 
-def parseLevels(node, levels, currToc):
+def parseLevels(node, chunkToc, levels, currToc):
     sublevels = levels[1:]
     if len(sublevels) == 0: sublevels = levels
     for part in node.childNodes:
@@ -197,14 +202,14 @@ def parseLevels(node, levels, currToc):
             print 'NOTE:', str(childToc), 'has an auto-generated id!'
             if auto_generated_id_conflict.match(partId):
                 print 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'
-        if childToc.chunkToc: continue
-        parseLevels(part, sublevels, childToc)
+        if chunkToc and childToc.chunkToc: continue
+        parseLevels(part, chunkToc, sublevels, childToc)
     
-def extractToc(dom):
+def extractToc(dom, chunkToc):
     toc = TocEntry()
     for book in dom.childNodes:
         if not isNodeTag(book, 'book'): continue
-        parseLevels(book, ['part', 'chapter', 'section'], toc)
+        parseLevels(book, chunkToc, ['part', 'chapter', 'section'], toc)
         break
     return toc
 
@@ -212,22 +217,33 @@ def extractToc(dom):
 
 def usage(args):
     print "Usage:", args[0], "-h|--help"
-    print "      ", args[0], "FILE"
+    print "      ", args[0], "FILE [rootId]"
     print "Extracts a Table of Contents from a DocBook."
     print "    FILE    DocBook XML file to extract the ToC from."
+    print "    rootId  The id to root the ToC at."
 
 def main(args):
-    if len(args) != 2:
+    if len(args) != 2 and len(args) != 3:
         usage(args)
         return 1
     if args[1] == '-h' or args[1] == '--help':
         usage(args)
         return 0
+    chunkToc = True
+    rootId = None
+    if len(args) == 3:
+        chunkToc = False
+        rootId = args[2]
 
     dom = minidom.parse(sys.argv[1])
-    toc = extractToc(dom)
-    #toc.rec_print()
-    toc.write_html(sys.stdout)
+    toc = extractToc(dom, chunkToc)
+    if rootId is not None:
+        oldToc = toc
+        tocRoot = oldToc.walk_id(rootId)
+    else:
+        tocRoot = toc
+    #tocRoot.rec_print()
+    tocRoot.write_html(sys.stdout)
 
     return 0
 
