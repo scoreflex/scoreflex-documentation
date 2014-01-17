@@ -36,6 +36,29 @@ class TocEntry():
         else:
             return self.parent.get_root()
 
+    def get_ancestry(self):
+        if self.is_root():
+            return [self]
+        else:
+            return self.parent.get_ancestry() + [self]
+
+    def get_first_ancestor(self, filter, not_found_value=None):
+        if filter(self):
+            return self
+        elif self.is_root():
+            return not_found_value
+        else:
+            return self.parent.get_first_ancestor(filter, not_found_value)
+
+    def get_common_ancestor(self, node):
+        ancestrySelf = self.get_ancestry()
+        ancestryNode = node.get_ancestry()
+        for ancestorDepth in range(0, min(len(ancestrySelf), len(ancestryNode))):
+            if not ancestrySelf[ancestorDepth] is ancestryNode[ancestorDepth]:
+                ancestorDepth -= 1
+                break
+        return ancestrySelf[ancestorDepth]
+
     def depth(self):
         if self.is_root():
             return 0
@@ -53,47 +76,41 @@ class TocEntry():
             return None
         return match[0]
 
-    def link(self, linkRoot=None):
+    def link(self, linkRef=None):
         if self.is_root():
-            return ''
-        if self is linkRoot:
+            return '[ROOT]'
+        if self is linkRef:
             return '#'
         if self.linkedTo is not None:
             target = self.get_root().walk_id(self.linkedTo)
             if target is None:
                 return '[BROKEN_LINK]'
-            return target.link(linkRoot)
+            return target.link(linkRef)
         # Get where the page starts
-        chunkPageParent = self
-        while not chunkPageParent.is_root() and chunkPageParent is not linkRoot:
-            if chunkPageParent.chunkPage:
-                break
-            chunkPageParent = chunkPageParent.parent
-        if chunkPageParent.is_root():
-            # No page parent found
-            chunkPageParent = self
-        parentParts = []
-        curr = chunkPageParent
-        while not curr.is_root() and curr is not linkRoot:
-            parentParts.append(curr.id)
-            curr = curr.parent
-        # Simplify prefix repetitions
-        for i, part in enumerate(parentParts):
-            if i+1 < len(parentParts):
-                if part.startswith(parentParts[i+1]):
-                    parentParts[i] = parentParts[i][len(parentParts[i+1])+1:]
-        parentParts.reverse()
+        chunkPageParent = self.get_first_ancestor(lambda node: node.chunkPage == True, self)
+        # Find common ancestor of chunkPageParent and linkRef
+        ancestor = chunkPageParent.get_common_ancestor(linkRef)
+        # Create parent part
+        parentParts = [node.id for node in chunkPageParent.get_ancestry()[1:]]
+        # Remove id prefixes to turn them into path components
+        for i in range(len(parentParts)-1, 0, -1): # from last index down to 1
+            if parentParts[i].startswith(parentParts[i-1]):
+                parentParts[i] = parentParts[i][len(parentParts[i-1])+1:]
+        # Finalize parent part
+        if self is ancestor:
+            parentParts = parentParts[ancestor.depth():] + ['..', parentParts[-1]]
+        else:
+            parentParts = parentParts[ancestor.depth():]
+        parentParts = ['..'] * (linkRef.depth() - ancestor.depth() - 1) + parentParts
         parentParts = '/'.join(parentParts)
         if len(parentParts) > 0:
             parentParts += '.html'
         # Add the id of self directly, no hierarchy
         # unless self is a page itself
-        glue = '#'
-        selfPart = self.id
         if chunkPageParent is self:
-            glue = ''
-            selfPart = ''
-        return parentParts + glue + selfPart
+            return parentParts
+        else:
+            return parentParts + '#' + self.id
 
     def __str__(self):
         parts = []
@@ -129,35 +146,16 @@ class TocEntry():
             print str(item)
         self.walk(print_me)
 
-    def write_html(self, f, pageRoot=None, tocRoot=None, muteRoot=None, indent=0):
+    def write_html(self, f, pageRoot=None, tocRoot=None, indent=0):
         if pageRoot is None:
             pageRoot = self
         if tocRoot is None:
             # Find the appropriate ToC root
-            tocRoot = self
-            while not tocRoot.is_root():
-                if tocRoot.rootToc:
-                    break
-                tocRoot = tocRoot.parent
-            if tocRoot is self and muteRoot is None:
-                muteRoot = False
-            if tocRoot.is_root():
-                # No explicit ToC root found
-                tocRoot = self
-                if muteRoot is None:
-                    muteRoot = False
-            elif tocRoot is self:
-                # self was already a ToC root
-                if muteRoot is None:
-                    muteRoot = False
-            else:
-                # ToC root was automatically found in the ancestors
-                if muteRoot is None:
-                    muteRoot = True
+            tocRoot = self.get_first_ancestor(lambda node: node.rootToc, self)
             # Write from the found ToC root
-            return tocRoot.write_html(f, pageRoot, tocRoot, muteRoot, indent)
+            return tocRoot.write_html(f, pageRoot, tocRoot, indent)
         strIndent = '  ' * indent
-        if not muteRoot and not self.is_root() and not self is tocRoot:
+        if not self.is_root() and not self is tocRoot:
             f.write('%s<li>\n' % strIndent)
             indent += 1
             strIndent = '  ' * indent
@@ -171,7 +169,7 @@ class TocEntry():
         if len(self.children) > 0:
             f.write('%s<ul class="menuRetractable">\n' % strIndent)
             for child in self.children:
-                child.write_html(f, pageRoot, tocRoot, False, indent+1)
+                child.write_html(f, pageRoot, tocRoot, indent+1)
             f.write('%s</ul>\n' % strIndent)
         if not self.is_root():
             indent -= 1
