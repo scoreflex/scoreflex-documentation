@@ -1,4 +1,5 @@
 [[guide-realtime]]
+[role="toc-root"]
 == Realtime gaming
 
 TODO blah

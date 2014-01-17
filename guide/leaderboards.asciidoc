@@ -1,4 +1,5 @@
 [[guide-leaderboards]]
+[role="toc-root"]
 == Leaderboards
 
 TODO blah

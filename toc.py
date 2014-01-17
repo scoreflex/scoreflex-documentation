@@ -20,6 +20,7 @@ class TocEntry():
         self.linkedTo = None
         self.chunkPage = False
         self.chunkToc = False
+        self.rootToc = False
         self.children = []
 
     def append(self, child):
@@ -104,6 +105,7 @@ class TocEntry():
         return ' / '.join(parts) \
             + (' […]' if self.chunkToc else '') \
             + (' [PAGE]' if self.chunkPage else '') \
+            + (' [TOC]' if self.rootToc else '') \
             + (' [LEAF]' if len(self.children) == 0 else '') \
             + (' [LINK]' if self.linkedTo is not None else '') \
             + ' #' + unicode(self.id).encode('utf-8') \
@@ -127,24 +129,49 @@ class TocEntry():
             print str(item)
         self.walk(print_me)
 
-    def write_html(self, f, tocRoot=None, indent=0):
-        if tocRoot is None: tocRoot = self
+    def write_html(self, f, pageRoot=None, tocRoot=None, muteRoot=None, indent=0):
+        if pageRoot is None:
+            pageRoot = self
+        if tocRoot is None:
+            # Find the appropriate ToC root
+            tocRoot = self
+            while not tocRoot.is_root():
+                if tocRoot.rootToc:
+                    break
+                tocRoot = tocRoot.parent
+            if tocRoot is self and muteRoot is None:
+                muteRoot = False
+            if tocRoot.is_root():
+                # No explicit ToC root found
+                tocRoot = self
+                if muteRoot is None:
+                    muteRoot = False
+            elif tocRoot is self:
+                # self was already a ToC root
+                if muteRoot is None:
+                    muteRoot = False
+            else:
+                # ToC root was automatically found in the ancestors
+                if muteRoot is None:
+                    muteRoot = True
+            # Write from the found ToC root
+            return tocRoot.write_html(f, pageRoot, tocRoot, muteRoot, indent)
         strIndent = '  ' * indent
-        if not self.is_root():
+        if not muteRoot and not self.is_root() and not self is tocRoot:
             f.write('%s<li>\n' % strIndent)
             indent += 1
             strIndent = '  ' * indent
             clazz = ''
             if len(self.children) > 0:
                 f.write('%s<span class="openable">\n' % strIndent)
-                f.write('%s  <a href="%s">%s</a>\n' % (strIndent, self.link(tocRoot).encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s  <a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
                 f.write('%s</span>\n' % strIndent)
             else:
-                f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(tocRoot).encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
         if len(self.children) > 0:
             f.write('%s<ul class="menuRetractable">\n' % strIndent)
             for child in self.children:
-                child.write_html(f, tocRoot, indent+1)
+                child.write_html(f, pageRoot, tocRoot, False, indent+1)
             f.write('%s</ul>\n' % strIndent)
         if not self.is_root():
             indent -= 1
@@ -177,6 +204,9 @@ def shouldChunkToc(node):
 def shouldChunkPage(node):
     return 'chunk-page' in node.getAttribute('role')
 
+def shouldRootToc(node):
+    return 'toc-root' in node.getAttribute('role')
+
 def getLinkedId(node):
     if not 'section-link' in node.getAttribute('role'):
         return None
@@ -197,6 +227,7 @@ def parseLevels(node, chunkToc, levels, currToc):
         childToc.linkedTo = getLinkedId(part)
         childToc.chunkPage = shouldChunkPage(part)
         childToc.chunkToc = shouldChunkToc(part)
+        childToc.rootToc = shouldRootToc(part)
         currToc.append(childToc)
         if auto_generated_id.match(partId) and childToc.linkedTo is None:
             print 'NOTE:', str(childToc), 'has an auto-generated id!'

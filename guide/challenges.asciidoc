@@ -1,4 +1,5 @@
 [[guide-challenges]]
+[role="toc-root"]
 == Challenges
 
 TODO blah
