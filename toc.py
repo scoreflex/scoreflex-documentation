@@ -76,7 +76,7 @@ class TocEntry():
             return None
         return match[0]
 
-    def link(self, linkRef=None):
+    def link(self, linkRef):
         if self.is_root():
             return '[ROOT]'
         if self is linkRef:
@@ -97,8 +97,13 @@ class TocEntry():
             if parentParts[i].startswith(parentParts[i-1]):
                 parentParts[i] = parentParts[i][len(parentParts[i-1])+1:]
         # Finalize parent part
-        if self is ancestor:
-            parentParts = parentParts[ancestor.depth():] + ['..', parentParts[-1]]
+        if linkRef is ancestor and not linkRef.is_root():
+            # Keep the id in order to change it from file.html to folder/
+            parentParts = parentParts[ancestor.depth()-1:]
+        elif self is ancestor:
+            # Keep the id and add one .. level, in order to change it from folder/ to file.html
+            # (only needed because the target of the link is self)
+            parentParts = ['..'] + parentParts[ancestor.depth()-1:]
         else:
             parentParts = parentParts[ancestor.depth():]
         parentParts = ['..'] * (linkRef.depth() - ancestor.depth() - 1) + parentParts
@@ -242,6 +247,10 @@ def extractToc(dom, chunkToc):
         break
     return toc
 
+def tocFromFile(file, chunkToc):
+    dom = minidom.parse(file)
+    return extractToc(dom, chunkToc)
+
 
 
 def usage(args):
@@ -264,8 +273,8 @@ def main(args):
         chunkToc = False
         rootId = args[2]
 
-    dom = minidom.parse(sys.argv[1])
-    toc = extractToc(dom, chunkToc)
+    toc = tocFromFile(sys.argv[1], chunkToc)
+
     if rootId is not None:
         oldToc = toc
         tocRoot = oldToc.walk_id(rootId)
