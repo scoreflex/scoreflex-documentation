@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: ts=4 sts=4 sw=4 et
 
+import os
 import sys
 import xml.dom.minidom
 minidom = xml.dom.minidom
@@ -9,6 +10,13 @@ import re
 
 auto_generated_id = re.compile(r'^_.*$')
 auto_generated_id_conflict = re.compile(r'^_.*_\d+$')
+
+LINK_ROOT = os.environ.get('SCOREFLEX_DOC_HTTP_ROOT')
+if LINK_ROOT is not None:
+    if not LINK_ROOT.endswith('/'):
+        LINK_ROOT += '/'
+    if len(LINK_ROOT) == 0:
+        LINK_ROOT = None
 
 
 class TocEntry():
@@ -77,10 +85,14 @@ class TocEntry():
         return match[0]
 
     def link(self, linkRef):
-        if self.is_root():
-            return '[ROOT]'
-        if self is linkRef:
-            return '#'
+        if LINK_ROOT is not None:
+            if self.is_root():
+                return LINK_ROOT
+        else:
+            if self.is_root():
+                return '[ROOT]'
+            if self is linkRef:
+                return '#'
         if self.linkedTo is not None:
             target = self.get_root().walk_id(self.linkedTo)
             if target is None:
@@ -88,34 +100,35 @@ class TocEntry():
             return target.link(linkRef)
         # Get where the page starts
         chunkPageParent = self.get_first_ancestor(lambda node: node.chunkPage == True, self)
-        # Find common ancestor of chunkPageParent and linkRef
-        ancestor = chunkPageParent.get_common_ancestor(linkRef)
         # Create parent part
         parentParts = [node.id for node in chunkPageParent.get_ancestry()[1:]]
         # Remove id prefixes to turn them into path components
         for i in range(len(parentParts)-1, 0, -1): # from last index down to 1
             if parentParts[i].startswith(parentParts[i-1]):
                 parentParts[i] = parentParts[i][len(parentParts[i-1])+1:]
-        # Finalize parent part
-        if linkRef is ancestor and not linkRef.is_root():
-            # Keep the id in order to change it from file.html to folder/
-            parentParts = parentParts[ancestor.depth()-1:]
-        elif self is ancestor:
-            # Keep the id and add one .. level, in order to change it from folder/ to file.html
-            # (only needed because the target of the link is self)
-            parentParts = ['..'] + parentParts[ancestor.depth()-1:]
-        else:
-            parentParts = parentParts[ancestor.depth():]
-        parentParts = ['..'] * (linkRef.depth() - ancestor.depth() - 1) + parentParts
+        if LINK_ROOT is None:
+            # Find common ancestor of chunkPageParent and linkRef
+            ancestor = chunkPageParent.get_common_ancestor(linkRef)
+            # Finalize parent part
+            if linkRef is ancestor and not linkRef.is_root():
+                # Keep the id in order to change it from file.html to folder/
+                parentParts = parentParts[ancestor.depth()-1:]
+            elif self is ancestor:
+                # Keep the id and add one .. level, in order to change it from folder/ to file.html
+                # (only needed because the target of the link is self)
+                parentParts = ['..'] + parentParts[ancestor.depth()-1:]
+            else:
+                parentParts = parentParts[ancestor.depth():]
+            parentParts = ['..'] * (linkRef.depth() - ancestor.depth() - 1) + parentParts
         parentParts = '/'.join(parentParts)
         if len(parentParts) > 0:
             parentParts += '.html'
         # Add the id of self directly, no hierarchy
         # unless self is a page itself
         if chunkPageParent is self:
-            return parentParts
+            return (LINK_ROOT or '') + parentParts
         else:
-            return parentParts + '#' + self.id
+            return (LINK_ROOT or '') + parentParts + '#' + self.id
 
     def __str__(self):
         parts = []
