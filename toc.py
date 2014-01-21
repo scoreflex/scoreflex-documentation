@@ -180,7 +180,7 @@ class TocEntry():
             clazz = ''
             if len(self.children) > 0:
                 f.write('%s<span class="openable">\n' % strIndent)
-                f.write('%s  <a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s  <span class="arrow"><span class="arrow_black_right"></span></span><a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
                 f.write('%s</span>\n' % strIndent)
             else:
                 f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
