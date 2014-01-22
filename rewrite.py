@@ -29,21 +29,32 @@ def clean(soup, toc, ref):
                 print "WARNING: Link to an unknown ToC entry \"%s\"" % href
                 continue
             link['href'] = target.link(ref)
-    # Add ToC in header
+    # Access elements by id to keep a reference before removing their id attribute
     tocElmt = soup.find("div", attrs={'id': 'toc'})
+    # Prefer class to id
+    for id in ['header', 'toc', 'toctitle', 'preamble', 'content', 'footer', 'footer-text']:
+        elmt = soup.find(attrs={'id': id})
+        if elmt is not None:
+            elmt['class'] = (elmt.get('class', '') + elmt['id']).strip()
+            del elmt['id']
+    # Add ToC in header
     if tocElmt is not None:
         # Remove toc's noscript
         noscript = tocElmt.find("noscript")
         if noscript is not None:
-            noscript.extract()
+            noscript.decompose() # causes problems with subsequent soup.find()
         # Inject ToC
         tocHTMLBuffer = cStringIO.StringIO()
         ref.write_html(tocHTMLBuffer)
         tocTags = BeautifulSoup.BeautifulSoup(tocHTMLBuffer.getvalue())
         tocHTMLBuffer.close()
         tocElmt.append(tocTags)
+        # Use a wrapper div
+        wrapper = BeautifulSoup.Tag(soup, 'div', attrs={'class':'tocwrapper'})
+        tocElmt.replaceWith(wrapper)
+        wrapper.append(tocElmt)
     # Return just the interesting html, not the boilerplate
-    rtn = soup.body
+    rtn = soup.body.extract()
     rtn.name = 'div'
     return rtn
 
