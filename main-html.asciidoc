@@ -2,5 +2,4 @@ include::main-header.asciidoc[]
 :max-width: 55em
 :toc2:
 :disable-javascript!:
-:ref: http://developer.scoreflex.com/docs
 include::main-book.asciidoc[]
