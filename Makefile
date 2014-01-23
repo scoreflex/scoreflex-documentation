@@ -18,6 +18,7 @@ HTML_BUILDDIR      ?= $(BUILDDIR)/html
 ASCIIDOC ?= asciidoc
 CP       ?= cp
 DIRNAME  ?= dirname
+ENV      ?= env
 FIND     ?= find
 RM       ?= rm
 
@@ -35,8 +36,8 @@ reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,$(wordlist 2,$(words $(1)),$(
 #
 
 TREE_TO_MAKEFILE           := $(SCRIPTS_DIR)/tree-to-makefile.sh
-TOC                        := $(SCRIPTS_DIR)/toc.py
-REWRITE                    := $(SCRIPTS_DIR)/rewrite.py
+TOC                        := $(ENV) LINK_ROOT=$(LINK_ROOT) $(SCRIPTS_DIR)/toc.py
+REWRITE                    := $(ENV) LINK_ROOT=$(LINK_ROOT) $(SCRIPTS_DIR)/rewrite.py
 ID_FROM_RELPATH            := $(SCRIPTS_DIR)/id-from-relpath.sh
 SHIFT_TITLE_LEVELS         := $(SCRIPTS_DIR)/shift-title-levels.awk
 GET_INCLUDE_INFOS          := $(SCRIPTS_DIR)/get-include-infos.awk
