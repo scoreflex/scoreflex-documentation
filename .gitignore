@@ -1,5 +1,2 @@
-*.html
-*.xml
-*.pdf
-*.pyc
-*.stamp
+build/
+scripts/*.pyc
