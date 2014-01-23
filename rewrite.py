@@ -17,7 +17,7 @@ def clean(soup, toc, ref):
     for link in soup.findAll('a'):
         href = link.get('href')
         if href is None:
-            print "WARNING: Link with no href:", link
+            print >> sys.stderr, "WARNING: Link with no href:", link
             continue
         if href.startswith('#') and href != '#':
             href = href[1:]
@@ -26,7 +26,7 @@ def clean(soup, toc, ref):
                 continue
             target = toc.walk_id(href)
             if target is None:
-                print "WARNING: Link to an unknown ToC entry \"%s\"" % href
+                print >> sys.stderr, "WARNING: Link to an unknown ToC entry \"%s\"" % href
                 continue
             link['href'] = target.link(ref)
     # Access elements by id to keep a reference before removing their id attribute
@@ -63,7 +63,7 @@ def clean(soup, toc, ref):
 def usage(args):
     print "Usage:", args[0], "-h|--help"
     print "      ", args[0], "TOC FILE"
-    print "Rewrites the generated page so that it fits well in the whole website."
+    print "Rewrites the generated page from standard input, so that it fits well in the whole website."
     print "    TOC     DocBook XML file to extract the ToC from."
     print "    FILE    The relative path to the file to rewrite."
 
@@ -86,14 +86,12 @@ def main(args):
     toc = tocModule.tocFromFile(tocFile, False)
     ref = toc.walk_id(id)
     if ref is None:
-        print "ERROR: The file id \"%s\" was not found in the ToC!" % id
+        print >> sys.stderr, "ERROR: The file id \"%s\" was not found in the ToC!" % id
         return 1
 
-    htmlFp = open(htmlFile, "rw")
-    soup = BeautifulSoup.BeautifulSoup(htmlFp)
+    soup = BeautifulSoup.BeautifulSoup(sys.stdin)
     out = clean(soup, toc, ref)
     print out
-    htmlFp.close()
 
     return 0
 

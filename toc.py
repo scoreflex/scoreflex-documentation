@@ -288,7 +288,7 @@ def main(args):
 
     toc = tocFromFile(sys.argv[1], chunkToc)
 
-    if rootId is not None:
+    if rootId is not None and rootId != '':
         oldToc = toc
         tocRoot = oldToc.walk_id(rootId)
     else:
