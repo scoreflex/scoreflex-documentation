@@ -68,9 +68,11 @@ HTML_FILES    := $(HTML_REGULAR_FILES) $(HTML_FOLDER_FILES) $(TOC_FILE)
 # Phony targets
 #
 
-.PHONY: all clean distclean FORCE
+.PHONY: all test clean distclean FORCE
 
 all: $(TOC_FILE) $(HTML_FILES)
+
+test:
 
 clean:
 	$(RM) -f $(DOCBOOK_FILE) $(DOCBOOK_STAMP) $(FULLTOC) $(HTML_FILES)
