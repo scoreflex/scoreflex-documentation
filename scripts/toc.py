@@ -11,7 +11,7 @@ import re
 auto_generated_id = re.compile(r'^_.*$')
 auto_generated_id_conflict = re.compile(r'^_.*_\d+$')
 
-LINK_ROOT = os.environ.get('SCOREFLEX_DOC_HTTP_ROOT')
+LINK_ROOT = os.environ.get('LINK_ROOT')
 if LINK_ROOT is not None:
     if not LINK_ROOT.endswith('/'):
         LINK_ROOT += '/'
