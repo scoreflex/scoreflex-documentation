@@ -144,7 +144,7 @@ class TocEntry():
             + (' [LEAF]' if len(self.children) == 0 else '') \
             + (' [LINK]' if self.linkedTo is not None else '') \
             + ' #' + unicode(self.id).encode('utf-8') \
-            + ' href:' + self.link().encode('utf-8')
+            + ' href:' + self.link(self.get_root()).encode('utf-8')
 
     def walk(self, callback):
         try:
@@ -246,9 +246,9 @@ def parseLevels(node, chunkToc, levels, currToc):
         childToc.rootToc = shouldRootToc(part)
         currToc.append(childToc)
         if auto_generated_id.match(partId) and childToc.linkedTo is None:
-            print 'NOTE:', str(childToc), 'has an auto-generated id!'
+            print >> sys.stderr, 'NOTE:', str(childToc), 'has an auto-generated id!'
             if auto_generated_id_conflict.match(partId):
-                print 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'
+                print >> sys.stderr, 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'
         if chunkToc and childToc.chunkToc: continue
         parseLevels(part, chunkToc, sublevels, childToc)
     
@@ -267,11 +267,11 @@ def tocFromFile(file, chunkToc):
 
 
 def usage(args):
-    print "Usage:", args[0], "-h|--help"
-    print "      ", args[0], "FILE [rootId]"
-    print "Extracts a Table of Contents from a DocBook."
-    print "    FILE    DocBook XML file to extract the ToC from."
-    print "    rootId  The id to root the ToC at."
+    print >> sys.stderr, "Usage:", args[0], "-h|--help"
+    print >> sys.stderr, "      ", args[0], "FILE [rootId]"
+    print >> sys.stderr, "Extracts a Table of Contents from a DocBook."
+    print >> sys.stderr, "    FILE    DocBook XML file to extract the ToC from."
+    print >> sys.stderr, "    rootId  The id to root the ToC at."
 
 def main(args):
     if len(args) != 2 and len(args) != 3:
