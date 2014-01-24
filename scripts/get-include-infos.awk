@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/gawk -f
 
 /^include::/ {
     file = SRC_DIR "/" substr($0, 10, length($0)-9-2);
