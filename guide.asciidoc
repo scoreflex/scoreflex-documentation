@@ -3,7 +3,6 @@
 
 [partintro]
 --
-TODO blah
 --
 
 include::guide/concepts.asciidoc[]
@@ -17,6 +16,8 @@ include::guide/games.asciidoc[]
 include::guide/players.asciidoc[]
 
 include::guide/gaming-devices.asciidoc[]
+
+include::guide/authentication.asciidoc[]
 
 include::guide/scores.asciidoc[]
 

@@ -1,0 +1,67 @@
+[[guide-cloud-storage-game-storage-interact]]
+[role="chunk-page chunk-toc"]
+==== Interact
+
+You can use your web developer dashboard or the Management API to manage
+your game storage.
+
+[[guide-cloud-storage-game-storage-interact-setting-a-value]]
+[float]
+===== Setting a value
+
+[source,bash]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/storage/settings' \
+   -d 'body={"enableAdMob":false,"enableChartboost":true}&accessToken=<DEVELOPER_ACCESS_TOKEN>&contentType=application/json&ttl=86400000'
+----
+
+[source,javascript]
+----
+{"success":true}
+----
+
+[[guide-cloud-storage-game-storage-interact-getting-a-value]]
+[float]
+===== Getting a value
+
+[source,bash]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/storage/settings?accessToken=<DEVELOPER_ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{"enableAdMob":false,"enableChartboost":true}
+----
+
+[[guide-cloud-storage-game-storage-interact-deleting-a-value]]
+[float]
+===== Deleting a value
+
+[source,bash]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/storage/settings?accessToken=<DEVELOPER_ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{"success":true}
+----
+
+[[guide-cloud-storage-game-storage-interact-getting-a-value-from-a-game]]
+[float]
+===== Getting a value from a game
+
+[source,bash]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/storage/game/settings?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{"enableAdMob":false,"enableChartboost":true}
+----

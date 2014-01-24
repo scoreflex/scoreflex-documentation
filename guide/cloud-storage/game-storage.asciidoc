@@ -1,0 +1,12 @@
+[[guide-cloud-storage-game-storage]]
+[role="toc-root"]
+=== Game storage
+
+--
+--
+
+include::game-storage/concepts.asciidoc[]
+
+include::game-storage/interact.asciidoc[]
+
+include::game-storage/reference.asciidoc[]

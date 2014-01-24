@@ -1,0 +1,51 @@
+[[guide-cloud-storage-player-storage-interact]]
+[role="chunk-page chunk-toc"]
+==== Interact
+
+[[guide-cloud-storage-player-storage-interact-setting-a-value]]
+[float]
+===== Setting a value
+
+[source,bash]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/storage/preferences' \
+   -d 'body=\{"musicVolume":0}&accessToken=<ACCESS_TOKEN>&contentType=application/json&ttl=86400000'
+----
+
+[source,javascript]
+----
+{"success":true}
+----
+
+[[guide-cloud-storage-player-storage-interact-getting-a-value]]
+[float]
+===== Getting a value
+
+[source,bash]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/storage/preferences?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{"musicVolume":0}
+----
+
+[[guide-cloud-storage-player-storage-interact-deleting-a-value]]
+[float]
+===== Deleting a value
+
+link:#[]link:#[]
+
+[source,bash]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/storage/preferences?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{"success":true}
+----

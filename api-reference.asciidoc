@@ -3,20 +3,39 @@
 
 [partintro]
 --
-TODO blah
+Please choose your platform:
+--
+
+[role="section-link"]
+== <<unity-api-reference,Unity>>
+
+--
 --
 
 [role="section-link"]
 == <<android-api-reference,Android>>
 
-TODO blah
+--
+--
 
 [role="section-link"]
 == <<ios-api-reference,iOS>>
 
-TODO blah
+--
+--
 
 [role="section-link"]
 == <<web-api-reference,Web>>
 
-TODO blah
+--
+--
+
+== http://developer.scoreflex.com/docs/reference/api/v1[REST API]
+
+--
+--
+
+== http://developer.scoreflex.com/docs/reference/api/v1#service_ManagementService[Management API]
+
+--
+--

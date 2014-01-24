@@ -1,118 +1,1130 @@
+:source-highlighter: prettify
+
 [[guide-api-conventions]]
 [role="chunk-page"]
 == API conventions
 
-TODO blah
+This section describes general API conventions that can be applied
+throughout the REST API, unless otherwise specified.
 
 [[guide-api-conventions-http-verbs]]
 === HTTP verbs
 
-TODO blah
+Where possible, API strives to use appropriate HTTP verbs.
+
+[cols="1,5",options="header"]
+|===
+<|Verb
+<|Description
+
+|GET
+|Used for retrieving resources.
+
+|POST
+|Used for creating resources.
+
+|PUT
+|Used for updating resources.
+
+|DELETE
+|Used for deleting resources.
+|===
 
 [[guide-api-conventions-errors]]
 [role="chunk-toc"]
 === Errors
 
-TODO blah
+--
+--
 
 [[guide-api-conventions-errors-http-statuses]]
 ==== HTTP statuses
 
-TODO blah
+If everything is ok, the response is returned with an HTTP status 200.
+
+In case of errors, the following HTTP statuses can be used:
+
+[cols="1,5",options="header"]
+|===
+<|Status
+<|Description
+
+|400
+|Bad Request from the client.
+
+|403
+|Forbidden. The client is now allowed.
+
+|404
+|Not Found. The resource does not exist.
+
+|500
+|Internal Server Error. There is an error server side. This should not happen.
+|===
 
 [[guide-api-conventions-errors-structure]]
 ==== Structure
 
-TODO blah
+The following represents a common error response resulting from a failed
+API request:
+
+[source,javascript]
+----
+{
+  "error": {
+    "status": 400, //<1>
+    "code": 11003, //<2>
+    "message": "The provided access token is invalid" //<3>
+  }
+}
+----
+<1> the HTTP status.
+<2> Scoreflex error code.
+<3> human friendly error description.
 
 [[guide-api-conventions-errors-reference]]
 ==== Reference
 
-TODO blah
+Here are the various errors that can be returned by Scoreflex ordered by
+code:
 
-[[guide-api-conventions-prett-printing]]
+[cols="1,1,5",options="header"]
+|===
+<|Code
+<|Status
+<|Description
+
+|10000
+|404
+|No handler found
+
+|10001
+|400
+|When an invalid parameter is given
+
+|10002
+|400
+|When a mandatory parameter has been omitted
+
+|10005
+|400
+|When http is used for a method where https is mandatory
+
+|12000
+|404
+|When a player does not exist
+
+|12001
+|404
+|When a developer does not exist
+
+|12002
+|404
+|When a game does not exist
+
+|12003
+|400
+|When a game is not yours
+
+|12004
+|404
+|When a leaderboard config does not exist
+
+|12005
+|400
+|When there is an exception on a leaderboard config operation
+
+|12006
+|404
+|When value does not exist for given key
+
+|12007
+|500
+|When there is a storage error
+
+|12009
+|500
+|When there is a service exception
+
+|12010
+|400
+|When a developer try to use the API without having a verified email
+
+|12011
+|400
+|When a developer try to use the API with wrong prev/next parameter
+
+|12013
+|400
+|When an expected JSON body is invalid
+
+|12014
+|400
+|When too many scores are sent in bulk operation
+
+|12015
+|400
+|When expecting an array and does not receive one
+
+|12016
+|400
+|When receiving an invalid iOS model
+
+|12017
+|400
+|When receiving an invalid sid
+
+|12018
+|400
+|When using production API for a game in dev mode
+
+|12019
+|400
+|When using API for an inactive game
+
+|12020
+|403
+|When the provided sid has insufficient scope for a specific operation
+requiring more authorization
+
+|12021
+|400
+|When missing mandatory meta
+
+|12022
+|400
+|When submitted score is invalid
+
+|12023
+|400
+|When an expected leaderboard config body is invalid
+
+|12024
+|400
+|When an expected request signature is invalid
+
+|12025
+|400
+|When there is a security risk
+
+|12026
+|404
+|When device token does not exist
+
+|12027
+|404
+|When certificate does not exist
+
+|12028
+|403
+|When the provided service access token is invalid
+
+|12029
+|404
+|When a challenge config does not exist
+
+|12030
+|400
+|When there is an exception on a challenge config operation
+
+|12031
+|400
+|When an expected challenge config body is invalid
+
+|12032
+|404
+|When a challenge instance does not exist
+
+|12033
+|404
+|When a challenge request does not exist
+
+|12034
+|400
+|When an expected challenge request body is invalid
+
+|12037
+|400
+|When a challenge request cannot be created
+
+|12038
+|400
+|When a challenge instance has already started
+
+|12039
+|400
+|When an expected challenge instance turn body is invalid
+
+|12040
+|400
+|When a challenge instance turn applies to a wrong turn sequence
+
+|12041
+|400
+|When a challenge instance turn is sent by a player that do not appear in
+instance.turn.currentPlayers
+
+|12044
+|400
+|When a challenge instance is not running
+
+|12045
+|400
+|When an expected challenge replay message body is invalid
+
+|12046
+|400
+|When a challenge state modification applies to a wrong state version
+
+|12042
+|400
+|When a player answer to an unsolicited invitation
+
+|12043
+|400
+|When a player answer to an already answered invitation
+
+|12047
+|400
+|When a player is not a challenge participant
+
+|12048
+|400
+|When a challenge participant is not ready
+
+|12049
+|400
+|When using the state of a replayable challenge
+
+|12050
+|400
+|When the current device has no id
+
+|12051
+|400
+|When trying to create a new challenge while having reached the maximum limit
+
+|12052
+|400
+|When using API with an unsupported platform
+
+|12053
+|400
+|When using production API for a call restricted to sandbox
+
+|12054
+|400
+|When submitting an invalid certificate
+
+|12055
+|403
+|When submitting a score but the sandbox scores quota is exceeded
+
+|12056
+|403
+|When the sandbox players quota for a game is exceeded
+|===
+
+[[guide-api-conventions-pretty-printing]]
 === Pretty printing
 
-TODO blah
+For all endpoints returning JSON response you can append +?pretty=true+ to
+your requests to pretty print the result (use it for debugging purpose
+only).
 
 [[guide-api-conventions-pagination]]
 === Pagination
 
-TODO blah
+Some endpoints return multiple items at once. In that case, when
+relevant +prev+ and +next+ cursors are returned in the response. You can use
+these cursors to navigate in both directions throughout the result
+items. A +count+ parameter is also exposed to define how much items to
+return.
 
 [[guide-api-conventions-partial-response]]
 === Partial response
 
-TODO blah
+If you don't need the whole content of the response, some endpoints
+allow specifying a set of fields to return by setting the +fields+ parameter.
+The +fields+ parameter is given as a comma separated list of field names.
 
 [[guide-api-conventions-booleans]]
 === Booleans
 
-TODO blah
+All REST APIs parameters support providing boolean
+_false_ as the values: +0+, +false+, +f+, +n+, +no+, +false+
+and _true_ as the values: +1+, +true+, +t+, +y+, +yes+.
 
 [[guide-api-conventions-timestamps]]
 === Timestamps
 
-TODO blah
+Unix timestamp in milliseconds.
 
 [[guide-api-conventions-durations]]
 === Durations
 
-TODO blah
+Durations can be defined in two ways. As an integer or as a human
+readable string.
+
+When defining a time as an integer, Scoreflex interprets it as a value
+in milliseconds.
+
+Milliseconds are not really handy to represent durations. For
+convenience, Scoreflex let's you express durations as strings. An
+integer value followed by a unit (optionally separated by a space).
+
+Here is a list of the units you can use:
+
+* Milliseconds: +ms+, +millisecond+ or +milliseconds+
+* Seconds: +s+, +sec+, +second+ or +seconds+
+* Minutes: +m+, +min+, +minute+, +minutes+
+* Hours: +h+, +hr+, +hour+ or +hours+
+* Days: +d+, +day+ or +days+
+* Weeks: +w+, +week+ or +weeks+
+
+Examples: +5s+, +120 sec+, +15 minutes+, +36 hours+, +3 day+, +4 weeks+.
+
+[[guide-api-conventions-data-access]]
+=== Data Access
+
+Same API calls from different access tokens can return different results
+according to the access rights given by the used access token. For
+example, a call to get player information can return more information if
+the targeted player is the one owning the access token.
 
 [[guide-api-conventions-internationalization]]
 === Internationalization
 
-TODO blah
+Scoreflex API allows you to specify a locale-based language via the
++lang+ parameter. It impacts the response in multiple ways:
+
+* relevant contents are translated in the provided language
+* numbers are formatted according to the locale conventions
+
+The following language codes are supported:
+
+[cols="4,1",options="header"]
+|===
+|Language
+|Code
+
+|Afrikaans
+|af
+
+|Arabic
+|ar
+
+|Belarusian
+|be
+
+|Bulgarian
+|bg
+
+|Bengali
+|bn
+
+|Catalan
+|ca
+
+|Czech
+|cs
+
+|Danish
+|da
+
+|German
+|de
+
+|Greek
+|el
+
+|English
+|en
+
+|English (UK)
+|en_GB
+
+|English (US)
+|en_US
+
+|Spanish
+|es
+
+|Spanish (Spain)
+|es_ES
+
+|Spanish (Mexico)
+|es_MX
+
+|Estonian
+|et
+
+|Persian
+|fa
+
+|Finnish
+|fi
+
+|French
+|fr
+
+|French (France)
+|fr_FR
+
+|French (Canada)
+|fr_CA
+
+|Hebrew
+|he
+
+|Hindi
+|hi
+
+|Croatian
+|hr
+
+|Hungarian
+|hu
+
+|Indonesian
+|id
+
+|Icelandic
+|is
+
+|Italian
+|it
+
+|Japanese
+|ja
+
+|Korean
+|ko
+
+|Lithuanian
+|lt
+
+|Latvian
+|lv
+
+|Macedonian
+|mk
+
+|Malay
+|ms
+
+|Norwegian Bokmal
+|nb
+
+|Dutch
+|nl
+
+|Panjabi
+|pa
+
+|Polish
+|pl
+
+|Portuguese
+|pt
+
+|Portuguese (Portugal)
+|pt_PT
+
+|Portuguese (Brazil)
+|pt_BR
+
+|Romanian
+|ro
+
+|Russian
+|ru
+
+|Slovak
+|sk
+
+|Slovenian
+|sl
+
+|Albanian
+|sq
+
+|Serbian
+|sr
+
+|Swedish
+|sv
+
+|Swahili
+|sw
+
+|Tamil
+|ta
+
+|Thai
+|th
+
+|Tagalog
+|tl
+
+|Turkish
+|tr
+
+|Ukrainian
+|uk
+
+|Vietnamese
+|vi
+
+|Chinese
+|zh
+
+|Chinese (Simplified)
+|zh_CN
+
+|Chinese (Hong Kong)
+|zh_HK
+
+|Chinese (Traditional)
+|zh_TW
+|===
+
+If the +lang+ parameter is not explicitly provided to the API, Scoreflex
+automatically sets the language according to the following rules:
+
+. If the requesting player has set a prefered language, use it
+. if an accept-language header is provided use it
+. Defaults back to english (+en+)
+
+This approach gives the clients quite a lot of flexibility. For example,
+if you are developing a mobile game and you have access to the system
+language of the device you can use it for every API call. If your game
+is only in english and you want to be consistent, just use en for every
+API call. If you want to use the prefered player language don't use the
+parameter at all. To learn more about specific internationalization
+considerations please refer to the internationalization section of the
+relevant SDK documentation.
 
 [[guide-api-conventions-geography]]
 [role="chunk-toc"]
 === Geography
 
-TODO blah
+Geography is at the core of many Scoreflex features. This section
+describes how you can add location information in your requests and how
+geo related data are returned by the API.
 
 [[guide-api-conventions-geography-request-parameters]]
 ==== Request parameters
 
-TODO blah
+A lot of API endpoints are affected by geographic information provided
+by the client. For example, when submitting a score you can provide the
+location where the score was made.
+
+There are various parameters exposed to the client to specify a
+placemark:
+
+* +location+: the latitude and longitude. Example: +location=37.8023,-122.4059+
+* +countryCode+, +postalCode+, +locality+. Examples:
+** +countryCode=US&postalCode=94133+
+** +countryCode=US&locality=San%20Francisco%2094133+
+* +geoId+: internal Scoreflex id of a placemark. Example: +geoId=cYjPGhGBlgP+
+
+If none of these parameters are provided Scoreflex automatically tries
+to guess the best placemark from the client IP address.
+
+Valid +countryCode+ values are
+http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes].
 
 [[guide-api-conventions-geography-attributes]]
 ==== Attributes
 
-TODO blah
+Here is an example of a Scoreflex placemark:
+
+[source,javascript]
+----
+{
+  "id": "cYjPGhGBlgP", //<1>
+  "title": "San Francisco 94133", //<2>
+  "formatted": "San Francisco 94133, CA, United States", //<3>
+  "adminLevel": "postalCode", //<4>
+  "countryCode": "US" //<5>
+}
+----
+
+<1> Type: +string+.
+Internal identifier.
+
+<2> Type: +string+.
+Formatted title of the placemark.
+
+<3> Type: +string+.
+Formatted string for the placemark.
+
+<4> Type: +string+. One of: +postalCode+, +vCity+, +region+, +country+, +worldwide+.
+Administrative level of the placemark.
+
+<5> Type: +string+. http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes].
+Country code of the placemark.
 
 [[guide-api-conventions-versioning]]
 === Versioning
 
-TODO blah
+Scoreflex API endpoints are versioned and the version has to be
+specified in the path of every API call. Current version is 1 therefore
+all API calls begins with +https://\{sandbox.}api.scoreflex.com/v1/*+.
+
+The API version will only be incremented if we introduced major changes
+breaking backward compatibility. In that case, calls to previous API
+version will continue to work for a few months to ensure that already
+released applications will continue to work properly.
+
+The API versioning has a direct incidence on our official SDKs
+versioning.
+
+We use a four-part version number which consists of a major version, a
+minor version, a feature number and patch number. The patch number is
+incremented for minor changes and bug fixes. The feature number is
+incremented when the SDK exposes a new feature. The minor version is
+incremented for SDK releases that are not backward compatible. The major
+version matches the Scoreflex API version. For example, an SDK versioned
+1.x.x.x is designed to interact with the Scoreflex API v1, upgrading
+between 1.0.x.x to 1.1.x.x will imply code changes, 1.0.1.x will expose
+new functionalities compared to 1.0.0.x, while being fully compatible
+with the latter, and 1.0.0.1 only contains bugfixes compared to 1.0.0.0.
+
+Should you decide to implement and distribute your own clients for
+Scoreflex, we encourage you to follow the same versioning scheme.
+
+[[guide-api-conventions-platforms-and-models]]
+=== Platforms & Models
+
+--
+--
+
+[[guide-api-conventions-platforms-and-models-platforms]]
+==== Platforms
+
+For now Scoreflex allows the following platforms for your games:
+
+* iOS
+* Android
+* Windows Phone
+* BlackBerry OS
+* BlackBerry TabletOS
+* Bada
+* Brew
+* GridOS
+* MeeGo
+* Mer Project
+* S40
+* SHR
+* Symbian OS
+* WebOS
+* Adobe Flash
+* Web
+* Linux
+* Mac OS X
+* Windows
+
+If you think that your platform of choice is missing feel free to open
+an issue to the Scoreflex project and we will add it.
+
+[[guide-api-conventions-platforms-and-models-models]]
+==== Models
+
+There are no restriction for the models you can use except that when
+using iOS as a platform you have to provide a model compatible with it
+(iPhone*, iPod*, iPad*...).
 
 [[guide-api-conventions-proxy]]
 === Proxy
 
-TODO blah
+You can use the Scoreflex API directly and it is most of the time
+preferable. If you want to add an extra layer of security or have
+specific use cases you can also use your own servers to act as a proxy
+between your clients and the Scoreflex backend.
+
+Should you use a proxy, we encourage you to forward the client IP using
+the +clientIP+ parameter. The client IP can be useful to geolocalized
+clients and also to take security measures on our side.
 
 [[guide-api-conventions-cross-origin-resource-sharing]]
-=== Cross Origin Resource Sharing
+=== Cross-Origin Resource Sharing
 
-TODO blah
+The API supports Cross Origin Resource Sharing (CORS) for AJAX requests.
+You can read the http://www.w3.org/TR/cors/[CORS W3C working draft], or
+http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity[this
+intro] from the HTML 5 Security Guide.
 
 [[guide-api-conventions-json-object-updates]]
 === JSON object updates
 
-TODO blah
+JSON objects are nested structures. Our APIs often lets you access and
+update some fields or sub-objects directly.
+
+When referring to a field or sub-object, you must give its complete path
+from the root, separating the traversed keys by slashes. For instance
++levelConfig+/+map+ references the map sub-object under the
++levelConfig+ object, itself found at the root of the following example
+object:
+
+[source,javascript]
+----
+{
+  "pace": "fast",
+  "levelConfig": {
+    "map": {
+      "id": "iceland_01",
+      "direction": "reversed"
+    },
+    "secretPassages": false
+  },
+  "reward": 10000
+}
+----
+
+When updating the map sub-object with +{ "bonuses": ["coins", "random box"] }+,
+using +levelConfig+/+map+ as root prefix, you get two choices:
+
+* You can merge the new sub-object with the existing one, keeping the id
+  and direction fields.
+  Typically use either the PUT HTTP verbs (+api convention link) or the
+  +override=false+ HTTP query parameter.
+* Or you can replace the whole sub-object and use the new sub-object instead.
+  Typically use either POST HTTP verbs (+api convention link) or the
+  +override=true+ HTTP query parameter.
 
 [[guide-api-conventions-matchmaking]]
 [role="chunk-toc"]
 === Matchmaking
 
-TODO blah
+Matchmaking is the process of finding suitable mates using diverse criteria.
+
+It is used to match players with similar and compatible wishes so they
+can play together.
+
+Scoreflex can match players using two types of criteria: player-centric,
+and request-centric. One can decide who can match, in addition to
+defining compatible requests.
+
+This way a player can play with his fellows that have the same wishes,
+instead of any random player in the world.
+
+For instance, a player can ask to match against a player with similar
+skill, of the opposite gender, who lives nearby, and of similar age!
 
 [[guide-api-conventions-matchmaking-playerfilter]]
 ==== PlayerFilter
 
-TODO blah
+A PlayerFilter (+link) defines criteria to match players and their
+requests.
+
+The defined criteria can either filter a match, if used in "must" or
+"must not" modes, or score a match, if used in "should" or "should not"
+modes.
+
+Some special values are resolved to a normal value at some point in
+time. They are only usable in the advertised fields.
+
+* +"SAME"+ -- Resolved to the value of the corresponding field for the
+player causing the value to be resolved.
+* +"OPPOSED"+ -- Resolved to the opposite value of the corresponding field
+for the player causing the value to be resolved.
 
 [[guide-api-conventions-matchmaking-playerfilter-attributes]]
 ===== Attributes
 
-TODO blah
+Here is the list of the available attributes that each define a criterium:
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-lastActivityMin]]
+[float]
+====== lastActivityMin
+
+Type: ++duration++
+
+How old minimum is the matching player's last activity.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-lastActivityMax]]
+[float]
+====== lastActivityMax
+
+Type: ++duration++
+
+How old maximum is the matching player's last activity.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-gamesCountMin]]
+[float]
+====== gamesCountMin
+
+Type: +long+ [ 0 ; 9223372036854775807 ]
+
+The minimum number of Scoreflex games the matching player has ever
+played at.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-gamesCountMax]]
+[float]
+====== gamesCountMax
+
+Type: +long+ [ 0 ; 9223372036854775807 ]
+
+The maximum number of Scoreflex games the matching player has ever
+played at.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-games]]
+[float]
+====== games
+
+Type: +array+
+
+Values: Game.id (+link)
+
+The Scoreflex games the matching player must have played.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-friendsCountMin]]
+[float]
+====== friendsCountMin
+
+Type: +long+ [ 0 ; 9223372036854775807 ]
+
+The minimum number of friends the matching player has.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-friendsCountMax]]
+[float]
+====== friendsCountMax
+
+Type: +long+ [ 0 ; 9223372036854775807 ]
+
+The maximum number of friends the matching player has.
+
+////
+[[guide-api-conventions-matchmaking-playerfilter-attributes-gameRatingMin]]
+[float]
+====== gameRatingMin
+
+Type: +long+ [ 0 ; 3000 ]
+
+???????????
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-gameRatingMax]]
+[float]
+====== gameRatingMax
+
+Type: +long+ [ 0 ; 3000 ]
+
+???????????
+////
+
+////
+[[guide-api-conventions-matchmaking-playerfilter-attributes-challengesRatingMin]]
+[float]
+====== challengesRatingMin
+
+Type: +long+ [ 0 ; 3000 ]
+
+The minimum rating of the matching player for all challenges together.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-challengesRatingMax]]
+[float]
+====== challengesRatingMax
+
+Type: +long+ [ 0 ; 3000 ]
+
+The maximum rating of the matching player for all challenges together.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-challengeRatingMin]]
+[float]
+====== challengeRatingMin
+
+Type: +long+ [ 0 ; 3000 ]
+
+The minimum rating of the matching player for the challenge at hand.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-challengeRatingMax]]
+[float]
+====== challengeRatingMax
+
+Type: +long+ [ 0 ; 3000 ]
+
+The maximum rating of the matching player for the challenge at hand.
+////
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-memberSinceMin]]
+[float]
+====== memberSinceMin
+
+Type: +duration+
+
+How long minimum the matching player has been a Scoreflex member.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-memberSinceMax]]
+[float]
+====== memberSinceMax
+
+Type: +duration+
+
+How long maximum the matching player has been a Scoreflex member.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-gender]]
+[float]
+====== gender
+
+Type: +array+
+
+Values: +"male"+, +"female"+, +"other"+, or +"SAME"+ and +"OPPOSED"+
+
+The admissible gender of the matching player.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthWeekDay]]
+[float]
+====== birthWeekDay
+
+Type: +array+
+
+Values: +"monday"+, +"tuesday"+, +"wednesday"+, +"thursday"+, +"friday"+,
++"saturday"+, +"sunday"+, or +"SAME"+
+
+The admissible weekdays of the matching player's birthdate.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthDay]]
+[float]
+====== birthDay
+
+Type: +array+
+
+Values: +long+ [ 1 ; 31 ], or +"SAME"+
+
+The admissible days of month of the matching player's birthdate.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthMonth]]
+[float]
+====== birthMonth
+
+Type: +array+
+
+Values: +long+ [ 1 ; 12 ], or +"SAME"+
+
+The admissible months of the matching player's birthdate.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthYearMin]]
+[float]
+====== birthYearMin
+
+Type: +long+ [ 1900 ; 3000 ], or +"SAME"+
+
+The minimum year of birth of the matching player.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthYearMax]]
+[float]
+====== birthYearMax
+
+Type: +long+ [ 1900 ; 3000 ]
+
+The maximum year of birth of the matching player.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthDateMin]]
+[float]
+====== birthDateMin
+
+Type: +timestamp+
+
+The date the matching player must be born after.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-birthDateMax]]
+[float]
+====== birthDateMax
+
+Type: +timestamp+
+
+The date the matching player must be born before.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-anniversary]]
+[float]
+====== anniversary
+
+Type: +duration,+ or special constant +"today"+
+
+The maximum duration for the matching player to have its birthday. The
+granularity is one day.
+
+If you give +"1 month"+, only the players that will celebrate their
+birthday within one month will match.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-ageMin]]
+[float]
+====== ageMin
+
+Type: +long+ [ 0 ; 122 ], or +"SAME"+
+
+The minimum age of the matching player, in years.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-ageMax]]
+[float]
+====== ageMax
+
+Type: +long+ [ 0 ; 122 ], or +"SAME"+
+
+The maximum age of the matching player, in years.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-language]]
+[float]
+====== language
+
+Type: +array+
+
+Values: +language+ (+api convention link), or +"SAME"+
+
+Restricts the language of the matching player. If you give an non
+localized language code, only two characters and no separating
+underscore, like +"en"+, you allow localized languages to match, such as
++"en_US"+ and +"en_GB"+. The opposite won't match.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-geo]]
+[float]
+====== geo
+
+Type: +array+
+
+Values: Either:
+--
+* +"\{SOURCE\}=\{LOCATION\}"+,
+* +"\{SOURCE\}.country=\{COUNTRY\}"+,
+* +"\{SOURCE\}.around=\{NUMBER\}km"+,
+* +"\{SOURCE\}.around=\{NUMBER\}mi"+,
+* +"source=SAME"+,
+* or +"\{SOURCE\}.country=SAME"+;
+--
+where:
+--
+* +\{SOURCE\}+ can be either +"home"+ or +"current"+,
+* +\{LOCATION\}+ is the precise name (with state and country) of a location like
+  +"Manhattan, NY, USA"+,
+* and +\{NUMBER\}+ is a floating point number.
+--
+
+Restrict the current location or declared home location of a matching
+player. You can either name a more or less precise location, or a whole
+country, or a nearby location with a given radius.
+
+The +"around"+ facility is a special value in the same way as +"SAME"+, and
+may not be acceptable in all contexts.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-nationality]]
+[float]
+====== nationality
+
+Type: +array+
+
+Value: +nationality+ (+api convention link), or +"SAME"+
+
+Restricts the nationality of the matching player.
+
+[[guide-api-conventions-matchmaking-playerfilter-attributes-custom]]
+[float]
+====== custom
+
+Type: +object+
+
+Format: +{ "string key": "string value", … }+
+
+Any custom key-value pairs the request of the matching players must
+have.

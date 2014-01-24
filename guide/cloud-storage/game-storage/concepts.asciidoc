@@ -1,0 +1,27 @@
+[[guide-cloud-storage-game-storage-concepts]]
+[role="chunk-page chunk-toc"]
+==== Concepts
+
+Your game often comes bundled with configurations and various assets. It
+can be painful to wait for a validation process to make some changes in
+your game. That’s why we offer a key/value storage for your game that
+you can use to instantly update some of your game resources.
+
+For example, let’s say you release a game and want to quickly configure
+how ads are displayed to your players without releasing your game every
+time you change your mind. Here is how you can do it easily:
+
+* Release your game with a hardcoded configuration
+* At game launch or on a timely basis fetch the game storage to get the
+  latest version of the configuration. If you fetch a value use it,
+  otherwise use the default configuration bundled with your game
+
+The game storage can be viewed as a shared key/value storage for one of
+your game. Only the game developer has write access to it. The games
+only have a read access to it.
+
+How you represent this data within your application is completely up to
+you, but we recommend choosing a platform-independent format so that the
+data can easily be read and written from any of the platforms your
+application supports. For instance, consider using a platform-neutral
+format such as a JSON-encoded string.

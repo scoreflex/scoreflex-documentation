@@ -1,15 +1,9 @@
 [[guide-cloud-storage]]
-[role="chunk-page"]
 == Cloud storage
 
-TODO blah
+--
+--
 
-[[guide-cloud-storage-game-storage]]
-=== Game storage
+include::cloud-storage/game-storage.asciidoc[]
 
-TODO blah
-
-[[guide-cloud-storage-player-storage]]
-=== Player storage
-
-TODO blah
+include::cloud-storage/player-storage.asciidoc[]

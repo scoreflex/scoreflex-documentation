@@ -2,29 +2,31 @@
 [role="chunk-page"]
 == Players
 
-TODO blah
+--
+--
 
-[[guide-players-overview]]
-=== Overview
+[[guide-players-concepts]]
+[role="chunk-toc"]
+=== Concepts
 
-TODO blah
+TODO: (Benjamin)
 
-[[guide-players-attributes]]
-=== Attributes
+[[guide-players-concepts-guest]]
+==== Guest
 
-TODO blah
+TODO: (Benjamin)
 
-[[guide-players-guest]]
-=== Guest
+[[guide-players-concepts-friends-and-contacts]]
+==== Friends and contacts
 
-TODO blah
+TODO: (Benjamin)
 
-[[guide-players-authentication]]
-=== Authentication
+[[guide-players-interact]]
+=== Interact
 
-TODO blah
+TODO: (Benjamin)
 
-[[guide-players-friends-and-contacts]]
-=== Friends and contacts
+[[guide-players-reference]]
+=== Reference
 
-TODO blah
+TODO: (Benjamin)

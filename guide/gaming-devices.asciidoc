@@ -2,4 +2,45 @@
 [role="chunk-page"]
 == Gaming devices
 
-TODO blah
+An access token is delivered by Scoreflex, and is tied to a given player
+for a given game, using a given gaming device.
+
+A gaming device has the following properties:
+
+* +id+. +string+. Device Id.
+* +platform+. +string+. Valid platform compatible with the platforms you
+  declared for your game.
+* +name+. +string+. Name of the device.
+* +model+. +string+. Model of the device.
+
+Here are some examples:
+
+[source,javascript]
+----
+{
+  "id": "2432-432432432-32432432-423432432",
+  "platform": "iOS",
+  "model": "iPhone 4",
+  "name": "Bob’s iPhone"
+}
+----
+
+[source,javascript]
+----
+{
+  "id": "ACDS-DS332432-2443DS-342432GF",
+  "platform": "Android",
+  "model": "Nexus 5",
+  "name": "Bob’s Nexus"
+}
+----
+
+[source,javascript]
+----
+{
+  "id": "54543-0943-5943-95438097432087432874328",
+  "platform": "Web",
+  "model": "Chrome 32.0.1700.68",
+  "name": "Bob’s Browser"
+}
+----

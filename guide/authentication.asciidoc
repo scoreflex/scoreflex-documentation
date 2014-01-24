@@ -1,0 +1,5 @@
+[[guide-authentication]]
+[role="chunk-page"]
+== Authentication
+
+TODO: (Benjamin)

@@ -113,7 +113,7 @@ $(HTML_REGULAR_FILES):
 	@echo "Building $<"
 	@mkdir -p "$$(dirname "$@")"
 	@$(SHIFT_TITLE_LEVELS) "$<" \
-	| $(ASCIIDOC) --backend html5 --attribute toc --attribute disable-javascript -o - - \
+	| $(ASCIIDOC) --backend html5 --attribute icons --attribute iconsdir=$(LINK_ROOT)icons --attribute toc --attribute disable-javascript -o - - \
 	| ( cd $(SRCDIR) && $(REWRITE) $(DOCBOOK_FILE) "$(subst $(SRCDIR)/,,$<)" > "$@" ) || ( rm "$@" && false )
 
 $(HTML_FOLDER_FILES): $(DOCBOOK_STAMP)
@@ -124,5 +124,5 @@ $(HTML_FOLDER_FILES):
 	@$(GET_INCLUDE_INFOS) -v SRC_DIR="$$($(DIRNAME) "$<")" -v ID_PREFIX="$$($(ID_FROM_RELPATH) --base "$(subst $(SRCDIR)/,,$<)")" "$<" \
 	| $(INCLUDE_WITH_INFO_TO_TITLE) \
 	| $(SHIFT_TITLE_LEVELS) \
-	| $(ASCIIDOC) --backend html5 --attribute toc --attribute disable-javascript -o - - \
+	| $(ASCIIDOC) --backend html5 --attribute icons --attribute iconsdir=$(LINK_ROOT)icons --attribute toc --attribute disable-javascript -o - - \
 	| ( cd $(SRCDIR) && $(REWRITE) $(DOCBOOK_FILE) "$(subst $(SRCDIR)/,,$<)" > "$@" ) || ( rm "$@" && false )

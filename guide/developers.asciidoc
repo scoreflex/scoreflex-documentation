@@ -2,14 +2,33 @@
 [role="chunk-page"]
 == Developers
 
-TODO blah
+--
+--
 
-[[guide-developers-overview]]
-=== Overview
+[[guide-developers-concepts]]
+=== Concepts
 
-TODO blah
+In order to integrate Scoreflex to your games you have to create a
+developer account https://developer.scoreflex.com/account/signup[here].
 
-[[guide-developers-attributes]]
-=== Attributes
+[[guide-developers-interact]]
+=== Interact
 
-TODO blah
+Creating a developer account gives you access to a web dashboard where
+you can manage everything about your account and your games. In this
+dashboard, you can also find your developer id and developer access
+token which gives you access to the Management REST API. This developer
+access token is a confidential information that must not be shared.
+
+[[guide-developers-reference]]
+=== Reference
+
+A developer contains the following fields that can be returned or not by
+the API depending of the accessing rights of the caller:
+
+* +id+
+* +name+
+* +email+
+* +phone+
+* +website+
+* +description+

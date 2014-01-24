@@ -1,0 +1,12 @@
+[[guide-cloud-storage-player-storage]]
+[role="toc-root"]
+=== Player storage
+
+--
+--
+
+include::player-storage/concepts.asciidoc[]
+
+include::player-storage/interact.asciidoc[]
+
+include::player-storage/reference.asciidoc[]

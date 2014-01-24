@@ -2,7 +2,8 @@
 [role="toc-root"]
 == Scores
 
-TODO blah
+--
+--
 
 include::scores/concepts.asciidoc[]
 

@@ -2,7 +2,10 @@
 [role="toc-root"]
 == Leaderboards
 
-TODO blah
+A leaderboard is an ordered list of scores made by players. They are
+useful to compare players according to their skills and performances.
+
+(see Scores)
 
 include::leaderboards/concepts.asciidoc[]
 

@@ -2,4 +2,4 @@
 [role="chunk-page"]
 == Chat
 
-TODO blah
+Coming soon.

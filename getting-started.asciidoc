@@ -3,20 +3,29 @@
 
 [partintro]
 --
-TODO blah
+Please choose your platform:
+--
+
+[role="section-link"]
+== <<unity-getting-started,Unity>>
+
+--
 --
 
 [role="section-link"]
 == <<android-getting-started,Android>>
 
-TODO blah
+--
+--
 
 [role="section-link"]
 == <<ios-getting-started,iOS>>
 
-TODO blah
+--
+--
 
 [role="section-link"]
 == <<web-getting-started,Web>>
 
-TODO blah
+--
+--

@@ -2,89 +2,447 @@
 [role="chunk-page"]
 == Concepts
 
-TODO blah
+--
+--
 
 [[guide-concepts-overview]]
 === Overview
 
-TODO blah
+Scoreflex is a cross-platform backend-as-a-service for game developers.
+It eases the development of your multiplayer games and boosts your
+players acquisition, retention and engagement in minutes. It comes with
+the following services:
+
+* Social Networks: Facebook, Google+ and Twitter integration for login,
+* invitations, sharing, virtual gifts...
+* Leaderboards
+* Achievements
+* Challenges
+* Realtime multiplayer
+* Advanced push notifications
+* Cloud storage
+* Chat
+* News Feed
+* Search
+* Games promotion
+* And more
+
+[[guide-concepts-philosophy]]
+=== Philosophy
+
+When developing Scoreflex we always try to respect these few core
+principles:
+
+* Flexibility. There are many different kind of games and platforms and
+  a wide variety of use cases. We want to make sure that everything is as
+  flexible and configurable as possible to fulfill your needs.
+* Simplicity. You will be able to start and test a standard integration
+  in minutes. We provide some sensible defaults, prepackaged components
+  and SDKs for a quick integration.
+* Customizability. You have the choice to pick only some of the services
+  we offer. You are able to customize everything for a deeper integration
+  in your games. You are able to go SDK-less and decide how you want to
+  interact with Scoreflex.
+* Real-time changes. It can be painful to wait for a validation process
+  to test some changes in your game. That’s why we try to make everything
+  configurable server-side to let you tweak your game experience
+  instantly.
+* You own your data. You can decide to stop using scoreflex dynamically
+  at any time. You can fetch all your game data from your players’
+  profiles to their scores.
+* Scalability. We are distributed worldwide and using state of the art
+  technologies (http://cassandra.apache.org/[Cassandra],
+  http://www.elasticsearch.org/[Elasticsearch],
+  http://www.rabbitmq.com/[RabbitMQ], http://www.erlang.org/[Erlang]).
+* Availability. We provide a 99.99% SLA. If we fall under, we’ll credit
+  you based on the time the service was unavailable. It's that simple.
+
 
 [[guide-concepts-api-organization]]
 === API organization
 
-TODO blah
+Scoreflex exposes
+http://en.wikipedia.org/wiki/Representational_state_transfer[REST] http://en.wikipedia.org/wiki/Application_programming_interface[APIs] through
+http://en.wikipedia.org/wiki/JSON[JSON] over
+http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol[HTTP].
+
+All API access is over http://en.wikipedia.org/wiki/HTTP_Secure[HTTPS],
+and accessed from the sandbox.api.scoreflex.com or
+api.scoreflex.com domains depending whether you are in development or in
+production.
+
+The REST API is two-part:
+
+. The Management API, exposed to developers, can be used directly to
+  manage games and configurations without using the Scoreflex developer
+  dashboard website. It can be quite useful for batch operations, for
+  example if you want to create 100 leaderboard configurations. It must
+  not be called directly from your games.
+. The API, called from your games, to perform all user-related tasks,
+  like inviting friends, submitting a score, getting a leaderboard,
+  starting a challenge… It can be split further in two:
+..  endpoints returning raw data in JSON
+..  endpoints returning HTML to be rendered in a webview.
+    Those endpoints are easily noticeable from the /web contained in their path.
 
 [[guide-concepts-api-clients]]
 === API clients
 
-TODO blah
+Any HTTP-enabled client can interact directly with Scoreflex through the
+REST API. +
+For more convenience, we provide
+http://en.wikipedia.org/wiki/Software_development_kit[SDKs] for the main
+languages and platforms (Android, iOS, Web, Unity, Corona).
+
+In addition, any webview-capable client can make use of our provided
+full-featured interface and widgets. Our SDKs come with handy ways to
+display those web views to your players and interact with them.
+
+For a deeper integration with your game, you can use the raw data
+exposed by the REST API and build your own native interface. At any time
+you can use the proposed web components through the Web API and get the
+best of both worlds.
 
 [[guide-concepts-sandbox-and-development-workflow]]
 [role="chunk-toc"]
 === Sandbox and development workflow
 
-TODO blah
-
 [[guide-concepts-sandbox-and-development-workflow-description]]
 ==== Description
 
-TODO blah
+Scoreflex API comes with two distinct and completely isolated
+environments:
+
+* the sandbox environment which is accessed from the
+sandbox.api.scoreflex.com domain.
+* the production environment which is accessed from the
+api.scoreflex.com domain.
 
 [[guide-concepts-sandbox-and-development-workflow-development-workflow]]
 ==== Development workflow
 
-TODO blah
+When you first add a new game to Scoreflex, its status is inDev meaning
+it is in development. A game with the status inDev can only call
+sandbox.api.scoreflex.com. At that time you can begin to configure your
+game, set some leaderboard configurations, set some challenge
+configurations and so forth. You can begin to integrate Scoreflex in
+your game, submit scores, create some players. Everything from game
+configurations to data produced are restricted to the sandbox.
+
+When you are happy with what you have in development you can change your
+game status to active and deploy your game into production. Changing the
+status of your game from inDev to active has two effects. It
+synchronizes all your game configurations between the sandbox
+environment and the production environment. It also allows your game to
+make calls to the api.scoreflex.com domain. When in production your game
+must only call api.scoreflex.com.
+
+Every data produced from calls to api.scoreflex.com are isolated from
+data produced in sandbox.
+
+From now on, you can continue to resume your development, add some
+levels, change some configurations, debug and improve your game using
+the sandbox environment. When you are happy with your new changes in
+sandbox you can synchronize again your game configurations via the web
+interface or via the management API and release your new game version in
+production.
+
+The production configurations cannot be updated directly. You have to
+edit them in sandbox and make sure everything works like you expect.
+Then you can synchronize your changes to copy them from sandbox to
+production.
 
 [[guide-concepts-sandbox-and-development-workflow-sandbox-limitations]]
 ==== Sandbox limitations
 
-TODO blah
+The sandbox environment has some restrictions in term of the number of
+players you can create and the number of scores you can submit. You
+should never use the sandbox for a game in production.
 
 [[guide-concepts-security]]
 [role="chunk-toc"]
 === Security
 
-TODO blah
+--
+--
 
 [[guide-concepts-security-http-https-calls]]
 ==== HTTP/HTTPS calls
 
-TODO blah
+All API access is over http://en.wikipedia.org/wiki/HTTP_Secure[HTTPS].
 
 [[guide-concepts-security-api-access]]
 ==== API access
 
-TODO blah
+--
+--
 
 [[guide-concepts-security-api-access-access-token-and-sid]]
 ===== Access token and sid
 
-TODO blah
+Most API calls are made for a given player playing a specific game on a
+gaming device. Therefore, before interacting with the API endpoints, the
+client must first obtain an access token and a sid which will be given
+to all API calls.
+
+The access token has to be given to all JSON API calls. The sid has to
+be given to all web API calls.
+
+Access tokens and sid are associated server-side to:
+
+* A player
+* A game
+* A gaming device
 
 [[guide-concepts-security-api-access-authentication]]
 ===== Authentication
 
-TODO blah
+In order to interact with the Scoreflex API you have first to
+authenticate your player to obtain an access token and a sid. There are
+currently 3 different ways to authenticate via the
+http://developer.scoreflex.com/docs/reference/api/v1#OAuthService[authentication
+service].
+
+. Guest authentication
+. Web authentication
+. Client-side authentication
+
+You can learn more about player authentication in the more detailed
+authentication section. (Add link)
 
 [[guide-concepts-security-api-access-signature]]
 ===== Signature
 
-TODO blah
+All API calls leading to side-effects i.e. with POST, PUT or DELETE HTTP
+verbs, need to provide a signature.
+
+If you are using one of our SDKs, you do not need to take care of this,
+the SDKs do it for you.
+
+The signature algorithm is inspired by OAuth 1.0, described
+https://tools.ietf.org/html/rfc5849#section-3.4[here], using HMAC-SHA1
+keyed with the game’s client_secret. The signature has to be given as a
+header with the following format:
+
+X-Scoreflex-Authorization: Scoreflex sig="ENCODED_CALCULATED_SIGNATURE",
+meth="0"
+
+For convenience, you can interact with the sandbox without providing the
+signature by using the header X-Scoreflex-Lenient: yes. This is for
+debug purpose only and you shouldn’t rely on this behavior because it
+won’t work in production. If you use the lenient mode and don’t provide
+a signature, the response will contain the following header
+X-Scoreflex-Warning: Invalid request signature.
+
+The exact algorithm to compute the signature from your request is
+commonly used and implemented in our SDKs, as well as in various
+languages and libraries. (Add links and sample implementations)
+
+If you’re going SDK-less, you’ll need to reimplement it as follows:
+
+. Compute the clear signature, summarizing the whole request.
+. Hash it using your game’s clientSecret.
+. Format the authorization header to add the signature to your request.
+
+The clear signature is composed of the following fields, encoded (see
+below) and joined with "&":
+
+* HTTP method, uppercased
+* URI: as the concatenation of
+
+* Scheme: "http" or "https", lowercased
+* "://"
+* HTTP host, lowercased
+* Query path, until the first "?". Must always start with a "/".
+
+* Parameters: encode keys and values, sort on keys, join keys and values
+with "=", join them with "&".
+* Raw body if not Content-Type: application/x-www-form-urlencoded. If
+Content-Type: application/x-www-form-urlencoded, consider this part as
+an empty string.
+
+This string contains all the information we will sign, hence protecting
+you against tampering.
+
+The encoding method is as follows as defined in
+https://tools.ietf.org/html/rfc5849#section-3.6[here]:
+
+* Text values are first encoded as UTF-8 octets if they are not
+already. +
+This does not include binary values that are not intended for human
+consumption (ie. everything except application/x-www-form-urlencoded
+data).
+* The values are then escaped using the percent-encoding (%XX) mechanism
+as follows, considering the string byte by byte:
+
+* Leave intact the characters from the following unreserved character
+set: (ALPHA:"a-zA-Z", DIGIT:"0-9", "-", ".", "_", "~"). They must not be
+encoded.
+* Encode every other byte as sprintf("%%%02X", ord($char)). This means a
+"%" percent sign, followed by a 2 digit hexadecimal value of the byte,
+in uppercase. +
+Note that e acute (é), would get encoded into "%C3%A9".
+
+Hash the clear signature using the HMAC-SHA1 procedure, keyed with your
+game’s clientSecret. This step both proves that you are in possession of
+this secret, and hence permits not to disclose it in the request.
+
+The calculated signature should further be:
+
+* base64 encoded (as per
+https://tools.ietf.org/html/rfc2045#section-6.8[RFC2045 §6.8], using the
+charset A-Za-z0-9+/ and padding "=")
+* then percent encoded (for "+", "/", and "=")
+
+This step is necessary to format a well-formed header.
+
+Finally add the following header to the request:
+
+X-Scoreflex-Authorization: Scoreflex sig="ENCODED_CALCULATED_SIGNATURE",
+meth="0"
+
+As a side note, please note that the following are not allowed:
+
+* Multiple occurrence of keys in both the URI query and HTTP request
+body (for application/x-www-form-urlencoded requests).
+* enctype="multipart/form-data".
+* Array key/values, like: ?list[]=first&list[]=second.
 
 [[guide-concepts-security-management-api-access]]
 ==== Management API access
 
-TODO blah
-
-// API conventions was here
+To interact with the Management API you have to use your developer
+access token. You can obtain your developer access token in the
+Scoreflex web interface. The developer access token must not be
+shared with anyone.
 
 [[guide-concepts-web-endpoints]]
 [role="chunk-toc"]
 === Web endpoints
 
-TODO blah
+FIXME: (Benjamin)
+
+Add a description and screenshot for each web endpoint.
+
+The web endpoints reference can be found
+http://developer.scoreflex.com/docs/reference/api/v1#WebAppService[here].
+
+The web endpoints response can be displayed in two +mode+{empty}s:
+
+. +full+: Full screen webview.
+. +panel+: Panel webview that occupies only part of the screen.
+
+The content displayed in webviews automatically adapts to fit best the
+available viewport. All web endpoints expose the +viewportWidth+ and
++viewportHeight+ parameters to tweak how the content is rendered. These
+parameters can be a number of respectively +device-width+ and
++device-height+.
 
 [[guide-concepts-web-endpoints-callbacks]]
 ==== Callbacks
 
-TODO blah
+Note: If you are using only the REST API or if you use one of our SDK
+you can ignore this section.
+
+When you are using our web endpoints in a webview, some player actions
+need to be communicated back to the game so that it can react
+accordingly. The communication between webviews and the game is
+currently done via web callbacks. A client using web views should
+therefore properly listen to url updates and react if the url is of the
+form /web/callback.*.
+
+Callbacks urls are of the form:
+
++https://*.api.scoreflex.com/v1/web/callbacks?message=<MESSAGE>&code=<CODE>&status=<STATUS>&data=<DATA>+
+
+The data is given as JSON.
+
+Here is a list of callbacks:
+
+[cols="1,2,3",options="header"]
+|===
+|Code
+|Description
+|Data
+
+|200000
+|When a player successfully logged out
+|+"sid"+ and +"accessToken"+ that have been invalidated in a JSON array
+
+|200001
+|When the webview should be closed
+|-
+
+|200002
+|When requiring to play game
+|+"leaderboardId"+ that the player wants to play
+
+|200003
+|When an anonymous player need to be authenticated
+|Optionally +"nextUrl"+ to go to when player successfully logged in, +"mode"+
+ which can be +"full"+ or +"panel"+ and +"service"+ which needs to be given to
+ the authorize call
+
+|200004
+|When oauth authorization has been granted by a user
+|+"state"+ and +"code"+ to use to get an accessToken
+
+|200005
+|Move to new url
+|+"url"+ and +"mode"+ which can be +"full"+ or +"panel"+
+
+|200006
+|When a player need to be authenticated client side with a specific service
+|+"service"+ to use to authenticate user client side and optionally
+ +"nextUrl"+ to go to when player successfully logged in
+
+|200007
+|When requiring to play a challenge
+|+"challengeConfigId"+ and +"challengeInstanceId"+ to identify the challenge
+ to run
+
+|200008
+|When a player need to be authenticated client side with a specific
+service to link this service with his current account
+|+"service"+ to use to authenticate user client side and optionally
+ +"nextUrl"+ to go to when player has successfully linked with service
+
+|200009
+|When a player needs to invite one or more persons from a social service
+|+"service"+ social service to use, +"text"+ invitation message, optionally
+ +"targetIds"+ which is an array of the recipient user IDs, optionally
+ +"nextUrl"+ to go to after the invitation process
+
+|200010
+|When a player needs to share via a social service
+|+"service"+ social service to use, +"text"+ message to share, optionally
+ +"targetIds"+ which is an array of the recipient user IDs, optionally
+ +"nextUrl"+ to go to after the invitation process
+|===
+
+The callbacks reference can be found
+http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_callback[here].
+
+[[guide-concepts-web-endpoints-handled-services]]
+==== Handled Services
+
+All web endpoints expose the +handledServices+ parameter. This parameter
+allows the client to declare what capabilities it can handle. It expects
+the following format
++Service1:capability1|...|capabilityN,Service2:capability1|...|capability2+.
+
+Available services for now are +Google+ and +Facebook+.
+
+Available capabilities for now are +login+, +invite+, +share+.
+
+For example, a client supporting Google+ login, Google+ sharing and
+Facebok login would provide
++handledServices=Google:login|sharing,Facebook:login+.
+
+The value of +handledServices+ directly impacts how the web UI react to
+user interaction. For example, if the web UI displays a login button for
+Google+ and the player clicks on it, there are two possibilites:
+
+. if the client is declaring that it can handle google login, the web
+  UI will use callbacks to ask the client to log the user via google+.
+. otherwise the player will be asked to log to Google+ via the webview.

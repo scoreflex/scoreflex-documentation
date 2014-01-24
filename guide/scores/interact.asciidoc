@@ -2,4 +2,9 @@
 [role="chunk-page"]
 === Interact
 
-TODO blah
+Scores are used as assets for leaderboards and inside challenges. They
+are created in one of these 2 contexts and manipulated accordingly.
+
+(see Leaderboards)
+
+(see Challenges)

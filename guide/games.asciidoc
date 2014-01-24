@@ -2,14 +2,62 @@
 [role="chunk-page"]
 == Games
 
-TODO blah
+--
+--
 
-[[guide-games-overview]]
-=== Overview
+[[guide-games-concepts]]
+=== Concepts
 
-TODO blah
+Once you have a developer account, you can begin to integrate Scoreflex
+into your games. To do so you have to add your games to Scoreflex. If
+your game is already available on the App Store or on Google Play,
+Scoreflex can directly fetch the game information for you.
 
-[[guide-games-attributes]]
-=== Attributes
+[[guide-games-interact]]
+=== Interact
 
-TODO blah
+You can use your developer web dashboard and the Management REST API to
+set up and manage your games.
+
+[[guide-games-reference]]
+[role="chunk-toc"]
+=== Reference
+
+A game contains the following fields that can be returned or not by the
+API depending of the accessing rights of the caller:
+
+* +id+
+* +name+
+* +shortDescription+
+* +description+
+* +website+
+* +genres+
+* +platforms+
+* +version+
+* +url+. This is the url of the game’s Scoreflex page.
+
+[[guide-games-reference-game-genres]]
+==== Game Genres
+
+Here are the game genres supported by Scoreflex:
+
+* +action+
+* +adventure+
+* +arcade+
+* +board+
+* +brain & puzzle+
+* +card+
+* +casino+
+* +casual+
+* +dice+
+* +educational+
+* +family+
+* +kids+
+* +music+
+* +racing+
+* +role playing+
+* +simulation+
+* +sports+
+* +strategy+
+* +trivia+
+* +word+

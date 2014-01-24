@@ -2,4 +2,4 @@
 [role="chunk-page"]
 == API reference
 
-TODO blah
+http://developer.scoreflex.com/docs/reference/sdk/android/1.0/reference/com/scoreflex/package-summary.html
