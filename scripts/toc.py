@@ -13,10 +13,10 @@ auto_generated_id_conflict = re.compile(r'^_.*_\d+$')
 
 LINK_ROOT = os.environ.get('LINK_ROOT')
 if LINK_ROOT is not None:
-    if not LINK_ROOT.endswith('/'):
-        LINK_ROOT += '/'
     if len(LINK_ROOT) == 0:
         LINK_ROOT = None
+    elif not LINK_ROOT.endswith('/'):
+        LINK_ROOT += '/'
 
 
 class TocEntry():
