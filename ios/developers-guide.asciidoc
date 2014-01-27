@@ -1,5 +1,185 @@
+:source-highlighter: highlight
+
 [[ios-developers-guide]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Developer's guide
 
-TODO blah
+[[ios-developers-guide-handling-native-social-login]]
+=== Handling native social login
+
+[[ios-developers-guide-handling-native-social-login-facebook]]
+==== Facebook
+
+In order to handle facebook native login you will have to first follow the guide
+https://developers.facebook.com/docs/ios/getting-started/[Getting started with Facebook SDK for iOS].
+
+Finally  you have to overload the
++-(BOOL)application:openURL:sourceApplication:annotation+
+method of your application delegate to handle the login here is the code
+you should add to your +UIApplicationDelegate+:
+
+[source,objc]
+----
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [Scoreflex handleURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+----
+
+[[ios-developers-guide-handling-native-social-login-googleplus]]
+==== GooglePlus
+
+TODO: (Julien)
+
+[[ios-developers-guide-handling-push-notifications]]
+=== Handling push notifications
+
+Scoreflex automatically sends push notification during the game life
+cycle, However, if you want to receive those notification you will have
+to configure your project properly.
+
+With iOS sending push notifications requires certificates. First you
+will have to obtain those certificates, then follow the steps described
+here :
+https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ProvisioningDevelopment.html#//apple_ref/doc/uid/TP40008194-CH104-SW2[Local
+and Push Notification Programming Guide]
+
+Once you generated your .pem files (one for sandbox and one for
+production environment) go to your game administration page on
+developer.scoreflex.com and click on the push notification section and
+upload both files.
+
+The sandbox certificate will be used if you initialize Scoreflex in
+sandbox mode, the other one is used if you set sandbox to +false+.
+
+Modify your UIAppDelegate to forward push notification to scoreflex SDK:
+
+[source,objc]
+----
+-(void)application:(UIApplication*)application
+        didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    if ([Scoreflex handleApplicationLaunchWithOption:launchOptions]) {
+        [application cancelAllLocalNotifications];
+    }
+}
+
+-(void)application:(UIApplication *)application
+        didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if([application applicationState] == UIApplicationStateInactive) {
+        if ([Scoreflex handleNotification:userInfo]) {
+            [application cancelAllLocalNotifications];
+        }
+    }
+}
+----
+
+You should now receive push notifications.
+
+[[ios-developers-guide-preload-resources]]
+=== Preload Resources
+
+If you want the Scoreflex views to be more reactive you can always preload it.
+
+Preloading a resource is done by calling this method:
+
+[source,objc]
+----
++ (void) preloadResource:(NSString *) resource
+----
+
+FIXME: Copy-pasted from Android, but not adapted: after "usual call".
+The resource located at +resource+ is preloaded you will receive an
++SX_NOTIFICATION_RESOURCE_PRELOADED+ notification (using notification center)
+when the view is done preloading. However you don’t have to wait for the
+view to be preloaded to show it to the user using the usual call
+(+Scoreflex.showFullscreenView()+ or +Scoreflex.showPanelView()+). It is just
+a way to start loading the view before presenting it to the user.
+
+One important thing when preloading resources is that you have to take
+care of the resource disposal meaning that if you don’t free a preloaded
+resource it will remain in memory. To free resource call the method :
+
+[source,objc]
+----
++ (void) freePreloadedResource:(NSString *) resource;
+----
+
+if the +resource+ parameter is +null+ then all the preloaded resources
+will be freed. otherwise free the specified resource.
+
+[[ios-developers-guide-using-rest-calls]]
+=== Using the REST calls
+
+The Scoreflex SDK gives you full access to the REST API described here
+(link rest api).
+
+Using the rest API will gives you the possibility to do your own user
+interface, and thus access to the raw data. All these methods are linked
+to the HTTP verb that will be used when requesting the server. Their
+behavior is the same they take the path of the resource without the
+version number (+/v1+) as first argument, an +NSDictionnary+ used for
+passing argument to the resource as second argument. And, as all the
+requests are asynchronous, a handler that will be called when the
+request has been executed as third argument. Here are the method and the
+corresponding HTTP verb :
+
+[cols="1,5asciidoc"]
+|===
+|GET
+|[source,objc]
+----
++ (void) get:(NSString *)resource params:(id)params
+        handler:(void(^)(SXResponse *response, NSError *error))handler;
+----
+
+|POST
+|[source,objc]
+----
++ (void) post:(NSString *)resource params:(id)params
+        handler:(void(^)(SXResponse *response, NSError *error))handler;
+----
+
+|PUT
+|[source,objc]
+----
++ (void) put:(NSString *)resource params:(id)params
+        handler:(void(^)(SXResponse *response, NSError *error))handler;
+----
+
+|DELETE
+|[source,objc]
+----
++ (void) delete:(NSString *)resource params:(id)params
+        handler:(void(^)(SXResponse *response, NSError *error))handler;
+----
+|===
+
+If you want to be sure that a request is executed, there is an
+additional call, if you use this method while no network is available
+you are insured that the request will be executed later even after a
+game relaunch. This is particularly useful when you want to submit a
+score and thus don’t want to risk losing it because of network issue.
+This method is:
+
+[source,objc]
+----
++ (void) postEventually:(NSString *)resource params:(id)params
+        handler:(void(^)(SXResponse *response, NSError *error))handler;
+----
+
+As you can see it takes the same arguments as the one we described
+earlier, however one major difference is that the +ResponseHandler+ will
+be called if, and only if, the request is executed and successfull on
+first try, otherwise (if there are network errors) then +ResponseHandler+
+will never be called.
+
+If you don't feel like using the UI of the Scoreflex SDK you can still
+use the SDK only for REST call the only methods you will have to learn
+are:
+
+TODO: (Julien)

@@ -2,4 +2,12 @@
 [role="chunk-page"]
 == Games promotion
 
-TODO blah
+Developers often promote their other games inside their games with a
+“More games” button. It can be tedious to maintain this feature.
+Scoreflex comes with a predefined UI component for this purpose. It will
+show the list of all your Scoreflex enabled games with their icon,
+description, genres and a play button if the game is playable from the
+viewing device.
+
+You can also obtain all your games information from the dedicated REST
+API endpoint to integrate this feature with your own UI.

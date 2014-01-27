@@ -3,7 +3,8 @@
 
 [partintro]
 --
-TODO blah
+The Scoreflex Javascript SDK is available on GitHub at
+https://github.com/scoreflex/scoreflex-javascript-sdk/
 --
 
 include::web/getting-started.asciidoc[]

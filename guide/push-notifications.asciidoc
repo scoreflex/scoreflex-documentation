@@ -1,0 +1,12 @@
+[[guide-push-notifications]]
+[role="toc-root"]
+== Push notifications
+
+--
+--
+
+include::push-notifications/concepts.asciidoc[]
+
+include::push-notifications/interact.asciidoc[]
+
+include::push-notifications/reference.asciidoc[]

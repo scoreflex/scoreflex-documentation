@@ -1,5 +1,399 @@
 [[android-getting-started]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Getting started
 
-TODO blah
+Create a Scoreflex developer account
+
+TODO: [screenshot creation compte]
+
+[[android-getting-started-create-the-first-game]]
+=== Create the first game
+
+Go to http://developer.scoreflex.com/games/new
+
+TODO: [screenshot creation game]
+
+[[android-getting-started-create-a-leaderboard-configuration-on-your-scoreflex-developer-page]]
+=== Create a leaderboard configuration on your Scoreflex Developer page
+
+TODO: [screenshot creation leaderboard]
+
+[[android-getting-started-download-android-scoreflex-sdk]]
+=== Download Android Scoreflex SDK
+
+https://github.com/scoreflex/scoreflex-android-sdk/
+
+[[android-getting-started-setup-your-project]]
+=== Setup your project
+
+Import the Scoreflex SDK in your eclipse workspace by doing:
+* Click on File > New > Other
+* Select Android / Android project from existing code
+
+TODO: [screenshot]
+
+The Android project should now be in your eclipse workspace.
+
+Now Add the Scoreflex SDK to your project build path:
+
+TODO: [screenshot]
+
+You are now set to start coding.
+
+[[android-getting-started-initialize-the-sdk]]
+=== Initialize the SDK
+
+First you must initialize the sdk, a good place to initialize the SDK is
+in the onCreate method of your main activity class.
+
+[source,java]
+----
+@Override
+protected void onCreate(Bundle savedInstance) {
+    Scoreflex.initialize(this, "<YOUR_CLIENT_ID>", "<YOUR_SECRET>", true);
+}
+----
+
+The Initialize method must be called before any use of the SDK.
+
+You must replace +<YOUR_CLIENT_ID>+ and +<YOUR_SECRET>+ by the on on your
+Scoreflex developer page.
+
+[[android-getting-started-using-the-leaderboards]]
+=== Using the leaderboards
+
+Create a leaderboard configuration on your Scoreflex Developer page.
+
+TODO: [screenshot]
+
+[[android-getting-started-submit-a-score]]
+=== Submit a score
+
+At the end of a level, if you want to publish the player’s score to the
+leaderboard.
+
+[source,java]
+----
+String leaderboardId = "<MY_LEADERBOARD>";
+Long score = 1500;
+
+Scoreflex.ResponseHandler respHandler = new Scoreflex.ResponseHandler() {
+    public void onFailure(Throwable e, Response errorResponse) { /* ... */ }
+    public void onSuccess(Response response) { /* ... */ }
+};
+
+Scoreflex.submitScore(leaderboardId, score, null, respHandler);
+----
+
+You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created
+on your developer page.
+
+[[android-getting-started-display-a-leaderboard]]
+=== Display a leaderboard
+
+[source,java]
+----
+String leaderboardId = "<MY_LEADERBOARD>";
+Scoreflex.showLeaderboard(androidActivity, leaderboardId, null);
+----
+
+[[android-getting-started-play-with-friends]]
+=== Play with friends
+
+In order to play with friends in Scoreflex, you will have to create what
+we call Challenge.
+
+A Challenge represents a turn by turn game session with up to 64 players.
+A challenge is composed of players and turns object, a turn object represents
+all the action of a player at a certain turn of play.
+
+But first create a challenge on your Scoreflex Developer page:
+
+Create a challenge configuration:
+
+TODO: [screenshot]
+
+Display the challenge view:
+
+[source,java]
+----
+Scoreflex.showChallenges(androidActivity, null);
+----
+
+TODO: [screenshot]
+
+This view guides the player while he sets the challenge up (invitations,
+random opponent)
+
+It is used to display:
+
+* invitations received from other players
+* on-going challenges
+* finished challenges
+
+Once the player clicks the “play now” button your game will receive a
+local intent broadcast in order to start the game.
+
+[[android-getting-started-handle-challenge-start]]
+=== Handle challenge start
+
+To broadcast an event, Scoreflex uses the +LocalBroadcastManager+, a class
+that can be found in the android support library. This library
+is available in the Android SDK folder. For more information about the
++LocalBroadcastManager+ see:
+http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html
+
+First create a Broadcast Receiver implementation:
+
+[source,java]
+----
+private BroadcastReceiver challengeReceiver = new BroadcastReceiver() {
+    public void onReceive(Context context, Intent intent) {
+        JSONParcelable challengeInstance =
+                intent.getParcelableExtra(Scoreflex.INTENT_START_CHALLENGE_EXTRA_INSTANCE);
+        /** start your game here according to values in challengeInstance **/
+    }
+}
+----
+
+Now you must register this +BroadcastReceiver+ as a receiver of the
++Scoreflex.INTENT_START_CHALLENGE+ as follows:
+
+[source,java]
+----
+LocalBroadcastManager broadcastManager;
+
+broadcastManager = LocalBroadcastManager.getInstance(this);
+broadcastManager.registerReceiver(challengeReceiver, new IntentFilter(Scoreflex.INTENT_START_CHALLENGE));
+----
+
+Now, if the player clicks the play now button the +onReceive+ method of
+the +challengeReceiver+ will be called. You have to start the game and
+let the player play according to the challenge Instance configuration
+
+Once the player has completed the challenge, you need to submit the
+actions they did  during their turn.
+
+If your game only requires a score to decide who won you can use the
+following method
+
+[source,java]
+----
+long score = 2000;
+
+Scoreflex.ResponseHandler respHandler = new Scoreflex.ResponseHandler() {
+    public void onFailure(Throwable e, Response errorResponse) { /* ... */ }
+    public void onSuccess(Response response) { /* ... */ }
+};
+
+Scoreflex.RequestParams params = new Scoreflex.RequestParams("score", score);
+
+Scoreflex.submitTurn(challengeInstanceId, params, respHandler);
+----
+
+If your game requires more information than just a score as turn data,
+you can check the accepted fields here [link to turn documentation]
+
+[[android-getting-started-handling-native-social-login]]
+=== Handling native social login
+
+[[android-getting-started-handling-native-social-login-facebook]]
+==== Facebook
+
+In order to handle facebook native login you will have to first follow
+the guide
+
+https://developers.facebook.com/docs/android/getting-started/[Getting
+Started with the Facebook SDK for Android] until you finish step 6:
+Link to the SDK project and configure the Facebook app ID.
+
+The last thing you need to do is to make any activity that shows a
+Scoreflex view to subclass the +ScoreflexActivity+ class.
+
+If you can't, and only if you can't, subclass the +ScoreflexActivity+
+then you will have to override the +onActivityResult+ method of any
+activity showing a +ScoreflexView+ as follows:
+
+[source,java]
+----
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    Scoreflex.onActivityResult(this, requestCode, resultCode, data);
+}
+----
+
+[[android-getting-started-handling-native-social-login-googleplus]]
+==== GooglePlus
+
+In order to handle GooglePlus native login you will have to follow this guide.
+
+https://developers.google.com/\+/mobile/android/getting-started[Getting
+Started with the Google+ Platform for Android] until you finish step 3:
+Declare permissions.
+
+As for Facebook, the last thing you need to do is to make any activity
+that shows a +ScoreflexView+ to subclass the +ScoreflexActivity+ class.
+
+If you can't, and only if you can't, subclass the +ScoreflexActivity+
+then you will have to override the +onActivityResult+ method of any
+activity showing a +ScoreflexView+ as follows:
+
+[source,java]
+----
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    Scoreflex.onActivityResult(this, requestCode, resultCode, data);
+}
+----
+
+[[android-getting-started-handling-c2d-messages]]
+=== Handling C2D Messages
+
+Scoreflex automatically sends push notifications during the game life
+cycle, However, if you want to receive those notifications you will have
+to configure your project properly.
+
+There are two ways to handle Android push notification, either you use
+Scoreflex sender ID or your own. Using Scoreflex sender ID is much
+easier, however if you want to use your own push notifications in
+conjunction to Scoreflex notification you will have to use your own
+sender ID.
+
+Using scoreflex sender ID:
+
+Make sure that you link your project with the google play service
+library as described in step 2 and 3 here
+https://developers.google.com/\+/mobile/android/getting-started#step_2_configure_your_eclipse_project[Configure
+your Eclipse project].
+
+Add the permission to your +AndroidManifest.xml+ to receive push notification:
+
+[source,xml]
+----
+<permission android:name="[YOUR_APPLICATION_PACKAGE].permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+<uses-permission android:name="[YOUR_APPLICATION_PACKAGE].permission.C2D_MESSAGE" />
+----
+
+Replace +[YOUR_APPLICATION_PACKAGE]+ by your application package name.
+
+Set the +senderID+ you wish to receive Cloud to Device Messages from.
+
+Add this to your manifest in the +<activity>+ section:
+
+[source,xml]
+----
+<meta-data android:name="com.scoreflex.push.SenderId"
+        android:value="@string/push_sender_id" />
+----
+
+And add the following in the +res/values/string.xml+:
+
+[source,xml]
+----
+<string name="push_sender_id">191777458062</string>
+----
+
++191777458062+ is the sender ID that Scoreflex uses, if you want to use
+another senderID you can change it here.
+
+If you just want to receive notification from the Scoreflex service,
+register the +ScoreflexBroadcastReceiver+ as the receiver of the C2D Messages.
+
+[source,xml]
+----
+<receiver android:name="com.scoreflex.ScoreflexBroadcastReceiver"
+        android:permission="com.google.android.c2dm.permission.SEND">
+
+    <meta-data android:name="notificationIcon" android:resource="[icon]" />
+    <meta-data android:name="activityName" android:value="[YOUR_MAIN_ACTIVITY_CLASS]" />
+
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="[YOUR_PACKAGE_NAME]" />
+    </intent-filter>
+
+</receiver>
+----
+
+* +notificationIcon+ allows you to define the icon you want to see in the
+  notification bar.
+* +activityName+ lets you define which activity should be started when the
+  player clicks the notification.
+* replace +[YOUR_PACKAGE_NAME]+ with your package name.
+
+Register the device for cloud to device messages:
+simply call this method at application startup to ensure Scoreflex
+receives the up to date device token.
+
+[source,java]
+----
+Scoreflex.registerForPushNotification(anActivity);
+----
+
+If you want to handle the notification yourself you will have to
+first create your own +BroadcastReceiver+ as follows:
+
+[source,java]
+----
+package your.package.com;
+
+import com.scoreflex.Scoreflex;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+public class GameBroadcastReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (Scoreflex.onBroadcastReceived(context, intent, R.drawable.icon, GameActivity.class)) {
+            return;  // notification handled by scoreflex
+        }
+        // Handle your custom notification here
+    }
+
+}
+----
+
+Set your own +BroadcastReceiver+ in your manifest:
+
+[source,xml]
+----
+<receiver android:name="your.package.com.GameBroadcastReceiver"
+        android:permission="com.google.android.c2dm.permission.SEND">
+
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="your.package.com" />
+    </intent-filter>
+
+</receiver>
+----
+
+Set the senderID you wish to receive Cloud to Device Messages from
+add this to your manifest in the +<activity>+ section
+
+[source,xml]
+----
+<meta-data android:name="com.scoreflex.push.SenderId" android:value="@string/push_sender_id" />
+----
+
+And add this in +res/values/string.xml+:
+
+[source,xml]
+----
+<string name="push_sender_id">[YOUR_SENDERID]</string>
+----
+
+Register the device for cloud to device messages:
+simply call this method at application startup to ensure Scoreflex
+receives the up to date device token.
+
+[source,java]
+----
+Scoreflex.registerForPushNotification(anActivity);
+----

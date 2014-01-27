@@ -2,4 +2,5 @@
 [role="chunk-page"]
 == API reference
 
-TODO: Add API reference link
+All references to the Scoreflex API are available on the Scoreflex
+documentations pages: http://developer.scoreflex.com/docs/reference/api/v1.

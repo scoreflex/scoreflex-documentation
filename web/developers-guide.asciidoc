@@ -1,5 +1,82 @@
 [[web-developers-guide]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Developer's guide
 
-TODO blah
+[[web-developers-guide-cross-origin-resource-sharing]]
+=== Cross-Origin Resource Sharing (CORS)
+
+In order to contact the Scoreflex backend, the Javascript Scoreflex SDK
+makes use of the Cross-Origin Resource Sharing specification from the
+W3C enabling browsers to reach external domains with AJAX requests.
+Consequently, only browsers compatible with CORS can safely request the
+Scoreflex backend (http://caniuse.com/#search=cors).
+
+[[web-developers-guide-scoping-the-sdk]]
+=== Scoping the SDK
+
+It is advised to instantiate the Scoreflex SDK in a non-public scope to
+avoid easy access to the API by your players (which facilitate
+cheating).
+
+[source,javascript]
+----
+/* -- public scope -- */
+var myGame = (function() {
+  /* -- inner private scope with closure -- */
+
+  var useSandbox = true;
+  var ScoreflexSDK = Scoreflex("CLIENT_ID", "<CLIENT_SECRET>", useSandbox);
+})();
+----
+
+[[web-developers-guide-players-leaderboards-and-challenges-objects]]
+=== Players, Leaderboards and Challenges objects
+
+The +Players+, +Leaderboards+ and +Challenges+ objects are members of the
++ScoreflexSDK+ instance. They provide factory methods to get +Player+,
++Leaderboard+ and +ChallengeInstance+ objects. They also provide generic
+methods to display some webviews.
+
+* The +Player+ object gives access to player’s data and webviews.
+* The +Leaderboard+ object has methods to submit scores and display full
+  and tiny leaderboards (rankbox) webviews. A +Leaderboard+ reference is
+  passed in the +leaderboard+ parameter of a +ScoreflexPlayEvent+ event.
+* The +ChallengeInstance+ object has methods to get a challenge instance’s
+  state, players, and turn information, as well as methods to send a new
+  turn and display the detailed webview. A +ChallengeInstance+ reference is
+  passed in the +challenge+ parameter of a +ScoreflexChallengeEvent+ event.
+
+[source,javascript]
+----
+/* Get the current player’s nickname */
+var player = ScoreflexSDK.Players.getCurrent();
+var nickname = player.getNickname();
+
+/* Submit a score to a leaderboard */
+var leaderboard = ScoreflexSDK.Leaderboards.get("BestScores");
+leaderboard.submitScore(547);
+
+/* Display the challenges of the current player */
+ScoreflexSDK.Challenges.showChallenges();
+----
+
+[[web-developers-guide-custom-requests]]
+=== Custom Requests
+
+The Javascript Scoreflex SDK also provides methods to send custom REST
+requests to the Scoreflex backend. For instance you can create new
+challenge instances for your players without using the Scoreflex web
+interfaces, get JSON data from the Scoreflex backend, or display a
+Scoreflex web interface not aliased by the SDK.
+
+[source,javascript]
+----
+/* Create a new challenge for a player (with random opponent) */
+ScoreflexSDK.RestClient.post("/challenges/requests",
+    {configId:"myChallengeConfigId"});
+
+/* Display web interface listing your games on Scoreflex  */
+var myDeveloperId = "<DEVELOPER_ID>";
+var path = "/web/developers/"+myDeveloperId+"/games";
+ScoreflexSDK.WebClient.show(path);
+----

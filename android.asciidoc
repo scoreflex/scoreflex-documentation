@@ -3,7 +3,6 @@
 
 [partintro]
 --
-TODO blah
 --
 
 include::android/getting-started.asciidoc[]

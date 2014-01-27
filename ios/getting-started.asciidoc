@@ -1,5 +1,176 @@
+:source-highlighter: highlight
+
 [[ios-getting-started]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Getting started
 
-TODO blah
+[[ios-getting-started-create-your-scoreflex-developer-account]]
+=== Create your Scoreflex Developer account
+
+Go to https://developer.scoreflex.com/account/login
+
+TODO: [screenshot]
+
+[[ios-getting-started-create-your-first-game]]
+=== Create your first game
+
+Go to http://developer.scoreflex.com/games/new
+
+[[ios-getting-started-download-the-ios-sdk]]
+=== Download the iOS Scoreflex SDK
+
+Go to https://github.com/scoreflex/scoreflex-ios-sdk
+
+[[ios-getting-started-setup-your-project]]
+=== Setup your project
+
+Drag and drop the +Scoreflex.xcodeproj+ file on your project:
+
+TODO: [screenshot]
+
+Add +libScoreflex.a+ to the linked library of your project:
+
+TODO: [screenshot]
+
+Finally add the following frameworks to the linked framework of your project:
+
+- +SystemConfiguration.framework+
+- +MobileCoreServices.framework+
+
+[[ios-getting-started-initialize-the-sdk]]
+=== Initialize the SDK
+
+To initialize the sdk put the following code in your
++-(void)application:(UIApplication*)didFinishLaunchingWithOptions:(NSDictionary*)+
+method as follow:
+
+[source,objc]
+----
+#import <Scoreflex/Scoreflex.h>
+----
+
+[source,objc]
+----
+-(void)application:(UIApplication*)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [Scoreflex setClientId:@"<YOUR_CLIENT_ID>" secret:@"<YOUR_CLIENT_SECRET>" sandboxMode:YES];
+}
+----
+
+* This must be called before any use of the SDK.
+* Client ID and secret come from your Scoreflex Developer page.
+
+[[ios-getting-started-creating-a-leaderboard]]
+=== Creating a leaderboard
+
+Create a leaderboard configuration on your Scoreflex Developer page.
+
+TODO: [screenshots]
+
+[[ios-getting-started-submit-a-score]]
+=== Submit a score
+
+[source,objc]
+----
+long score = 1500;
+
+[Scoreflex submitScore:@"<LEADERBOARD_ID>" score:score
+        handler:^(SXResponse *response, NSError *error) {
+    if (error != nil) {
+        // ... error ...//
+        return;
+    }
+    // ... success ... //
+}];
+----
+
+- Replace +<LEADERBOARD_ID>+ with the leaderboard id you chose
+during the creation of your leaderboard on the Scoreflex Developer page.
+
+[[ios-getting-started-display-the-leaderboard]]
+=== Display the leaderboard
+
+Whenever you want to display a leaderboard to the player, use this code:
+
+[source,objc]
+----
+[Scoreflex showLeaderboard:@"<LEADERBOARD_ID>" params:nil];
+----
+
+Before calling any +showLeaderboard+ method you have to be sure that a
+view is already displayed on the screen. Otherwise, +showLeaderboard+ will
+fail at the fullscreen view.
+
+TODO: [screenshot]
+
+[[ios-getting-started-play-with-friends]]
+=== Play with friends
+
+In order to play with friends in Scoreflex, you will have to create a challenge.
+
+A challenge represents a turn by turn game session with up to 16 players.
+A challenge is composed of players and turns objects, a turn object
+represents all the action of a player at a certain turn of play.
+
+But, first create a challenge on your Scoreflex Developer page:
+
+*Create a challenge configuration*
+
+TODO: [screenshot]
+
+*Display the challenges view*
+
+The challenge view is the view where the player can:
+
+* initiate a challenge with a friend or a random player
+* invite his friends from social networks
+* see on-going challenges
+* see finished challenges
+
+To display the challenge view, use the following code:
+
+[source,objc]
+----
+[Scoreflex showPlayerChallenges:nil];
+----
+
+When the player clicks the “Play now” button your application will
+receive a Notification through the Notification center framework.
+Here is a way to subscribe to notifications:
+
+[source,objc]
+----
+[[NSNotificationCenter defaultCenter]
+        addObserverForName:SX_NOTIFICATION_START_CHALLENGE object:nil queue:nil
+        usingBlock:^(NSNotification *note) {
+
+    id challengeInstanceConfig = [[note userInfo]
+            objectForKey:SX_NOTIFICATION_START_CHALLENGE_CONFIG_KEY];
+
+    // Load your game here according to challengeInstanceConfig
+
+}];
+----
+
+Once the player completed their turn in the challenge, you need to
+submit the actions they did during their turn. If your game only
+requires a score to decide who won you can use the following method.
+
+[source,objc]
+----
+long score = 2000;
+NSDictionary *parameters = @{@"score":[NSNumber numberWithLong:score]};
+[Scoreflex submitTurn:challenge_instance_id params:parameters
+        handler:^(SXResponse *response, NSError *error) {
+    if (error != nil) {
+        // handle error
+        return;
+    }
+    // success
+    }
+];
+----
+
+If your game requires more information than just a score as turn data,
+you can check the accepted fields here [link to turn documentation].

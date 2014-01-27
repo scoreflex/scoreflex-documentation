@@ -35,7 +35,7 @@ include::guide/realtime.asciidoc[]
 
 include::guide/social-networks.asciidoc[]
 
-include::guide/notifications.asciidoc[]
+include::guide/push-notifications.asciidoc[]
 
 include::guide/search.asciidoc[]
 

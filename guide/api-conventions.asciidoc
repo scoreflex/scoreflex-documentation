@@ -651,19 +651,19 @@ Here is an example of a Scoreflex placemark:
 }
 ----
 
-<1> Type: +string+.
+<1> Type: +string+. +
 Internal identifier.
 
-<2> Type: +string+.
+<2> Type: +string+. +
 Formatted title of the placemark.
 
-<3> Type: +string+.
+<3> Type: +string+. +
 Formatted string for the placemark.
 
-<4> Type: +string+. One of: +postalCode+, +vCity+, +region+, +country+, +worldwide+.
+<4> Type: +string+. One of: +postalCode+, +vCity+, +region+, +country+, +worldwide+. +
 Administrative level of the placemark.
 
-<5> Type: +string+. http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes].
+<5> Type: +string+. http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes]. +
 Country code of the placemark.
 
 [[guide-api-conventions-versioning]]

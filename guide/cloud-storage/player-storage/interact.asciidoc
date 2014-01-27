@@ -37,8 +37,6 @@ $> curl -XGET \
 [float]
 ===== Deleting a value
 
-link:#[]link:#[]
-
 [source,bash]
 ----
 $> curl -XDELETE \

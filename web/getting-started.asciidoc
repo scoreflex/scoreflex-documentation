@@ -2,4 +2,27 @@
 [role="chunk-page"]
 == Getting started
 
-TODO blah
+. Create a Scoreflex developer account at
+  https://developer.scoreflex.com/account/login[https://developer.scoreflex.com/account/login].
+  Don't forget to validate your account if you signed up via an email and
+  password pair before continuing.
+. Download the latest Javascript SDK release on GitHub at
+  https://github.com/scoreflex/scoreflex-javascript-sdk/releases[https://github.com/scoreflex/scoreflex-javascript-sdk/releases]
+. Import the SDK and the webclient style if you intend to use it in
+  your javascript game.
++
+[source,html]
+----
+<script type="text/javascript" src="scoreflexSDK-full-min.js"></script>
+<link href="style/styles.css" type="text/css" rel="stylesheet">
+----
++
+. Start using the Scoreflex Javascript SDK. Your clientId and
+clientSecret are indicated on the game page of your Scoreflex developer
+account.
++
+[source,javascript]
+----
+var useSandbox = true;
+var ScoreflexSDK = Scoreflex("<CLIENT_ID>", "<CLIENT_SECRET>", useSandbox);
+----

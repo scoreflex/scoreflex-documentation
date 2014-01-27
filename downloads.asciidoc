@@ -4,10 +4,7 @@
 
 [partintro]
 --
-TODO blah
+TODO: Link to a page where all the SDK latest versions can be downloaded with
+      a direct link zip and tarball from GitHub. Maybe also for each one a
+      small changelog of latest changes (cf. Parse)
 --
-
-[[downloads-todo-blah]]
-== TODO blah
-
-TODO blah

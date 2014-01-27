@@ -1,5 +1,205 @@
 [[android-developers-guide]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Developer's guide
 
-TODO blah
+Many behaviors in the Android SDK are automatic, but you may
+want to change some of  them. In this chapter we will see how to
+customise some of the aspects of the Scoreflex Android SDK.
+
+[[android-developers-guide-forcing-locale]]
+=== Forcing locale
+
+By default, the Android SDK retrieves the current locale of the system
+and sets it as the current language for all Scoreflex views. If you want
+to customize this and or force the locale to be the same as your game
+you should call this method:
+
+[source,java]
+----
+Scoreflex.setLang(String lang);
+----
+
+The accepted lang format is described here [link locale format].
+
+[[android-developers-guide-better-location]]
+=== Better location
+
+The Android SDK tries to get the last known location from any location
+service available starting with the most precise to the less precise, it
+stops as soon as it gets a result. Location is used when the player
+submit a score in order to set its location and compare it with local
+scores.
+
+You can specify the precision you want simply by giving the permission
+you want in your +AndroidManifest.xml+:
+
+[source,xml]
+----
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+----
+
+will give you a GPS location whereas:
+
+[source,xml]
+----
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+----
+
+will give your network approximative location.
+
+If you set none of the above then the players score will be located using GeoIP.
+
+[[android-developers-guide-network-state-monitoring]]
+=== Network state monitoring
+
+If you want to be able to monitor the network state efficiently
+(receiving notification as soon as network accessibility changes state)
+you will have to add this permission to your +AndroidManifest.xml+.
+
+[source,xml]
+----
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+----
+
+Note that you will receive notification even without the permission but this
+permission makes it more efficient. This permission is of course optional.
+
+Then if you use +ScoreflexActivity+ as your activity base class then you
+have nothing else to do.
+
+However if you use your own activity class you will have to start the
+network monitor in you +onResume()+ method and stop it in your +onPause()+
+and +onDestroy()+ methods as follow:
+
+[source,java]
+----
+public class ScoreflexActivity extends Activity {
+
+    // ...
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Scoreflex.unregisterNetworkReceiver(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Scoreflex.unregisterNetworkReceiver(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Scoreflex.registerNetworkReceiver(this);
+    }
+
+}
+----
+
+And you are set. Every time the Android sdk sees a network state change
+it will broadcast a +Scoreflex.INTENT_CONNECTIVITY_CHANGED+ intent with a
++Scoreflex.INTENT_CONNECTIVITY_EXTRA_CONNECTIVITY+ extra describing the
+reachability of scoreflex.com.
+
+[[android-developers-guide-preload-resources]]
+=== Preload resources
+
+If you want the Scoreflex views to be more reactive you can always preload it.
+
+Preloading a resource is done by calling this method:
+
+[source,java]
+----
+Scoreflex.preloadResource(Activity activity, String resource);
+----
+
+The resource located at +resource+ is preloaded you will receive a
++Scoreflex.INTENT_RESOURCE_PRELOADED+ local intent when the view is done
+preloading. However you don't have to wait for the view to be preloaded
+to show it to the user using the usual call:
++Scoreflex.showFullscreenView()+ or +Scoreflex.showPanelView()+.
+It is just a way to start loading the view before presenting it to the user.
+
+One important thing when preloading resource is that you have to take
+care of the resource disposal meaning that if you don’t free a preloaded
+resource it will remain in memory. To free resource call the method:
+
+[source,java]
+----
+Scoreflex.freePreloadedResources(String resource);
+----
+
+This method takes the path of the resource to free. If +null+ is given
+then all preloaded ressources will be freed from memory.
+
+[[android-developers-guide-using-only-rest-calls]]
+=== Using only REST calls
+
+The Scoreflex SDK gives you full access to the REST API described here
+(link rest api).
+
+Using the REST API will gives you the possibility to do your own user
+interface, and thus access to the raw data. All these methods are linked
+to the HTTP verb that will be used when requesting the server. Their
+behavior is the same they take the path of the resource without the
+version number (+/v1+) as first argument, a +RequestParams+ used for
+passing argument to the resource as second argument. And, as all the
+requests are asynchronous, a +ResponseHandler+ that will be called when
+the request has been executed as third argument. Here are the method and
+the corresponding HTTP verb:
+
+[cols="1,5asciidoc"]
+|===
+|GET
+|[source,java]
+----
+Scoreflex.get(   String                    resource,
+                 Scoreflex.RequestParams   params,
+                 Scoreflex.ResponseHandler responseHandler);
+----
+
+|POST
+|[source,java]
+----
+Scoreflex.post(  String                    resource,
+                 Scoreflex.RequestParams   params,
+                 Scoreflex.ResponseHandler responseHandler);
+----
+
+|PUT
+|[source,java]
+----
+Scoreflex.put(   String                    resource,
+                 Scoreflex.RequestParams   params,
+                 Scoreflex.ResponseHandler responseHandler);
+----
+
+|DELETE
+|[source,java]
+----
+Scoreflex.delete(String                    resource,
+                 Scoreflex.ResponseHandler responseHandler);
+----
+|===
+
+If you want to be sure that a request is executed, there is an
+additional call, if you use this method while no network is available
+you are insured that the request will be executed later even after a
+game relaunch. This is particularly useful when you want to submit a
+score and thus don’t want to risk losing it because of network issue.
+This method is:
+
+[source,java]
+----
+Scoreflex.postEventually(String                    resource,
+                         Scoreflex.RequestParams   params,
+                         Scoreflex.ResponseHandler responseHandler);
+----
+
+As you can see it takes the same arguments as the one we described
+earlier, however one major difference is that the +ResponseHandler+ will
+be called if, and only if, the request is executed and successfull on
+first try, otherwise (if there are network errors) then +ResponseHandler+
+will never be called.

@@ -2,4 +2,5 @@
 [role="chunk-page"]
 == SDK
 
-TODO blah
+The SDK documentation in a JSDoc format is available in the jsdoc folder
+of the Scoreflex SDK.

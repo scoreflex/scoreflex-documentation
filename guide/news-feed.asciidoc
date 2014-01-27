@@ -2,4 +2,4 @@
 [role="chunk-page"]
 == News feed
 
-TODO blah
+Coming soon.

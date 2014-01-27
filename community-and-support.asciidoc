@@ -4,30 +4,59 @@
 
 [partintro]
 --
-TODO blah
 --
 
 [[community-and-support-mailing-list]]
 == Mailing list
 
-TODO blah
+https://groups.google.com/forum/?fromgroups#!forum/scoreflex[Scoreflex
+User] is the mailing list where Scoreflex users come to seek help, share
+tips and ideas, announce projects and discuss everything surrounding
+Scoreflex and its community.
 
 [[community-and-support-follow-us]]
 == Follow us
 
-TODO blah
+Want to know what's going on, get the latest news about Scoreflex and
+have a glimpse at what cool new features we are preparing for you?
+Follow http://www.twitter.com/scoreflex_world[@scoreflex_world] on
+Twitter and subscribe to the http://blog.scoreflex.com/[blog].
 
 [[community-and-support-irc]]
 == IRC
 
-TODO blah
+Sometimes it's just easier to get help or discuss matters in real time.
+The +#scoreflex+ channel on
+http://irc.freenode.net/[irc.freenode.net] allows for just that
+(http://webchat.freenode.net/[webchat.freenode.net]).
+
+NOTE: IRC discussions tend to exclude large parts of the community. Therefore
+Scoreflex core discussions and decisions must take place on the mailing
+lists, not IRC.
 
 [[community-and-support-source-code]]
 == Source code
 
-TODO blah
+Scoreflex clients, documentation and sample games are Open Source under
+the http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2 License].
+The code is hosted at https://github.com/scoreflex[GitHub] and we love
+receiving contributions from our community, whether they are bug
+reports, feature requests, documentation improvements or patches.
 
 [[community-and-support-issues-and-feature-requests]]
 == Issues and feature requests
 
-TODO blah
+Have a bug? A great new idea of feature? Something is missing? At
+Scoreflex, we deeply care about your feedback and we want to make sure
+you have all the tools you need to empower your games. Issues and
+feature requests can be filed for each project on
+https://github.com/scoreflex[GitHub]:
+
+* https://github.com/scoreflex/scoreflex[Scoreflex backend]
+* https://github.com/scoreflex/scoreflex-documentation[Scoreflex documentation]
+* https://github.com/scoreflex/scoreflex-samples[Scoreflex sample games]
+* https://github.com/scoreflex/scoreflex-ios-sdk[Scoreflex iOS SDK]
+* https://github.com/scoreflex/scoreflex-android-sdk[Scoreflex Android SDK]
+* https://github.com/scoreflex/scoreflex-javascript-sdk[Scoreflex Javascript SDK]
+* https://github.com/scoreflex/scoreflex-unity-plugin[Scoreflex Unity Plugin]
+* https://github.com/scoreflex/scoreflex-corona-plugin[Scoreflex Corona Plugin]
