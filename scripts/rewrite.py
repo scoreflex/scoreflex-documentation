@@ -83,7 +83,7 @@ def main(args):
         if len(ext) == 0: break
     id = id.replace(os.path.sep, '-')
 
-    toc = tocModule.tocFromFile(tocFile, False)
+    toc = tocModule.tocFromFile(tocFile, False, True)
     ref = toc.walk_id(id)
     if ref is None:
         print >> sys.stderr, "ERROR: The file id \"%s\" was not found in the ToC!" % id

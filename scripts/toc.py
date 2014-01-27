@@ -232,7 +232,7 @@ def getLinkedId(node):
             if not isNodeTag(link, 'link'): continue
             return link.getAttribute('linkend')
 
-def parseLevels(node, chunkToc, levels, currToc):
+def parseLevels(node, chunkToc, levels, currToc, silent=False):
     sublevels = levels[1:]
     if len(sublevels) == 0: sublevels = levels
     for part in node.childNodes:
@@ -245,24 +245,25 @@ def parseLevels(node, chunkToc, levels, currToc):
         childToc.chunkToc = shouldChunkToc(part)
         childToc.rootToc = shouldRootToc(part)
         currToc.append(childToc)
-        if auto_generated_id.match(partId) and childToc.linkedTo is None:
-            print >> sys.stderr, 'NOTE:', str(childToc), 'has an auto-generated id!'
-            if auto_generated_id_conflict.match(partId):
-                print >> sys.stderr, 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'
+        if not silent:
+            if auto_generated_id.match(partId) and childToc.linkedTo is None:
+                print >> sys.stderr, 'NOTE:', str(childToc), 'has an auto-generated id!'
+                if auto_generated_id_conflict.match(partId):
+                    print >> sys.stderr, 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'
         if chunkToc and childToc.chunkToc: continue
-        parseLevels(part, chunkToc, sublevels, childToc)
+        parseLevels(part, chunkToc, sublevels, childToc, silent)
     
-def extractToc(dom, chunkToc):
+def extractToc(dom, chunkToc, silent=False):
     toc = TocEntry()
     for book in dom.childNodes:
         if not isNodeTag(book, 'book'): continue
-        parseLevels(book, chunkToc, ['part', 'chapter', 'section'], toc)
+        parseLevels(book, chunkToc, ['part', 'chapter', 'section'], toc, silent)
         break
     return toc
 
-def tocFromFile(file, chunkToc):
+def tocFromFile(file, chunkToc, silent=False):
     dom = minidom.parse(file)
-    return extractToc(dom, chunkToc)
+    return extractToc(dom, chunkToc, silent)
 
 
 
@@ -286,7 +287,7 @@ def main(args):
         chunkToc = False
         rootId = args[2]
 
-    toc = tocFromFile(sys.argv[1], chunkToc)
+    toc = tocFromFile(sys.argv[1], chunkToc, False)
 
     if rootId is not None and rootId != '':
         oldToc = toc
