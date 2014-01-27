@@ -25,6 +25,8 @@ include::guide/leaderboards.asciidoc[]
 
 include::guide/achievements.asciidoc[]
 
+include::guide/matchmaking.asciidoc[]
+
 include::guide/challenges.asciidoc[]
 
 include::guide/cloud-storage.asciidoc[]

@@ -1,0 +1,9 @@
+[[guide-matchmaking]]
+[role="toc-root"]
+== Matchmaking
+
+include::matchmaking/concepts.asciidoc[]
+
+include::matchmaking/interact.asciidoc[]
+
+include::matchmaking/reference.asciidoc[]
