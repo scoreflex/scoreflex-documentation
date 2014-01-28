@@ -9,24 +9,177 @@
 [role="chunk-toc"]
 === Concepts
 
-TODO: (Benjamin)
+You, as a +developer+, create a +game+ to reach the maximum amount of +players+.
+Obviously, the players are one of the main entities in Scoreflex. Scoreflex provides
+you everything you need to manage your community of players. A player is anyone who has
+played one of your game via any gaming device.
 
-[[guide-players-concepts-guest]]
-==== Guest
+[[guide-players-concepts-guest-vs-authenticated-players]]
+==== Guest vs Authenticated players
 
-TODO: (Benjamin)
+In Scoreflex, there are two major kind of players:
+
+. *Guest*
+. *Authenticated*
+
+[[guide-players-concepts-guest-vs-authenticated-players-guests]]
+===== Guests
+
+_Guest_ players are also referenced as _Anonymous_ players throughout Scoreflex.
+It can be nice to give your players an overview of Scoreflex features
+(like leaderboards, challenges, storage, achievements...) and to involve
+them deeply in your game competition even if they are not explicitly logged in your game.
+
+To serve that purpose, Scoreflex can generate anonymous players for you with
+an automatically generated nickname and avatar. The guest experience, although
+limited, can already boost usage to your games and smooth out the conversion to
+the authenticated world. It is better to convince your players to authenticate by
+involving them into the competition rather than to just abruptly ask them to log in.
+
+A guest player is attached to a gaming device and more precisely to its device id.
+Therefore, if Bob launches your game _A_ on his iPhone 4 and plays as a guest, an
+anonymous player is created for him. If later, Bob launches your other game _B_ on
+his iPhone 4 he will be assigned the same anonymous player.
+
+Suppose that Bob plays as a guest in game _A_ for a week. He has performed some
+great scores and unlocked a few achievements. Now that he is convinced by the game,
+he wants to play with his friends and share his performances so he decides to log in.
+To ease the transition between the guest world and the authenticated world, Scoreflex
+can merge an anonymous player activity for a game into an authenticated player. During
+the merge process, every scores, unlocked achievements... will be transfered to the
+authenticated player. For example, Bob's guest player will disappear from leaderboards
+and will be replaced by Bob's authenticated player account.
+
+===== Authenticated
+
+Players can authenticate to Scoreflex via Facebook and Google+. To learn more about
+players authentication please refer to the <<guide-authentication,authentication>>
+section of the documentation.
+
 
 [[guide-players-concepts-friends-and-contacts]]
 ==== Friends and contacts
 
-TODO: (Benjamin)
+When a player authenticates to Scoreflex via a social network all its contacts from the
+social network are fetched. All contacts already on Scoreflex become his Scoreflex friends.
+To learn more about friends and contacts please refer
+to the <<guide-social-networks-friends-and-contacts,friends and contacts>> section
+of the documentation.
 
 [[guide-players-interact]]
 === Interact
 
-TODO: (Benjamin)
+[[guide-players-interact-getting-own-information]]
+===== Getting own information
+
+[source,bash]
+----
+$> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{
+  "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/players/0189oiu428700181/",
+  "challengeCounters": {
+    "1": {
+      "lost": 0,
+      "played": 1337
+    }
+  },
+  "firstName": "Chuck",
+  "friends": [
+    "018blql3fmd1vu81"
+  ],
+  "friendsCount": 1,
+  "gameLastActivity": 1389349297203,
+  "gameSkill": "God",
+  "geo": {
+    "id": "cYjPGhGBlgP",
+    "title": "San Francisco 94133",
+    "formatted": "San Francisco 94133, CA, United States",
+    "adminLevel": "postalCode",
+    "countryCode": "US"
+  },
+  "id": "0189oiu428700181",
+  "language": "en_US",
+  "lastName": "Norris",
+  "me": true,
+  "nationality": "US",
+  "nickName": "Chuck",
+  "serviceIds": {
+    "Facebook": "1",
+    "Google": "1",
+    "Twitter": "1"
+  },
+  "url": "http://sandbox.api.scoreflex.com/v1/web/players/0189oiu428700181"
+}
+----
+
+[[guide-players-interact-getting-another-player-information]]
+===== Getting another player information
+
+[source,bash]
+----
+$> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/018blql3fmd1vu81?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+{
+  "id": "018blql3fmd1vu81",
+  "nickName": "Serge",
+  "firstName": "Serge",
+  "lastName": "Dupont",
+  "language": "fr",
+  "nationality": "FR",
+  "friends": [
+    "0189ojk920f00081",
+    "0189om3kqcu003o1"
+  ],
+  "challengeCounters": [
+    "1": {
+       "lost": 1,
+       "played": 2
+    }
+  ],
+  "serviceIds": {
+    "Google": "2"
+  },
+  "gameSkill": "Rookie",
+  "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/players/018blql3fmd1vu81/",
+  "url": "http://sandbox.api.scoreflex.com/v1/web/players/018blql3fmd1vu81",
+  "geo": {
+    "countryCode": "FR",
+    "title": "Paris 75",
+    "formatted": "Paris 75, France",
+    "id": "cAhHND",
+    "adminLevel": "region"
+  },
+  "friend": true,
+  "friendsCount": 2
+}
+----
 
 [[guide-players-reference]]
 === Reference
 
-TODO: (Benjamin)
+A player contains the following fields that can be returned or not by
+the API depending on the context and the accessing rights of the caller:
+
+* +id+
+* +nickName+
+* +firstName+
+* +lastName+
+* +avatarUrl+
+* +url+
+* +geo+
+* +nationality+
+* +language+
+* +me+
+* +friend+
+* +friends+
+* +gameLastActivity+
+* +challengeCounters+
+* +gameSkill+
+* +serviceIds+
