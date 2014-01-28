@@ -2,24 +2,73 @@
 [role="chunk-page chunk-toc"]
 === Interact
 
-TODO blah
+Leaderboards can be created, edited, deleted and moderated using the
+https://developer.scoreflex.com/account/login[developer interface],
+using the “Leaderboards” service.
+
+If you need to batch the creation of leaderboards (for several levels in
+your game for instance), you may prefer to use the
+http://developer.scoreflex.com/docs/reference/api/v1#service_ManagementService[Management API].
 
 [[guide-leaderboards-interact-create]]
 ==== Create
 
-TODO blah
+A wizard is available to help you create your first leaderboard. The
+classical form allows you to choose the identifier of your leaderboard
+(leaderboardId).
+
+It is useful to handle the leaderboard yourself if you need to create a
+hierarchical structure for your leaderboards. You create
+sub-leaderboards by inserting a dot in the leaderboard. Note that a
+leaderboard cannot be edited (see the “display” section).
 
 [[guide-leaderboards-interact-update]]
 ==== Update
 
-TODO blah
+Leaderboard can be edited via the management API or using the developer
+interface. In the developer interface, you can either set each
+leaderboard attribute using the form, or you can directly edit the
+corresponding JSON structure.
+
+To translate labels in the configuration, you have to edit the JSON structure.
+
+(see Guides::internationalization)
 
 [[guide-leaderboards-interact-display]]
 ==== Display
 
-TODO blah
+The content of leaderboards can be accessed via the
+http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_leaderboards_leaderboardId[Leaderboard REST API]
+(API reference) which returns a JSON structure. Scoreflex also
+provides a web interface to display leaderboards right into your game.
+
+The web interface displays scores according to the configured formatting
+(see reference::scoreFormatter). Two interfaces exists. The
+http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_web_leaderboards_leaderboardId_overview[leaderboard overview]
+(API reference) displays a summary of the scores of a
+leaderboard, with regard to the current player. It shows the best scores
+of friends, and the world leaders. The full
+http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_web_leaderboards_leaderboardId[leaderboard]
+(API reference) displays the lists of scores according to filters and modes.
+
+Additionally you can browse through other leaderboards via the menu. The
+leaderboard hierarchical structure determines the order of the
+leaderboards in this menu, and thus the navigation
+(see reference::HierarchicalStructure).
+
+Scores are also displayed in the
+http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_web_scores_leaderboardId_ranks[rankbox]
+(API reference). The rankbox is a small web view that can be easily displayed
+after a score submission to display the rank to the player without
+displaying a full leaderboard.
 
 [[guide-leaderboards-interact-moderate]]
 ==== Moderate
 
-TODO blah
+Scoreflex has mechanisms to detect and protect from cheaters. But that’s
+not an easy task and fake scores can still appear in leaderboards. For
+this reason, a moderation interface is available in the developer
+interface. You can read score meta-data from this interface and delete
+scores if required.
+
+(see Guides::security)

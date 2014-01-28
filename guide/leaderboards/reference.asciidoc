@@ -2,14 +2,270 @@
 [role="chunk-page chunk-toc"]
 === Reference
 
-TODO blah
+--
+--
 
 [[guide-leaderboards-reference-attributes]]
 ==== Attributes
 
-TODO blah
+This section describes the attributes of the leaderboard configuration
+in details.
+
+[[guide-leaderboards-reference-attributes-leaderboard]]
+[float]
+====== leaderboard
+
+Type: +string+.
+Pattern: +[0-9a-zA-Z_.]{1,20}+ (dot forbidden at first or last character).
+
+The leaderboard identifies your leaderboard for manipulation and
+displays via the API. It can only be set during the leaderboard creation
+and cannot be updated afterward.
+
+[[guide-leaderboards-reference-attributes-label]]
+[float]
+====== label
+
+Type: map
+
+Format: +{ %lang%: "translated name", … }+
+
+Name of the leaderboard displayed to players. The default language you
+edit using the leaderboard edition form is english (+en+).
+
+(see Guides::internationalization)
+
+[[guide-leaderboards-reference-attributes-order]]
+[float]
+====== order
+
+Type: +string+. One of +"score:desc,time:asc"+, +"score:desc,time:desc"+,
++"score:asc,time:asc"+, +"score:asc,time:desc"+.
+
+It allows you to define how scores are ordered in the leaderboard, with
+regards to score value and submission time.
+
+[[guide-leaderboards-reference-attributes-scoreformatter]]
+[float]
+====== scoreFormatter
+
+Type: +object+.
+
+Indicates how a raw score (an integer) is displayed in user interfaces.
+Scoreflex can display scores as integers, decimal numbers, money, or timers.
+
+ScoreFormatter possible values are:
+
++"integer"+::
++
+[source,javascript]
+----
+{
+  "type": "integer",
+  "unit": { // optional
+    "full": {
+      "singular": {
+        "en": " point"
+        // …
+      },
+      "plural": {
+        "en": " points"
+        // …
+      }
+    },
+    "compact": { // values are 4 characters max
+      "singular": {
+        "en": " pt"
+        // …
+      },
+      "plural": {
+        "en": " pts"
+        // …
+      }
+    }
+  }
+}
+----
++
++"fixedPoint"+::
++
+[source,javascript]
+----
+{
+  "type": "fixedPoint",
+  "config": {
+      "decimal": 1 // 0, 1, 2 or 3
+  }
+  "unit": { // optional
+    // See the integer formatter
+  }
+}
+----
++
++"monetary"+::
++
+[source,javascript]
+----
+{
+  "type": "monetary",
+  "config": {
+    "decimal": 2,      // 0, 1, 2 or 3
+    "currency": "USD", // Any ISO 4217 currency code, or "XLC" for player's locale currency, or "XXX" for a custom symbol
+    "symbol": "¢"      // only for currency "XXX"
+  }
+}
+----
++
++"time"+::
++
+[source,javascript]
+----
+{
+  "type": "duration"
+  // format is hours:minutes:seconds:milliseconds
+  // in the future, the "config" field will define the format of the clock
+}
+----
+
+[[guide-leaderboards-reference-attributes-samerankscoreeq]]
+[float]
+====== sameRankScoreEq
+
+Type: +boolean+.
+
+When calculating the rank associated with a score, Indicates if two
+equal scores must have the same rank or not, whatever their submission time.
+
+[[guide-leaderboards-reference-attributes-timepolicy]]
+[float]
+====== timePolicy
+
+Type: +string+. One of +"anytime"+, +"daily"+, +"weekly"+ or +"monthly"+.
+
+Scoreflex can filter scores by time to create time-dependent
+leaderboards. By choosing +daily+, +weekly+ or +monthly+, players have to play
+in a recurring way to stay visible in leaderboards. By choosing anytime,
+no filtering is done.
+
+[[guide-leaderboards-reference-attributes-geoscopes]]
+[float]
+====== geoScopes
+
+Type: +array+ of +string+ among +"postalCode"+, +"vCity"+, +"region"+, +"country"+,
++"worldwide"+.
+
+That is a list of valid geographical leaderboards to compute, from
+neighborhoods to  the world. When displaying a quick score overview,
+Scoreflex will be able to tell a player is 8th in his town, instead of
+an irrelevant 73549th worldwide position. If you don't want local
+ranking, just uncheck some of the scopes.
+
+[[guide-leaderboards-reference-attributes-scoremode]]
+[float]
+====== scoreMode
+
+Type: +string+. Either +"best"+ or +"last"+.
+
+Indicates which score is used as a reference for the player. It is
+useful to display a quick overview of a player or to compare several players.
+
+[[guide-leaderboards-reference-attributes-collapsingmode]]
+[float]
+====== collapsingMode
+
+Type: +string+. Either +"none"+, +"best"+, +"last"+.
+
+Indicates if the displayed score of a player in the leaderboard is the
+best of all their submitted scores or the last of all their submitted
+scores. It is possible to show all scores of a user in a leaderboard by
+choosing none (example: pinball scores)
+
+[[guide-leaderboards-reference-attributes-locationmode]]
+[float]
+====== locationMode
+
+Type: +string+. Either +"scoreLocation"+, +"playerHome"+, +"playerhomeNearby"+
+or +"worldwide"+.
+
+Scoreflex provides local leaderboards. Thus, a location is attached when
+submitting a score. The locationMode setting defines the leaderboards in
+which a score will appear.
+
++"worldwide"+::
+  The score has no particular location and may be
+  compared to all other scores, whatever their locations are.
++"playerHome"+::
+  The location of the score is set where the
+  player lives, according to his profile. The score only appears in
+  leaderboards containing this location.
++"scoreLocation"+::
+  The location of the score is set where the
+  device is. If the player travels, the location changes along his path.
+  This is useful for games with a strong geographic dimension.
++"playerHomeNearby"+::
+  The location of the score is set where
+  the player lives, according to his profile. However, when travelling,
+  the player keeps his scores with him. Scores will be displayed in all
+  leaderboards the player looks, giving him the opportunity to always
+  compare his scores.
+
+[[guide-leaderboards-reference-attributes-minscore]]
+[float]
+====== minScore
+
+Type: +integer+.
+
+Specify the minimum valid score. It may be positive, negative or zero.
+It is a very simple way to check a score is acceptable and has not been
+forged.
+
+[[guide-leaderboards-reference-attributes-maxscore]]
+[float]
+====== maxScore
+
+Type: +integer+.
+
+Specify the maximum valid score. It may be positive, negative or zero.
+It is a very simple way to check a score is acceptable and has not been
+forged.
+
+[[guide-leaderboards-reference-attributes-forcemeta]]
+[float]
+====== forceMeta
+
+Type: +boolean+.
+
+Meta data for a score is a way to check the validity of a score and
+fight against cheaters. For instance, for a golf game, meta data can be
+the list of forces applied by the player on the ball. The list of forces
+can be computationally replayed to check the validity of the score. If
+you want to force submitted scores to have meta data, set this setting
+to true. If you don't want to use this feature yet, just set the setting
+to false.
+
+(see Guides::security)
 
 [[guide-leaderboards-reference-hierarchical-structure]]
 ==== Hierarchical structure
 
-TODO blah
+When choosing the identifier of your leaderboards, you implicitly create
+a hierarchy (a tree) of your leaderboards. Leaderboards are ordered
+alphabetically and by depth. A dot in a leaderboard define a new depth
+level.
+
+The leaderboard on top of the tree is the default leaderboard. It may be
+a good idea to make it reflect the general order of your players for the
+full game.
+
+Example: If you have a game 2 worlds with 2 levels in each, you can
+choose your leaderboards like so: +"global"+, +"world1"+, +"world2"+,
++"world1.level1"+, +"world1.level2"+, +"world2.level1"+ and +"world2.level2"+.
+The leaderboard tree structure will then be:
+
+* global
+* world1
+**  world1.level1
+**  world1.level2
+* world2
+**  world2.level1
+**  world2.level2

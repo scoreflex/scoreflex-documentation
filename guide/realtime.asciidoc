@@ -2,6 +2,10 @@
 [role="toc-root"]
 == Realtime gaming
 
-TODO blah
+Scoreflex provides a framework to easily create realtime multiplayer
+games. It is a cloud-based solution with client-side SDKs (Android, IOS,
+Unity, Javascript...) providing APIs to manage network connections and
+rooms' lifecycle and to perform operations such as joining/leaving a
+room and exchanging messages.
 
 include::realtime/concepts.asciidoc[]

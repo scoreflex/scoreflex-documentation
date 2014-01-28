@@ -2,39 +2,98 @@
 [role="chunk-page chunk-toc"]
 === Concepts
 
-TODO blah
+--
+--
 
 [[guide-leaderboards-concepts-overview]]
 ==== Overview
 
-TODO blah
+A leaderboard provides a sense of competition to your game by allowing
+your players to compare to each other. A player can
+
+* compare themselves with their friends,
+* compare themselves with the best players in the world,
+* compare themselves with their neighborhood.
+
+Leaderboard count is not limited. You can build one leaderboard per
+level in your game, and if you need two, there is no restriction. As a
+result, you can also build leaderboards for each relevant skill or
+metric of your game (speed, precision, global score, difficulty settings ...).
+
+Leaderboards are organised in a hierarchy. They are ordered
+alphabetically. Additionally you can create sub-leaderboards. Your game
+has a default leaderboard which is the first leaderboard of the
+hierarchy. (more about hierarchy link to interaction::display).
 
 [[guide-leaderboards-concepts-lifecycle]]
 ==== Lifecycle
 
-TODO blah
+You just need to follow these 3 steps to use leaderboards:
+
+. Set up a leaderboard by creating a new configuration.
+. Build a score mechanism in your game.
+. Send scores to the leaderboard.
+
+From there, Scoreflex will build the worldwide leaderboard, the friend
+leaderboards and the geographic leaderboards for you to show in your game.
 
 [[guide-leaderboards-concepts-configuration]]
 ==== Configuration
 
-TODO blah
+The leaderboard configuration defines how scores are ordered and
+displayed (score formatting and player filtering).
 
 [[guide-leaderboards-concepts-configuration-score-order]]
 ===== Score order
 
-TODO blah
+Scores can be ordered from greatest to lowest value (example: pinball
+game), or lowest to greatest (example: golf game). Then in case of an
+equality of scores, the submission time determines if the most recent or
+the oldest score is the best.
+
+(more about score order configuration, link to reference::scoreOrder)
 
 [[guide-leaderboards-concepts-configuration-score-formatting]]
 ===== Score formatting
 
-TODO blah
+The values in your leaderboards may represent various kind of objects:
+final score, session time, money earned, count of collected items ...
+
+Scores are always represented internally as an integer (the one sent by
+your game). In order to suit your needs, scores can then be formatted as:
+
+* An integer with an optional unit (157 stars).
+* A decimal number with an optional unit (17.94 liters). The internal
+  score is divided according to the number of decimals.
+* A monetary value ($89.99). The internal score is divided according to
+  the number of decimals.
+* A time or duration (12’57”). The internal score corresponds to the
+  number of milliseconds of the time.
+
+(more about score formatting and examples, link to reference::scoreFormatting)
 
 [[guide-leaderboards-concepts-configuration-filters-and-modes]]
 ===== Filters and modes
 
-TODO blah
+Scores in leaderboards can be filtered in 3 ways: the geographic
+dimension, the time dimension and the friend dimension. These filtered
+can be mixed together to create leaderboards by month and by countries.
+
+Modes are categorization options for scores. The locationMode handles
+the specifics regarding player’s current location and player’s home
+location associated with geographic filtering. The collapsingMode
+handles how much and which scores of a user are displayed (all, only the
+best, only the last).
+
+Filters and modes have a default value set in the configuration of the
+leaderboard. For specific needs, you can override them temporarily.
+
+(more about filters and modes, link to reference::timePolicy)
 
 [[guide-leaderboards-concepts-configuration-internationalization]]
 ===== Internationalization
 
-TODO blah
+In complement to these configurations, a translation mechanism is
+available for labels. The leaderboard title and the score formatting
+units (if any) can be translated. The default language (usually english)
+is used whenever no translation is provided.
