@@ -6,7 +6,6 @@ You can use your web developer dashboard or the Management API to manage
 your game storage.
 
 [[guide-cloud-storage-game-storage-interact-setting-a-value]]
-[float]
 ===== Setting a value
 
 [source,bash]
@@ -18,11 +17,12 @@ $> curl -XPOST \
 
 [source,javascript]
 ----
-{"success":true}
+{
+  "success": true
+}
 ----
 
 [[guide-cloud-storage-game-storage-interact-getting-a-value]]
-[float]
 ===== Getting a value
 
 [source,bash]
@@ -33,11 +33,13 @@ $> curl -XGET \
 
 [source,javascript]
 ----
-{"enableAdMob":false,"enableChartboost":true}
+{
+  "enableAdMob": false,
+  "enableChartboost": true
+}
 ----
 
 [[guide-cloud-storage-game-storage-interact-deleting-a-value]]
-[float]
 ===== Deleting a value
 
 [source,bash]
@@ -48,7 +50,9 @@ $> curl -XDELETE \
 
 [source,javascript]
 ----
-{"success":true}
+{
+  "success": true
+}
 ----
 
 [[guide-cloud-storage-game-storage-interact-getting-a-value-from-a-game]]
@@ -63,5 +67,8 @@ $> curl -XGET \
 
 [source,javascript]
 ----
-{"enableAdMob":false,"enableChartboost":true}
+{
+  "enableAdMob": false,
+  "enableChartboost": true
+}
 ----

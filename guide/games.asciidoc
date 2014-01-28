@@ -24,7 +24,7 @@ set up and manage your games.
 === Reference
 
 A game contains the following fields that can be returned or not by the
-API depending of the accessing rights of the caller:
+API depending on the accessing rights of the caller:
 
 * +id+
 * +name+

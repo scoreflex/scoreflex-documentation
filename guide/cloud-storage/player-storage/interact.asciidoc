@@ -3,7 +3,6 @@
 ==== Interact
 
 [[guide-cloud-storage-player-storage-interact-setting-a-value]]
-[float]
 ===== Setting a value
 
 [source,bash]
@@ -15,11 +14,12 @@ $> curl -XPOST \
 
 [source,javascript]
 ----
-{"success":true}
+{
+  "success": true
+}
 ----
 
 [[guide-cloud-storage-player-storage-interact-getting-a-value]]
-[float]
 ===== Getting a value
 
 [source,bash]
@@ -30,11 +30,12 @@ $> curl -XGET \
 
 [source,javascript]
 ----
-{"musicVolume":0}
+{
+  "musicVolume": 0
+}
 ----
 
 [[guide-cloud-storage-player-storage-interact-deleting-a-value]]
-[float]
 ===== Deleting a value
 
 [source,bash]
@@ -45,5 +46,7 @@ $> curl -XDELETE \
 
 [source,javascript]
 ----
-{"success":true}
+{
+  "success": true
+}
 ----

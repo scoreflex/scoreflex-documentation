@@ -24,7 +24,7 @@ access token is a confidential information that must not be shared.
 === Reference
 
 A developer contains the following fields that can be returned or not by
-the API depending of the accessing rights of the caller:
+the API depending on the accessing rights of the caller:
 
 * +id+
 * +name+

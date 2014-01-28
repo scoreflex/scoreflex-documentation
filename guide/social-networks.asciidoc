@@ -5,14 +5,23 @@
 --
 --
 
+[[guide-social-networks-authentication]]
+=== Authentication
+
+[[guide-social-networks-friends-and-contacts]]
+=== Friends and contacts
+
+[[guide-social-networks-invitations]]
 === Invitations
 
 Coming soon.
 
+[[guide-social-networks-sharing]]
 === Sharing
 
 Coming soon.
 
+[[guide-social-networks-virtual-gifts]]
 === Virtual gifts
 
 Coming soon.
