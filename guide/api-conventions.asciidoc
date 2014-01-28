@@ -1,5 +1,3 @@
-:source-highlighter: prettify
-
 [[guide-api-conventions]]
 [role="chunk-page"]
 == API conventions

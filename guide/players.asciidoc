@@ -70,7 +70,7 @@ of the documentation.
 === Interact
 
 [[guide-players-interact-getting-own-information]]
-===== Getting own information
+==== Getting own information
 
 [source,bash]
 ----
@@ -117,7 +117,7 @@ $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCES
 ----
 
 [[guide-players-interact-getting-another-player-information]]
-===== Getting another player information
+==== Getting another player information
 
 [source,bash]
 ----
