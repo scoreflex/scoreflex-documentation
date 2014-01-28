@@ -2,74 +2,216 @@
 [role="chunk-page chunk-toc"]
 === Concepts
 
-TODO blah
+--
+--
 
 [[guide-challenges-concepts-overview]]
 ==== Overview
 
-TODO blah
+Scoreflex challenges are very flexible. You can set up many different
+challenges:
+
+* 1 VS 3 simultaneous game. Eg.: Race game,
+* 1 VS 1 turn based game. Eg.: Chess,
+* 4 players turn based game. Eg.: Card games like Poker,
+* 1 VS 1 time limited game. Eg.: Letter games, Ruzzle
+* …
+
+Rules can be mixed to create your own particular needs:
+
+* From 2 to 16 players
+* One player per turn, or everyone together
+* Time limited or number of tries constrained
+* Competitive or cooperative games
+
+Scoreflex challenges are turn based with real time messaging
+capabilities. You can hence easily mix the two approaches to build your
+own unique vision of  a challenge right into your particular game.
+
+A turn corresponds to an action by a player. This may map to different
+concepts depending on your game characteristics
+
+You have the possibility to designate the winners, or to configure
+Scoreflex so it can handle this for you.
 
 [[guide-challenges-concepts-lifecycle]]
 ==== Lifecycle
 
-TODO blah
+. First set up the challenge configuration to define the rules that
+  should apply.
+. Your players can request a challenge, and at some point, the
+  challenge would start.
+. Have your application react to the challenge-start callback.
+. You should read the last messages sent by the other participants and
+  possibly the game state.
+. You can then start your game loop.
+. Once done, send a turn message, with a score, if any.
+. At this point you would either wait for the other participants to
+  take action, or have the challenge stop.
+. Finally, you can display the outcome.
 
 [[guide-challenges-concepts-configuration]]
 ==== Configuration
 
-TODO blah
+The challenge configuration defines the general rules that should apply
+to your challenge.
+
+The gameplay is still driven by your game, but the general behavior of
+Scoreflex can be adapted to ease the implementation of social
+challenges.
+
+As a developer you can manage your challenge configurations in your
+dashboard, and hence change them on the fly inside your game.
 
 [[guide-challenges-concepts-configuration-participants]]
 ===== Participants
 
-TODO blah
+You can restrict the visibility of your challenge to players having some
+properties, like running the paid version, or having unlocked the secret
+weapon. This is called the target configuration.
+
+You have control over various timeouts, like how long should the game
+wait to gain some more participants before starting, or how long do the
+invitations last before automatically expiring.
+
+Last but not least, you have control over the valid participant count.
 
 [[guide-challenges-concepts-configuration-seed]]
 ===== Seed
 
-TODO blah
+Some games may require a random seed, common to every participant, in
+order to have each game application render the same game events.
+Scoreflex eases the task by providing you with one, if needed.
 
 [[guide-challenges-concepts-configuration-turns]]
 ===== Turns
 
-TODO blah
+You can restrict the time allowed to a player to play their turn.
+
+Scoreflex can help you deciding who should start at the first turn, be
+it the last participant to join before the challenge starts, or the
+first, or any random order, or everybody at once.
+
+Scoreflex can automatically handle the turn shifting for you. For
+example it can give the turn to the next person, or to the worst person
+(like in Golf), or to everybody again. You can also control this
+yourself.
 
 [[guide-challenges-concepts-configuration-end-conditions]]
 ===== End conditions
 
-TODO blah
+Each player has the possibility to end the challenge within the turn
+message. They can also indicate that they are done, letting the other
+players finish the game.
+
+But, Scoreflex can enforce rules to control the challenge lifespan like
+defining a maximum duration, or limiting the number of tries or
+cumulated time of play, or even being the first to reach a given score.
 
 [[guide-challenges-concepts-configuration-outcome]]
 ===== Outcome
 
-TODO blah
+Not every game will use the same scoring mechanism. Not every game will
+use the same rules to define who wins and who loses. Scoreflex enables
+you to configure the rules of your game. This allows the game to control
+things by itself.
+
+For example, you could name the first three competitors having the
+highest average score over all tries, automatically!
 
 [[guide-challenges-concepts-configuration-replayable]]
 ===== Replayable
 
-TODO blah
+In some games, the player’s play and the opponents' play have no
+immediate consequence on each other. This is the case in race games
+where players can’t collide or alter the environment. It is also the
+case in many games that were not initially created as multiplayer in the
+first place.
+
+Such games have the interesting properties that players are independent
+of each other. Scoreflex can simulate fake players, by recording real
+players’ actions.
+
+It has the nice effect of reducing your players waiting time to zero,
+and always having someone play with them. It is very useful for
+kickstarting your game!
 
 [[guide-challenges-concepts-request]]
 ==== Request
 
-TODO blah
+When a player wishes to participate in a challenge, they create a
+request. It will lead to the creation of a new challenge instance (+link
+to concept): inviting friends will create a dedicated challenge instance
+(+link to concept); multiple requests matching together will create a
+shared challenge instance (+link to concept).
+
+The challenge requests can be automatically created through the web
+interface, or can be issued manually by your game.
+
+Not every player will want the game, so you can impose special
+requirements inside your request. This will affect the way the request
+matches other compatible requests. For example, you can easily let the
+player choose the level map he wishes to compete on.
 
 [[guide-challenges-concepts-instance]]
 ==== Instance
 
-TODO blah
+A challenge instance is created for a group of players to host their
+game. Before the challenge instance starts, players are called invited
+players, no matter whether they joined the challenge by receiving an
+explicit invitation or used matchmaking instead. Once the challenge
+starts, they are called participants. It is actually possible that some
+invited players do not participate in the challenge, they could have
+declined the invitation or there could be too many.
+
+A challenge instance is comprised of a collection of numbered turn
+messages and might have a state. The current turn sequence and players
+who can play are explicitly mentioned.
+
+The outcome is progressively filled with each score associated in the
+turn messages. When the instance is finally ended, the outcome becomes
+final, and it names the winners and losers.
 
 [[guide-challenges-concepts-turn-message]]
 ==== Turn message
 
-TODO blah
+At each turn, a player issues a turn message. Each turn message is
+associated to a turn sequence number that ensures synchronisation
+between all the participants. An optional playing time, score, record id
+(see next) and custom payload can be associated to the message.
+
+In addition, one can partially modify the challenge instance through a
+message, allowing them to alter the players status and designate winners
+and losers.
 
 [[guide-challenges-concepts-replay]]
 ==== Replay
 
-TODO blah
+A replay is a collection of timed messages that are recorded in the
+first place, then attached to a turn message, in order to be fetched and
+replayed by other players in the second place.
+
+Replay messages must be concise and can only contain a score, a text or
+a custom payload. They are stamped with a relative time.
+
+The collection of those messages is called a replay, and is given an
+identifier.
+
+This can help you easily build asynchronous games with the illusion of
+opponents playing at the same time.
 
 [[guide-challenges-concepts-elo-leaderboard]]
 ==== Elo leaderboard
 
-TODO blah
+Each challenge type, identified by the associated challenge
+configuration, comes with its skill leaderboard.
+
+If in your game a challenge ends with a final score, you can submit this
+score to a score leaderboard too. But, not all games will have such a
+score that can be easily compared to other instances’ outcome.
+
+However in every game, beating your opponent makes you stronger and more
+skilled. Scoreflex implements an http://en.wikipedia.org/wiki/Elo_rating_system[Elo-based] ranking mechanism to
+assess a player’s skill. The current skill of a player is available
+through the Elo leaderboard associated to the challenge, and the global
+Elo leaderboard.

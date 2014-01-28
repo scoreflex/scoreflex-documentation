@@ -2,7 +2,8 @@
 [role="toc-root"]
 == Challenges
 
-TODO blah
+Challenges are games in which several players can compete and have fun
+together.
 
 include::challenges/concepts.asciidoc[]
 
