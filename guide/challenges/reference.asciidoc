@@ -968,7 +968,17 @@ This list is modified with each +ChallengeTurn+ (+link) message.
 [[guide-challenges-reference-challengeinstance-methods]]
 ===== Methods
 
-TODO: (Olivier)
+By the player (Web API):
+
+* Display the list of the player’s challenge instances (+link)
+* Display a challenge instance (+link)
+
+By the player (API):
+
+* List all the player’s challenge instances (+link)
+* Get a challenge instance (+link)
+* Answer a challenge instance invitation (+link)
+* Resign from a challenge instance (+link)
 
 [[guide-challenges-reference-state]]
 ==== State
@@ -990,17 +1000,8 @@ See: JSON object updates (+api convention link)
 [[guide-challenges-reference-state-methods]]
 ===== Methods
 
-By the player (Web API):
-
-* Display the list of the player’s challenge instances (+link)
-* Display a challenge instance (+link)
-
 By the player (API):
 
-* List all the player’s challenge instances (+link)
-* Get a challenge instance (+link)
-* Answer a challenge instance invitation (+link)
-* Resign from a challenge instance (+link)
 * Read a part of the challenge instance state (+link)
 * Replace a part of the challenge instance state (+link)
 * Merge and update a part of the challenge instance state (+link)

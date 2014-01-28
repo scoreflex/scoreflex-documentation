@@ -94,7 +94,7 @@ There are 2 main kinds of room:
   handled at the game's level. Note also that the matchmaking is done
   through challenges and not in rooms.
 +
-TODO: This features should refine
+// TODO: This features should be refined
 +
 * Custom dynamic rooms: This is a special case of Template-based dynamic
   rooms. The room's configuration can be entirely customized
@@ -127,8 +127,8 @@ When players are invited to join a room, they receive a notification. If
 they accept the invitation, they must join the room using the
 corresponding API call.
 
-TODO: Matchmaking & invitations are not yet fully defined. More
-explanation should be added in this part.
+// TODO: Matchmaking & invitations are not yet fully defined. More
+// explanation should be added in this part.
 
 [[guide-realtime-concepts-lifecycle-of-a-realtime-multiplayer-game]]
 ==== Lifecycle of a realtime multiplayer game
@@ -141,7 +141,7 @@ explanation should be added in this part.
 * Start a gameplay session
 * Leave the selected roo
 
-TODO: a short explanation should be added for each point
+// TODO: a short explanation should be added for each point
 
 [[guide-realtime-concepts-advanced-topics]]
 ==== Advanced topics
@@ -152,19 +152,23 @@ TODO: a short explanation should be added for each point
 [[guide-realtime-concepts-advanced-topics-authoritative-server-and-custom-game-logic]]
 ===== Authoritative server and custom game logic
 
-TODO: (Christopher)
+// TODO: (Christopher)
+Help coming soon.
 
 [[guide-realtime-concepts-advanced-topics-reconnection-and-sessions-locality]]
 ===== Reconnection and sessions's locality
 
-TODO: (Christopher)
+// TODO: (Christopher)
+Help coming soon.
 
 [[guide-realtime-concepts-advanced-topics-transport-layers]]
 ===== Transport layers
 
-TODO: (Christopher)
+// TODO: (Christopher)
+Help coming soon.
 
 [[guide-realtime-concepts-advanced-topics-low-level-protocol]]
 ===== Low-level protocol
 
-TODO: (Christopher)
+// TODO: (Christopher)
+Help coming soon.

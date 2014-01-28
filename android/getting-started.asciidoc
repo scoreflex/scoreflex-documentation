@@ -4,19 +4,22 @@
 
 Create a Scoreflex developer account
 
-TODO: [screenshot creation compte]
+// TODO: [screenshot creation compte]
+Screenshot coming soon.
 
 [[android-getting-started-create-the-first-game]]
 === Create the first game
 
 Go to http://developer.scoreflex.com/games/new
 
-TODO: [screenshot creation game]
+// TODO: [screenshot creation game]
+Screenshot coming soon.
 
 [[android-getting-started-create-a-leaderboard-configuration-on-your-scoreflex-developer-page]]
 === Create a leaderboard configuration on your Scoreflex Developer page
 
-TODO: [screenshot creation leaderboard]
+// TODO: [screenshot creation leaderboard]
+Screenshot coming soon.
 
 [[android-getting-started-download-android-scoreflex-sdk]]
 === Download Android Scoreflex SDK
@@ -30,13 +33,15 @@ Import the Scoreflex SDK in your eclipse workspace by doing:
 * Click on File > New > Other
 * Select Android / Android project from existing code
 
-TODO: [screenshot]
+//TODO: [screenshot]
+Screenshot coming soon.
 
 The Android project should now be in your eclipse workspace.
 
 Now Add the Scoreflex SDK to your project build path:
 
-TODO: [screenshot]
+// TODO: [screenshot]
+Screenshot coming soon.
 
 You are now set to start coding.
 
@@ -64,7 +69,8 @@ Scoreflex developer page.
 
 Create a leaderboard configuration on your Scoreflex Developer page.
 
-TODO: [screenshot]
+// TODO: [screenshot]
+Screenshot coming soon.
 
 [[android-getting-started-submit-a-score]]
 === Submit a score
@@ -111,7 +117,8 @@ But first create a challenge on your Scoreflex Developer page:
 
 Create a challenge configuration:
 
-TODO: [screenshot]
+// TODO: [screenshot]
+Screenshot coming soon.
 
 Display the challenge view:
 
@@ -120,7 +127,8 @@ Display the challenge view:
 Scoreflex.showChallenges(androidActivity, null);
 ----
 
-TODO: [screenshot]
+// TODO: [screenshot]
+Screenshot coming soon.
 
 This view guides the player while he sets the challenge up (invitations,
 random opponent)

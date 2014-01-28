@@ -2,4 +2,5 @@
 [role="chunk-page"]
 == Authentication
 
-TODO: (Benjamin)
+// TODO: (Benjamin)
+Help coming soon.

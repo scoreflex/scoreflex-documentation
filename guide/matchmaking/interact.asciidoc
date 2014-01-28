@@ -2,4 +2,8 @@
 [role="chunk-page chunk-toc"]
 === Interact
 
-TODO: (Olivier)
+See:
+
+* +ChallengeConfig.matchmaking+ (+link)
+* +ChallengeRequest.matchmaking+ (+link)
+* +ChallengeConfig.target+ (+link)

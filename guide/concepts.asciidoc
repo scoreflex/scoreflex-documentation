@@ -320,9 +320,7 @@ shared with anyone.
 [role="chunk-toc"]
 === Web endpoints
 
-FIXME: (Benjamin)
-
-Add a description and screenshot for each web endpoint.
+// TODO: FIXME: (Benjamin) Add a description and screenshot for each web endpoint.
 
 The web endpoints reference can be found
 http://developer.scoreflex.com/docs/reference/api/v1#WebAppService[here].

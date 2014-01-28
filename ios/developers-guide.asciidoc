@@ -32,7 +32,8 @@ you should add to your +UIApplicationDelegate+:
 [[ios-developers-guide-handling-native-social-login-googleplus]]
 ==== GooglePlus
 
-TODO: (Julien)
+// TODO: (Julien)
+Help coming soon.
 
 [[ios-developers-guide-handling-push-notifications]]
 === Handling push notifications
@@ -92,7 +93,8 @@ Preloading a resource is done by calling this method:
 + (void) preloadResource:(NSString *) resource
 ----
 
-FIXME: Copy-pasted from Android, but not adapted: after "usual call".
+// TODO: FIXME: Copy-pasted from Android, but not adapted: after "usual call".
+
 The resource located at +resource+ is preloaded you will receive an
 +SX_NOTIFICATION_RESOURCE_PRELOADED+ notification (using notification center)
 when the view is done preloading. However you don’t have to wait for the
@@ -182,4 +184,5 @@ If you don't feel like using the UI of the Scoreflex SDK you can still
 use the SDK only for REST call the only methods you will have to learn
 are:
 
-TODO: (Julien)
+// TODO: (Julien)
+Help coming soon.

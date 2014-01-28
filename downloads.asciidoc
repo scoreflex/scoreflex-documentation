@@ -4,7 +4,8 @@
 
 [partintro]
 --
-TODO: Link to a page where all the SDK latest versions can be downloaded with
-      a direct link zip and tarball from GitHub. Maybe also for each one a
-      small changelog of latest changes (cf. Parse)
+// TODO: Link to a page where all the SDK latest versions can be downloaded with
+//       a direct link zip and tarball from GitHub. Maybe also for each one a
+//       small changelog of latest changes (cf. Parse)
+Links coming soon.
 --
