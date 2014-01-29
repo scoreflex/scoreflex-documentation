@@ -69,7 +69,7 @@ In Scoreflex, there are three different types of push notifications:
 [[guide-push-notifications-concepts-basic-steps]]
 ==== Basic steps
 
-Here are the basic steps involve to handle push notifications:
+Here are the basic steps regarding how to handle push notifications:
 
 . Configure your game certificates using the web developer dashboard
   or the management REST API.
