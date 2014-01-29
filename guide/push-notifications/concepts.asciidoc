@@ -116,6 +116,6 @@ not apply to developer to players notifications or to players to players
 notifications as you, as the game's developer, have complete control to
 how you reach your audience.
 
-If you ban a player from one of your game, some of his actions that
+If you ban a player from one of your games, some of his actions that
 would normally lead to the sending of a push notification (challenge
 invitation, player has beaten your highscore, ...) won't.
