@@ -35,8 +35,8 @@ task:
 * You need to implement and run computing intensive tasks in order to send
   advanced push notification related to complex events.
   For example a player's friend has just beaten his high score on level 2.
-* You probably need some statistics about how much push notifications
-  you have send, how much push notifications were properly delivered and so on.
+* You probably need some statistics about how many push notifications
+  you have sent, how many push notifications were properly delivered and so on.
 * The list goes on...
 
 Scoreflex aims to solve all this for you so you just have to focus on
