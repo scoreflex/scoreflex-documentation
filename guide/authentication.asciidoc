@@ -2,5 +2,60 @@
 [role="chunk-page"]
 == Authentication
 
-// TODO: (Benjamin)
-Help coming soon.
+In order to interact with the Scoreflex API you have first to
+authenticate your player to obtain an access token and a sid. There are
+currently 3 different ways to authenticate via the
+http://developer.scoreflex.com/docs/reference/api/v1#OAuthService[authentication
+service]:
+
+. Guest authentication
+. Web authentication
+. Client-side authentication
+
+[[guide-authentication-guest-authentication]]
+[role="chunk-toc"]
+=== Guest authentication
+
+[[guide-authentication-guest-authentication-concepts]]
+==== Concepts
+
+_Guest_ players are also referenced as _Anonymous_ players throughout Scoreflex.
+It can be nice to give your players an overview of Scoreflex features
+(like leaderboards, challenges, storage, achievements...) and to involve
+them deeply in your game competition even if they are not explicitly logged in your game.
+
+To serve that purpose, Scoreflex can generate anonymous players for you with
+an automatically generated nickname and avatar. The guest experience, although
+limited, can already boost usage to your games and smooth out the conversion to
+the authenticated world. It is better to convince your players to authenticate by
+involving them into the competition rather than to just abruptly ask them to log in.
+
+A guest player is attached to a gaming device and more precisely to its device id.
+Therefore, if Bob launches your game _A_ on his iPhone 4 and plays as a guest, an
+anonymous player is created for him. If later, Bob launches your other game _B_ on
+his iPhone 4 he will be assigned the same anonymous player.
+
+[[guide-authentication-guest-authentication-interact]]
+==== Interact
+
+[[guide-authentication-guest-authentication-interact-authenticating-guest-player]]
+===== Authenticating a guest player
+
+[source,bash]
+----
+$> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,javascript]
+----
+----
+
+[[guide-authentication-guest-authentication-reference]]
+==== Reference
+
+
+[[guide-authentication-web-authentication]]
+=== Web authentication
+
+[[guide-authentication-client-side-authentication]]
+=== Client-side authentication

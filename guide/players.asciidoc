@@ -50,6 +50,7 @@ the merge process, every scores, unlocked achievements... will be transfered to 
 authenticated player. For example, Bob's guest player will disappear from leaderboards
 and will be replaced by Bob's authenticated player account.
 
+[[guide-players-concepts-guest-vs-authenticated-players-authenticated]]
 ===== Authenticated
 
 Players can authenticate to Scoreflex via Facebook and Google+. To learn more about

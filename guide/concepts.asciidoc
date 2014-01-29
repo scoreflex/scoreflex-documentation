@@ -201,14 +201,14 @@ In order to interact with the Scoreflex API you have first to
 authenticate your player to obtain an access token and a sid. There are
 currently 3 different ways to authenticate via the
 http://developer.scoreflex.com/docs/reference/api/v1#OAuthService[authentication
-service].
+service]:
 
 . Guest authentication
 . Web authentication
 . Client-side authentication
 
 You can learn more about player authentication in the more detailed
-authentication section. (Add link)
+<<guide-authentication,authentication>> section.
 
 [[guide-concepts-security-api-access-signature]]
 ===== Signature
