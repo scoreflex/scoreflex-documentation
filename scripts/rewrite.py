@@ -61,7 +61,7 @@ def clean(soup, toc, ref):
         # Inject ToC
         tocHTMLBuffer = cStringIO.StringIO()
         ref.write_html(tocHTMLBuffer, open=ref)
-        tocTags = BeautifulSoup.BeautifulSoup(tocHTMLBuffer.getvalue())
+        tocTags = BeautifulSoup.BeautifulSoup(tocHTMLBuffer.getvalue().decode('utf-8'))
         tocHTMLBuffer.close()
         tocElmt.append(tocTags)
         # Use a wrapper div

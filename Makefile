@@ -44,6 +44,7 @@ GET_INCLUDE_INFOS          := $(SCRIPTS_DIR)/get-include-infos.awk
 INCLUDE_WITH_INFO_TO_TITLE := $(SCRIPTS_DIR)/include-with-info-to-title.sed
 
 ASCIIDOC_ARGS := \
+	--attribute encoding=utf-8 \
 	--attribute source-highlighter=highlight \
 	--attribute icons \
 	--attribute iconsdir=$(LINK_ROOT)icons \
