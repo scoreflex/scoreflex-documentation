@@ -111,7 +111,7 @@ players especially if they didn't react to previously sent
 notifications. Thus, an automatic Scoreflex notification to a player is
 not sent if another automatic notification has been sent during the last
 4 hours and the player has not acted in the game ever since. For testing
-purpose, this constraint does not apply in sandbox. This constraint does
+purposes, this constraint does not apply in sandbox. This constraint does
 not apply to developer to players notifications or to players to players
 notifications as you, as the game's developer, have complete control to
 how you reach your audience.
