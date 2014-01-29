@@ -81,7 +81,7 @@ Payload:
 ===== Challenge ended
 
 This push notification is sent when a challenge you have taken part in
-is ended.
+has ended.
 
 Code: +101+.
 
