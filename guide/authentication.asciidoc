@@ -41,21 +41,187 @@ his iPhone 4 he will be assigned the same anonymous player.
 [[guide-authentication-guest-authentication-interact-authenticating-guest-player]]
 ===== Authenticating a guest player
 
-[source,bash]
+[source,sh]
 ----
-$> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCESS_TOKEN>'
+$> curl -XPOST 'https://sandbox.api.scoreflex.com/v1/oauth/anonymousAccessToken'\
+'?clientId=<CLIENT_ID>'\
+'&clientSecret=<CLIENT_SECRET>'\
+'&devicePlatform=<PLATFORM>'\
+'&deviceModel=<MODEL>'\
+'&deviceId=<DEVICE_ID>'
 ----
 
-[source,javascript]
+[source,js]
 ----
+{
+  "accessToken": {
+    "token": "MGQyOGM1NTM3YmE3OWFkNjNiNmZhNTlhMzhkZmNkZTUwZmY0MDZlYTIyNGU4ZGU4MjQ1OGJmMzgyY2U5NDQxNw",
+    "scope": "anonymous"
+  },
+  "me": {
+    "id": "018ff3426nhtstg1",
+    "nickName": "CarmenSodiegan25",
+    "language": "en",
+    "nationality": "US",
+    "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/players/018ff3426nhtstg1/",
+    "url": "http://sandbox.api.scoreflex.com/v1/web/players/018ff3426nhtstg1",
+    "geo": {
+      "id": "cYjPGhGBlgP",
+      "title": "San Francisco 94133",
+      "formatted": "San Francisco 94133, CA, United States",
+      "adminLevel": "postalCode",
+      "countryCode": "US"
+    }
+  },
+  "sid": "3c6243fc21b6e899dc1a3a05365c897073f14250de286dfc3a417b8cba43bcce"
+}
 ----
+
+You now have a guest player, an access token and a sid you can use to interact with Scoreflex API and Scoreflex Web components.
+
 
 [[guide-authentication-guest-authentication-reference]]
 ==== Reference
 
+http://developer.scoreflex.com/docs/reference/api/v1#post__v1_oauth_anonymousAccessToken[anonymousAccessToken reference].
 
 [[guide-authentication-web-authentication]]
 === Web authentication
 
+[[guide-authentication-web-authentication-concepts]]
+==== Concepts
+If you don't want to create a Facebook or a Google+ application for your game, Scoreflex allows you to authenticate your players via Facebook or Google+ inside a web view. This method can also be useful if your game is only running on a web browser. This will work out of the box without any configuration from your part.
+
+The web authentication workflow is very similar to http://oauth.net/2/[OAuth 2.0]:
+
+. Open a web view to +http://{sandbox.}api.scoreflex.com/v1/oauth/web/authorize+.
+. Your player will be asked to choose a social network.
+. Your player will have to log in the selected social network if he is not already logged.
+. Your player will have to authorize Scoreflex to access his information.
+. If everything goes well a code is returned by Scoreflex to your game via a web callback.
+. You can trade this code with an access token for your player.
+
+NOTE: Don't worry if it seems complicated, if you use a SDK it will handle these steps for you.
+
+[[guide-authentication-web-authentication-interact]]
+==== Interact
+
+. First, direct your player to
++https://{sandbox.}api.scoreflex.com/v1/oauth/web/authorize?clientId=<CLIENT_ID>&devicePlatform=<PLATFORM>&deviceModel=<MODEL>&state=<RANDOM_STRING>+.
+. If everything goes well, you will received a code and your state via a web callback.
+. Trade the code with an access token:
+
+[source,sh]
+----
+$> curl -XPOST 'https://sandbox.api.scoreflex.com/v1/oauth/accessToken'\
+'?clientId=<CLIENT_ID>'\
+'&code=<CODE>'
+----
+
+[source,js]
+----
+{
+  "accessToken": {
+    "scope": "player",
+    "token": "MGZjODFjMjViYjY1ZTVhMmIzMzNlZGNmNDIxNGMwMmVhMDBmOWJkNGU1MWNjODdmYjdhYmMwNDFiOGZmYmRiZA"
+  },
+  "me": {
+    "firstName": "Chuck",
+    "language": "en",
+    "avatarUrl": "https://www.scoreflex.com/avatars/players/0189qhg0e0dg0ig1/",
+    "url": "http://sandbox.api.scoreflex.com/v1/web/players/0189qhg0e0dg0ig1",
+    "lastName": "Norris",
+    "geo": {
+      "id": "cYjPGhGBlgP",
+      "title": "San Francisco 94133",
+      "formatted": "San Francisco 94133, CA, United States",
+      "adminLevel": "postalCode",
+      "countryCode": "US"
+    },
+    "nationality": "US",
+    "nickName": "Chuck",
+    "id": "0189qhg0e0dg0ig1"
+  },
+  "merge": false,
+  "sid": "90f429770e06526f0978fd27f6965a6807bb03e182d26afdf637829f4028c53e"
+}
+----
+
+You now have an authenticated player, an access token and a sid you can use to interact with Scoreflex API and Scoreflex Web components.
+
+
+[[guide-authentication-web-authentication-reference]]
+==== Reference
+
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_oauth_web_authorize[authorize reference]
+and http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_oauth_accessToken[accessToken reference].
+
 [[guide-authentication-client-side-authentication]]
 === Client-side authentication
+
+[[guide-authentication-client-side-authentication-concepts]]
+==== Concepts
+
+We encourage you to define your own Facebook and Google+ applications for your mobile games and to enable native login. In this approach,
+your player won't have to type his login and password to authenticate himself and the authentication process will be smoother.
+
+[[guide-authentication-client-side-authentication-interact]]
+==== Interact
+
+. Obtain an access token on Facebook or Google+ by authentication your player via your Facebook or Google+ application
+. Give this access token to scoreflex with the following call:
+
+[source,sh]
+----
+$> curl -XPOST 'https://sandbox.api.scoreflex.com/v1/oauth/accessTokenExternallyAuthenticated'\
+'?clientId=<CLIENT_ID>'\
+'&devicePlatform=<PLATFORM>'\
+'&deviceModel=<MODEL>'\
+'&service=<SERVICE>'\
+'&serviceAccessToken=<SERVICE_ACCESS_TOKEN>'\
+'&deviceId=<DEVICE_ID>'
+----
+
+[source,js]
+----
+{
+  "accessToken": {
+    "scope": "player",
+    "token": "MGZjODFjMjViYjY1ZTVhMmIzMzNlZGNmNDIxNGMwMmVhMDBmOWJkNGU1MWNjODdmYjdhYmMwNDFiOGZmYmRiZA"
+  },
+  "me": {
+    "firstName": "Chuck",
+    "language": "en",
+    "avatarUrl": "https://www.scoreflex.com/avatars/players/0189qhg0e0dg0ig1/",
+    "url": "http://sandbox.api.scoreflex.com/v1/web/players/0189qhg0e0dg0ig1",
+    "lastName": "Norris",
+    "geo": {
+      "id": "cYjPGhGBlgP",
+      "title": "San Francisco 94133",
+      "formatted": "San Francisco 94133, CA, United States",
+      "adminLevel": "postalCode",
+      "countryCode": "US"
+    },
+    "nationality": "US",
+    "nickName": "Chuck",
+    "id": "0189qhg0e0dg0ig1"
+  },
+  "merge": false,
+  "sid": "90f429770e06526f0978fd27f6965a6807bb03e182d26afdf637829f4028c53e"
+}
+----
+
+You now have an authenticated player, an access token and a sid you can use to interact with Scoreflex API and Scoreflex Web components.
+
+[[guide-authentication-client-side-authentication-reference]]
+==== Reference
+
+http://developer.scoreflex.com/docs/reference/api/v1#post__v1_oauth_accessTokenExternallyAuthenticated[accessTokenExternallyAuthenticated reference].
+
+
+[[guide-authentication-merging-guest-player]]
+=== Merging guest player
+
+When authenticating a player via the web authentication or the client-side authentication you may already have a guest player and you may want to merge the guest player performance into the newly authenticated player.
+
+To do so, you can give the +anonymousAccessToken+ parameter to the +accessToken+ and +accessTokenExternallyAuthenticated+ calls.
