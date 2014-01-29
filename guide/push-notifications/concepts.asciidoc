@@ -93,7 +93,7 @@ and notifications can later be sent to these subscribers.
 
 When a player has multiple devices registered for a game, you can choose
 to send a push notification only to the latest device used for this game
-or to all his devices. By default, the push notification will be sent to
+or to all their devices. By default, the push notification will be sent to
 all devices.
 
 [[guide-push-notifications-concepts-platforms]]
