@@ -52,7 +52,7 @@ A typical Android push notification message has the following format:
 ----
 
 NOTE: The target player id is always included in the data part. As a
-security, you should always check if the provided target player id
+security measure, you should always check if the provided target player id
 matches your current player and discard the push notification if it is
 not the case.
 
