@@ -30,11 +30,13 @@ Please choose your platform:
 --
 --
 
+[role="section-link"]
 == http://developer.scoreflex.com/docs/reference/api/v1[REST API]
 
 --
 --
 
+[role="section-link"]
 == http://developer.scoreflex.com/docs/reference/api/v1#service_ManagementService[Management API]
 
 --
