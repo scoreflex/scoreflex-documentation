@@ -104,12 +104,18 @@ class TocEntry():
                 return LINK_ROOT
         else:
             if self.is_root():
+                print >> sys.stderr, 'Unhandled link to root with no LINK_ROOT'
                 return '[ROOT]'
         if self is linkRef:
             return '#'
         if self.linkedTo is not None:
+            if ':' in self.linkedTo:
+                # External link (http://, mailto:, etc.)
+                return self.linkedTo
+            # Internal link (a TocEntry id)
             target = self.get_root().walk_id(self.linkedTo)
             if target is None:
+                print >> sys.stderr, 'Broken link from %s to "%s"' % (self.id, self.linkedTo)
                 return '[BROKEN_LINK]'
             return target.link(linkRef)
         # Get where the page starts
@@ -239,7 +245,7 @@ def shouldChunkPage(node):
 def shouldRootToc(node):
     return 'toc-root' in node.getAttribute('role')
 
-def getLinkedId(node):
+def getLinkedTo(node):
     if not 'section-link' in node.getAttribute('role'):
         return None
     for title in node.childNodes:
@@ -247,6 +253,9 @@ def getLinkedId(node):
         for link in title.childNodes:
             if not isNodeTag(link, 'link'): continue
             return link.getAttribute('linkend')
+        for ulink in title.childNodes:
+            if not isNodeTag(ulink, 'ulink'): continue
+            return ulink.getAttribute('url')
 
 def parseLevels(node, chunkToc, levels, currToc, silent=False):
     sublevels = levels[1:]
@@ -256,7 +265,7 @@ def parseLevels(node, chunkToc, levels, currToc, silent=False):
         partId = part.getAttribute('id')
         partTitle = getTitle(part)
         childToc = TocEntry(partId, partTitle)
-        childToc.linkedTo = getLinkedId(part)
+        childToc.linkedTo = getLinkedTo(part)
         childToc.chunkPage = shouldChunkPage(part)
         childToc.chunkToc = shouldChunkToc(part)
         childToc.rootToc = shouldRootToc(part)
