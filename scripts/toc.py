@@ -105,8 +105,8 @@ class TocEntry():
         else:
             if self.is_root():
                 return '[ROOT]'
-            if self is linkRef:
-                return '#'
+        if self is linkRef:
+            return '#'
         if self.linkedTo is not None:
             target = self.get_root().walk_id(self.linkedTo)
             if target is None:
