@@ -50,7 +50,7 @@ def clean(soup, toc, ref):
     for id in ['header', 'toc', 'toctitle', 'preamble', 'content', 'footer', 'footer-text']:
         elmt = soup.find(attrs={'id': id})
         if elmt is not None:
-            elmt['class'] = (elmt.get('class', '') + elmt['id']).strip()
+            elmt['class'] = (elmt.get('class', '') + ' ' + elmt['id']).strip()
             del elmt['id']
     # Add ToC in header
     if tocElmt is not None:
