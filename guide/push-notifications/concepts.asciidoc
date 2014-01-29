@@ -19,8 +19,8 @@ the general usage of Scoreflex to send push notifications.
 Adding push notifications to your games can be a complicated and tedious
 task:
 
-* You need to have your own backends to store devices’ identifiers and
-  players’ information.
+* You need to have your own backends to store devices' identifiers and
+  players' information.
 * You need to have your own backends to communicate with remote servers
   to send push notifications.
 * You probably need to have some kind of queue logic and properly handle
@@ -28,11 +28,13 @@ task:
 * You want to avoid sending too many push notifications to your players
   and therefore you need to implement some kind of throttling logic not to
   bother your players.
-* You have to manage errors in order to clean up your devices’
+* You have to manage errors in order to clean up your devices'
   identifiers database.
-* You have to be able to store and search players’ information to target your audience properly in order to communicate to only a subset of your players.
-* You need to implement and run computing intensive tasks in order to send advanced push notification related to complex events. For
-  example a player’s friend has just beaten his high score on level 2.
+* You have to be able to store and search players' information to target your
+  audience properly in order to communicate to only a subset of your players.
+* You need to implement and run computing intensive tasks in order to send
+  advanced push notification related to complex events.
+  For example a player's friend has just beaten his high score on level 2.
 * You probably need some statistics about how much push notifications
   you have send, how much push notifications were properly delivered and so on.
 * The list goes on...
@@ -52,7 +54,7 @@ In Scoreflex, there are three different types of push notifications:
   *  One of your friend has just beaten your high score on a level
   *  A player has invited you to a challenge
   *  A challenge you were part of has ended
-  *  It’s your turn to play in a turn-based challenge
+  *  It's your turn to play in a turn-based challenge
   *  You have reached a new level of expertise
   *  More to come...
 . Developer to players notifications. As a developer you can decide to
@@ -106,15 +108,15 @@ information.
 ==== Throttling and spam management
 
 It can be counter productive to send too much push notifications to your
-players especially if they didn’t react to previously sent
+players especially if they didn't react to previously sent
 notifications. Thus, an automatic Scoreflex notification to a player is
 not sent if another automatic notification has been sent during the last
 4 hours and the player has not act in the game ever since. For testing
 purpose, this constraint does not apply in sandbox. This constraint does
 not apply to developer to players notifications or to players to players
-notifications as you, as the game’s developer, have complete control to
+notifications as you, as the game's developer, have complete control to
 how you reach your audience.
 
 If you ban a player from one of your game, some of his actions that
 would normally lead to the sending of a push notification (challenge
-invitation, player has beaten your highscore, ...) won’t.
+invitation, player has beaten your highscore, ...) won't.

@@ -34,7 +34,7 @@ API depending on the accessing rights of the caller:
 * +genres+
 * +platforms+
 * +version+
-* +url+. This is the url of the game’s Scoreflex page.
+* +url+. This is the url of the game's Scoreflex page.
 
 [[guide-games-reference-game-genres]]
 ==== Game Genres

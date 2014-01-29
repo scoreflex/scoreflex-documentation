@@ -3,7 +3,7 @@
 ==== Concepts
 
 The player storage allows you to store application data for each player
-of your game on Scoreflex’s servers. Your application can retrieve and
+of your game on Scoreflex's servers. Your application can retrieve and
 update this user data from any devices using the
 http://developer.scoreflex.com/docs/reference/api/v1#StorageService[Storage
 Service API]. This service makes it possible to synchronize data for
@@ -16,11 +16,11 @@ also be used to ensure that a user's game play continues from where it
 left off even if their device is lost, destroyed, or traded in for a
 newer model.
 
-Typical examples of data that can be saved are player’s preferences,
+Typical examples of data that can be saved are player's preferences,
 progression and everything that should be restore to ensure the best
 possible cross-device experience for a player playing on more than one
-device. You don’t need to use the player storage to maintain your
-players’ high scores or achievements as these data are automatically
+device. You don't need to use the player storage to maintain your
+players' high scores or achievements as these data are automatically
 saved and retrievable from dedicated APIs.
 
 Only the player of a game can read and write his own dedicated storage

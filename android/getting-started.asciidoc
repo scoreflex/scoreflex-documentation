@@ -75,7 +75,7 @@ Screenshot coming soon.
 [[android-getting-started-submit-a-score]]
 === Submit a score
 
-At the end of a level, if you want to publish the player’s score to the
+At the end of a level, if you want to publish the player's score to the
 leaderboard.
 
 [source,java]

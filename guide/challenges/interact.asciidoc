@@ -11,7 +11,7 @@
 . Log into your developer account and choose your game.
 . You can opt to use a wizard under the “Socialization Dashboard”.
   Choose the “Create a challenge” wizard if available and follow the
-  steps. You’re done!
+  steps. You're done!
 . Otherwise you can opt to do it manually, under “Services” get into
   “Challenges” and create a new challenge.
 . Choose an identifier. Use any short descriptive name you may use in
@@ -26,7 +26,7 @@
   directly under the form. +
   If unsure, you can always test and come back later on to adjust some
   settings.
-. Submit the form. You’re done!
+. Submit the form. You're done!
 
 A REST Management API is also opened for developers who wish to
 programmatically create (many) challenges. See the corresponding calls
@@ -37,7 +37,7 @@ http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_management_games_g
 and
 http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_management_games_gameId_challenges_configs_challengeId[delete a config].
 
-Note that all the changes are done in the sandbox. Don’t forget to
+Note that all the changes are done in the sandbox. Don't forget to
 synchronize your changes in production when ready.
 
 [[guide-challenges-interact-editing-a-challenge-config]]
@@ -51,7 +51,7 @@ However, note that the configurations have an associated version, and
 modifying some properties imply bumping the version.
 
 When the version bumps, the requests made against the older version
-won’t match the requests made against the newer version. Similarly, if
+won't match the requests made against the newer version. Similarly, if
 your challenge is replayable, all the recorded players will be dropped
 as they would no longer be compatible.
 
@@ -72,7 +72,7 @@ players work or change the gameplay will imply a version bump.
 ==== Handling challenge start
 
 If you use the REST API in your game, check that the challenge instance
-status is +RUNNING+, and start your game loop. You’re done!
+status is +RUNNING+, and start your game loop. You're done!
 
 If you use the Scoreflex Webview, you will need to handle the challenge
 start callback of your SDK, or to listen to the appropriate web callback
@@ -86,7 +86,7 @@ First, always make sure to be in sync with the server.
 
 . Check the instance status:
 ..  If the instance is +WAITING+ or +ABORTED+, you could display the invited
-    players’ statuses.
+    players' statuses.
 ..  If the instance is +ENDED+, you should display the challenge outcome,
     the winners and losers.
 . Otherwise, if the instance is +RUNNING+, you should fetch every turn
@@ -95,7 +95,7 @@ First, always make sure to be in sync with the server.
 . The game loop should start by replaying the opponents moves since
   the user last played, or display the updated game status: remaining
   turns, board, deck, scores, etc.
-. If it is the player’s turn to play, you should let him do so.
+. If it is the player's turn to play, you should let him do so.
 . At the end of its turn, you should then submit a turn message.
 . After this call succeeds, fetch the instance again, check the
   instance did not just end, display  the current outcome, and whose turn
@@ -109,7 +109,7 @@ game, or the player could have switched to another device of his.
 
 In some cases it can be normal to have your turn refused and you will
 fetch the new challenge messages and state, and see if you can repost
-the player’s turn with the updated turn sequence.
+the player's turn with the updated turn sequence.
 
-These issues are inherent in the nature of distributed games. But don’t
+These issues are inherent in the nature of distributed games. But don't
 worry, Scoreflex is here to guide you.

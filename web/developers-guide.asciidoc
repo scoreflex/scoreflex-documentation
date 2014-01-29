@@ -37,18 +37,18 @@ The +Players+, +Leaderboards+ and +Challenges+ objects are members of the
 +Leaderboard+ and +ChallengeInstance+ objects. They also provide generic
 methods to display some webviews.
 
-* The +Player+ object gives access to player’s data and webviews.
+* The +Player+ object gives access to player's data and webviews.
 * The +Leaderboard+ object has methods to submit scores and display full
   and tiny leaderboards (rankbox) webviews. A +Leaderboard+ reference is
   passed in the +leaderboard+ parameter of a +ScoreflexPlayEvent+ event.
-* The +ChallengeInstance+ object has methods to get a challenge instance’s
+* The +ChallengeInstance+ object has methods to get a challenge instance's
   state, players, and turn information, as well as methods to send a new
   turn and display the detailed webview. A +ChallengeInstance+ reference is
   passed in the +challenge+ parameter of a +ScoreflexChallengeEvent+ event.
 
 [source,js]
 ----
-/* Get the current player’s nickname */
+/* Get the current player's nickname */
 var player = ScoreflexSDK.Players.getCurrent();
 var nickname = player.getNickname();
 

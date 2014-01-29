@@ -65,7 +65,7 @@ displaying a full leaderboard.
 [[guide-leaderboards-interact-moderate]]
 ==== Moderate
 
-Scoreflex has mechanisms to detect and protect from cheaters. But that’s
+Scoreflex has mechanisms to detect and protect from cheaters. But that's
 not an easy task and fake scores can still appear in leaderboards. For
 this reason, a moderation interface is available in the developer
 interface. You can read score meta-data from this interface and delete

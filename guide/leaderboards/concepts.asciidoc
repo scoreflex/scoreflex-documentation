@@ -80,7 +80,7 @@ dimension, the time dimension and the friend dimension. These filtered
 can be mixed together to create leaderboards by month and by countries.
 
 Modes are categorization options for scores. The locationMode handles
-the specifics regarding player’s current location and player’s home
+the specifics regarding player's current location and player's home
 location associated with geographic filtering. The collapsingMode
 handles how much and which scores of a user are displayed (all, only the
 best, only the last).

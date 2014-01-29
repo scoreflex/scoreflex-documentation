@@ -4,10 +4,10 @@
 
 Your game often comes bundled with configurations and various assets. It
 can be painful to wait for a validation process to make some changes in
-your game. That’s why we offer a key/value storage for your game that
+your game. That's why we offer a key/value storage for your game that
 you can use to instantly update some of your game resources.
 
-For example, let’s say you release a game and want to quickly configure
+For example, let's say you release a game and want to quickly configure
 how ads are displayed to your players without releasing your game every
 time you change your mind. Here is how you can do it easily:
 

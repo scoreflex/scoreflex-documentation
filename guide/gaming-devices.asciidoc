@@ -21,7 +21,7 @@ Here are some examples:
   "id": "2432-432432432-32432432-423432432",
   "platform": "iOS",
   "model": "iPhone 4",
-  "name": "Bob’s iPhone"
+  "name": "Bob's iPhone"
 }
 ----
 
@@ -31,7 +31,7 @@ Here are some examples:
   "id": "ACDS-DS332432-2443DS-342432GF",
   "platform": "Android",
   "model": "Nexus 5",
-  "name": "Bob’s Nexus"
+  "name": "Bob's Nexus"
 }
 ----
 
@@ -41,6 +41,6 @@ Here are some examples:
   "id": "54543-0943-5943-95438097432087432874328",
   "platform": "Web",
   "model": "Chrome 32.0.1700.68",
-  "name": "Bob’s Browser"
+  "name": "Bob's Browser"
 }
 ----

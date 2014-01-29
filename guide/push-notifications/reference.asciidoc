@@ -111,7 +111,7 @@ turn-based challenge.
 
 Code: +102+.
 
-Message: “It’s your turn to play!”
+Message: "It's your turn to playy!"
 
 Payload:
 

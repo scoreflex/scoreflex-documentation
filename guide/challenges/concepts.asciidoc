@@ -122,15 +122,15 @@ highest average score over all tries, automatically!
 [[guide-challenges-concepts-configuration-replayable]]
 ===== Replayable
 
-In some games, the player’s play and the opponents' play have no
+In some games, the player's play and the opponents' play have no
 immediate consequence on each other. This is the case in race games
-where players can’t collide or alter the environment. It is also the
+where players can't collide or alter the environment. It is also the
 case in many games that were not initially created as multiplayer in the
 first place.
 
 Such games have the interesting properties that players are independent
 of each other. Scoreflex can simulate fake players, by recording real
-players’ actions.
+players' actions.
 
 It has the nice effect of reducing your players waiting time to zero,
 and always having someone play with them. It is very useful for
@@ -208,10 +208,10 @@ configuration, comes with its skill leaderboard.
 
 If in your game a challenge ends with a final score, you can submit this
 score to a score leaderboard too. But, not all games will have such a
-score that can be easily compared to other instances’ outcome.
+score that can be easily compared to other instances' outcome.
 
 However in every game, beating your opponent makes you stronger and more
 skilled. Scoreflex implements an http://en.wikipedia.org/wiki/Elo_rating_system[Elo-based] ranking mechanism to
-assess a player’s skill. The current skill of a player is available
+assess a player's skill. The current skill of a player is available
 through the Elo leaderboard associated to the challenge, and the global
 Elo leaderboard.

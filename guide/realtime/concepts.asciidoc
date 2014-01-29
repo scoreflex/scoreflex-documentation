@@ -84,7 +84,7 @@ There are 2 main kinds of room:
   kinds of dynamic rooms:
 
 * Template-based dynamic rooms: The room's configuration is based on a
-  template defined by the developer. This eases the room’s creation and  
+  template defined by the developer. This eases the room's creation and  
   makes the matchmaking more accurate.
 * Challenge-driven dynamic rooms: These rooms are linked to a Scoreflex
   challenge. We could talk of real time challenges. Such rooms
@@ -116,7 +116,7 @@ solutions can also be mixed.
 ===== Matchmaking
 
 Scoreflex offers mechanisms to match players into rooms, mainly based on
-the rooms’ configuration. The more  rooms’ configuration is filled, the
+the rooms' configuration. The more  rooms' configuration is filled, the
 better the matchmaking is. Using template-based dynamic rooms is a good
 way to increase the matchmaking accuracy.
 

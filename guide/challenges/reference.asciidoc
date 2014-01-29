@@ -21,7 +21,7 @@ Type: +string+
 
 Format: +[a-zA-Z0-9_.]{1,20}+
 
-The identifier, referenced in some other objects’ fields and URLs.
+The identifier, referenced in some other objects' fields and URLs.
 
 [[guide-challenges-reference-challengeconfig-attributes-version]]
 [float]
@@ -386,7 +386,7 @@ Controls how players see the score of their opponents in
 +"atEnd"+::
   Scores are only disclosed when the challenge ends.
 +"byCycle"+::
-  Don’t show the scores of the opponents turns, until you
+  Don't show the scores of the opponents turns, until you
   took your turn. After every participant takes their turn, a new cycle starts.
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-scoreorder]]
@@ -412,7 +412,7 @@ Type: +boolean+
 Default: +true+
 
 Whether two equal scores should lead to players having the same rank,
-regardless of the scores’ submission time.
+regardless of the scores' submission time.
 
 See: +LeaderboardConfig.sameRankScoreEq+ (+link)
 
@@ -451,7 +451,7 @@ How to calculate the outcome score from each +ChallengeTurn.score+
 +"average"+::
   Use the average of the submitted scores.
 +"custom"+::
-  Don’t calculate anything, let the +ChallengeTurn+ (+link)
+  Don't calculate anything, let the +ChallengeTurn+ (+link)
   messages update the +ChallengeInstance.outcome.score+ (+link).
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-winnerscount]]
@@ -510,7 +510,7 @@ Type: +string+
 
 Read only
 
-The identifier, referenced in some other objects’ fields and URLs.
+The identifier, referenced in some other objects' fields and URLs.
 
 [[guide-challenges-reference-challengerequest-attributes-configid]]
 [float]
@@ -853,7 +853,7 @@ Time of creation of the instance.
 
 Type: +timestamp+
 
-Time at which the instance’s status switched to +RUNNING+ (+link).
+Time at which the instance's status switched to +RUNNING+ (+link).
 
 +WAITING+ (+link) and +ABORTED+ (+link) instances have no value.
 
@@ -863,7 +863,7 @@ Time at which the instance’s status switched to +RUNNING+ (+link).
 
 Type: +timestamp+
 
-Time at which the instance’s status switched to +ENDED+ (+link).
+Time at which the instance's status switched to +ENDED+ (+link).
 
 Only +ENDED+ (+link) instances have a value.
 
@@ -970,12 +970,12 @@ This list is modified with each +ChallengeTurn+ (+link) message.
 
 By the player (Web API):
 
-* Display the list of the player’s challenge instances (+link)
+* Display the list of the player's challenge instances (+link)
 * Display a challenge instance (+link)
 
 By the player (API):
 
-* List all the player’s challenge instances (+link)
+* List all the player's challenge instances (+link)
 * Get a challenge instance (+link)
 * Answer a challenge instance invitation (+link)
 * Resign from a challenge instance (+link)

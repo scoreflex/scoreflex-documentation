@@ -123,7 +123,7 @@ to show it to the user using the usual call:
 It is just a way to start loading the view before presenting it to the user.
 
 One important thing when preloading resource is that you have to take
-care of the resource disposal meaning that if you don’t free a preloaded
+care of the resource disposal meaning that if you don't free a preloaded
 resource it will remain in memory. To free resource call the method:
 
 [source,java]
@@ -188,7 +188,7 @@ If you want to be sure that a request is executed, there is an
 additional call, if you use this method while no network is available
 you are insured that the request will be executed later even after a
 game relaunch. This is particularly useful when you want to submit a
-score and thus don’t want to risk losing it because of network issue.
+score and thus don't want to risk losing it because of network issue.
 This method is:
 
 [source,java]

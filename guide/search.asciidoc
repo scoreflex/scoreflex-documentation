@@ -9,6 +9,6 @@ result first.
 
 An API is also proposed so you can integrate this feature in your own UI.
 
-Players in your game won’t leave. Only your studio, your games and your
+Players in your game won't leave. Only your studio, your games and your
 players will be returned. This will focus attention to your universe and
 ultimately increase retention.
