@@ -178,14 +178,14 @@ class TocEntry():
             print str(item)
         self.walk(print_me)
 
-    def write_html(self, f, pageRoot=None, tocRoot=None, indent=0):
+    def write_html(self, f, pageRoot=None, tocRoot=None, indent=0, open=None):
         if pageRoot is None:
             pageRoot = self
         if tocRoot is None:
             # Find the appropriate ToC root
             tocRoot = self.get_first_ancestor(lambda node: node.rootToc, self)
             # Write from the found ToC root
-            return tocRoot.write_html(f, pageRoot, tocRoot, indent)
+            return tocRoot.write_html(f, pageRoot, tocRoot, indent, open)
         strIndent = '  ' * indent
         if not self.is_root() and not self is tocRoot:
             f.write('%s<li>\n' % strIndent)
@@ -198,10 +198,12 @@ class TocEntry():
                 f.write('%s</span>\n' % strIndent)
             else:
                 f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
+        if open is self:
+            open = True
         if len(self.children) > 0:
-            f.write('%s<ul class="menuRetractable">\n' % strIndent)
+            f.write('%s<ul class="menuRetractable%s">\n' % (strIndent, ' opened' if open == True else ''))
             for child in self.children:
-                child.write_html(f, pageRoot, tocRoot, indent+1)
+                child.write_html(f, pageRoot, tocRoot, indent+1, open)
             f.write('%s</ul>\n' % strIndent)
         if not self.is_root():
             indent -= 1

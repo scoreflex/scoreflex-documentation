@@ -60,7 +60,7 @@ def clean(soup, toc, ref):
             noscript.decompose() # causes problems with subsequent soup.find()
         # Inject ToC
         tocHTMLBuffer = cStringIO.StringIO()
-        ref.write_html(tocHTMLBuffer)
+        ref.write_html(tocHTMLBuffer, open=ref)
         tocTags = BeautifulSoup.BeautifulSoup(tocHTMLBuffer.getvalue())
         tocHTMLBuffer.close()
         tocElmt.append(tocTags)
