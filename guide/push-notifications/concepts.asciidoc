@@ -56,7 +56,7 @@ In Scoreflex, there are three different types of push notifications:
   *  It's your turn to play in a turn-based challenge
   *  You have reached a new level of expertise
   *  More to come...
-. Developer to players notifications. As a developer you can decide to
+. Developer to player notifications. As a developer you can decide to
   send push notifications to all your players or to a targeted portion of
   your players. For example, this can be useful to inform them about some
   cool news about your game or maybe to let them know that you have just
