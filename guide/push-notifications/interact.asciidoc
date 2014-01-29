@@ -5,7 +5,7 @@
 [[guide-push-notifications-interact-managing-certificates]]
 ==== Managing certificates
 
-You can use your web dashboard the Management REST API to manage your
+You can use your web dashboard or the Management REST API to manage your
 game certificates for push notifications.
 
 NOTE: Certificates are isolated between sandbox and production. On iOS,
