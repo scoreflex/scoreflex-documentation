@@ -187,6 +187,8 @@ class TocEntry():
     def write_html(self, f, pageRoot=None, tocRoot=None, indent=0, open=None):
         if pageRoot is None:
             pageRoot = self
+        if open is self:
+            open = True
         if tocRoot is None:
             # Find the appropriate ToC root
             tocRoot = self.get_first_ancestor(lambda node: node.rootToc, self)
@@ -200,12 +202,10 @@ class TocEntry():
             clazz = ''
             if len(self.children) > 0:
                 f.write('%s<span class="openable">\n' % strIndent)
-                f.write('%s  <span class="arrow"><span class="arrow_black_right"></span></span><a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s  <span class="arrow"><span class="%s"></span></span><a href="%s">%s</a>\n' % (strIndent, 'arrow_black_bottom' if open == True else 'arrow_black_right', self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
                 f.write('%s</span>\n' % strIndent)
             else:
                 f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
-        if open is self:
-            open = True
         if len(self.children) > 0:
             f.write('%s<ul class="menuRetractable%s">\n' % (strIndent, ' opened' if open == True else ''))
             for child in self.children:
