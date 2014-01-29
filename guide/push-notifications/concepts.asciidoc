@@ -30,11 +30,9 @@ task:
   bother your players.
 * You have to manage errors in order to clean up your devices’
   identifiers database.
-* To communicate to only a subset of your players, you have to be able
-  to store and search players’ information to target your audience properly.
-* To send advanced push notification related to complex events, for
-  example a player’s friend has just beaten his high score on level 2, you
-  need to implement and run computing intensive tasks.
+* You have to be able to store and search players’ information to target your audience properly in order to communicate to only a subset of your players.
+* You need to implement and run computing intensive tasks in order to send advanced push notification related to complex events. For
+  example a player’s friend has just beaten his high score on level 2.
 * You probably need some statistics about how much push notifications
   you have send, how much push notifications were properly delivered and so on.
 * The list goes on...
