@@ -106,7 +106,7 @@ information.
 [[guide-push-notifications-concepts-throttling-and-spam-management]]
 ==== Throttling and spam management
 
-It can be counter productive to send too much push notifications to your
+It can be counter productive to send too many push notifications to your
 players especially if they didn't react to previously sent
 notifications. Thus, an automatic Scoreflex notification to a player is
 not sent if another automatic notification has been sent during the last
