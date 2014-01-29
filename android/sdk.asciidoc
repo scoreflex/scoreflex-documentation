@@ -1,6 +1,6 @@
 [[android-sdk]]
 [role="chunk-page"]
-== SDK
+== https://github.com/scoreflex/scoreflex-android-sdk[SDK]
 
-// TODO: (Julien)
-Coming soon.
+The Scoreflex Android SDK is available on GitHub at
+https://github.com/scoreflex/scoreflex-android-sdk.

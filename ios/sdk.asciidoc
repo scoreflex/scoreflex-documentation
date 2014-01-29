@@ -1,6 +1,6 @@
 [[ios-sdk]]
-[role="chunk-page"]
-== SDK
+[role="chunk-page section-link"]
+== https://github.com/scoreflex/scoreflex-ios-sdk[SDK]
 
-// TODO: (Julien)
-Help coming soon.
+The Scoreflex iOS SDK is available on GitHub at
+https://github.com/scoreflex/scoreflex-ios-sdk.

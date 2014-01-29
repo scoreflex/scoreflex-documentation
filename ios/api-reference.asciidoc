@@ -1,5 +1,6 @@
 [[ios-api-reference]]
-[role="chunk-page"]
-== API reference
+[role="chunk-page section-link"]
+== http://scoreflex.github.io/scoreflex-ios-sdk/[API reference]
 
-http://developer.scoreflex.com/docs/reference/sdk/ios/1.0/
+The Scoreflex iOS SDK API reference is available on GitHub at
+http://scoreflex.github.io/scoreflex-ios-sdk/.

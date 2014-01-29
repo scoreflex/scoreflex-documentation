@@ -1,5 +1,6 @@
 [[android-api-reference]]
-[role="chunk-page"]
-== API reference
+[role="chunk-page section-link"]
+== http://scoreflex.github.io/scoreflex-android-sdk/[API reference]
 
-http://developer.scoreflex.com/docs/reference/sdk/android/1.0/reference/com/scoreflex/package-summary.html
+The Scoreflex Android SDK API reference is available on GitHub at
+http://scoreflex.github.io/scoreflex-android-sdk/.

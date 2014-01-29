@@ -1,6 +1,6 @@
 [[web-api-reference]]
-[role="chunk-page"]
-== API reference
+[role="chunk-page section-link"]
+== http://scoreflex.github.io/scoreflex-javascript-sdk/[API reference]
 
-All references to the Scoreflex API are available on the Scoreflex
-documentations pages: http://developer.scoreflex.com/docs/reference/api/v1.
+The Scoreflex Javascript SDK API reference is available on GitHub at
+http://scoreflex.github.io/scoreflex-javascript-sdk/.

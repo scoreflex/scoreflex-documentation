@@ -1,6 +1,6 @@
 [[web-sdk]]
-[role="chunk-page"]
-== SDK
+[role="chunk-page section-link"]
+== https://github.com/scoreflex/scoreflex-javascript-sdk[SDK]
 
-The SDK documentation in a JSDoc format is available in the jsdoc folder
-of the Scoreflex SDK.
+The Scoreflex Javascript SDK is available on GitHub at
+https://github.com/scoreflex/scoreflex-javascript-sdk.
