@@ -60,7 +60,7 @@ In Scoreflex, there are three different types of push notifications:
   send push notifications to all your players or to a targeted portion of
   your players. For example, this can be useful to inform them about some
   cool news about your game or maybe to let them know that you have just
-  released a cool new game. You can use advanced filters to target all
+  released a new game. You can use advanced filters to target all
   your users playing your game A that are men between 20 and 30 years old
   and living in California.
 . Players to players notifications. You can use Scoreflex API from
