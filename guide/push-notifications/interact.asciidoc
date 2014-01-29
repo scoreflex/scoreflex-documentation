@@ -60,7 +60,7 @@ $> curl -XDELETE \
 [[guide-push-notifications-interact-managing-device-tokens]]
 ==== Managing device tokens
 
-Before sending push notification to a device you have to register the
+Before sending a push notification to a device you have to register the
 corresponding device token to Scoreflex from your game code.
 
 [[guide-push-notifications-interact-managing-device-tokens-registering-a-device-token]]
