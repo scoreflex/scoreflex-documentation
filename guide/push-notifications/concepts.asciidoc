@@ -50,7 +50,7 @@ In Scoreflex, there are three different types of push notifications:
   managed and sent by Scoreflex to your players to alert them about
   interesting events about your game like:
   *  One of your friends has joined the game
-  *  One of your friend has just beaten your high score on a level
+  *  One of your friends has just beaten your high score on a level
   *  A player has invited you to a challenge
   *  A challenge you were part of has ended
   *  It's your turn to play in a turn-based challenge
