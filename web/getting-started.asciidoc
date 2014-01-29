@@ -21,7 +21,7 @@
 clientSecret are indicated on the game page of your Scoreflex developer
 account.
 +
-[source,javascript]
+[source,js]
 ----
 var useSandbox = true;
 var ScoreflexSDK = Scoreflex("<CLIENT_ID>", "<CLIENT_SECRET>", useSandbox);

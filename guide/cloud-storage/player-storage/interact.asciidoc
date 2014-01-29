@@ -5,14 +5,14 @@
 [[guide-cloud-storage-player-storage-interact-setting-a-value]]
 ===== Setting a value
 
-[source,bash]
+[source,sh]
 ----
 $> curl -XPOST \
    'https://sandbox.api.scoreflex.com/v1/storage/preferences' \
    -d 'body=\{"musicVolume":0}&accessToken=<ACCESS_TOKEN>&contentType=application/json&ttl=86400000'
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "success": true
@@ -22,13 +22,13 @@ $> curl -XPOST \
 [[guide-cloud-storage-player-storage-interact-getting-a-value]]
 ===== Getting a value
 
-[source,bash]
+[source,sh]
 ----
 $> curl -XGET \
    'https://sandbox.api.scoreflex.com/v1/storage/preferences?accessToken=<ACCESS_TOKEN>'
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "musicVolume": 0
@@ -38,13 +38,13 @@ $> curl -XGET \
 [[guide-cloud-storage-player-storage-interact-deleting-a-value]]
 ===== Deleting a value
 
-[source,bash]
+[source,sh]
 ----
 $> curl -XDELETE \
    'https://sandbox.api.scoreflex.com/v1/storage/preferences?accessToken=<ACCESS_TOKEN>'
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "success": true

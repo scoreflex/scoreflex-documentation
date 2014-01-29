@@ -1,5 +1,3 @@
-:source-highlighter: highlight
-
 [[ios-getting-started]]
 [role="chunk-page chunk-toc"]
 == Getting started

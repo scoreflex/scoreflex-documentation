@@ -10,7 +10,7 @@
 
 A typical iOS push notification message has the following format:
 
-[source,javascript]
+[source,js]
 ----
 {
   "aps":
@@ -34,7 +34,7 @@ A typical iOS push notification message has the following format:
 
 A typical Android push notification message has the following format:
 
-[source,javascript]
+[source,js]
 ----
 {
   "alert": "Hello world!",

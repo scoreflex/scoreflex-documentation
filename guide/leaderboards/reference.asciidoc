@@ -58,7 +58,7 @@ ScoreFormatter possible values are:
 
 +"integer"+::
 +
-[source,javascript]
+[source,js]
 ----
 {
   "type": "integer",
@@ -89,7 +89,7 @@ ScoreFormatter possible values are:
 +
 +"fixedPoint"+::
 +
-[source,javascript]
+[source,js]
 ----
 {
   "type": "fixedPoint",
@@ -104,7 +104,7 @@ ScoreFormatter possible values are:
 +
 +"monetary"+::
 +
-[source,javascript]
+[source,js]
 ----
 {
   "type": "monetary",
@@ -118,7 +118,7 @@ ScoreFormatter possible values are:
 +
 +"time"+::
 +
-[source,javascript]
+[source,js]
 ----
 {
   "type": "duration"

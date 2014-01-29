@@ -43,6 +43,13 @@ SHIFT_TITLE_LEVELS         := $(SCRIPTS_DIR)/shift-title-levels.awk
 GET_INCLUDE_INFOS          := $(SCRIPTS_DIR)/get-include-infos.awk
 INCLUDE_WITH_INFO_TO_TITLE := $(SCRIPTS_DIR)/include-with-info-to-title.sed
 
+ASCIIDOC_ARGS := \
+	--attribute source-highlighter=highlight \
+	--attribute icons \
+	--attribute iconsdir=$(LINK_ROOT)icons \
+	--attribute toc \
+	--attribute disable-javascript
+
 #
 # Auto-generated part
 #
@@ -113,7 +120,7 @@ $(HTML_REGULAR_FILES):
 	@echo "Building $@"
 	@mkdir -p "$$(dirname "$@")"
 	@$(SHIFT_TITLE_LEVELS) "$<" \
-	| $(ASCIIDOC) --backend html5 --attribute icons --attribute iconsdir=$(LINK_ROOT)icons --attribute toc --attribute disable-javascript -o - - \
+	| $(ASCIIDOC) --backend html5 $(ASCIIDOC_ARGS) -o - - \
 	| ( cd $(SRCDIR) && $(REWRITE) $(DOCBOOK_FILE) "$(subst $(SRCDIR)/,,$<)" > "$@" ) || ( rm "$@" && false )
 
 $(HTML_FOLDER_FILES): $(DOCBOOK_STAMP)
@@ -124,5 +131,5 @@ $(HTML_FOLDER_FILES):
 	@$(GET_INCLUDE_INFOS) -v SRC_DIR="$$($(DIRNAME) "$<")" -v ID_PREFIX="$$($(ID_FROM_RELPATH) --base "$(subst $(SRCDIR)/,,$<)")" "$<" \
 	| $(INCLUDE_WITH_INFO_TO_TITLE) \
 	| $(SHIFT_TITLE_LEVELS) \
-	| $(ASCIIDOC) --backend html5 --attribute icons --attribute iconsdir=$(LINK_ROOT)icons --attribute toc --attribute disable-javascript -o - - \
+	| $(ASCIIDOC) --backend html5 $(ASCIIDOC_ARGS) -o - - \
 	| ( cd $(SRCDIR) && $(REWRITE) $(DOCBOOK_FILE) "$(subst $(SRCDIR)/,,$<)" > "$@" ) || ( rm "$@" && false )

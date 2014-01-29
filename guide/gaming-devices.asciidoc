@@ -15,7 +15,7 @@ A gaming device has the following properties:
 
 Here are some examples:
 
-[source,javascript]
+[source,js]
 ----
 {
   "id": "2432-432432432-32432432-423432432",
@@ -25,7 +25,7 @@ Here are some examples:
 }
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "id": "ACDS-DS332432-2443DS-342432GF",
@@ -35,7 +35,7 @@ Here are some examples:
 }
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "id": "54543-0943-5943-95438097432087432874328",

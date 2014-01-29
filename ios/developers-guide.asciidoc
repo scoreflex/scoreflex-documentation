@@ -1,5 +1,3 @@
-:source-highlighter: highlight
-
 [[ios-developers-guide]]
 [role="chunk-page chunk-toc"]
 == Developer's guide

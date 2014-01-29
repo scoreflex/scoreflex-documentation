@@ -18,7 +18,7 @@ It is advised to instantiate the Scoreflex SDK in a non-public scope to
 avoid easy access to the API by your players (which facilitate
 cheating).
 
-[source,javascript]
+[source,js]
 ----
 /* -- public scope -- */
 var myGame = (function() {
@@ -46,7 +46,7 @@ methods to display some webviews.
   turn and display the detailed webview. A +ChallengeInstance+ reference is
   passed in the +challenge+ parameter of a +ScoreflexChallengeEvent+ event.
 
-[source,javascript]
+[source,js]
 ----
 /* Get the current player’s nickname */
 var player = ScoreflexSDK.Players.getCurrent();
@@ -69,7 +69,7 @@ challenge instances for your players without using the Scoreflex web
 interfaces, get JSON data from the Scoreflex backend, or display a
 Scoreflex web interface not aliased by the SDK.
 
-[source,javascript]
+[source,js]
 ----
 /* Create a new challenge for a player (with random opponent) */
 ScoreflexSDK.RestClient.post("/challenges/requests",

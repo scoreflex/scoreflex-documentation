@@ -66,7 +66,7 @@ In case of errors, the following HTTP statuses can be used:
 The following represents a common error response resulting from a failed
 API request:
 
-[source,javascript]
+[source,js]
 ----
 {
   "error": {
@@ -638,7 +638,7 @@ http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes
 
 Here is an example of a Scoreflex placemark:
 
-[source,javascript]
+[source,js]
 ----
 {
   "id": "cYjPGhGBlgP", //<1>
@@ -766,7 +766,7 @@ from the root, separating the traversed keys by slashes. For instance
 +levelConfig+ object, itself found at the root of the following example
 object:
 
-[source,javascript]
+[source,js]
 ----
 {
   "pace": "fast",

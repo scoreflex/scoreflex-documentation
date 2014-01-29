@@ -72,12 +72,12 @@ of the documentation.
 [[guide-players-interact-getting-own-information]]
 ==== Getting own information
 
-[source,bash]
+[source,sh]
 ----
 $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCESS_TOKEN>'
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/players/0189oiu428700181/",
@@ -119,12 +119,12 @@ $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCES
 [[guide-players-interact-getting-another-player-information]]
 ==== Getting another player information
 
-[source,bash]
+[source,sh]
 ----
 $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/018blql3fmd1vu81?accessToken=<ACCESS_TOKEN>'
 ----
 
-[source,javascript]
+[source,js]
 ----
 {
   "id": "018blql3fmd1vu81",
