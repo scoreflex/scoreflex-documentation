@@ -2,7 +2,8 @@
 [role="chunk-page chunk-toc"]
 == Getting started
 
-Create a Scoreflex developer account
+Log in or sign up by creating a Scoreflex developer account.
+https://developer.scoreflex.com/account/login
 
 // TODO: [screenshot creation compte]
 Screenshot coming soon.
@@ -16,7 +17,7 @@ Go to http://developer.scoreflex.com/games/new
 Screenshot coming soon.
 
 [[android-getting-started-create-a-leaderboard-configuration-on-your-scoreflex-developer-page]]
-=== Create a leaderboard configuration on your Scoreflex Developer page
+=== Create a leaderboard configuration on your Scoreflex developer page
 
 // TODO: [screenshot creation leaderboard]
 Screenshot coming soon.
@@ -30,6 +31,7 @@ https://github.com/scoreflex/scoreflex-android-sdk/
 === Setup your project
 
 Import the Scoreflex SDK in your eclipse workspace by doing:
+
 * Click on File > New > Other
 * Select Android / Android project from existing code
 

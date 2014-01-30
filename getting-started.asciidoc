@@ -3,7 +3,7 @@
 
 [partintro]
 --
-Please choose your platform:
+Choose your platform:
 --
 
 [role="section-link"]
