@@ -1,6 +1,6 @@
 [[guide-push-notifications-concepts]]
 [role="chunk-page chunk-toc"]
-=== Concepts
+=== [title-badge-push-notifications]#Concepts#
 
 --
 --

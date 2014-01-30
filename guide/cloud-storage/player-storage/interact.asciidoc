@@ -1,6 +1,6 @@
 [[guide-cloud-storage-player-storage-interact]]
 [role="chunk-page chunk-toc"]
-==== Interact
+==== [title-badge-cloud-storage]#Interact#
 
 [[guide-cloud-storage-player-storage-interact-setting-a-value]]
 ===== Setting a value

@@ -1,6 +1,6 @@
 [[guide-leaderboards-concepts]]
 [role="chunk-page chunk-toc"]
-=== Concepts
+=== [title-badge-leaderboards]#Concepts#
 
 --
 --

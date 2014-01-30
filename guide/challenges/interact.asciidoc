@@ -1,6 +1,6 @@
 [[guide-challenges-interact]]
 [role="chunk-page chunk-toc"]
-=== Interact
+=== [title-badge-challenges]#Interact#
 
 --
 --

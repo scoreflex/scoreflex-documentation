@@ -133,32 +133,33 @@
  * Icons
  */
 
-#main.developerDocsPage.guide_leaderboards H1,
-#main.developerDocsPage.guide_challenges H1,
-#main.developerDocsPage.guide_cloud-storage H1,
-#main.developerDocsPage.guide_realtime H1,
-#main.developerDocsPage.guide_social-networks H1,
-#main.developerDocsPage.guide_push-notifications H1 {
+#main.developerDocsPage H1 span.title-badge-leaderboards,
+#main.developerDocsPage H1 span.title-badge-challenges,
+#main.developerDocsPage H1 span.title-badge-cloud-storage,
+#main.developerDocsPage H1 span.title-badge-realtime,
+#main.developerDocsPage H1 span.title-badge-social-networks,
+#main.developerDocsPage H1 span.title-badge-push-notifications {
+  display:block;
   padding-left:140px;
   min-height:95px; padding-top:39px; /* 95 + 39 = 134 = image height */
   background-repeat:no-repeat;
   background-position:left center;
   background-color:transparent;
 }
-#main.developerDocsPage.guide_leaderboards H1       {background-image:url('/docs/img/badge_leaderboards.png');};
-#main.developerDocsPage.guide_challenges H1         {background-image:url('/docs/img/badge_challenges.png');};
-#main.developerDocsPage.guide_cloud-storage H1      {background-image:url('/docs/img/badge_cloud.png');};
-#main.developerDocsPage.guide_realtime H1           {background-image:url('/docs/img/badge_reflex.png');};
-#main.developerDocsPage.guide_social-networks H1    {background-image:url('/docs/img/badge_network.png');};
-#main.developerDocsPage.guide_push-notifications H1 {background-image:url('/docs/img/badge_notification.png');};
+#main.developerDocsPage H1 span.title-badge-leaderboards       {background-image:url('/docs/img/badge_leaderboards.png');}
+#main.developerDocsPage H1 span.title-badge-challenges         {background-image:url('/docs/img/badge_challenges.png');}
+#main.developerDocsPage H1 span.title-badge-cloud-storage      {background-image:url('/docs/img/badge_cloud.png');}
+#main.developerDocsPage H1 span.title-badge-realtime           {background-image:url('/docs/img/badge_reflex.png');}
+#main.developerDocsPage H1 span.title-badge-social-networks    {background-image:url('/docs/img/badge_network.png');}
+#main.developerDocsPage H1 span.title-badge-push-notifications {background-image:url('/docs/img/badge_notification.png');}
 
 @media screen and (max-width: 479px) {
-  #main.developerDocsPage.guide_leaderboards H1,
-  #main.developerDocsPage.guide_challenges H1,
-  #main.developerDocsPage.guide_cloud-storage H1,
-  #main.developerDocsPageguide_realtime H1,
-  #main.developerDocsPage.guide_social-networks H1,
-  #main.developerDocsPage.guide_push-notifications H1 {
+  #main.developerDocsPage H1 span.title-badge-leaderboards,
+  #main.developerDocsPage H1 span.title-badge-challenges,
+  #main.developerDocsPage H1 span.title-badge-cloud-storage,
+  #main.developerDocsPage H1 span.title-badge-realtime,
+  #main.developerDocsPage H1 span.title-badge-social-networks,
+  #main.developerDocsPage H1 span.title-badge-push-notifications {
     background-size:50px 50px;
     padding-left:60px;
     min-height:40px; padding-top:10px; /* 40 + 10 = 50 = image height */

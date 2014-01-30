@@ -1,6 +1,6 @@
 [[guide-challenges-concepts]]
 [role="chunk-page chunk-toc"]
-=== Concepts
+=== [title-badge-challenges]#Concepts#
 
 --
 --

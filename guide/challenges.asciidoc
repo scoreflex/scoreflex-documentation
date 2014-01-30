@@ -1,6 +1,6 @@
 [[guide-challenges]]
 [role="toc-root"]
-== Challenges
+== [title-badge-challenges]#Challenges#
 
 Challenges are games in which several players can compete and have fun
 together.

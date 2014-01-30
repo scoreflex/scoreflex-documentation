@@ -1,6 +1,6 @@
 [[guide-social-networks]]
 [role="chunk-page"]
-== Social networks
+== [title-badge-social-networks]#Social networks#
 
 --
 --

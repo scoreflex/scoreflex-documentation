@@ -1,6 +1,6 @@
 [[guide-realtime-concepts]]
 [role="chunk-page chunk-toc"]
-=== Concepts
+=== [title-badge-realtime]#Concepts#
 
 --
 --

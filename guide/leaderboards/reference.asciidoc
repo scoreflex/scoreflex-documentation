@@ -1,6 +1,6 @@
 [[guide-leaderboards-reference]]
 [role="chunk-page chunk-toc"]
-=== Reference
+=== [title-badge-leaderboards]#Reference#
 
 --
 --

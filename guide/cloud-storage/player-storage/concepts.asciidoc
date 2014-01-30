@@ -1,6 +1,6 @@
 [[guide-cloud-storage-player-storage-concepts]]
 [role="chunk-page chunk-toc"]
-==== Concepts
+==== [title-badge-cloud-storage]#Concepts#
 
 The player storage allows you to store application data for each player
 of your game on Scoreflex's servers. Your application can retrieve and

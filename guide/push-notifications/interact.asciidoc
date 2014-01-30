@@ -1,6 +1,6 @@
 [[guide-push-notifications-interact]]
 [role="chunk-page chunk-toc"]
-=== Interact
+=== [title-badge-push-notifications]#Interact#
 
 [[guide-push-notifications-interact-managing-certificates]]
 ==== Managing certificates

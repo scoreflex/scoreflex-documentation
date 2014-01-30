@@ -1,6 +1,6 @@
 [[guide-cloud-storage-player-storage-reference]]
 [role="chunk-page chunk-toc"]
-==== Reference
+==== [title-badge-cloud-storage]#Reference#
 
 A storage entry has the following attributes:
 

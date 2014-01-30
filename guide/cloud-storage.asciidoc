@@ -1,5 +1,5 @@
 [[guide-cloud-storage]]
-== Cloud storage
+== [title-badge-cloud-storage]#Cloud storage#
 
 --
 --

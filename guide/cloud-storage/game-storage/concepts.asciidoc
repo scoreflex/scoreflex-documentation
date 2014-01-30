@@ -1,6 +1,6 @@
 [[guide-cloud-storage-game-storage-concepts]]
 [role="chunk-page chunk-toc"]
-==== Concepts
+==== [title-badge-cloud-storage]#Concepts#
 
 Your game often comes bundled with configurations and various assets. It
 can be painful to wait for a validation process to make some changes in

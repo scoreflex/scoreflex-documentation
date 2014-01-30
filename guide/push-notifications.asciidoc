@@ -1,6 +1,6 @@
 [[guide-push-notifications]]
 [role="toc-root"]
-== Push notifications
+== [title-badge-push-notifications]#Push notifications#
 
 --
 --

@@ -1,6 +1,6 @@
 [[guide-push-notifications-reference]]
 [role="chunk-page chunk-toc"]
-=== Reference
+=== [title-badge-push-notifications]#Reference#
 
 --
 --

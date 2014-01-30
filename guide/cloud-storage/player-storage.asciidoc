@@ -1,6 +1,6 @@
 [[guide-cloud-storage-player-storage]]
 [role="toc-root"]
-=== Player storage
+=== [title-badge-cloud-storage]#Player storage#
 
 --
 --

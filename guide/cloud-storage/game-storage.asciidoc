@@ -1,6 +1,6 @@
 [[guide-cloud-storage-game-storage]]
 [role="toc-root"]
-=== Game storage
+=== [title-badge-cloud-storage]#Game storage#
 
 --
 --
