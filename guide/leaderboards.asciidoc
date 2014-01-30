@@ -1,6 +1,6 @@
 [[guide-leaderboards]]
 [role="toc-root"]
-== Leaderboards
+== Leaderboards image:badge_leaderboards.png["",role="title-image"]
 
 A leaderboard is an ordered list of scores made by players. They are
 useful to compare players according to their skills and performances.
