@@ -187,13 +187,13 @@ class TocEntry():
     def write_html(self, f, pageRoot=None, tocRoot=None, indent=0, open=None):
         if pageRoot is None:
             pageRoot = self
-        if open is self:
-            open = True
         if tocRoot is None:
             # Find the appropriate ToC root
             tocRoot = self.get_first_ancestor(lambda node: node.rootToc, self)
             # Write from the found ToC root
             return tocRoot.write_html(f, pageRoot, tocRoot, indent, open)
+        if open is self:
+            open = True
         strIndent = '  ' * indent
         if not self.is_root() and not self is tocRoot:
             f.write('%s<li>\n' % strIndent)
