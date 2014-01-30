@@ -46,8 +46,9 @@ INCLUDE_WITH_INFO_TO_TITLE := $(SCRIPTS_DIR)/include-with-info-to-title.sed
 ASCIIDOC_ARGS := \
 	--attribute encoding=utf-8 \
 	--attribute source-highlighter=highlight \
+	--attribute imagesdir=$(LINK_ROOT)img \
 	--attribute icons \
-	--attribute iconsdir=$(LINK_ROOT)icons \
+	--attribute iconsdir=$(LINK_ROOT)img/icons \
 	--attribute toc \
 	--attribute disable-javascript
 
