@@ -19,7 +19,7 @@ Scoreflex and its community.
 
 Want to know what's going on, get the latest news about Scoreflex and
 have a glimpse at what cool new features we are preparing for you?
-Follow http://www.twitter.com/scoreflex_world[@scoreflex_world] on
+Follow http://www.twitter.com/scoreflex[@scoreflex] on
 Twitter and subscribe to the http://blog.scoreflex.com/[blog].
 
 [[community-and-support-irc]]
