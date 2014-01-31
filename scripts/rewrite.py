@@ -44,6 +44,7 @@ def clean(soup, toc, ref):
                 continue
             link['href'] = target.link(ref)
     # Access elements by id to keep a reference before removing their id attribute
+    headerElmt = soup.find("div", attrs={'id': 'header'})
     tocElmt = soup.find("div", attrs={'id': 'toc'})
     footerElmt = soup.find("div", attrs={'id': 'footer'})
     # Prefer class to id
@@ -52,6 +53,16 @@ def clean(soup, toc, ref):
         if elmt is not None:
             elmt['class'] = (elmt.get('class', '') + ' ' + elmt['id']).strip()
             del elmt['id']
+    # Add breadcrumb in header
+    if headerElmt is not None:
+        breadcrumbElmt = BeautifulSoup.Tag(soup, 'div', attrs={'class': 'breadcrumb'})
+        for i, entry in enumerate(ref.get_ancestry()[:-1]):
+            if i > 0:
+                breadcrumbElmt.append(BeautifulSoup.NavigableString(u' » '))
+            linkElmt = BeautifulSoup.Tag(soup, 'a', attrs={'href': entry.link(ref)})
+            linkElmt.append(BeautifulSoup.NavigableString(entry.title if not entry.is_root() else 'Docs'))
+            breadcrumbElmt.append(linkElmt)
+        headerElmt.insert(0, breadcrumbElmt)
     # Add ToC in header
     if tocElmt is not None:
         # Remove toc's noscript

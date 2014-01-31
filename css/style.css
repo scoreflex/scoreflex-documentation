@@ -196,6 +196,18 @@
   margin-top:.5em;
 }
 
+.article > .header .breadcrumb {
+  font-size: 1em;
+  padding-left:140px; /* 95 + 39 = 134 = image height */
+  position: relative;
+  top: 4em; /* FIXME Placement changes with font scaling! */
+  color: #888;
+}
+.article > .header .breadcrumb A,
+.article > .header .breadcrumb A:visited,
+.article > .header .breadcrumb A:hover {
+  color: inherit;
+}
 
 /*
  * Table of Contents
