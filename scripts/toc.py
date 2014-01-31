@@ -199,8 +199,19 @@ class TocEntry():
             strIndent = '  ' * indent
             clazz = ''
             if len(self.children) > 0:
+                if not self.linkedTo:
+                    target = self
+                else:
+                    target = self.get_root().walk_id(self.linkedTo)
+                    if target is None:
+                        print >> sys.stderr, 'Broken link from %s to "%s"' % (self.id, self.linkedTo)
+                        target = self
+                if target.chunkPage:
+                    label = '<a href="%s">%s</a>' % (self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8'))
+                else:
+                    label = self.title.encode('utf-8')
                 f.write('%s<span class="openable">\n' % strIndent)
-                f.write('%s  <span class="arrow"><span class="%s"></span></span><a href="%s">%s</a>\n' % (strIndent, 'arrow_black_bottom' if open == True else 'arrow_black_right', self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
+                f.write('%s  <span class="arrow"><span class="%s"></span></span>%s\n' % (strIndent, 'arrow_black_bottom' if open == True else 'arrow_black_right', label))
                 f.write('%s</span>\n' % strIndent)
             else:
                 f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
