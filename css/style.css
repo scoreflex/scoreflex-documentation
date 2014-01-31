@@ -180,22 +180,16 @@
   /* revert change from bootstrap/type.less */
   line-height:normal;
   margin-top:1.25em;
-  margin-bottom:.5em;
+  margin-bottom:.25em;
 }
-.article h1 { font-size:2.5em; }
-.article h2 { font-size:2.0em; }
-.article h3 { font-size:1.5em; }
-.article h4 { font-size:1.2em; }
-.article h5 { font-size:1.1em; }
+.article h1 { font-size:2.5em; font-weight:normal; }
+.article h2 { font-size:1.66em; font-weight:normal; }
+.article h3 { font-size:1.25em; }
+.article h4 { font-size:1.1em; }
 .article h5 { font-size:1.0em; }
-.article h1 {
-  border-bottom: 3px solid #CCC;
-}
+.article h6 { font-size:0.9em; }
 .article h2 {
   border-bottom: 2px solid #CCC;
-}
-.article h3 {
-  border-bottom: 1px solid #CCC;
 }
 
 .article > .header h1 {
