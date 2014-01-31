@@ -20,6 +20,12 @@
         if (match(line, /^(=+ )(.*)$/, a) > 0) {
             level = a[1];
             title = a[2];
+            if (match(title, /^<<[^,]*,(.*)>>$/, a) > 0) {
+              title = a[1];
+            }
+            if (match(title, /^\[[^\]]*\]#([^#]*)#/, a) > 0) {
+              title = a[1];
+            }
             break;
         }
     }
