@@ -3,7 +3,7 @@
 == Getting started
 
 [[ios-getting-started-create-your-scoreflex-developer-account]]
-=== Create your Scoreflex Developer account
+=== 1. Create your Scoreflex Developer account
 
 Go to https://developer.scoreflex.com/account/login
 
@@ -11,17 +11,17 @@ Go to https://developer.scoreflex.com/account/login
 _Screenshot coming soon._
 
 [[ios-getting-started-create-your-first-game]]
-=== Create your first game
+=== 2. Create your first game
 
 Go to http://developer.scoreflex.com/games/new
 
 [[ios-getting-started-download-the-ios-sdk]]
-=== Download the iOS Scoreflex SDK
+=== 3. Download the iOS Scoreflex SDK
 
 Go to https://github.com/scoreflex/scoreflex-ios-sdk
 
 [[ios-getting-started-setup-your-project]]
-=== Setup your project
+=== 4. Setup your project
 
 Drag and drop the +Scoreflex.xcodeproj+ file on your project:
 
@@ -39,7 +39,7 @@ Finally add the following frameworks to the linked framework of your project:
 - +MobileCoreServices.framework+
 
 [[ios-getting-started-initialize-the-sdk]]
-=== Initialize the SDK
+=== 5. Initialize the SDK
 
 To initialize the sdk put the following code in your
 +-(void)application:(UIApplication*)didFinishLaunchingWithOptions:(NSDictionary*)+
@@ -63,7 +63,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 * Client ID and secret come from your Scoreflex Developer page.
 
 [[ios-getting-started-creating-a-leaderboard]]
-=== Creating a leaderboard
+=== 6. Creating a leaderboard
 
 Create a leaderboard configuration on your Scoreflex Developer page.
 
@@ -71,7 +71,7 @@ Create a leaderboard configuration on your Scoreflex Developer page.
 _Screenshot coming soon._
 
 [[ios-getting-started-submit-a-score]]
-=== Submit a score
+=== 7. Submit a score
 
 [source,objc]
 ----
@@ -91,7 +91,7 @@ long score = 1500;
 during the creation of your leaderboard on the Scoreflex Developer page.
 
 [[ios-getting-started-display-the-leaderboard]]
-=== Display the leaderboard
+=== 8. Display the leaderboard
 
 Whenever you want to display a leaderboard to the player, use this code:
 
@@ -108,7 +108,7 @@ fail at the fullscreen view.
 _Screenshot coming soon._
 
 [[ios-getting-started-play-with-friends]]
-=== Play with friends
+=== 9. Play with friends
 
 In order to play with friends in Scoreflex, you will have to create a challenge.
 

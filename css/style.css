@@ -219,6 +219,13 @@
   margin: 0;
 }
 
+.android-getting-started H2,
+.unity-getting-started H2,
+.ios-getting-started H2,
+.web-getting-started H2 {
+  border-bottom:0;
+}
+
 
 /*
  * Footer

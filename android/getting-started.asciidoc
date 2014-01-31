@@ -9,7 +9,7 @@ https://developer.scoreflex.com/account/login
 _Screenshot coming soon._
 
 [[android-getting-started-create-the-first-game]]
-=== Create the first game
+=== 1. Create the first game
 
 Go to http://developer.scoreflex.com/games/new
 
@@ -17,18 +17,18 @@ Go to http://developer.scoreflex.com/games/new
 _Screenshot coming soon._
 
 [[android-getting-started-create-a-leaderboard-configuration-on-your-scoreflex-developer-page]]
-=== Create a leaderboard configuration on your Scoreflex developer page
+=== 2. Create a leaderboard configuration on your Scoreflex developer page
 
 // TODO: [screenshot creation leaderboard]
 _Screenshot coming soon._
 
 [[android-getting-started-download-android-scoreflex-sdk]]
-=== Download Android Scoreflex SDK
+=== 3. Download Android Scoreflex SDK
 
 https://github.com/scoreflex/scoreflex-android-sdk/
 
 [[android-getting-started-setup-your-project]]
-=== Setup your project
+=== 4. Setup your project
 
 Import the Scoreflex SDK in your eclipse workspace by doing:
 
@@ -48,7 +48,7 @@ _Screenshot coming soon._
 You are now set to start coding.
 
 [[android-getting-started-initialize-the-sdk]]
-=== Initialize the SDK
+=== 5. Initialize the SDK
 
 First you must initialize the sdk, a good place to initialize the SDK is
 in the onCreate method of your main activity class.
@@ -67,7 +67,7 @@ You must replace +<YOUR_CLIENT_ID>+ and +<YOUR_SECRET>+ by the on on your
 Scoreflex developer page.
 
 [[android-getting-started-using-the-leaderboards]]
-=== Using the leaderboards
+=== 6. Using the leaderboards
 
 Create a leaderboard configuration on your Scoreflex Developer page.
 
@@ -75,7 +75,7 @@ Create a leaderboard configuration on your Scoreflex Developer page.
 _Screenshot coming soon._
 
 [[android-getting-started-submit-a-score]]
-=== Submit a score
+=== 7. Submit a score
 
 At the end of a level, if you want to publish the player's score to the
 leaderboard.
@@ -97,7 +97,7 @@ You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created
 on your developer page.
 
 [[android-getting-started-display-a-leaderboard]]
-=== Display a leaderboard
+=== 8. Display a leaderboard
 
 [source,java]
 ----
@@ -106,7 +106,7 @@ Scoreflex.showLeaderboard(androidActivity, leaderboardId, null);
 ----
 
 [[android-getting-started-play-with-friends]]
-=== Play with friends
+=== 9. Play with friends
 
 In order to play with friends in Scoreflex, you will have to create what
 we call Challenge.
@@ -145,7 +145,7 @@ Once the player clicks the “play now” button your game will receive a
 local intent broadcast in order to start the game.
 
 [[android-getting-started-handle-challenge-start]]
-=== Handle challenge start
+=== 10. Handle challenge start
 
 To broadcast an event, Scoreflex uses the +LocalBroadcastManager+, a class
 that can be found in the android support library. This library
@@ -205,7 +205,7 @@ If your game requires more information than just a score as turn data,
 you can check the accepted fields here [link to turn documentation]
 
 [[android-getting-started-handling-native-social-login]]
-=== Handling native social login
+=== 11. Handling native social login
 
 [[android-getting-started-handling-native-social-login-facebook]]
 ==== Facebook
@@ -259,7 +259,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 ----
 
 [[android-getting-started-handling-c2d-messages]]
-=== Handling C2D Messages
+=== 12. Handling C2D Messages
 
 Scoreflex automatically sends push notifications during the game life
 cycle, However, if you want to receive those notifications you will have
