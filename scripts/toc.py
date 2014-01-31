@@ -141,8 +141,6 @@ class TocEntry():
                 parentParts = parentParts[ancestor.depth():]
             parentParts = ['..'] * (linkRef.depth() - ancestor.depth() - 1) + parentParts
         parentParts = '/'.join(parentParts)
-        if len(parentParts) > 0:
-            parentParts += '.html'
         # Add the id of self directly, no hierarchy
         # unless self is a page itself
         if chunkPageParent is self:
