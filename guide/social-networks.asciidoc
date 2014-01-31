@@ -1,5 +1,5 @@
 [[guide-social-networks]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == [title-badge-social-networks]#Social networks#
 
 --

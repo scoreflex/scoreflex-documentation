@@ -1,5 +1,5 @@
 [[guide-scores]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Scores
 
 --
@@ -34,7 +34,6 @@ are created in one of these 2 contexts and manipulated accordingly.
 (see Challenges)
 
 [[guide-scores-reference]]
-[role="chunk-toc"]
 === Reference
 
 [[guide-scores-reference-attributes]]

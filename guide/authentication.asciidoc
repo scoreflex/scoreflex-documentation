@@ -1,5 +1,5 @@
 [[guide-authentication]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Authentication
 
 In order to interact with the Scoreflex API you have first to
@@ -13,7 +13,6 @@ service]:
 . Client-side authentication
 
 [[guide-authentication-guest-authentication]]
-[role="chunk-toc"]
 === Guest authentication
 
 [[guide-authentication-guest-authentication-concepts]]

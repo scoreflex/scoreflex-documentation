@@ -1,5 +1,5 @@
 [[guide-cloud-storage]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == [title-badge-cloud-storage]#Cloud storage#
 
 --
@@ -9,7 +9,6 @@
 === Game storage
 
 [[guide-cloud-storage-game-storage-concepts]]
-[role="chunk-toc"]
 ==== Concepts
 
 Your game often comes bundled with configurations and various assets. It
@@ -37,7 +36,6 @@ application supports. For instance, consider using a platform-neutral
 format such as a JSON-encoded string.
 
 [[guide-cloud-storage-game-storage-interact]]
-[role="chunk-toc"]
 ==== Interact
 
 You can use your web developer dashboard or the Management API to manage
@@ -112,7 +110,6 @@ $> curl -XGET \
 ----
 
 [[guide-cloud-storage-game-storage-reference]]
-[role="chunk-toc"]
 ==== Reference
 
 A storage entry has the following attributes:
@@ -131,7 +128,6 @@ A storage entry has the following attributes:
 --
 
 [[guide-cloud-storage-player-storage-concepts]]
-[role="chunk-toc"]
 ==== Concepts
 
 The player storage allows you to store application data for each player
@@ -165,7 +161,6 @@ application supports. For instance, consider using a platform-neutral
 format such as a JSON-encoded string.
 
 [[guide-cloud-storage-player-storage-interact]]
-[role="chunk-toc"]
 ==== Interact
 
 [[guide-cloud-storage-player-storage-interact-setting-a-value]]
@@ -218,7 +213,6 @@ $> curl -XDELETE \
 ----
 
 [[guide-cloud-storage-player-storage-reference]]
-[role="chunk-toc"]
 ==== Reference
 
 A storage entry has the following attributes:

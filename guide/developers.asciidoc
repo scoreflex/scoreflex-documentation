@@ -1,5 +1,5 @@
 [[guide-developers]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Developers
 
 --

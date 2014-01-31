@@ -1,5 +1,5 @@
 [[guide-matchmaking]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Matchmaking
 
 [[guide-matchmaking-concepts]]
@@ -21,7 +21,6 @@ For instance, a player can ask to match against a player with similar
 skill, of the opposite gender, who lives nearby, and of similar age!
 
 [[guide-matchmaking-interact]]
-[role="chunk-toc"]
 === Interact
 
 See:
@@ -31,7 +30,6 @@ See:
 * +ChallengeConfig.target+ (+link)
 
 [[guide-matchmaking-reference]]
-[role="chunk-toc"]
 === Reference
 
 [[guide-matchmaking-reference-playerfilter]]

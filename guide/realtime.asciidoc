@@ -1,5 +1,5 @@
 [[guide-realtime]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == [title-badge-realtime]#Realtime gaming#
 
 Scoreflex provides a framework to easily create realtime multiplayer
@@ -9,7 +9,6 @@ rooms' lifecycle and to perform operations such as joining/leaving a
 room and exchanging messages.
 
 [[guide-realtime-concepts]]
-[role="chunk-toc"]
 === Concepts
 
 --

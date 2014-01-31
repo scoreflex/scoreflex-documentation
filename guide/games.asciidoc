@@ -1,5 +1,5 @@
 [[guide-games]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Games
 
 --
@@ -20,7 +20,6 @@ You can use your developer web dashboard and the Management REST API to
 set up and manage your games.
 
 [[guide-games-reference]]
-[role="chunk-toc"]
 === Reference
 
 A game contains the following fields that can be returned or not by the

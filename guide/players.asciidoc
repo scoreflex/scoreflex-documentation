@@ -1,12 +1,11 @@
 [[guide-players]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Players
 
 --
 --
 
 [[guide-players-concepts]]
-[role="chunk-toc"]
 === Concepts
 
 You, as a +developer+, create a +game+ to reach the maximum amount of +players+.

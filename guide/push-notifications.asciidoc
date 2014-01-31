@@ -1,12 +1,11 @@
 [[guide-push-notifications]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == [title-badge-push-notifications]#Push notifications#
 
 --
 --
 
 [[guide-push-notifications-concepts]]
-[role="chunk-toc"]
 === Concepts
 
 --
@@ -128,7 +127,6 @@ would normally lead to the sending of a push notification (challenge
 invitation, player has beaten your highscore, ...) won't.
 
 [[guide-push-notifications-interact]]
-[role="chunk-toc"]
 === Interact
 
 [[guide-push-notifications-interact-managing-certificates]]
@@ -307,7 +305,6 @@ You can use the REST API to send push notifications from your games.
 _More coming soon on this topic._
 
 [[guide-push-notifications-reference]]
-[role="chunk-toc"]
 === Reference
 
 --
