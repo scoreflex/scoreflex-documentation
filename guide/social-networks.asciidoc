@@ -8,13 +8,17 @@
 [[guide-social-networks-authentication]]
 === Authentication
 
+_Help coming soon._
+
 [[guide-social-networks-friends-and-contacts]]
 === Friends and contacts
+
+_Help coming soon._
 
 [[guide-social-networks-invitations]]
 === Invitations
 
-_Coming soon._
+_Help coming soon._
 
 [[guide-social-networks-sharing]]
 === Sharing
