@@ -1,12 +1,63 @@
 [[guide-scores]]
-[role="toc-root"]
+[role="chunk-page"]
 == Scores
 
 --
 --
 
-include::scores/concepts.asciidoc[]
+[[guide-scores-concepts]]
+=== Concepts
 
-include::scores/interact.asciidoc[]
+Scores are values provided by your game's internal mechanism. A score
+can represent different values, such a count of collected items, a time,
+or a skill value.
 
-include::scores/reference.asciidoc[]
+In Scoreflex, scores are just integers. Consequently your game has to be
+able to convert non-integers values.
+
+* Times and duration should be converted to milliseconds. Example: 1
+minute and 18 seconds = 78000 milliseconds.
+* Float values should be rounded to 3 decimals maximum and sent as
+integers. Example: 3.57 should be sent as 357.
+
+Although Scoreflex internally represents scores as integers,
+configurations are available where needed to format scores correctly.
+
+[[guide-scores-interact]]
+=== Interact
+
+Scores are used as assets for leaderboards and inside challenges. They
+are created in one of these 2 contexts and manipulated accordingly.
+
+(see Leaderboards)
+
+(see Challenges)
+
+[[guide-scores-reference]]
+[role="chunk-toc"]
+=== Reference
+
+[[guide-scores-reference-attributes]]
+[role="chunk-toc"]
+==== Attributes
+
+[[guide-scores-reference-attribute-score]]
+[float]
+===== score
+
+Type: +integer+.
+
+A score value is a signed integer coded on 64 bits.
+
+[[guide-scores-reference-attribute-meta]]
+[float]
+===== meta
+
+Type: +string+.
+
+For each submitted score, the game can provide some meta-data. Meta-data
+save how the score was performed, or give some context. They can be used
+to verify the correctness of a score and help fighting cheaters.
+Although recommended, meta-data is not mandatory.
+
+(see Guides::security)

@@ -1,5 +1,5 @@
 [[guide-realtime]]
-[role="toc-root"]
+[role="chunk-page"]
 == [title-badge-realtime]#Realtime gaming#
 
 Scoreflex provides a framework to easily create realtime multiplayer
@@ -8,4 +8,177 @@ Unity, Javascript...) providing APIs to manage network connections and
 rooms' lifecycle and to perform operations such as joining/leaving a
 room and exchanging messages.
 
-include::realtime/concepts.asciidoc[]
+[[guide-realtime-concepts]]
+[role="chunk-toc"]
+=== Concepts
+
+--
+--
+
+[[guide-realtime-concepts-overview]]
+==== Overview
+
+Realtime multiplayer games developed with Scoreflex are based on these
+following basic concepts:
+
+* Player session: To use realtime features of your game, a player must
+  establish a session with Scoreflex. A player session is created for a
+  game, attached to a device.
+* Room: This is a meeting area where games take place. Players connected
+  in the same room can exchange messages with each other.
+* Participants/watchers: There are 2 kinds of players in a room,
+  participants and watchers. A participant is an actor, they can exchange
+  messages with other participants, whereas a Watcher is a spectator,
+  they can only see messages exchanged by participants.
+
+[[guide-realtime-concepts-realtime-connections-and-player-sessions]]
+==== Realtime connections and player sessions
+
+Player sessions are connection-oriented. It means that at any time, at
+most one connection is associated to it. It also means that a player
+session cannot live without connection. But, due to the volatile nature
+of mobile connections, a player session could live for a short time
+without connection before being closed. If a new connection is opened
+for an existing player session, the old one is automatically closed and
+replaced by the new one.
+
+All network aspects are handled by the Scoreflex SDKs, hiding you all
+the complexity of the connections management. the only thing you need to
+care about is the player's connection and disconnection.
+
+The player session is automatically created during his first connection.
+From your game's point of view, a player can only ever have more than
+one opened session. Because this session is attached to a device, it
+means that he cannot open 2 sessions on the same game with 2 different
+devices.
+
+[[guide-realtime-concepts-rooms]]
+==== Rooms
+
+This is where all the game play happens. Scoreflex provides APIs to
+create rooms, to join/leave them, to exchange messages, to edit room's
+properties... For a game, a player can be present at most in one room,
+and they are either a participant or a watcher, but not both. So, if a
+player joins (or watches) a room while they are already registered in
+another one (as participant or watcher),they will be removed from the
+former.
+
+[[guide-realtime-concepts-rooms-rooms-configuration-and-properties]]
+===== Room's configuration and properties
+
+The room's behaviour is defined by its runtime configuration, set during
+its creation. Some information are mandatory (+maxParticipant+, +autoStart+,
++autoStop+...), others are optional (+minParticipants+, +maxWatchers+...). the
+configuration's parameters are mostly read only values. see (+link) for
+details about existing configuration parameters.
+
+In addition of its configuration, a room has a custom set of properties
+to define game-related configuration (e.g. the map, the game's mode). It
+is a simple key-value map managed by your game, readable by all players
+registered on the room but only writable by participants.
+
+[[guide-realtime-concepts-rooms-different-kinds-of-rooms]]
+===== Different kinds of rooms
+
+There are 2 main kinds of room:
+
+* Static rooms: These rooms are created by the developer from their
+  management interface. Such rooms will never get automatically destroyed
+  unless the developer deletes them. Hence, the room's configuration is
+  set by the developer. The very nature of these rooms implies a fixed
+  number of rooms in your game. This kind of room could be used to create
+  a persistent world game.
+* Dynamic rooms: These rooms are created using a Scoreflex Webview or
+  the client API. Such rooms will automatically get destroyed when the
+  last participants leave the room. Here a developer could choose among 3
+  kinds of dynamic rooms:
+
+* Template-based dynamic rooms: The room's configuration is based on a
+  template defined by the developer. This eases the room's creation and  
+  makes the matchmaking more accurate.
+* Challenge-driven dynamic rooms: These rooms are linked to a Scoreflex
+  challenge. We could talk of real time challenges. Such rooms
+  are automatically created when a challenge starts and stopped
+  when it ends. Thus, the room's configuration is deduced from the
+  challenge's configuration. Note that the meaning of turns should be
+  handled at the game's level. Note also that the matchmaking is done
+  through challenges and not in rooms.
++
+// TODO: This features should be refined
++
+* Custom dynamic rooms: This is a special case of Template-based dynamic
+  rooms. The room's configuration can be entirely customized
+  during its creation, relieving the developer of the burden to
+  create all the templates needed by the game.
+
+[[guide-realtime-concepts-matchmaking-and-invitations]]
+==== Matchmaking and invitations
+
+There are 2 mechanisms in Scoreflex to let players join rooms:
+matchmaking or invitations.
+
+A player who created a room is automatically joined to it. Then
+ they should wait for other players. They can choose to let the
+matchmaking engine do its job, or they can send invitations. These
+solutions can also be mixed.
+
+[[guide-realtime-concepts-matchmaking-and-invitations-matchmaking]]
+===== Matchmaking
+
+Scoreflex offers mechanisms to match players into rooms, mainly based on
+the rooms' configuration. The more  rooms' configuration is filled, the
+better the matchmaking is. Using template-based dynamic rooms is a good
+way to increase the matchmaking accuracy.
+
+[[guide-realtime-concepts-matchmaking-and-invitations-invitations]]
+===== Invitations
+
+When players are invited to join a room, they receive a notification. If
+they accept the invitation, they must join the room using the
+corresponding API call.
+
+// TODO: Matchmaking & invitations are not yet fully defined. More
+// explanation should be added in this part.
+
+[[guide-realtime-concepts-lifecycle-of-a-realtime-multiplayer-game]]
+==== Lifecycle of a realtime multiplayer game
+
+* Initialize the Scoreflex's SDK
+* Connect the Player to the Scoreflex's realtime service
+* Create a room
+* Find a room using the matchmaking or accept an invitation
+* Join the selected room
+* Start a gameplay session
+* Leave the selected roo
+
+// TODO: a short explanation should be added for each point
+
+[[guide-realtime-concepts-advanced-topics]]
+==== Advanced topics
+
+--
+--
+
+[[guide-realtime-concepts-advanced-topics-authoritative-server-and-custom-game-logic]]
+===== Authoritative server and custom game logic
+
+// TODO: (Christopher)
+Help coming soon.
+
+[[guide-realtime-concepts-advanced-topics-reconnection-and-sessions-locality]]
+===== Reconnection and sessions's locality
+
+// TODO: (Christopher)
+Help coming soon.
+
+[[guide-realtime-concepts-advanced-topics-transport-layers]]
+===== Transport layers
+
+// TODO: (Christopher)
+Help coming soon.
+
+[[guide-realtime-concepts-advanced-topics-low-level-protocol]]
+===== Low-level protocol
+
+// TODO: (Christopher)
+Help coming soon.

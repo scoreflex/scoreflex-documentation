@@ -1,9 +1,0 @@
-[[guide-matchmaking-interact]]
-[role="chunk-page chunk-toc"]
-=== Interact
-
-See:
-
-* +ChallengeConfig.matchmaking+ (+link)
-* +ChallengeRequest.matchmaking+ (+link)
-* +ChallengeConfig.target+ (+link)

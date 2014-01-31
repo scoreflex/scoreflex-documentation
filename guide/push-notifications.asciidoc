@@ -1,12 +1,455 @@
 [[guide-push-notifications]]
-[role="toc-root"]
+[role="chunk-page"]
 == [title-badge-push-notifications]#Push notifications#
 
 --
 --
 
-include::push-notifications/concepts.asciidoc[]
+[[guide-push-notifications-concepts]]
+[role="chunk-toc"]
+=== Concepts
 
-include::push-notifications/interact.asciidoc[]
+--
+--
 
-include::push-notifications/reference.asciidoc[]
+[[guide-push-notifications-concepts-introduction]]
+==== Introduction
+
+Push Notifications are a great way to keep your players engaged and
+informed about your games. You can reach your entire user base quickly
+and effectively. This guide will help you through the setup process and
+the general usage of Scoreflex to send push notifications.
+
+[[guide-push-notifications-concepts-why-use-scoreflex-for-your-push-notifications]]
+==== Why use Scoreflex for your push notifications?
+
+Adding push notifications to your games can be a complicated and tedious
+task:
+
+* You need to have your own backends to store devices' identifiers and
+  players' information.
+* You need to have your own backends to communicate with remote servers
+  to send push notifications.
+* You probably need to have some kind of queue logic and properly handle
+  errors and retries to make sure your notifications are sent and not lost.
+* You want to avoid sending too many push notifications to your players
+  and therefore you need to implement some kind of throttling logic not to
+  bother your players.
+* You have to manage errors in order to clean up your devices'
+  identifiers database.
+* You have to be able to store and search players' information to target your
+  audience properly in order to communicate to only a subset of your players.
+* You need to implement and run computing intensive tasks in order to send
+  advanced push notification related to complex events.
+  For example a player's friend has just beaten their high score on level 2.
+* You probably need some statistics about how many push notifications
+  you have sent, how many push notifications were properly delivered and so on.
+* The list goes on...
+
+Scoreflex aims to solve all this for you so you can focus on your game.
+
+[[guide-push-notifications-concepts-types-of-push-notifications]]
+==== Types of push notifications
+
+In Scoreflex, there are three different types of push notifications:
+
+. Automatic notifications. These notifications are automatically
+  managed and sent by Scoreflex to your players to alert them about
+  interesting events about your game like:
+  *  One of your friends has joined the game
+  *  One of your friends has just beaten your high score on a level
+  *  A player has invited you to a challenge
+  *  A challenge you were part of has ended
+  *  It's your turn to play in a turn-based challenge
+  *  You have reached a new level of expertise
+  *  More to come...
+. Developer to player notifications. As a developer you can decide to
+  send push notifications to all your players or to a targeted portion of
+  your players. For example, this can be useful to inform them about some
+  cool news about your game or maybe to let them know that you have just
+  released a new game. You can use advanced filters to target all
+  your users playing game A that are men between 20 and 30 years old
+  and living in California.
+. Players to players notifications. You can use Scoreflex API from
+  your game to send push notifications to other players.
+
+[[guide-push-notifications-concepts-basic-steps]]
+==== Basic steps
+
+Here are the basic steps regarding how to handle push notifications:
+
+. Configure your game certificates using the web developer dashboard
+  or the management REST API.
+. Register a device token when your game is launched. The term “device
+  token” in Scoreflex designates the identifier that is used to send a
+  push notification to a particular device on various platforms. For
+  example in the Android world, the Scoreflex device token is the
+  registration id.
+. Add code to handle received push notifications in your client.
+
+[[guide-push-notifications-concepts-channels]]
+==== Channels
+
+A simple way to start sending notifications to a targeted audience is
+using channels. This allows you to use a publisher-subscriber model for
+sending pushes. Devices start by subscribing to one or more channels,
+and notifications can later be sent to these subscribers.
+
+[[guide-push-notifications-concepts-multiple-devices]]
+==== Multiple devices
+
+When a player has multiple devices registered for a game, you can choose
+to send a push notification only to the latest device used for this game
+or to all their devices. By default, the push notification will be sent to
+all devices.
+
+[[guide-push-notifications-concepts-platforms]]
+==== Platforms
+
+Scoreflex currently supports push notifications on iOS and Android.
+Please refer to the relevant iOS and Android guides for more
+information.
+
+[[guide-push-notifications-concepts-throttling-and-spam-management]]
+==== Throttling and spam management
+
+It can be counter productive to send too many push notifications to your
+players especially if they didn't react to previously sent
+notifications. Thus, an automatic Scoreflex notification to a player is
+not sent if another automatic notification has been sent during the last
+4 hours and the player has not acted in the game ever since. For testing
+purposes, this constraint does not apply in sandbox. This constraint does
+not apply to developer to players notifications or to players to players
+notifications as you, as the game's developer, have complete control to
+how you reach your audience.
+
+If you ban a player from one of your games, some of their actions that
+would normally lead to the sending of a push notification (challenge
+invitation, player has beaten your highscore, ...) won't.
+
+[[guide-push-notifications-interact]]
+[role="chunk-toc"]
+=== Interact
+
+[[guide-push-notifications-interact-managing-certificates]]
+==== Managing certificates
+
+You can use your web dashboard or the Management REST API to manage your
+game certificates for push notifications.
+
+NOTE: Certificates are isolated between sandbox and production. On iOS,
+you have to use your development certificate on sandbox which is
+different from your production certificate.
+
+[[guide-push-notifications-interact-managing-certificates-updating-certificate]]
+===== Updating certificate
+
+[source,sh]
+----
+$> curl -s -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/certificates/platforms/iOS?accessToken=<DEVELOPER_ACCESS_TOKEN>' \
+   --data-binary @<CERTIFICATE_PATH>
+----
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-managing-certificates-getting-certificate]]
+===== Getting certificate
+
+[source,sh]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/certificates/platforms/iOS?accessToken=<DEVELOPER_ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+<CERTIFICATE_DATA>
+----
+
+[[guide-push-notifications-interact-managing-certificates-deleting-certificate]]
+===== Deleting certificate
+
+[source,sh]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/certificates/platforms/iOS?accessToken=<DEVELOPER_ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-managing-device-tokens]]
+==== Managing device tokens
+
+Before sending a push notification to a device you have to register the
+corresponding device token to Scoreflex from your game code.
+
+[[guide-push-notifications-interact-managing-device-tokens-registering-a-device-token]]
+===== Registering a device token
+
+[source,sh]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=]<DEVICE_TOKEN>&accessToken=<ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-managing-device-tokens-unregistering-current-device-token]]
+===== Unregistering current device token
+
+[source,sh]
+----
+$> curl \
+   -XDELETE'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?]accessToken=<ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-managing-channels-subscriptions]]
+==== Managing channels subscriptions
+
+[[guide-push-notifications-interact-managing-channels-subscriptions-subscribing-to-new-channels]]
+===== Subscribing to new channels
+
+Valid channels are of the form +[0-9a-zA-Z_]{1,20}+. You can subscribe to
+channels when registering a device token or by explicitly calling:
+
+[source,sh]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions/channel1,channel2?]accessToken=<ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-managing-channels-subscriptions-getting-all-subscribed-channels]]
+===== Getting all subscribed channels
+
+[source,sh]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions?]accessToken=<ACCESS_TOKEN>&pretty=true'
+----
+
+
+[source,js]
+----
+[
+ "channel1",
+ "channel2"
+]
+----
+
+[[guide-push-notifications-interact-managing-channels-subscriptions-unsubscribing-from-some-channels]]
+===== Unsubscribing from some channels
+
+[source,sh]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions/channel1?]accessToken=<ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-managing-channels-subscriptions-unsubscribing-from-all-channels]]
+===== Unsubscribing from all channels
+
+[source,sh]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions?]accessToken=<ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+[[guide-push-notifications-interact-sending-developer-to-players-notifications]]
+==== Sending developer to players notifications
+
+You can use your web dashboard or the Management REST API to send push
+notifications to your players.
+
+More coming soon on this topic.
+
+[[guide-push-notifications-interact-sending-players-to-players-notifications]]
+==== Sending players to players notifications
+
+You can use the REST API to send push notifications from your games.
+
+More coming soon on this topic.
+
+[[guide-push-notifications-reference]]
+[role="chunk-toc"]
+=== Reference
+
+--
+--
+
+[[guide-push-notifications-reference-push-notification-message-attributes]]
+==== Push notification message attributes
+
+A typical iOS push notification message has the following format:
+
+[source,js]
+----
+{
+  "aps":
+  {
+    "alert": "Hello world!",
+    "sound": "default",
+    "badge": 1
+  },
+  "custom":
+  {
+    "_sfx": {
+      "code": 100,
+      "data": {
+        "targetPlayerId": "<PLAYER_ID>",
+        // Some payload
+      }
+    }
+  }
+}
+----
+
+A typical Android push notification message has the following format:
+
+[source,js]
+----
+{
+  "alert": "Hello world!",
+  "custom":
+  {
+    "_sfx": {
+      "code": 100,
+      "data": {
+        "targetPlayerId": "<PLAYER_ID>",
+        // Some payload
+      }
+    }
+  }
+}
+----
+
+NOTE: The target player id is always included in the data part. As a
+security measure, you should always check if the provided target player id
+matches your current player and discard the push notification if it is
+not the case.
+
+[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players]]
+==== Automatic Notifications from Scoreflex to Players
+
+This section describes automatic notifications that can be sent by
+Scoreflex.
+
+[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-challenge-invitation]]
+===== Challenge invitation
+
+This push notification is sent when a player is invited by another
+player to a challenge.
+
+Code: +100+.
+
+Message: “<NICKNAME> wants to challenge you!”
+
+Payload:
+
+* +inviterId+
+* +challengeInstanceId+
+
+[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-challenge-ended]]
+===== Challenge ended
+
+This push notification is sent when a challenge you have taken part in
+has ended.
+
+Code: +101+.
+
+Example of messages:
+
+* “You have won a challenge! You have earned 10 points!”
+* “You have won a challenge against <NICKNAME>! You have earned 10 points!”
+* “You have won a challenge against <NICKNAME> and <NUMBER> others!
+   You have earned 10 points!”
+* “You have lost a challenge! You have lost 10 points!”
+* “You have lost a challenge against <NICKNAME>! You have lost 10 points!”
+* “You have lost a challenge against <NICKNAME> and <NUMBER> others!
+   You have lost 10 points!”
+* “You have achieved a draw!”
+* “You have drawn against <NICKNAME>!”
+* “You have drawn against <NICKNAME> and <NUMBER> others!”
+
+Payload:
+
+* +challengeInstanceId+
+
+[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-your-turn-in-challenge]]
+===== Your turn in challenge
+
+This push notification is sent when it is the player's turn to play in a
+turn-based challenge.
+
+Code: +102+.
+
+Message: "It's your turn to play!"
+
+Payload:
+
+* +challengeInstanceId+
+
+[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-friend-joined-game]]
+===== Friend joined game
+
+This push notification is sent when a friend has joined a game.
+
+Code: +103+.
+
+Message: “Your friend <NICKNAME> just joined <GAME_NAME>!”
+
+Payload:
+
+* +friendId+
+* +gameId+
+
+[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-friend-beat-your-high-score]]
+===== Friend beat your high score
+
+This push notification is sent when a friend has beaten one of your high
+scores.
+
+Code: +104+.
+
+Message: “<FRIEND_NICKNAME> beat you by <FORMATTED_SCORE_DELTA> on <LEVEL_NAME>!”
+
+Payload:
+
+* +leaderboardId+
+* +friendId+

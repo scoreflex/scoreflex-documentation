@@ -1,9 +1,231 @@
 [[guide-cloud-storage]]
+[role="chunk-page"]
 == [title-badge-cloud-storage]#Cloud storage#
 
 --
 --
 
-include::cloud-storage/game-storage.asciidoc[]
+[[guide-cloud-storage-game-storage]]
+=== Game storage
 
-include::cloud-storage/player-storage.asciidoc[]
+[[guide-cloud-storage-game-storage-concepts]]
+[role="chunk-toc"]
+==== Concepts
+
+Your game often comes bundled with configurations and various assets. It
+can be painful to wait for a validation process to make some changes in
+your game. That's why we offer a key/value storage for your game that
+you can use to instantly update some of your game resources.
+
+For example, let's say you release a game and want to quickly configure
+how ads are displayed to your players without releasing your game every
+time you change your mind. Here is how you can do it easily:
+
+* Release your game with a hardcoded configuration
+* At game launch or on a timely basis fetch the game storage to get the
+  latest version of the configuration. If you fetch a value use it,
+  otherwise use the default configuration bundled with your game
+
+The game storage can be viewed as a shared key/value storage for one of
+your game. Only the game developer has write access to it. The games
+only have a read access to it.
+
+How you represent this data within your application is completely up to
+you, but we recommend choosing a platform-independent format so that the
+data can easily be read and written from any of the platforms your
+application supports. For instance, consider using a platform-neutral
+format such as a JSON-encoded string.
+
+[[guide-cloud-storage-game-storage-interact]]
+[role="chunk-toc"]
+==== Interact
+
+You can use your web developer dashboard or the Management API to manage
+your game storage.
+
+[[guide-cloud-storage-game-storage-interact-setting-a-value]]
+===== Setting a value
+
+[source,sh]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/storage/settings' \
+   -d 'body={"enableAdMob":false,"enableChartboost":true}&accessToken=<DEVELOPER_ACCESS_TOKEN>&contentType=application/json&ttl=86400000'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+[[guide-cloud-storage-game-storage-interact-getting-a-value]]
+===== Getting a value
+
+[source,sh]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/storage/settings?accessToken=<DEVELOPER_ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "enableAdMob": false,
+  "enableChartboost": true
+}
+----
+
+[[guide-cloud-storage-game-storage-interact-deleting-a-value]]
+===== Deleting a value
+
+[source,sh]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/management/games/<GAME_ID>/storage/settings?accessToken=<DEVELOPER_ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+[[guide-cloud-storage-game-storage-interact-getting-a-value-from-a-game]]
+[float]
+===== Getting a value from a game
+
+[source,sh]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/storage/game/settings?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "enableAdMob": false,
+  "enableChartboost": true
+}
+----
+
+[[guide-cloud-storage-game-storage-reference]]
+[role="chunk-toc"]
+==== Reference
+
+A storage entry has the following attributes:
+
+* +key+. String matching +[0-9a-zA-Z_]{1,20}+. Used to get/set an item
+* +body+. String less than 1ko. The content.
+* +TTL+. The time to live of the entry in ms. 0 meaning the value will
+  live forever.
+* +contentType+. The content type of the body. It is included in the
+  header of the response when getting the storage entry.
+
+[[guide-cloud-storage-player-storage]]
+=== Player storage
+
+--
+--
+
+[[guide-cloud-storage-player-storage-concepts]]
+[role="chunk-toc"]
+==== Concepts
+
+The player storage allows you to store application data for each player
+of your game on Scoreflex's servers. Your application can retrieve and
+update this user data from any devices using the
+http://developer.scoreflex.com/docs/reference/api/v1#StorageService[Storage
+Service API]. This service makes it possible to synchronize data for
+each player of your game across multiple devices and platforms. For
+example, if you have a game that runs on Android, iOS, and the web, you
+can use the Storage Service service to allow a user to start a game on
+their Android phone, and then continue playing on a tablet, iOS device,
+or web browser without losing any of their progress. This service can
+also be used to ensure that a user's game play continues from where it
+left off even if their device is lost, destroyed, or traded in for a
+newer model.
+
+Typical examples of data that can be saved are player's preferences,
+progression and everything that should be restore to ensure the best
+possible cross-device experience for a player playing on more than one
+device. You don't need to use the player storage to maintain your
+players' high scores or achievements as these data are automatically
+saved and retrievable from dedicated APIs.
+
+Only the player of a game can read and write his own dedicated storage
+for a specific game. The player storage is a simple key/value database.
+
+How you represent this data within your application is completely up to
+you, but we recommend choosing a platform-independent format so that the
+data can easily be read and written from any of the platforms your
+application supports. For instance, consider using a platform-neutral
+format such as a JSON-encoded string.
+
+[[guide-cloud-storage-player-storage-interact]]
+[role="chunk-toc"]
+==== Interact
+
+[[guide-cloud-storage-player-storage-interact-setting-a-value]]
+===== Setting a value
+
+[source,sh]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/storage/preferences' \
+   -d 'body=\{"musicVolume":0}&accessToken=<ACCESS_TOKEN>&contentType=application/json&ttl=86400000'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+[[guide-cloud-storage-player-storage-interact-getting-a-value]]
+===== Getting a value
+
+[source,sh]
+----
+$> curl -XGET \
+   'https://sandbox.api.scoreflex.com/v1/storage/preferences?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "musicVolume": 0
+}
+----
+
+[[guide-cloud-storage-player-storage-interact-deleting-a-value]]
+===== Deleting a value
+
+[source,sh]
+----
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/storage/preferences?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+[[guide-cloud-storage-player-storage-reference]]
+[role="chunk-toc"]
+==== Reference
+
+A storage entry has the following attributes:
+
+* +key+. String matching +[0-9a-zA-Z_]{1,20}+. Used to get/set an item
+* +body+. String less than 1ko. The content.
+* +TTL+. The time to live of the entry in ms. 0 meaning the value will
+  live forever.
+* +contentType+. The content type of the body. It is included in the
+  header of the response when getting the storage entry.
