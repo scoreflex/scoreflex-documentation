@@ -204,7 +204,8 @@
 .article .tocwrapper {
   width:30%;
   float:right;
-  margin:0em 0em 1em 1em;
+  border-left:1em solid #FFF;
+  border-bottom:1em solid #FFF;
 }
 .article .tocwrapper .toc {
   padding: 0.5em;
