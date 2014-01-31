@@ -297,14 +297,14 @@ $> curl -XDELETE \
 You can use your web dashboard or the Management REST API to send push
 notifications to your players.
 
-More coming soon on this topic.
+_More coming soon on this topic._
 
 [[guide-push-notifications-interact-sending-players-to-players-notifications]]
 ==== Sending players to players notifications
 
 You can use the REST API to send push notifications from your games.
 
-More coming soon on this topic.
+_More coming soon on this topic._
 
 [[guide-push-notifications-reference]]
 [role="chunk-toc"]

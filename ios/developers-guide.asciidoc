@@ -31,7 +31,7 @@ you should add to your +UIApplicationDelegate+:
 ==== GooglePlus
 
 // TODO: (Julien)
-Help coming soon.
+_Help coming soon._
 
 [[ios-developers-guide-handling-push-notifications]]
 === Handling push notifications
@@ -183,4 +183,4 @@ use the SDK only for REST call the only methods you will have to learn
 are:
 
 // TODO: (Julien)
-Help coming soon.
+_Help coming soon._

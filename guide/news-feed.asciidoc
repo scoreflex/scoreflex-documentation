@@ -2,4 +2,4 @@
 [role="chunk-page"]
 == News feed
 
-Coming soon.
+_Coming soon._

@@ -5,7 +5,7 @@
 [partintro]
 --
 // TODO: Maybe a list of articles from the blog (tagged how-to) for different specific use cases.
-Coming soon.
+_Coming soon._
 --
 
 // [[how-to-how-to-display-a-players-friends-progress-on-a-map]]

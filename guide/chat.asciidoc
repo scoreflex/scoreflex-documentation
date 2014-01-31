@@ -2,4 +2,4 @@
 [role="chunk-page"]
 == Chat
 
-Coming soon.
+_Coming soon._

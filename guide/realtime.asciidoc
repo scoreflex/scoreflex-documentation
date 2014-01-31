@@ -163,22 +163,22 @@ corresponding API call.
 ===== Authoritative server and custom game logic
 
 // TODO: (Christopher)
-Help coming soon.
+_Help coming soon._
 
 [[guide-realtime-concepts-advanced-topics-reconnection-and-sessions-locality]]
 ===== Reconnection and sessions's locality
 
 // TODO: (Christopher)
-Help coming soon.
+_Help coming soon._
 
 [[guide-realtime-concepts-advanced-topics-transport-layers]]
 ===== Transport layers
 
 // TODO: (Christopher)
-Help coming soon.
+_Help coming soon._
 
 [[guide-realtime-concepts-advanced-topics-low-level-protocol]]
 ===== Low-level protocol
 
 // TODO: (Christopher)
-Help coming soon.
+_Help coming soon._

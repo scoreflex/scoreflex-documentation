@@ -8,7 +8,7 @@
 Go to https://developer.scoreflex.com/account/login
 
 // TODO: [screenshot]
-Screenshot coming soon.
+_Screenshot coming soon._
 
 [[ios-getting-started-create-your-first-game]]
 === Create your first game
@@ -26,12 +26,12 @@ Go to https://github.com/scoreflex/scoreflex-ios-sdk
 Drag and drop the +Scoreflex.xcodeproj+ file on your project:
 
 // TODO: [screenshot]
-Screenshot coming soon.
+_Screenshot coming soon._
 
 Add +libScoreflex.a+ to the linked library of your project:
 
 // TODO: [screenshot]
-Screenshot coming soon.
+_Screenshot coming soon._
 
 Finally add the following frameworks to the linked framework of your project:
 
@@ -68,7 +68,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 Create a leaderboard configuration on your Scoreflex Developer page.
 
 // TODO: [screenshots]
-Screenshot coming soon.
+_Screenshot coming soon._
 
 [[ios-getting-started-submit-a-score]]
 === Submit a score
@@ -105,7 +105,7 @@ view is already displayed on the screen. Otherwise, +showLeaderboard+ will
 fail at the fullscreen view.
 
 // TODO: [screenshot]
-Screenshot coming soon.
+_Screenshot coming soon._
 
 [[ios-getting-started-play-with-friends]]
 === Play with friends
@@ -121,7 +121,7 @@ But, first create a challenge on your Scoreflex Developer page:
 *Create a challenge configuration*
 
 // TODO: [screenshot]
-Screenshot coming soon.
+_Screenshot coming soon._
 
 *Display the challenges view*
 
