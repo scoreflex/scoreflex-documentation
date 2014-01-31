@@ -3,7 +3,11 @@
 === [title-badge-leaderboards]#Concepts#
 
 --
+A leaderboard is an ordered list of scores made by players. They are
+useful to compare players according to their skills and performances.
 --
+
+(see Scores)
 
 [[guide-leaderboards-concepts-overview]]
 ==== Overview

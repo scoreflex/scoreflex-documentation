@@ -3,6 +3,8 @@
 === [title-badge-challenges]#Concepts#
 
 --
+Challenges are games in which several players can compete and have fun
+together.
 --
 
 [[guide-challenges-concepts-overview]]

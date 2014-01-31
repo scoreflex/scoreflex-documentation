@@ -1,9 +1,6 @@
 [[guide-challenges]]
-[role="toc-root"]
-== [title-badge-challenges]#Challenges#
-
-Challenges are games in which several players can compete and have fun
-together.
+[role="toc-root section-link"]
+== <<guide-challenges-concepts,[title-badge-challenges]#Challenges#>>
 
 include::challenges/concepts.asciidoc[]
 
