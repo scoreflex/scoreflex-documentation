@@ -6,8 +6,6 @@
   display:inline-block;
   vertical-align:top;
   width:200px;
-  padding-top:1em;
-  margin-top:-3px;
 }
 #main.developerDocsPage .halfMenu .developerDocsMenuModule > UL > LI {
   border-bottom:1px solid #CCC;
