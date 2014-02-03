@@ -1,6 +1,6 @@
 [[guide-cloud-storage]]
 [role="chunk-page chunk-toc"]
-== [title-badge-cloud-storage]#Cloud storage#
+== Cloud storage
 
 --
 --

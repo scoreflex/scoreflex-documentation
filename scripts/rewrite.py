@@ -53,6 +53,10 @@ def clean(soup, toc, ref):
         if elmt is not None:
             elmt['class'] = (elmt.get('class', '') + ' ' + elmt['id']).strip()
             del elmt['id']
+    # Add icon in header
+    if headerElmt is not None:
+        iconElmt = BeautifulSoup.Tag(soup, 'div', attrs={'class': 'page-badge'})
+        headerElmt.insert(0, iconElmt)
     # Add breadcrumb in header
     if headerElmt is not None:
         breadcrumbElmt = BeautifulSoup.Tag(soup, 'div', attrs={'class': 'breadcrumb'})
@@ -62,7 +66,7 @@ def clean(soup, toc, ref):
             linkElmt = BeautifulSoup.Tag(soup, 'a', attrs={'href': entry.link(ref)})
             linkElmt.append(BeautifulSoup.NavigableString(entry.title if not entry.is_root() else 'Docs'))
             breadcrumbElmt.append(linkElmt)
-        headerElmt.insert(0, breadcrumbElmt)
+        headerElmt.insert(1, breadcrumbElmt)
     # Add ToC in header
     if tocElmt is not None:
         # Remove toc's noscript

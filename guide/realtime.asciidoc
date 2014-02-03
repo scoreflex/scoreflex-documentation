@@ -1,6 +1,6 @@
 [[guide-realtime]]
 [role="chunk-page chunk-toc"]
-== [title-badge-realtime]#Realtime gaming#
+== Realtime gaming
 
 Scoreflex provides a framework to easily create realtime multiplayer
 games. It is a cloud-based solution with client-side SDKs (Android, IOS,

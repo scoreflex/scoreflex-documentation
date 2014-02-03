@@ -1,6 +1,6 @@
 [[guide-leaderboards-concepts]]
 [role="chunk-page chunk-toc"]
-=== [title-badge-leaderboards]#Concepts#
+=== Concepts
 
 --
 A leaderboard is an ordered list of scores made by players. They are

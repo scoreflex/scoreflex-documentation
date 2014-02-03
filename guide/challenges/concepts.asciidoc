@@ -1,6 +1,6 @@
 [[guide-challenges-concepts]]
 [role="chunk-page chunk-toc"]
-=== [title-badge-challenges]#Concepts#
+=== Concepts
 
 --
 Challenges are games in which several players can compete and have fun

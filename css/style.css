@@ -133,39 +133,30 @@
  * Icons
  */
 
-#main.developerDocsPage H1 span.title-badge-leaderboards,
-#main.developerDocsPage H1 span.title-badge-challenges,
-#main.developerDocsPage H1 span.title-badge-cloud-storage,
-#main.developerDocsPage H1 span.title-badge-realtime,
-#main.developerDocsPage H1 span.title-badge-social-networks,
-#main.developerDocsPage H1 span.title-badge-push-notifications {
-  display:block;
-  padding-left:140px;
-  min-height:95px; padding-top:39px; /* 95 + 39 = 134 = image height */
-  background-repeat:no-repeat;
-  background-position:left center;
-  background-color:transparent;
+#main.developerDocsPage .header .page-badge {
+  float: left;
+  padding-right: 1em;
+  width: 8.4em;
+  height: 8.4em;
+  background-size: 8.4em;
+  background-image: url('/docs/img/badge_scoreflex.png');
+  background-repeat: no-repeat;
 }
-#main.developerDocsPage H1 span.title-badge-leaderboards       {background-image:url('/docs/img/badge_leaderboards.png');}
-#main.developerDocsPage H1 span.title-badge-challenges         {background-image:url('/docs/img/badge_challenges.png');}
-#main.developerDocsPage H1 span.title-badge-cloud-storage      {background-image:url('/docs/img/badge_cloud.png');}
-#main.developerDocsPage H1 span.title-badge-realtime           {background-image:url('/docs/img/badge_reflex.png');}
-#main.developerDocsPage H1 span.title-badge-social-networks    {background-image:url('/docs/img/badge_network.png');}
-#main.developerDocsPage H1 span.title-badge-push-notifications {background-image:url('/docs/img/badge_notification.png');}
+#main.developerDocsPage.guide-leaderboards       .header .page-badge {background-image:url('/docs/img/badge_leaderboards.png');}
+#main.developerDocsPage.guide-challenges         .header .page-badge {background-image:url('/docs/img/badge_challenges.png');}
+#main.developerDocsPage.guide-cloud-storage      .header .page-badge {background-image:url('/docs/img/badge_cloud.png');}
+#main.developerDocsPage.guide-realtime           .header .page-badge {background-image:url('/docs/img/badge_realtime.png');}
+#main.developerDocsPage.guide-social-networks    .header .page-badge {background-image:url('/docs/img/badge_network.png');}
+#main.developerDocsPage.guide-push-notifications .header .page-badge {background-image:url('/docs/img/badge_notification.png');}
+#main.developerDocsPage.unity                    .header .page-badge {background-image:url('/docs/img/badge_unity.png');}
+#main.developerDocsPage.android                  .header .page-badge {background-image:url('/docs/img/badge_android.png');}
+#main.developerDocsPage.ios                      .header .page-badge {background-image:url('/docs/img/badge_ios.png');}
+#main.developerDocsPage.web                      .header .page-badge {background-image:url('/docs/img/badge_web.png');}
 
-@media screen and (max-width: 479px) {
-  #main.developerDocsPage H1 span.title-badge-leaderboards,
-  #main.developerDocsPage H1 span.title-badge-challenges,
-  #main.developerDocsPage H1 span.title-badge-cloud-storage,
-  #main.developerDocsPage H1 span.title-badge-realtime,
-  #main.developerDocsPage H1 span.title-badge-social-networks,
-  #main.developerDocsPage H1 span.title-badge-push-notifications {
-    background-size:50px 50px;
-    padding-left:60px;
-    min-height:40px; padding-top:10px; /* 40 + 10 = 50 = image height */
-  }
+
+.article > .header {
+  min-height: 8.4em;
 }
-
 
 /*
  * Headers
@@ -193,14 +184,12 @@
 }
 
 .article > .header h1 {
-  margin-top:.5em;
+  margin-top: -.2em;
 }
 
 .article > .header .breadcrumb {
   font-size: 1em;
-  padding-left:140px; /* 95 + 39 = 134 = image height */
-  position: relative;
-  top: 4em; /* FIXME Placement changes with font scaling! */
+  padding-top: 1.7em;
   color: #888;
 }
 .article > .header .breadcrumb A,
@@ -209,13 +198,15 @@
   color: inherit;
 }
 
+
 /*
  * Table of Contents
  */
 
 .article .tocwrapper {
-  width:30%;
+  clear: left;
   float:right;
+  width:30%;
   border-left:1em solid #FFF;
   border-bottom:1em solid #FFF;
 }

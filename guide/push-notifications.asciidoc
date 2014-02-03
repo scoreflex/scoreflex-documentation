@@ -1,6 +1,6 @@
 [[guide-push-notifications]]
 [role="chunk-page chunk-toc"]
-== [title-badge-push-notifications]#Push notifications#
+== Push notifications
 
 --
 --

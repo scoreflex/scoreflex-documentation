@@ -1,6 +1,6 @@
 [[guide-challenges-reference]]
 [role="chunk-page chunk-toc"]
-=== [title-badge-challenges]#Reference#
+=== Reference
 
 --
 --

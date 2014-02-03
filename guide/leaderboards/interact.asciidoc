@@ -1,6 +1,6 @@
 [[guide-leaderboards-interact]]
 [role="chunk-page chunk-toc"]
-=== [title-badge-leaderboards]#Interact#
+=== Interact
 
 Leaderboards can be created, edited, deleted and moderated using the
 https://developer.scoreflex.com/account/login[developer interface],
