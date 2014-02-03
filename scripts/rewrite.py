@@ -72,13 +72,18 @@ def clean(soup, toc, ref):
         # Inject ToC
         tocHTMLBuffer = cStringIO.StringIO()
         ref.write_html(tocHTMLBuffer, open=ref)
-        tocTags = BeautifulSoup.BeautifulSoup(tocHTMLBuffer.getvalue().decode('utf-8'))
+        tocHTML = tocHTMLBuffer.getvalue().decode('utf-8')
         tocHTMLBuffer.close()
-        tocElmt.append(tocTags)
-        # Use a wrapper div
-        wrapper = BeautifulSoup.Tag(soup, 'div', attrs={'class':'tocwrapper'})
-        tocElmt.replaceWith(wrapper)
-        wrapper.append(tocElmt)
+        if tocHTML == u'':
+            # Remove ToC if empty
+            tocElmt.decompose()
+        else:
+            tocTags = BeautifulSoup.BeautifulSoup(tocHTML)
+            tocElmt.append(tocTags)
+            # Use a wrapper div
+            wrapper = BeautifulSoup.Tag(soup, 'div', attrs={'class':'tocwrapper'})
+            tocElmt.replaceWith(wrapper)
+            wrapper.append(tocElmt)
     # Add license in footer
     if footerElmt is not None:
         footerLicense = BeautifulSoup.BeautifulSoup("""

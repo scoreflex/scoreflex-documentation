@@ -220,7 +220,7 @@ class TocEntry():
             for child in self.children:
                 child.write_html(f, pageRoot, tocRoot, indent+1, open)
             f.write('%s</ul>\n' % strIndent)
-        if not self.is_root():
+        if not self.is_root() and not self is tocRoot:
             indent -= 1
             strIndent = '  ' * indent
             f.write('%s</li>\n' % strIndent)
