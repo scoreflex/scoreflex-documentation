@@ -92,7 +92,6 @@ def clean(soup, toc, ref):
     if footerElmt is not None:
         footerLicense = BeautifulSoup.BeautifulSoup("""
 <div class="footer-license">
-  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
   Except as otherwise noted, <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Scoreflex Documentation</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://developer.scoreflex.com/docs" property="cc:attributionName" rel="cc:attributionURL">Scoreflex</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>,
   and code samples are licensed under the <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
 </div>""")
