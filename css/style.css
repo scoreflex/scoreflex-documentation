@@ -118,7 +118,68 @@
   }
 }
 
-/* Designer styles */
+
+/*
+ * Left menu
+ */
+
+.developerDocsMenuModule,
+.article .tocwrapper .toc {
+  padding:1em 0.5em 1em 1em;
+  margin:0;
+  color:#808080;
+}
+
+.menuRetractable {
+  list-style-type: none;
+  margin: 0;
+}
+
+.menuRetractable LI {
+  margin-left:1.25em;
+  line-height:1.2em;
+  padding:0.25em 0;
+}
+
+.menuRetractable UL {
+  display:none;
+}
+
+.menuRetractable UL.opened {
+  display:block;
+}
+
+.menuRetractable .openable {
+  position:relative;
+  cursor:pointer;
+}
+.menuRetractable .openable:hover {
+  text-decoration:underline;
+}
+
+.menuRetractable .arrow {
+  display:inline-block;
+  width:1.25em;
+  margin-left:-1.25em;
+}
+
+.menuRetractable A {
+  color:#808080;
+  line-height:1.1em;
+}
+
+.menuRetractable LI.selected > A,
+.menuRetractable LI.selected > .openable,
+.menuRetractable LI.selected > .openable A {
+  font-weight:bold;
+  color:#777;
+}
+
+
+/*******************
+ * Designer styles *
+ *******************/
+
 #main.developerDocsPage>.widthFull > .widthColumn {
   background-color:#EEEEEE;
 }
@@ -224,6 +285,7 @@
   background-color:#F4F8FC;
 }
 .article .tocwrapper .toc .toctitle {
+  color: #666;
   text-transform: uppercase;
   font-weight: bold;
 }
