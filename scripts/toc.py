@@ -211,7 +211,7 @@ class TocEntry():
                 else:
                     label = self.title.encode('utf-8')
                 f.write('%s<span class="openable">\n' % strIndent)
-                f.write('%s  <span class="arrow"><span class="%s"></span></span>%s\n' % (strIndent, 'arrow_black_bottom' if open == True else 'arrow_black_right', label))
+                f.write('%s  <span class="arrow"><span class="%s"></span></span>%s\n' % (strIndent, 'arrow_opened' if open == True else 'arrow_closed', label))
                 f.write('%s</span>\n' % strIndent)
             else:
                 f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))

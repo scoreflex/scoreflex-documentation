@@ -50,6 +50,16 @@
   /* END #gradient > .vertical(#FFF, #D0D9E0); */
 }
 
+.arrow_opened,
+.arrow_closed {
+  width: 9px;
+  height: 9px;
+  background-repeat: no-repeat;
+  display: inline-block
+}
+.arrow_opened { background-image: url('/docs/img/icons/arrow_opened.png'); }
+.arrow_closed { background-image: url('/docs/img/icons/arrow_closed.png'); }
+
 @media screen and (max-width: 1000px) {
   #main.developerDocsPage .halfMenu {
     display:none;
