@@ -1,0 +1,95 @@
+[[index]]
+[role="skip-toc"]
+= Start Building
+
+[role="sub-title"]
+--
+Dive into our Getting Started guides and integrate with your app in minutes.
+--
+
+[role="illustration"]
+--
+--
+
+[role="section"]
+.Unity
+--
+[icon icon-unity]#{empty}#
+
+* <<unity-getting-started,Getting started>>
+* <<unity-developers-guide,Developer's guide>>
+* <<unity-sdk,SDK>>
+* <<unity-api-reference,API reference>>
+--
+
+[role="section"]
+.Android
+--
+[icon icon-android]#{empty}#
+
+* <<android-getting-started,Getting started>>
+* <<android-developers-guide,Developer's guide>>
+* <<android-sdk,SDK>>
+* <<android-api-reference,API reference>>
+--
+
+[role="section"]
+.iOS
+--
+[icon icon-ios]#{empty}#
+
+* <<ios-getting-started,Getting started>>
+* <<ios-developers-guide,Developer's guide>>
+* <<ios-sdk,SDK>>
+* <<ios-api-reference,API reference>>
+--
+
+[role="section"]
+.Web
+--
+[icon icon-web]#{empty}#
+
+* <<web-getting-started,Getting started>>
+* <<web-developers-guide,Developer's guide>>
+* <<web-sdk,SDK>>
+* <<web-api-reference,API reference>>
+--
+
+[role="section"]
+.REST API
+--
+[icon icon-rest-api]#{empty}#
+
+* http://developer.scoreflex.com/docs/reference/api/v1[Read the reference]
+--
+
+[role="section"]
+.Management API
+--
+[icon icon-management-api]#{empty}#
+
+* http://developer.scoreflex.com/docs/reference/api/v1#service_ManagementService[Read the reference]
+--
+
+
+[role="section"]
+.Third party clients
+--
+[icon icon-third-party-clients]#{empty}#
+
+* <<third-party-clients,Browse third party libraries>>
+--
+
+
+[role="section"]
+.Community and support
+--
+[icon icon-community-and-support]#{empty}#
+
+* <<community-and-support,Find help>>
+* <<community-and-support,Get in touch>>
+--
+
+[role="clear"]
+--
+--

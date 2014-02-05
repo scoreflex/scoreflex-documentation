@@ -363,6 +363,10 @@
   -webkit-border-radius:0 5px 5px 0;
 }
 
+.article > .content .clear {
+  clear: both;
+}
+
 
 /*
  * Adminition blocks
@@ -519,3 +523,69 @@
 .article > .content table td > p:last-child {
   margin-bottom: 0;
 }
+
+
+/*****************
+ * Page specific *
+ *****************/
+
+/*
+ * Index
+ */
+
+#main.developerDocsPage.index- .article > .header {
+  min-height: initial;
+  text-align: center;
+}
+#main.developerDocsPage.index- .article > .header .page-badge,
+#main.developerDocsPage.index- .article > .header .breadcrumb {
+  display: none;
+}
+
+#main.developerDocsPage.index- .article > .content .sub-title {
+  text-align: center;
+}
+
+#main.developerDocsPage.index- .article > .content .illustration {
+  width: 100%;
+  height: 15em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 36em;
+  background-image: url('/docs/img/index_img.png');
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+
+#main.developerDocsPage.index- .article > .content .section {
+  float: left;
+  width: 50%;
+  height: 13em;
+  min-width: 18em;
+}
+#main.developerDocsPage.index- .article > .content .section UL {
+  list-style: none;
+}
+#main.developerDocsPage.index- .article > .content .section .title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1.4em;
+}
+#main.developerDocsPage.index- .article > .content .section .icon {
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 8em;
+  width: 8em;
+  height: 8em;
+  margin-right: 1em;
+}
+#main.developerDocsPage.index- .article > .content .section .icon-unity   { background-image: url('/docs/img/index_unity.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-android { background-image: url('/docs/img/index_android.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-ios     { background-image: url('/docs/img/index_ios.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-web     { background-image: url('/docs/img/index_web.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-rest-api              { background-image: url('/docs/img/index_rest_api.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-management-api        { background-image: url('/docs/img/index_management_api.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-community-and-support { background-image: url('/docs/img/index_community.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-third-party-clients   { background-image: url('/docs/img/index_tools.png'); }

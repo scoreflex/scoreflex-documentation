@@ -39,6 +39,7 @@ class TocEntry():
         self.parent = None
         self.id = id
         self.title = title
+        self.skipToc = None
         self.linkedTo = None
         self.chunkPage = False
         self.chunkToc = False
@@ -104,7 +105,7 @@ class TocEntry():
                 return LINK_ROOT
         else:
             if self.is_root():
-                print >> sys.stderr, 'Unhandled link to root with no LINK_ROOT'
+                print >> sys.stderr, 'WARNING: Unhandled link to root with no LINK_ROOT'
                 return '[ROOT]'
         if self is linkRef:
             return '#'
@@ -115,7 +116,7 @@ class TocEntry():
             # Internal link (a TocEntry id)
             target = self.get_root().walk_id(self.linkedTo)
             if target is None:
-                print >> sys.stderr, 'Broken link from %s to "%s"' % (self.id, self.linkedTo)
+                print >> sys.stderr, 'WARNING: Broken link from %s to "%s"' % (self.id, self.linkedTo)
                 return '[BROKEN_LINK]'
             return target.link(linkRef)
         # Get where the page starts
@@ -204,7 +205,7 @@ class TocEntry():
                 else:
                     target = self.get_root().walk_id(self.linkedTo)
                     if target is None:
-                        print >> sys.stderr, 'Broken link from %s to "%s"' % (self.id, self.linkedTo)
+                        print >> sys.stderr, 'WARNING: Broken link from %s to "%s"' % (self.id, self.linkedTo)
                         target = self
                 if target.chunkPage:
                     label = '<a href="%s">%s</a>' % (self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8'))
@@ -218,6 +219,7 @@ class TocEntry():
         if len(self.children) > 0:
             f.write('%s<ul class="menuRetractable%s">\n' % (strIndent, ' opened' if open == True else ''))
             for child in self.children:
+                if child.skipToc: continue
                 child.write_html(f, pageRoot, tocRoot, indent+1, open)
             f.write('%s</ul>\n' % strIndent)
         if not self.is_root() and not self is tocRoot:
@@ -244,6 +246,9 @@ def getTitle(node):
         if not isNodeTag(title, 'title'): continue
         return getText(title)
     return None
+
+def shouldSkipToc(node):
+    return 'skip-toc' in node.getAttribute('role')
 
 def shouldChunkToc(node):
     return 'chunk-toc' in node.getAttribute('role')
@@ -274,6 +279,7 @@ def parseLevels(node, chunkToc, levels, currToc, silent=False):
         partId = part.getAttribute('id')
         partTitle = getTitle(part)
         childToc = TocEntry(partId, partTitle)
+        childToc.skipToc = shouldSkipToc(part)
         childToc.linkedTo = getLinkedTo(part)
         childToc.chunkPage = shouldChunkPage(part)
         childToc.chunkToc = shouldChunkToc(part)
@@ -286,7 +292,7 @@ def parseLevels(node, chunkToc, levels, currToc, silent=False):
                     print >> sys.stderr, 'WARNING:', str(childToc), 'conflicts with an earlier auto-generated id, such link will be broken!'
         if chunkToc and childToc.chunkToc: continue
         parseLevels(part, chunkToc, sublevels, childToc, silent)
-    
+
 def extractToc(dom, chunkToc, silent=False):
     toc = TocEntry()
     for book in dom.childNodes:

@@ -1,3 +1,5 @@
+include::index.asciidoc[]
+
 include::getting-started.asciidoc[]
 
 include::api-reference.asciidoc[]
