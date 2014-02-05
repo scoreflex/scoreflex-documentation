@@ -76,7 +76,7 @@
     padding-top:0;
     margin-top:0;
     margin-right:0;
-    background-color:#F4F8FC;
+    background-color:#EFEFEF;
     overflow-x:auto;
   }
   #main.developerDocsPage .halfMenu.opened .developerDocsMenuSection {
@@ -181,7 +181,7 @@
  *******************/
 
 #main.developerDocsPage>.widthFull > .widthColumn {
-  background-color:#EEEEEE;
+  background-color:#EFEFEF;
 }
 #main.developerDocsPage .developerDocsMenuSection {
   border-width:0;
@@ -282,7 +282,7 @@
 }
 .article .tocwrapper .toc {
   padding: 0.5em;
-  background-color:#F4F8FC;
+  background-color:#EFEFEF;
 }
 .article .tocwrapper .toc .toctitle {
   color: #666;
@@ -357,7 +357,7 @@
   line-height:1.6em;
   max-height:25em; /* 25/1.6 ~ 15 lines of code */
   overflow:auto;
-  background-color:#F0F0F0;
+  background-color:#EFEFEF;
   border-radius:0 5px 5px 0;
   -webkit-border-radius:0 5px 5px 0;
 }
@@ -421,7 +421,7 @@
 .article > .content div.hdlist tr {
   padding-bottom: 15px;
 }
-.article > .content dt.hdlist1.strong, 
+.article > .content dt.hdlist1.strong,
 .article > .content td.hdlist1.strong {
   font-weight: bold;
 }
