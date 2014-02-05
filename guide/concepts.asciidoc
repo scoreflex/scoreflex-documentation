@@ -359,9 +359,9 @@ Here is a list of callbacks:
 
 [cols="1,2,3",options="header"]
 |===
-|Code
-|Description
-|Data
+^|Code
+^|Description
+^|Data
 
 |200000
 |When a player successfully logged out

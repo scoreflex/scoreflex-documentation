@@ -10,10 +10,10 @@ throughout the REST API, unless otherwise specified.
 
 Where possible, API strives to use appropriate HTTP verbs.
 
-[cols="1,5",options="header"]
+[cols="1,5",options="header,autowidth"]
 |===
-<|Verb
-<|Description
+^|Verb
+^|Description
 
 |GET
 |Used for retrieving resources.
@@ -42,10 +42,10 @@ If everything is ok, the response is returned with an HTTP status 200.
 
 In case of errors, the following HTTP statuses can be used:
 
-[cols="1,5",options="header"]
+[cols="1,5",options="header,autowidth"]
 |===
-<|Status
-<|Description
+^|Status
+^|Description
 
 |400
 |Bad Request from the client.
@@ -88,9 +88,9 @@ code:
 
 [cols="1,1,5",options="header"]
 |===
-<|Code
-<|Status
-<|Description
+^|Code
+^|Status
+^|Description
 
 |10000
 |404
@@ -401,10 +401,10 @@ Scoreflex API allows you to specify a locale-based language via the
 
 The following language codes are supported:
 
-[cols="4,1",options="header"]
+[cols="4,1",options="header,autowidth"]
 |===
-|Language
-|Code
+^|Language
+^|Code
 
 |Afrikaans
 |af

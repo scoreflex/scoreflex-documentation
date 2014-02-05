@@ -456,18 +456,18 @@
   margin-top: 0;
 }
 .article > .content table.tableblock {
-  border-width: 3px;
+  border-width: 1px;
   border-spacing: 0px;
   border-style: solid;
-  border-color: #EEE;
+  border-color: #ddd;
   border-collapse: collapse;
 }
 .article > .content th.tableblock,
 .article > .content td.tableblock {
   border-width: 1px;
-  padding: 4px;
+  padding: .5em;
   border-style: solid;
-  border-color: #EEE;
+  border-color: #ddd;
 }
 
 .article > .content table.tableblock.frame-topbot {
@@ -506,4 +506,15 @@
 .article > .content th.tableblock.valign-bottom,
 .article > .content td.tableblock.valign-bottom {
   vertical-align: bottom;
+}
+
+
+.article > .content table thead tr {
+  background-color: #f0f0f0;
+}
+.article > .content table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+.article > .content table td > p:last-child {
+  margin-bottom: 0;
 }
