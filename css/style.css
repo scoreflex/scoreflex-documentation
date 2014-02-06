@@ -595,6 +595,8 @@
 #main.developerDocsPage.index- .article > .content .section .icon-web     { background-image: url('/docs/img/index_web.png'); }
 #main.developerDocsPage.index- .article > .content .section .icon-rest-api              { background-image: url('/docs/img/index_rest_api.png'); }
 #main.developerDocsPage.index- .article > .content .section .icon-management-api        { background-image: url('/docs/img/index_management_api.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-features              { background-image: url('/docs/img/index_design.png'); }
+#main.developerDocsPage.index- .article > .content .section .icon-downloads             { background-image: url('/docs/img/index_download.png'); }
 #main.developerDocsPage.index- .article > .content .section .icon-community-and-support { background-image: url('/docs/img/index_community.png'); }
 #main.developerDocsPage.index- .article > .content .section .icon-third-party-clients   { background-image: url('/docs/img/index_tools.png'); }
 #main.developerDocsPage.downloads- .article > .content .section .icon-unity   { background-image: url('/docs/img/index_unity.png'); }

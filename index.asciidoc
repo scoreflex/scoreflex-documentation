@@ -73,6 +73,26 @@ Dive into our Getting Started guides and integrate with your app in minutes.
 
 
 [role="section"]
+.Features
+--
+[icon icon-features]#{empty}#
+
+* link:/features[See all features]
+--
+
+
+[role="section"]
+.Downloads
+--
+[icon icon-downloads]#{empty}#
+
+* <<downloads,SDKs>>
+* <<downloads,Samples>>
+* <<downloads,Graphics>>
+--
+
+
+[role="section"]
 .Third party clients
 --
 [icon icon-third-party-clients]#{empty}#
