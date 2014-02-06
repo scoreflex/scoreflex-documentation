@@ -2,10 +2,51 @@
 [role="chunk-page chunk-toc"]
 = Downloads
 
-[partintro]
+[role="sub-title"]
 --
-// TODO: Link to a page where all the SDK latest versions can be downloaded with
-//       a direct link zip and tarball from GitHub. Maybe also for each one a
-//       small changelog of latest changes (cf. Parse)
-_Links coming soon._
+Dive into our Getting Started guides and integrate with your app in minutes.
 --
+
+[role="illustration"]
+--
+--
+
+[role="section"]
+.Unity
+--
+[icon icon-unity]#{empty}#
+
+* <<unity-sdk,SDK>>
+--
+
+[role="section"]
+.Android
+--
+[icon icon-android]#{empty}#
+
+* <<android-sdk,SDK>>
+* https://github.com/scoreflex/scoreflex-samples/tree/master/android[Samples]
+--
+
+[role="section"]
+.iOS
+--
+[icon icon-ios]#{empty}#
+
+* <<ios-sdk,SDK>>
+--
+
+[role="section"]
+.Web
+--
+[icon icon-web]#{empty}#
+
+* <<web-sdk,SDK>>
+* https://github.com/scoreflex/scoreflex-samples/tree/master/javascript[Samples]
+--
+
+[role="clear"]
+--
+--
+
+// TODO: Add a changelog per platform

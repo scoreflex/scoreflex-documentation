@@ -530,49 +530,57 @@
  *****************/
 
 /*
- * Index
+ * Index and Downloads
  */
 
-#main.developerDocsPage.index- .article > .header {
+#main.developerDocsPage.downloads- .article > .header,
+#main.developerDocsPage.index-     .article > .header {
   min-height: initial;
   text-align: center;
 }
-#main.developerDocsPage.index- .article > .header .page-badge,
-#main.developerDocsPage.index- .article > .header .breadcrumb {
+#main.developerDocsPage.index-     .article > .header .page-badge,
+#main.developerDocsPage.index-     .article > .header .breadcrumb,
+#main.developerDocsPage.downloads- .article > .header .page-badge,
+#main.developerDocsPage.downloads- .article > .header .breadcrumb {
   display: none;
 }
 
-#main.developerDocsPage.index- .article > .content .sub-title {
+#main.developerDocsPage.index-     .article > .content .sub-title,
+#main.developerDocsPage.downloads- .article > .content .sub-title {
   text-align: center;
 }
 
-#main.developerDocsPage.index- .article > .content .illustration {
+#main.developerDocsPage.index-     .article > .content .illustration,
+#main.developerDocsPage.downloads- .article > .content .illustration {
   width: 100%;
-  height: 15em;
+  height: 14.1em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 36em;
+  background-size: 20.125em;
   background-image: url('/docs/img/index_img.png');
-  margin-top: 2em;
-  margin-bottom: 4em;
+  margin-top: 1em;
 }
 
-#main.developerDocsPage.index- .article > .content .section {
+#main.developerDocsPage.index-     .article > .content .section,
+#main.developerDocsPage.downloads- .article > .content .section {
   float: left;
   width: 50%;
   height: 13em;
   min-width: 18em;
 }
-#main.developerDocsPage.index- .article > .content .section UL {
+#main.developerDocsPage.index-     .article > .content .section UL,
+#main.developerDocsPage.downloads- .article > .content .section UL {
   list-style: none;
 }
-#main.developerDocsPage.index- .article > .content .section .title {
+#main.developerDocsPage.downloads- .article > .content .section .title,
+#main.developerDocsPage.index-     .article > .content .section .title {
   text-align: center;
   font-weight: bold;
   font-size: 2em;
   line-height: 1.4em;
 }
-#main.developerDocsPage.index- .article > .content .section .icon {
+#main.developerDocsPage.downloads- .article > .content .section .icon,
+#main.developerDocsPage.index-     .article > .content .section .icon {
   float: left;
   background-repeat: no-repeat;
   background-position: center center;
@@ -589,3 +597,7 @@
 #main.developerDocsPage.index- .article > .content .section .icon-management-api        { background-image: url('/docs/img/index_management_api.png'); }
 #main.developerDocsPage.index- .article > .content .section .icon-community-and-support { background-image: url('/docs/img/index_community.png'); }
 #main.developerDocsPage.index- .article > .content .section .icon-third-party-clients   { background-image: url('/docs/img/index_tools.png'); }
+#main.developerDocsPage.downloads- .article > .content .section .icon-unity   { background-image: url('/docs/img/index_unity.png'); }
+#main.developerDocsPage.downloads- .article > .content .section .icon-android { background-image: url('/docs/img/index_android.png'); }
+#main.developerDocsPage.downloads- .article > .content .section .icon-ios     { background-image: url('/docs/img/index_ios.png'); }
+#main.developerDocsPage.downloads- .article > .content .section .icon-web     { background-image: url('/docs/img/index_web.png'); }
