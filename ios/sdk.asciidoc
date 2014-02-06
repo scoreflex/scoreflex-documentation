@@ -1,6 +1,6 @@
 [[ios-sdk]]
 [role="chunk-page section-link"]
-== https://github.com/scoreflex/scoreflex-ios-sdk[SDK]
+== https://github.com/scoreflex/scoreflex-ios-sdk/releases/latest[SDK]
 
 The Scoreflex iOS SDK is available on GitHub at
-https://github.com/scoreflex/scoreflex-ios-sdk.
+https://github.com/scoreflex/scoreflex-ios-sdk/releases/latest.
