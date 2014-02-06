@@ -8,6 +8,7 @@ all:
 
 SRCDIR             ?= $(CURDIR)
 SCRIPTS_DIR        ?= $(SRCDIR)/scripts
+CONF_DIR           ?= $(SRCDIR)/confs
 BUILDDIR           ?= $(SRCDIR)/build
 HTML_BUILDDIR      ?= $(BUILDDIR)/html
 
@@ -50,7 +51,9 @@ ASCIIDOC_ARGS := \
 	--attribute icons \
 	--attribute iconsdir=$(LINK_ROOT)img/icons \
 	--attribute toc \
-	--attribute disable-javascript
+	--attribute disable-javascript \
+	--attribute linkattrs \
+	--conf-file $(CONF_DIR)/links.conf
 
 #
 # Auto-generated part
