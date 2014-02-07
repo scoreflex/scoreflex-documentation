@@ -25,7 +25,6 @@ Dive into our Getting Started guides and integrate with your app in minutes.
 [icon icon-android]#{empty}#
 
 * <<android-sdk,SDK>>
-* https://github.com/scoreflex/scoreflex-samples/tree/master/android[Samples]
 --
 
 [role="section"]
