@@ -10,8 +10,8 @@
 
 In order to integrate Scoreflex to your games you have to create a
 developer account https://developer.scoreflex.com/account/signup[here]. 
-You can use your http://www.github.com[GitHub], http://www.facebook.com[Facebook] 
-or http://plus.google.com[Google+] account to ease
+You can use your http://www.github.com["GitHub", window="_blank"], http://www.facebook.com["Facebook", window="_blank"] 
+or http://plus.google.com["Google+", window="_blank"] account to ease
 the sign up process.
 
 [[guide-developers-interact]]

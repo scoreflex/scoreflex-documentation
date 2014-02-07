@@ -29,9 +29,7 @@ configurations are available where needed to format scores correctly.
 Scores are used as assets for leaderboards and inside challenges. They
 are created in one of these 2 contexts and manipulated accordingly.
 
-(see Leaderboards)
-
-(see Challenges)
+See the xref:guide-leaderboards[leaderboards] and xref:guide-challenges[challenges] sections for more information.
 
 [[guide-scores-reference]]
 === Reference
@@ -59,4 +57,4 @@ save how the score was performed, or give some context. They can be used
 to verify the correctness of a score and help fighting cheaters.
 Although recommended, meta-data is not mandatory.
 
-(see Guides::security)
+See the xref:guide-concepts-security[security guide] for more information.

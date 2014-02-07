@@ -32,15 +32,15 @@ Type: +long+
 Read-only
 
 The server managed version, indicating breaks in compatibility.
-Sometimes referenced alongside +id+ (+link).
+Sometimes referenced alongside +id+.
 
-See: Editing a challenge config (+LINK).
+See: xref:guide-challenges-interact-editing-a-challenge-config[Editing a challenge config].
 
 [[guide-challenges-reference-challengeconfig-attributes-displayname]]
 [float]
 ====== displayName
 
-Type: language map of strings (+link to api convention)
+Type: language map of strings (See xref:guide-api-conventions-internationalization[internationalization]).
 
 Default: The id.
 
@@ -50,7 +50,7 @@ The translated short name of the challenge, displayed to players.
 [float]
 ====== displayDescription
 
-Type: language map of strings (+link to api convention)
+Type: language map of strings (See xref:guide-api-conventions-internationalization[internationalization]).
 
 Default: empty
 
@@ -69,7 +69,7 @@ simulated players by Scoreflex. This implies that the actions from the
 players are truly independent, and prevents using the challenge instance
 state.
 
-See: The concept description (+link to the above content)
+See: xref:guide-challenges-concepts-replay[The replay concept].
 
 [[guide-challenges-reference-challengeconfig-attributes-maxseedvalue]]
 [float]
@@ -81,7 +81,7 @@ Default: +0+
 
 When creating a +ChallengeInstance+, Scoreflex will generate a seed
 between 0 and the given value and set the corresponding
-+ChallengeInstance.seed+ (+link) field.
+xref:guide-challenges-reference-challengeinstance-attributes-seed[+ChallengeInstance.seed+] field.
 
 [[guide-challenges-reference-challengeconfig-attributes-participantsconfig]]
 [float]
@@ -116,7 +116,7 @@ more the participants the better.
 [float]
 ====== participantsConfig.improveParticipantCountTimeout
 
-Type: +duration+ [0 seconds ; 1 minute] (+api convention link)
+Type: +duration+ [0 seconds ; 1 minute] (See xref:guide-api-conventions-durations[durations]).
 
 Default: +5 seconds+
 
@@ -127,16 +127,16 @@ number of participants?
 [float]
 ====== participantsConfig.invitationTimeout
 
-Type: +duration+ (+api convention link)
+Type: +duration+ (See xref:guide-api-conventions-durations[durations]).
 
 Default: +1 day+
 
 How long pending invitations are valid for.
 
 After the given delay, they will explicitly be declined, marking the
-invited player as +TIMED_OUT+ (+link).
+invited player as +"timed_out"+.
 
-See: +ChallengeInstance.invitedPlayers.status+ (+link)
+See: +ChallengeInstance.invitedPlayers.status+ (_LINK_)
 
 [[guide-challenges-reference-challengeconfig-attributes-turnconfig]]
 [float]
@@ -148,13 +148,15 @@ Groups the configuration settings related to turn handling.
 [float]
 ====== turnConfig.turnTimeout
 
-Type: +duration+ (+api convention link)
+Type: +duration+ (See xref:guide-api-conventions-durations[durations]).
 
 Default: +3 days+
 
 How long to wait for players listed in
-+ChallengeInstance.turn.currentPlayers+ (+link) to take their turn, before
-marking them as +GAVE_UP+ (+link).
+xref:guide-challenges-reference-challengeinstance-attributes-turn-currentplayers[+ChallengeInstance.turn.currentPlayers+] to take their turn, before
+marking them as +"gave_up"+.
+
+See: +ChallengeInstance.participants.status+ (_LINK_)
 
 [[guide-challenges-reference-challengeconfig-attributes-turnconfig-initialturnstrategy]]
 [float]
@@ -187,9 +189,9 @@ an instance.
 The sorting order of the participants is stored in
 +ChallengeInstance.participants.initialOrder+. It defines a cycle of turns.
 
-See: ChallengeInstance.turn.currentPlayers (+link)
+See xref:guide-challenges-reference-challengeinstance-attributes-turn-currentplayers[+ChallengeInstance.turn.currentPlayers+]
 
-See: ChallengeInstance.participants.joinTime (+link)
+See +ChallengeInstance.participants.joinTime+ (_LINK_)
 
 [[guide-challenges-reference-challengeconfig-attributes-turnconfig-turnstrategy]]
 [float]
@@ -203,14 +205,17 @@ Default: +"repeat"+
 How to repopulate the list of players who can play once empty.
 
 +"custom"+::
-  Do nothing automatically, the +ChallengeTurn+ (+link)
+  Do nothing automatically, the xref:guide-challenges-reference-challengeturn[+ChallengeTurn+]
   messages will update the list manually.
 +"allAlways"+::
   After each player takes its turn, repopulate the list
   with all the participants. +
   This is useful if there is no notion of turn in your game. Combined with
-  a +challengeEndConditions.max*PerPlayer+ (+link) setting or
-  +challengeEndConditions.scoreToBeat+ (+link), you can easily let each
+  a +challengeEndConditions.max*PerPlayer+ (xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxturnsperplayer[maxTurns*], 
+  xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxtimeperplayer[maxTime*], 
+  xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxturntimeperplayer[maxTurnTime*], 
+  xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxplayingtimeperplayer[maxPlayingTime*]) setting or
+  xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeat[+challengeEndConditions.scoreToBeat+], you can easily let each
   player play independently, and compare their score at the end of the
   challenge.
 +"repeat"+::
@@ -227,11 +232,12 @@ How to repopulate the list of players who can play once empty.
 [float]
 ====== challengeEndConditions.duration
 
-Type: +duration+ [1 minute ; 30 days] (+api convention link)
+Type: +duration+ [1 minute ; 30 days] (See xref:guide-api-conventions-durations[durations]).
 
 Default: +30 days+
 
-How long should the +ChallengeInstance+ (+link) should be +RUNNING+ (+link) for,
+How long should the xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+] 
+should be xref:guide-challenges-reference-challengeinstance-attributes-status[+"running"+] for,
 before ending automatically.
 
 [[guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeat]]
@@ -246,10 +252,7 @@ Optional
 
 Minimum score value to reach. The first player reaching or beating this
 score sets a new record for the other participants to beat. Additional
-constraints can be added, using +challengeEndConditions.scoreToBeatLimits+
-(+link).
-
-See: +challengeEndConditions.scoreToBeatLimits+ (+link)
+constraints can be added, using xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeatlimits[+challengeEndConditions.scoreToBeatLimits+].
 
 [[guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeatlimits]]
 [float]
@@ -261,34 +264,34 @@ Default: +["time", "playingTime"]+
 
 Optional
 
-Once a player reaches the +challengeEndConditions.scoreToBeat+ (+link),
-the given limits are lowered in +challengeEndConditions+ (+link). This
+Once a player reaches the xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeat[+challengeEndConditions.scoreToBeat+],
+the given limits are lowered in xref:[+challengeEndConditions+]. This
 further constraints how to beat the new record.
 
 +"time"+::
-  Lower +challengeEndConditions.maxTimePerPlayer+ (+link)
+  Lower xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxtimeperplayer[+challengeEndConditions.maxTimePerPlayer+]
   using the new record.
 +"playingTime"+::
-  Lower +challengeEndConditions.maxPlayingTimePerPlayer+ (+link)
+  Lower xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxplayingtimeperplayer[+challengeEndConditions.maxPlayingTimePerPlayer+]
   using the new record.
 +"turns"+::
-  Lower +challengeEndConditions.maxTurnsPerPlayer+ (+link)
+  Lower xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxturnsperplayer[+challengeEndConditions.maxTurnsPerPlayer+]
   using the new record.
 
-See: +challengeEndConditions.scoreToBeat+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeat[+challengeEndConditions.scoreToBeat+]
 
 [[guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxtimeperplayer]]
 [float]
 ====== challengeEndConditions.maxTimePerPlayer
 
-Type: +duration+ [1 minute ; 30 days] (+api convention link)
+Type: +duration+ [1 minute ; 30 days] (See xref:guide-api-conventions-durations[durations]).
 
 Default: +null+
 
 Optional
 
 Maximum time a player can spend to play the challenge, before being
-+FINISHED+ (+link). The timer starts when the player takes its first turn,
++"finished"+ (_LINK). The timer starts when the player takes its first turn,
 actually measured by subtracting the declared turn playing time from the
 time the first turn is received.
 
@@ -296,39 +299,39 @@ Such a constraint is particularly useful for
 +turnConfig.initialTurnStrategy="all"+ and
 +turnConfig.turnStrategy="allAlways"+ configurations.
 
-See: +ChallengeInstance.participants.startTime+ (+link)
+See +ChallengeInstance.participants.startTime+ (_LINK_)
 
-See: +challengeEndConditions.scoreToBeatLimits+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeatlimits[+challengeEndConditions.scoreToBeatLimits+]
 
 [[guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxplayingtimeperplayer]]
 [float]
 ====== challengeEndConditions.maxPlayingTimePerPlayer
 
-Type: +duration+ [1 second ; 30 days] (+api convention link)
+Type: +duration+ [1 second ; 30 days] (See xref:guide-api-conventions-durations[durations]).
 
 Default: +null+
 
 Optional
 
 Maximum time a player can spend to actually playing, before being
-+FINISHED+ (+link). When the summed +ChallengeTurn.playingTime+
-(+link) duration reaches or exceeds this value, the +ChallengeTurn+ is
-accepted and the participant is then +FINISHED+ (+link).
++"finished"+ (_LINK_). When the summed xref:guide-challenges-reference-challengeturn-attributes-playingtime[+ChallengeTurn.playingTime+]
+duration reaches or exceeds this value, the +ChallengeTurn+ is
+accepted and the participant is then +"finished"+.
 
-See: +challengeEndConditions.scoreToBeatLimits+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeatlimits[+challengeEndConditions.scoreToBeatLimits+]
 
 [[guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxturntimeperplayer]]
 [float]
 ====== challengeEndConditions.maxTurnTimePerPlayer
 
-Type: +duration+ [1 second ; 30 days] (+api convention link)
+Type: +duration+ [1 second ; 30 days] (See xref:guide-api-conventions-durations[durations]).
 
 Default: +null+
 
 Optional
 
 Maximum time a player can spend while it is their turn to play, before
-being +FINISHED+ (+link). The timer starts when the player can play for
+being +"finished"+ (_LINK_). The timer starts when the player can play for
 the first time, pauses right after the player takes their turn, and
 resumes each time the player can take their turn again.
 
@@ -342,33 +345,33 @@ Default: +null+
 
 Optional
 
-Maximum number of turns a player can take, before being +FINISHED+ (+link).
+Maximum number of turns a player can take, before being +"finished"+ (_LINK_).
 
-See: +challengeEndConditions.scoreToBeatLimits+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-scoretobeatlimits[+challengeEndConditions.scoreToBeatLimits+]
 
 [[guide-challenges-reference-challengeconfig-attributes-target]]
 [float]
 ====== target
 
-Type: +PlayerFilter+ (+api convention link)
+Type: xref:guide-matchmaking-reference-playerfilter[+PlayerFilter+]
 
 Default: +null+
 
 Optional
 
-Controls what players can view the +ChallengeConfig+ (+link).
+Controls what players can view the xref:guide-challenges-reference-challengeconfig[+ChallengeConfig+].
 
 [[guide-challenges-reference-challengeconfig-attributes-matchmakingconfig]]
 [float]
 ====== matchmakingConfig
 
-Type: +ChallengeRequest.matchmakingConfig+ object (+link)
+Type: xref:guide-challenges-reference-challengerequest-attributes-matchmakingconfig[+ChallengeRequest.matchmakingConfig+]
 
 Default: +null+
 
 Optional
 
-Default value for the +ChallengeRequest.matchmakingConfig+ (+link) field.
+Default value for the xref:guide-challenges-reference-challengerequest-attributes-matchmakingconfig[+ChallengeRequest.matchmakingConfig+] field.
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-showscorespolicy]]
 [float]
@@ -379,7 +382,7 @@ Type: +string+. One of: +"always"+, +"atEnd"+, +"byCycle"+.
 Default: +"always+"
 
 Controls how players see the score of their opponents in
-+ChallengeInstance.outcome+ (+link).
+xref:guide-challenges-reference-challengeinstance-attributes-outcome[+ChallengeInstance.outcome+].
 
 +"always"+::
   No scores are ever hidden.
@@ -401,7 +404,7 @@ Default: +"score:desc,time:asc"+
 How scores compare to each other, with regards to their value and
 submission time.
 
-See: +LeaderboardConfig.order+ (+link)
+See: xref:guide-leaderboards-reference-attributes-order[+LeaderboardConfig.order+]
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-samerankscoreeq]]
 [float]
@@ -414,19 +417,19 @@ Default: +true+
 Whether two equal scores should lead to players having the same rank,
 regardless of the scores' submission time.
 
-See: +LeaderboardConfig.sameRankScoreEq+ (+link)
+See: xref:guide-leaderboards-reference-attributes-samerankscoreeq[+LeaderboardConfig.sameRankScoreEq+]
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-scoreformatter]]
 [float]
 ====== outcomeConfig.scoreFormatter
 
-Type: +LeaderboardConfig.scoreFormatter+ (+link)
+Type: xref:guide-leaderboards-reference-attributes-scoreformatter[+LeaderboardConfig.scoreFormatter+]
 
 Default: +{"type": "integer"}+
 
 Controls how a raw score (being a +long+) is formatted in user interfaces.
 
-See: +LeaderboardConfig.scoreFormatter+ (+link)
+See: xref:guide-leaderboards-reference-attributes-scoreformatter[+LeaderboardConfig.scoreFormatter+]
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-scoreaggregation]]
 [float]
@@ -437,8 +440,7 @@ Type: +string+. One of: +"best"+, +"last"+, +"count"+, +"sum"+, +"average"+,
 
 Default: +"best"+
 
-How to calculate the outcome score from each +ChallengeTurn.score+
-(+link).
+How to calculate the outcome score from each xref:guide-challenges-reference-challengeturn-attributes-score[+ChallengeTurn.score+].
 
 +"best"+::
   Keep the best score.
@@ -451,8 +453,8 @@ How to calculate the outcome score from each +ChallengeTurn.score+
 +"average"+::
   Use the average of the submitted scores.
 +"custom"+::
-  Don't calculate anything, let the +ChallengeTurn+ (+link)
-  messages update the +ChallengeInstance.outcome.score+ (+link).
+  Don't calculate anything, let the xref:guide-challenges-reference-challengeturn[+ChallengeTurn+]
+  messages update the xref:guide-challenges-reference-challengeinstance-attributes-outcome[+ChallengeInstance.outcome.score+].
 
 [[guide-challenges-reference-challengeconfig-attributes-outcomeconfig-winnerscount]]
 [float]
@@ -483,15 +485,15 @@ update the application.
 
 By players (API):
 
-* List available challenge configurations (+link)
-* Read a given challenge configuration (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_configs[List available challenge configurations]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_configs_challengeId[Read a given challenge configuration]
 
 By the developer (Management API):
 
-* List available challenge configurations (+link)
-* Create/update a given challenge configuration (+link)
-* Read a given challenge configuration (+link)
-* Delete a given challenge configuration (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_management_games_gameId_challenges_configs[List available challenge configurations]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_management_games_gameId_challenges_configs_challengeId[Create/update a given challenge configuration]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_management_games_gameId_challenges_configs_challengeId[Read a given challenge configuration]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_management_games_gameId_challenges_configs_challengeId[Delete a given challenge configuration]
 
 [[guide-challenges-reference-challengerequest]]
 ==== ChallengeRequest
@@ -520,7 +522,7 @@ Type: +string+
 
 The identifier of the +ChallengeConfig+ this request is attached to.
 
-See: +ChallengeConfig.id+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-id[+ChallengeConfig.id+]
 
 [[guide-challenges-reference-challengerequest-attributes-configversion]]
 [float]
@@ -530,13 +532,13 @@ Type: +long+
 
 The version of the +ChallengeConfig+ this request is attached to.
 
-See: +ChallengeConfig.version+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-version[+ChallengeConfig.version+]
 
 [[guide-challenges-reference-challengerequest-attributes-creationdate]]
 [float]
 ====== creationDate
 
-Type: +timestamp+ (+api convention link)
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 The time the object has been created at.
 
@@ -544,7 +546,7 @@ The time the object has been created at.
 [float]
 ====== resolvedDate
 
-Type: +timestamp+ (+api convention link)
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 Optional
 
@@ -583,15 +585,16 @@ Describes the lifecycle phase of the request:
   The request is registered in Scoreflex, and will be
   resolved at some time in the future.
 +"waiting"+::
-  The request has resolved to a +ChallengeInstance+ (+link),
-  and that instance is still +WAITING+ (+link). +
-  You can continue with the +ChallengeRequest+ (+link) pointed by +instanceId+ (+link).
+  The request has resolved to a +ChallengeInstance+
+  and that instance is still xref:guide-challenges-reference-challengeinstance-attributes-status[+"waiting"+]. +
+  You can continue with the xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+] 
+  referenced by xref:guide-challenges-reference-challengerequest-attributes-instanceid[+ChallengeRequest.instanceId+].
 +"started"+::
-  The request has resolved to a +ChallengeInstance+ (+link),
-  and that instance is or has already been +RUNNING+ (+link). +
-  You have no reason to continue looking at the +ChallengeRequest+ (+link),
-  and must now use with the +ChallengeInstance+ (+link) pointed by
-  +instanceId+ (+link).
+  The request has resolved to a +ChallengeInstance+,
+  and that instance is or has already been xref:guide-challenges-reference-challengeinstance-attributes-status[+"running"+]. +
+  You have no reason to continue looking at the +ChallengeRequest+,
+  and must now use the xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+] referenced by
+  xref:guide-challenges-reference-challengerequest-attributes-instanceid[+instanceId+].
 
 [[guide-challenges-reference-challengerequest-attributes-hasinvitations]]
 [float]
@@ -602,9 +605,9 @@ Type: +boolean+
 Whether the request has been created with invited players.
 
 Note that a request with invitations always lead to the creation of a
-specific +ChallengeInstance+ (+link).
+specific xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+].
 
-See: +invitedPlayers+ (+link)
+See xref:guide-challenges-reference-challengerequest-attributes-invitedplayers[+ChallengeRequest.invitedPlayers+]
 
 [[guide-challenges-reference-challengerequest-attributes-instanceid]]
 [float]
@@ -613,23 +616,21 @@ See: +invitedPlayers+ (+link)
 Type: +string+
 
 A request is said to be resolved when this fields contains the target
-+ChallengeInstance+ (+link) id.
++ChallengeInstance+ id.
 
 Note that a request with invitations always leads to the creation of a
-specific +ChallengeInstance+ (+link).
+specific xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+].
 
-See: +ChallengeInstance.id+ (+link)
+See xref:guide-challenges-reference-challengeinstance-attributes-id[+ChallengeInstance.id+]
 
 [[guide-challenges-reference-challengerequest-attributes-invitedplayers]]
 [float]
 ====== invitedPlayers
 
-Type: +ChallengeInstance.invitedPlayers+ (+link)
+Type: xref:guide-challenges-reference-challengeinstance-attributes-invitedplayers[+ChallengeInstance.invitedPlayers+]
 
-Contains an updated copy of the resolved +ChallengeInstance.invitedPlayer+
-(+link) field, until the instance starts.
-
-See: +ChallengeInstance.invitedPlayers+ (+link)
+Contains an updated copy of the resolved xref:guide-challenges-reference-challengeinstance-attributes-invitedplayers[+ChallengeInstance.invitedPlayer+]
+field, until the instance starts.
 
 [[guide-challenges-reference-challengerequest-attributes-sharedconfig]]
 [float]
@@ -643,9 +644,7 @@ matching together.
 You can use this object to customize the request, like choosing a target
 level.
 
-This value will be copied into +ChallengeInstance.sharedConfig+ (+link).
-
-See: +ChallengeInstance.sharedConfig+ (+link)
+This value will be copied into xref:guide-challenges-reference-challengeinstance-attributes-sharedconfig[+ChallengeInstance.sharedConfig+].
 
 [[guide-challenges-reference-challengerequest-attributes-matchmakingconfig]]
 [float]
@@ -656,15 +655,15 @@ Criteria guides how requests can match together.
 They are split into four parts: mandatory versus optional and positive
 versus negative.
 
-See: Matchmaking (+link)
+See xref:guide-matchmaking[Matchmaking]
 
-See: +ChallengeConfig.matchmakingConfig+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-matchmakingconfig[+ChallengeConfig.matchmakingConfig+]
 
 [[guide-challenges-reference-challengerequest-attributes-matchmakingconfig-must]]
 [float]
 ====== matchmakingConfig.must
 
-Type: +PlayerFilter+ (+link)
+Type: xref:guide-matchmaking-reference-playerfilter[+PlayerFilter+]
 
 Values that the other requests and their initiating players must have
 for a match to be possible.
@@ -673,7 +672,7 @@ for a match to be possible.
 [float]
 ====== matchmakingConfig.mustNot
 
-Type: +PlayerFilter+ (+link)
+Type: xref:guide-matchmaking-reference-playerfilter[+PlayerFilter+]
 
 Values that the other requests and their initiating players must not
 have for a match to be possible.
@@ -682,7 +681,7 @@ have for a match to be possible.
 [float]
 ====== matchmakingConfig.should
 
-Type: +PlayerFilter+ (+link)
+Type: xref:guide-matchmaking-reference-playerfilter[+PlayerFilter+]
 
 Values that the other requests and their initiating players should have
 for a match to be favored.
@@ -691,7 +690,7 @@ for a match to be favored.
 [float]
 ====== matchmakingConfig.shouldNot
 
-Type: +PlayerFilter+ (+link)
+Type: xref:guide-matchmaking-reference-playerfilter[+PlayerFilter+]
 
 Values that the other requests and their initiating players should not
 have, or a match would be disfavored.
@@ -701,15 +700,15 @@ have, or a match would be disfavored.
 
 By players (API):
 
-* Create a challenge request (+link)
-* List your challenge requests (+link)
-* Read a given challenge request (+link)
-* Delete a given challenge request (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_requests[Create a challenge request]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_requests[List your challenge requests]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_requests_requestId[Read a given challenge request]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_challenges_requests_requestId[Delete a given challenge request]
 
 [[guide-challenges-reference-challengeinstance]]
 ==== ChallengeInstance
 
-An instance of a challenge, belonging to a +ChallengeConfig+ (+link).
+An instance of a challenge, belonging to a xref:guide-challenges-reference-challengeconfig[+ChallengeConfig+].
 
 [[guide-challenges-reference-challengeinstance-attributes]]
 ===== Attributes
@@ -730,17 +729,17 @@ The identifier, referenced in some other objects fields, and URLs.
 
 Type: +string+
 
-The +ChallengeInstance.id+ (+link) of the revenge, for navigation
-convenience.
+The xref:guide-challenges-reference-challengeinstance-attributes-id[+ChallengeInstance.id+]
+of the revenge, for navigation convenience.
 
-A revenge is a new +ChallengeInstance+ (+link) created by inviting the
-participating players of the current instance.
+A revenge is a new xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+]
+created by inviting the participating players of the current instance.
 
 [[guide-challenges-reference-challengeinstance-attributes-lastindexupdate]]
 [float]
 ====== lastIndexUpdate
 
-Type: +timestamp+
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 The last time the object changed in Scoreflex databases.
 
@@ -752,23 +751,24 @@ Type: +object+
 
 Format: +{ "playerId1": "requestId1", "instanceId0:playerId0": "gameId:instanceId0:requestId0", … }+
 
-Lists the associated +ChallengeRequest.id+ (+link), as values, with their
-originating +Player.id+ (+link), as keys.
+Lists the associated xref:guide-challenges-reference-challengerequest-attributes-id[+ChallengeRequest.id+],
+as values, with their originating xref:guide-players-reference[+Player.id+], as keys.
 
 Some keys and values come from recorded players, those keys are prefixed
-by the original +ChallengeInstance.id+ (+link), and the values by the
-+Game.id+ (+link) and the original +ChallengeInstance.id+ (+link).
+by the original xref:guide-challenges-reference-challengeinstance-attributes-id[+ChallengeInstance.id+], 
+and the values by the xref:guide-games-reference[+Game.id+] and the original 
+xref:guide-challenges-reference-challengeinstance-attributes-id[+ChallengeInstance.id+].
 
 [[guide-challenges-reference-challengeinstance-attributes-config]]
 [float]
 ====== config
 
-Type: +ChallengeConfig+ (+link)
+Type: xref:guide-challenges-reference-challengeconfig[+ChallengeConfig+]
 
-A copy of the +ChallengeConfig+ (+link) at the time the instance was
+A copy of the +ChallengeConfig+ at the time the instance was
 created.
 
-You should use this object rather than querying the +ChallengeConfig+ (+link)
+You should use this object rather than querying the +ChallengeConfig+
 directly, especially if edits occurred in the mean time.
 
 [[guide-challenges-reference-challengeinstance-attributes-sharedconfig]]
@@ -777,10 +777,9 @@ directly, especially if edits occurred in the mean time.
 
 Type: +object+
 
-A custom object inherited from the +ChallengeRequests+ (+link) that leads
-to the creation of the instance. Note that thanks to the way the
-+ChallengeRequests+ (+link) match, this object was identical in all of
-them.
+A custom object inherited from the xref:guide-challenges-reference-challengerequest-attributes[+ChallengeRequests+]
+that leads to the creation of the instance. Note that thanks to the way the
++ChallengeRequests+ match, this object was identical in all of them.
 
 [[guide-challenges-reference-challengeinstance-attributes-invitedplayers]]
 [float]
@@ -790,8 +789,8 @@ Type: +object+
 
 Format: +{ "playerId1": { InvitedPlayer (+link) }, … }+
 
-Lists each +InvitedPlayers+ (+link), with their associated +Player.id+ (+link)
-as key.
+Lists each +InvitedPlayers+ (_LINK_), with their associated 
+xref:guide-players-reference[+Player.id+] as key.
 
 These players are candidate participants, some may be invited, some may
 come from matchmaking, and at most one can be an initiator (the player
@@ -799,8 +798,8 @@ who sent the invitations).
 
 This list can be modified until the instance starts or gets aborted.
 
-All or a subset of them will be present in the +participants+
-(+link) list.
+All or a subset of them will be present in the 
+xref:guide-challenges-reference-challengeinstance-attributes-participants[+participants+] list.
 
 [[guide-challenges-reference-challengeinstance-attributes-participants]]
 [float]
@@ -810,13 +809,13 @@ Type: +object+
 
 Format: +{ "playerId1": { Participant (+link) }, … }+
 
-Lists each +Participant+ (+link), with their associated +Player.id+ (+link)
+Lists each +Participant+ (_LINK_), with their associated xref:guide-players-reference[+Player.id+]
 as key.
 
-These players are also present in the +invitedPlayers+ (+link) list.
+These players are also present in the xref:guide-challenges-reference-challengeinstance-attributes-invitedplayers[+invitedPlayers+] list.
 
-They will all be present in the +outcome+ (+link) list, ie. those two
-lists always have the same key set.
+They will all be present in the xref:guide-challenges-reference-challengeinstance-attributes-outcome[+outcome+]
+list, ie. those two lists always have the same key set.
 
 This list is empty until the instance starts.
 
@@ -826,7 +825,7 @@ This list is empty until the instance starts.
 
 Type: +string+. One of: +"waiting"+, +"running"+, +"ended"+, +"aborted"+
 
-Describes the lifecycle phase of the +ChallengeInstance+ (+link).
+Describes the lifecycle phase of the xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+].
 
 +"waiting"+::
   Conditions for starting the instance are not met yet, or
@@ -834,7 +833,7 @@ Describes the lifecycle phase of the +ChallengeInstance+ (+link).
 +"running"+::
   The instance is live.
 +"ended"+::
-  The instance has run and is now closed. The +outcome+ (+link)
+  The instance has run and is now closed. The xref:guide-challenges-reference-challengeinstance-attributes-outcome[+outcome+]
   attribute is now final.
 +"aborted"+::
   The instance could not start because of lack of participants.
@@ -843,7 +842,7 @@ Describes the lifecycle phase of the +ChallengeInstance+ (+link).
 [float]
 ====== creationDate
 
-Type: +timestamp+
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 Time of creation of the instance.
 
@@ -851,27 +850,29 @@ Time of creation of the instance.
 [float]
 ====== startDate
 
-Type: +timestamp+
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
-Time at which the instance's status switched to +RUNNING+ (+link).
+Time at which the xref:guide-challenges-reference-challengeinstance-attributes-status[instance's status] 
+switched to +"running"+.
 
-+WAITING+ (+link) and +ABORTED+ (+link) instances have no value.
++"waiting"+ and +"aborted"+ instances have no +startDate+ value.
 
 [[guide-challenges-reference-challengeinstance-attributes-enddate]]
 [float]
 ====== endDate
 
-Type: +timestamp+
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
-Time at which the instance's status switched to +ENDED+ (+link).
+Time at which the xref:guide-challenges-reference-challengeinstance-attributes-status[instance's status]
+switched to +"ended"+.
 
-Only +ENDED+ (+link) instances have a value.
+Only +"ended"+ instances have a value.
 
 [[guide-challenges-reference-challengeinstance-attributes-seed]]
 [float]
 ====== seed
 
-Type: +long+ [ 0 ; +config.maxSeedValue+ (+link) ]
+Type: +long+ [ 0 ; xref:guide-challenges-reference-challengeconfig-attributes-maxseedvalue[+config.maxSeedValue+] ]
 
 A seed generated by Scoreflex, shared to all the participants as a
 common basis for random number generation.
@@ -904,23 +905,23 @@ Type: +array+
 
 Format: +["playerId1", …]+
 
-Lists the +Player.ids+ (+link) that are allowed and expected to play.
+Lists the xref:guide-players-reference[+Player.ids+] that are allowed and expected to play.
 
 When a player send a turn message, it is automatically removed from this
 list.
 
-Once the list is empty, the +turn.sequence+ (+link) is incremented, and
-this list is populated according to the
-+ChallengeConfig.turnConfig.turnStrategy+ (+link).
+Once the list is empty, the xref:guide-challenges-reference-challengeinstance-attributes-turn-sequence[+turn.sequence+]
+is incremented, and this list is populated according to the
+xref:guide-challenges-reference-challengeconfig-attributes-turnconfig-turnstrategy[+ChallengeConfig.turnConfig.turnStrategy+].
 
-If using the +ALL_ALWAYS+ (+link) turn strategy, the +turn.sequence+ (+link)
+If using the +"all_always"+ turn strategy, the +turn.sequence+
 is incremented after each turn message, and the list kept intact.
 
 [[guide-challenges-reference-challengeinstance-attributes-turn-starttimestamp]]
 [float]
 ====== turn.startTimestamp
 
-Type: +timestamp+
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 Time at which the current turn started.
 
@@ -931,7 +932,7 @@ its turn, but rather the time at which it became their turn to play.
 [float]
 ====== turn.expireTimestamp
 
-Type: +timestamp+
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 Time at which the current turn will end, causing all the current players
 to automatically give up and lose the challenge.
@@ -946,8 +947,10 @@ Format: +{ "playerId1": { turnSequence1 : { ChallengeTurn (+link) }, … }, … 
 
 Excerpt of all turn messages sent, by player and by turn sequence.
 
-The +ChallengeTurn.payload+ (+link) and +ChallengeTurn.instance+ (+link)
-fields of the copied +ChallengeTurn+ (+link) objects are omitted.
+The xref:guide-challenges-reference-challengeturn-attributes-payload[+ChallengeTurn.payload+]
+and xref:guide-challenges-reference-challengeturn-attributes-instance[+ChallengeTurn.instance+]
+fields of the copied xref:guide-challenges-reference-challengeturn[+ChallengeTurn+]
+objects are omitted.
 
 [[guide-challenges-reference-challengeinstance-attributes-outcome]]
 [float]
@@ -957,63 +960,64 @@ Type: +object+
 
 Format: +{ "playerId1": { Outcome (+link) }, … }+
 
-Lists each +Outcome+ (+link), with their associated +Player.id+ (+link) as key.
+Lists each +Outcome+ (_LINK_), with their associated xref:guide-players-reference[+Player.id+] as key.
 
-These players are exactly those present in the +participants+ (+link) list.
+These players are exactly those present in the xref:guide-challenges-reference-challengeinstance-attributes-participants[+participants+]
+list.
 
 This list is empty until the instance starts.
 
-This list is modified with each +ChallengeTurn+ (+link) message.
+This list is modified with each xref:guide-challenges-reference-challengeturn[+ChallengeTurn+] message.
 
 [[guide-challenges-reference-challengeinstance-methods]]
 ===== Methods
 
 By the player (Web API):
 
-* Display the list of the player's challenge instances (+link)
-* Display a challenge instance (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_challenges[Display the list of the player's challenge instances]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_challenges_instances_challengeId[Display a challenge instance]
 
 By the player (API):
 
-* List all the player's challenge instances (+link)
-* Get a challenge instance (+link)
-* Answer a challenge instance invitation (+link)
-* Resign from a challenge instance (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances[List all the player's challenge instances]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId[Get a challenge instance]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_invitations[Answer a challenge instance invitation]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_resignation[Resign from a challenge instance]
 
 [[guide-challenges-reference-state]]
 ==== State
 
-A +ChallengeInstance+ (+link) as an associated state object. The state is
-accessible separately and is not listed or given as an attribute of
-+ChallengeInstance+ (+link) objects.
+A xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+]
+has an associated state object. The state is accessible separately and 
+is not listed or given as an attribute of +ChallengeInstance+ objects.
 
 The state can contain nested objects. The API permits to manipulate
 sub-objects, as well as the whole state object.
 
 Note that a replayable challenge has no state. Communication is
-exclusively based on +ChallengeTurn+ (+link) messages.
+exclusively based on xref:guide-challenges-reference-challengeturn[+ChallengeTurn+] messages.
 
-See: +ChallengeConfig.replayable+ (+link)
+See xref:guide-challenges-reference-challengeconfig-attributes-replayable[+ChallengeConfig.replayable+]
 
-See: JSON object updates (+api convention link)
+See xref:guide-api-conventions-json-object-updates[JSON object updates]
 
 [[guide-challenges-reference-state-methods]]
 ===== Methods
 
 By the player (API):
 
-* Read a part of the challenge instance state (+link)
-* Replace a part of the challenge instance state (+link)
-* Merge and update a part of the challenge instance state (+link)
-* Remove a part of the challenge instance state (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_state[Read a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_state[Replace a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#put__v1_challenges_instances_instanceId_state[Merge and update a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_challenges_instances_instanceId_state[Remove a part of the challenge instance state]
 
 [[guide-challenges-reference-challengeturn]]
 ==== ChallengeTurn
 
-A turn message sent inside a +ChallengeInstance+ (+link).
+A turn message sent inside a xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+].
 
 You will sometimes see +"hidden"+ instead of this object; see
-+ChallengeConfig.outcomeConfig.showScorePolicy+ (+link).
+xref:guide-challenges-reference-challengeconfig-attributes-outcomeconfig-showscorespolicy[+ChallengeConfig.outcomeConfig.showScorePolicy+].
 
 [[guide-challenges-reference-challengeturn-attributes]]
 ===== Attributes
@@ -1026,7 +1030,8 @@ Type: +long+
 
 Mandatory
 
-The +ChallengeInstance.turn.sequence+ (+link) the turn message relates to.
+The xref:guide-challenges-reference-challengeinstance-attributes-turn-sequence[+ChallengeInstance.turn.sequence+]
+the turn message relates to.
 
 When posting a turn message, you will get an error back if this number
 does not match the current turn sequence. This helps by enforcing that
@@ -1036,7 +1041,7 @@ all game applications are synchronised.
 [float]
 ====== creationTime
 
-Type: +timestamp+ (+api convention link)
+Type: +timestamp+ (See xref:guide-api-conventions-timestamps[timestamps])
 
 The time when Scoreflex received the message.
 
@@ -1063,14 +1068,14 @@ Time it took the player to play and send this turn message.
 You are highly advised to set this field:
 
 * It enables use of the
-  +ChallengeConfig.challengeEndConditions.maxPlayingTimePerPlayer+ (+link)
+  xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxplayingtimeperplayer[+ChallengeConfig.challengeEndConditions.maxPlayingTimePerPlayer+]
   constraint.
 * It permits a better measure for applying the
-  +ChallengeConfig.challengeEndConditions.maxTimePerPlayer+ (+link)
+  xref:guide-challenges-reference-challengeconfig-attributes-challengeendconditions-maxtimeperplayer[+ChallengeConfig.challengeEndConditions.maxTimePerPlayer+]
   constraint.
 * It makes the replay of recorded players far more realistic, for
-  +replayable+ (+link) challenges. The turn message would otherwise be
-  instantaneously replayed.
+  xref:guide-challenges-reference-challengeconfig-attributes-replayable[+replayable+]
+  challenges. The turn message would otherwise be instantaneously replayed.
 * It helps moderating the scores and detecting cheats.
 
 [[guide-challenges-reference-challengeturn-attributes-payload]]
@@ -1101,22 +1106,23 @@ Type: +string+
 
 Optional
 
-The +ChallengeReplay.id+ (+link) of the replay to attach to the turn message.
+The xref:guide-challenges-reference-challengereplay-attributes-id[+ChallengeReplay.id+]
+of the replay to attach to the turn message.
 
 [[guide-challenges-reference-challengeturn-attributes-instance]]
 [float]
 ====== instance
 
-Type: +ChallengeInstance+ (+link)
+Type: xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+]
 
 Optional
 
-A subset of the +ChallengeInstance+ (+link) fields that are edited while
-posting a turn message.
+A subset of the xref:guide-challenges-reference-challengeinstance[+ChallengeInstance+]
+fields that are edited while posting a turn message.
 
-* +status+ (+link) − can be set to +ENDED+
-* +participants.status+ (+link) − can be set to +FINISHED+ +
-  For +replayable+ (+link) challenges, a player can only affect itself. Any
+* xref:guide-challenges-reference-challengeinstance-attributes-status[+status+] − can be set to +"ended"+
+* xref:guide-challenges-reference-challengeinstance-attributes-participants[+participants.status+] − can be set to +"finished"+ +
+  For xref:guide-challenges-reference-challengeconfig-attributes-replayable[+replayable+] challenges, a player can only affect itself. Any
   other +playerId+ will be ignored.
 
 [[guide-challenges-reference-challengeturn-methods]]
@@ -1124,8 +1130,8 @@ posting a turn message.
 
 By player (API):
 
-* Post a new turn message (+link)
-* Read a challenge instance turns (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_turns[Post a new turn message]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_turns[Read a challenge instance turns]
 
 [[guide-challenges-reference-challengereplay]]
 ==== ChallengeReplay
@@ -1149,7 +1155,7 @@ An auto-generated identifier.
 
 Type: +string+
 
-The +Player.id+ (+link) of the creator of the replay.
+The xref:guide-players-reference[+Player.id+] of the creator of the replay.
 
 In case of replayable challenges, this corresponds to the id of the
 recorded player. You should not use to this field.
@@ -1170,15 +1176,15 @@ associated +ChallengeTurn+. You should not use to this field.
 
 By players (API):
 
-* Create a replay (+link)
-* Read a replay (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_replays[Create a replay]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_replays_replayId[Read a replay]
 
-See +ChallengeReplayMessage+ methods (+link).
+See xref:guide-challenges-reference-challengereplaymessage-methods[+ChallengeReplayMessage+] methods.
 
 [[guide-challenges-reference-challengereplaymessage]]
 ==== ChallengeReplayMessage
 
-A small timestamped message part of a +ChallengeReplay+ (+link).
+A small timestamped message part of a xref:guide-challenges-reference-challengereplay[+ChallengeReplay+].
 
 [[guide-challenges-reference-challengereplaymessage-attributes]]
 ===== Attributes
@@ -1203,7 +1209,7 @@ Type: +long+ [-9223372036854775808 ; 9223372036854775807]
 Optional
 
 An instantaneous score to be displayed or animated. It is not taken into
-account in the challenge instance outcome, unlike +ChallengeTurn.score+ (+link).
+account in the challenge instance outcome, unlike xref:guide-challenges-reference-challengeturn-attributes-score[+ChallengeTurn.score+].
 
 [[guide-challenges-reference-challengereplaymessage-attributes-text]]
 [float]
@@ -1230,7 +1236,7 @@ Any custom value, meaningful to your game.
 
 By players (API):
 
-* Add a message to a replay (+link)
-* Read replay messages (+link)
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_replays_replayId_messages[Add a message to a replay]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_replays_replayId_messages[Read replay messages]
 
-See ChallengeReplay methods (+link)
+See xref:guide-challenges-reference-challengereplay-methods[ChallengeReplay methods]

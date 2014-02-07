@@ -631,7 +631,7 @@ If none of these parameters are provided Scoreflex automatically tries
 to guess the best placemark from the client IP address.
 
 Valid +countryCode+ values are
-http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes].
+http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2["ISO 3166-1 alpha-2 country codes", window="_blank"].
 
 [[guide-api-conventions-geography-attributes]]
 ==== Attributes
@@ -661,7 +661,7 @@ Formatted string for the placemark.
 <4> Type: +string+. One of: +postalCode+, +vCity+, +region+, +country+, +worldwide+. +
 Administrative level of the placemark.
 
-<5> Type: +string+. http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2[ISO 3166-1 alpha-2 country codes]. +
+<5> Type: +string+. http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2["ISO 3166-1 alpha-2 country codes", window="_blank"]. +
 Country code of the placemark.
 
 [[guide-api-conventions-versioning]]
@@ -750,9 +750,9 @@ clients and also to take security measures on our side.
 === Cross-Origin Resource Sharing
 
 The API supports Cross Origin Resource Sharing (CORS) for AJAX requests.
-You can read the http://www.w3.org/TR/cors/[CORS W3C working draft], or
-http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity[this
-intro] from the HTML 5 Security Guide.
+You can read the http://www.w3.org/TR/cors/["CORS W3C working draft", window="_blank"], or
+http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity["this
+intro", window="_blank"] from the HTML 5 Security Guide.
 
 [[guide-api-conventions-json-object-updates]]
 === JSON object updates

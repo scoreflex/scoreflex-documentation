@@ -142,10 +142,9 @@ kickstarting your game!
 ==== Request
 
 When a player wishes to participate in a challenge, they create a
-request. It will lead to the creation of a new challenge instance (+link
-to concept): inviting friends will create a dedicated challenge instance
-(+link to concept); multiple requests matching together will create a
-shared challenge instance (+link to concept).
+request. It will lead to the creation of a new xref:guide-challenges-concepts-instance[challenge instance]:
+inviting friends will create a dedicated challenge instance; 
+multiple requests matching together will create a shared challenge instance.
 
 The challenge requests can be automatically created through the web
 interface, or can be issued manually by your game.
@@ -213,7 +212,7 @@ score to a score leaderboard too. But, not all games will have such a
 score that can be easily compared to other instances' outcome.
 
 However in every game, beating your opponent makes you stronger and more
-skilled. Scoreflex implements an http://en.wikipedia.org/wiki/Elo_rating_system[Elo-based] ranking mechanism to
+skilled. Scoreflex implements an http://en.wikipedia.org/wiki/Elo_rating_system["Elo-based", window="_blank"] ranking mechanism to
 assess a player's skill. The current skill of a player is available
 through the Elo leaderboard associated to the challenge, and the global
 Elo leaderboard.

@@ -3,11 +3,9 @@
 === Concepts
 
 --
-A leaderboard is an ordered list of scores made by players. They are
+A leaderboard is an ordered list of xref:guide-scores[scores] made by players. They are
 useful to compare players according to their skills and performances.
 --
-
-(see Scores)
 
 [[guide-leaderboards-concepts-overview]]
 ==== Overview
@@ -26,8 +24,7 @@ metric of your game (speed, precision, global score, difficulty settings ...).
 
 Leaderboards are organised in a hierarchy. They are ordered
 alphabetically. Additionally you can create sub-leaderboards. Your game
-has a default leaderboard which is the first leaderboard of the
-hierarchy. (more about hierarchy link to interaction::display).
+has a default leaderboard which is the first leaderboard of the xref:guide-leaderboards-reference-hierarchical-structure[hierarchy].
 
 [[guide-leaderboards-concepts-lifecycle]]
 ==== Lifecycle
@@ -50,12 +47,10 @@ displayed (score formatting and player filtering).
 [[guide-leaderboards-concepts-configuration-score-order]]
 ===== Score order
 
-Scores can be ordered from greatest to lowest value (example: pinball
+xref:guide-leaderboards-reference-attributes-order[Scores can be ordered] from greatest to lowest value (example: pinball
 game), or lowest to greatest (example: golf game). Then in case of an
 equality of scores, the submission time determines if the most recent or
 the oldest score is the best.
-
-(more about score order configuration, link to reference::scoreOrder)
 
 [[guide-leaderboards-concepts-configuration-score-formatting]]
 ===== Score formatting
@@ -64,7 +59,7 @@ The values in your leaderboards may represent various kind of objects:
 final score, session time, money earned, count of collected items ...
 
 Scores are always represented internally as an integer (the one sent by
-your game). In order to suit your needs, scores can then be formatted as:
+your game). In order to suit your needs, xref:guide-leaderboards-reference-attributes-scoreformatter[scores can then be formatted] as:
 
 * An integer with an optional unit (157 stars).
 * A decimal number with an optional unit (17.94 liters). The internal
@@ -74,25 +69,21 @@ your game). In order to suit your needs, scores can then be formatted as:
 * A time or duration (12’57”). The internal score corresponds to the
   number of milliseconds of the time.
 
-(more about score formatting and examples, link to reference::scoreFormatting)
-
 [[guide-leaderboards-concepts-configuration-filters-and-modes]]
 ===== Filters and modes
 
 Scores in leaderboards can be filtered in 3 ways: the geographic
-dimension, the time dimension and the friend dimension. These filtered
+dimension, the xref:guide-leaderboards-reference-attributes-timepolicy[time dimension] and the friend dimension. These filtered
 can be mixed together to create leaderboards by month and by countries.
 
-Modes are categorization options for scores. The locationMode handles
+Modes are categorization options for scores. The xref:guide-leaderboards-reference-attributes-locationmode[locationMode] handles
 the specifics regarding player's current location and player's home
-location associated with geographic filtering. The collapsingMode
+location associated with geographic filtering. The xref:guide-leaderboards-reference-attributes-collapsingmode[collapsingMode]
 handles how much and which scores of a user are displayed (all, only the
 best, only the last).
 
 Filters and modes have a default value set in the configuration of the
 leaderboard. For specific needs, you can override them temporarily.
-
-(more about filters and modes, link to reference::timePolicy)
 
 [[guide-leaderboards-concepts-configuration-internationalization]]
 ===== Internationalization

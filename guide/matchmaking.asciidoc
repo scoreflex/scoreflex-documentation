@@ -25,9 +25,9 @@ skill, of the opposite gender, who lives nearby, and of similar age!
 
 See:
 
-* +ChallengeConfig.matchmaking+ (+link)
-* +ChallengeRequest.matchmaking+ (+link)
-* +ChallengeConfig.target+ (+link)
+* xref:guide-challenges-reference-challengeconfig-attributes-matchmakingconfig[+ChallengeConfig.matchmaking+]
+* xref:guide-challenges-reference-challengerequest-attributes-matchmakingconfig[+ChallengeRequest.matchmaking+]
+* xref:guide-challenges-reference-challengeconfig-attributes-target[+ChallengeConfig.target+]
 
 [[guide-matchmaking-reference]]
 === Reference
@@ -35,7 +35,7 @@ See:
 [[guide-matchmaking-reference-playerfilter]]
 ==== PlayerFilter
 
-A PlayerFilter (+link) defines criteria to match players and their
+A PlayerFilter defines criteria to match players and their
 requests.
 
 The defined criteria can either filter a match, if used in "must" or
@@ -96,7 +96,7 @@ played at.
 
 Type: +array+
 
-Values: Game.id (+link)
+Values: xref:guide-games-reference[Game.id]
 
 The Scoreflex games the matching player must have played.
 
@@ -291,7 +291,7 @@ The maximum age of the matching player, in years.
 
 Type: +array+
 
-Values: +language+ (+api convention link), or +"SAME"+
+Values: xref:guide-api-conventions-internationalization[+language+] or +"SAME"+
 
 Restricts the language of the matching player. If you give an non
 localized language code, only two characters and no separating
@@ -334,7 +334,7 @@ may not be acceptable in all contexts.
 
 Type: +array+
 
-Value: +nationality+ (+api convention link), or +"SAME"+
+Value: xref:guide-api-conventions-internationalization[+nationality+] or +"SAME"+
 
 Restricts the nationality of the matching player.
 

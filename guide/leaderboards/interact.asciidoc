@@ -20,7 +20,7 @@ classical form allows you to choose the identifier of your leaderboard
 It is useful to handle the leaderboard yourself if you need to create a
 hierarchical structure for your leaderboards. You create
 sub-leaderboards by inserting a dot in the leaderboard. Note that a
-leaderboard cannot be edited (see the “display” section).
+leaderboard cannot be edited (see the xref:guide-leaderboards-interact-display[display] section).
 
 [[guide-leaderboards-interact-update]]
 ==== Update
@@ -32,7 +32,7 @@ corresponding JSON structure.
 
 To translate labels in the configuration, you have to edit the JSON structure.
 
-(see Guides::internationalization)
+See the xref:guide-api-conventions-internationalization[internationalization] guide for more information.
 
 [[guide-leaderboards-interact-display]]
 ==== Display
@@ -42,8 +42,9 @@ http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_leaderboards_leade
 (API reference) which returns a JSON structure. Scoreflex also
 provides a web interface to display leaderboards right into your game.
 
-The web interface displays scores according to the configured formatting
-(see reference::scoreFormatter). Two interfaces exists. The
+The web interface displays scores according to the 
+configured xref:guide-leaderboards-reference-attributes-scoreformatter[formatting]. 
+Two interfaces exists. The
 http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_web_leaderboards_leaderboardId_overview[leaderboard overview]
 (API reference) displays a summary of the scores of a
 leaderboard, with regard to the current player. It shows the best scores
@@ -52,9 +53,8 @@ http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_web_leaderboards_l
 (API reference) displays the lists of scores according to filters and modes.
 
 Additionally you can browse through other leaderboards via the menu. The
-leaderboard hierarchical structure determines the order of the
-leaderboards in this menu, and thus the navigation
-(see reference::HierarchicalStructure).
+leaderboard xref:guide-leaderboards-reference-hierarchical-structure[hierarchical structure] determines the order of the
+leaderboards in this menu, and thus the navigation.
 
 Scores are also displayed in the
 http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_web_scores_leaderboardId_ranks[rankbox]
@@ -71,4 +71,4 @@ this reason, a moderation interface is available in the developer
 interface. You can read score meta-data from this interface and delete
 scores if required.
 
-(see Guides::security)
+See xref:guide-concepts-security[security] for more information.

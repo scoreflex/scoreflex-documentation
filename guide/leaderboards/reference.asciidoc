@@ -33,7 +33,7 @@ Format: +{ %lang%: "translated name", … }+
 Name of the leaderboard displayed to players. The default language you
 edit using the leaderboard edition form is english (+en+).
 
-(see Guides::internationalization)
+Read more about xref:guide-api-conventions-internationalization[internationalization].
 
 [[guide-leaderboards-reference-attributes-order]]
 [float]
@@ -243,7 +243,7 @@ you want to force submitted scores to have meta data, set this setting
 to true. If you don't want to use this feature yet, just set the setting
 to false.
 
-(see Guides::security)
+Read also about xref:guide-concepts-security[Security].
 
 [[guide-leaderboards-reference-hierarchical-structure]]
 ==== Hierarchical structure

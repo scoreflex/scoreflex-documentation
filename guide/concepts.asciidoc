@@ -51,9 +51,9 @@ principles:
   at any time. You can fetch all your game data from your players'
   profiles to their scores.
 * Scalability. We are distributed worldwide and using state of the art
-  technologies (http://cassandra.apache.org/[Cassandra],
-  http://www.elasticsearch.org/[Elasticsearch],
-  http://www.rabbitmq.com/[RabbitMQ], http://www.erlang.org/[Erlang]).
+  technologies (http://cassandra.apache.org/["Cassandra", window="_blank"],
+  http://www.elasticsearch.org/["Elasticsearch", window="_blank"],
+  http://www.rabbitmq.com/["RabbitMQ", window="_blank"], http://www.erlang.org/["Erlang", window="_blank"]).
 * Availability. We provide a 99.99% SLA. If we fall under, we'll credit
   you based on the time the service was unavailable. It's that simple.
 
@@ -62,11 +62,11 @@ principles:
 === API organization
 
 Scoreflex exposes
-http://en.wikipedia.org/wiki/Representational_state_transfer[REST] http://en.wikipedia.org/wiki/Application_programming_interface[APIs] through
-http://en.wikipedia.org/wiki/JSON[JSON] over
-http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol[HTTP].
+http://en.wikipedia.org/wiki/Representational_state_transfer["REST", window="_blank"] http://en.wikipedia.org/wiki/Application_programming_interface["APIs", window="_blank"] through
+http://en.wikipedia.org/wiki/JSON["JSON", window="_blank"] over
+http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol["HTTP", window="_blank"].
 
-All API access is over http://en.wikipedia.org/wiki/HTTP_Secure[HTTPS],
+All API access is over http://en.wikipedia.org/wiki/HTTP_Secure["HTTPS", window="_blank"],
 and accessed from the sandbox.api.scoreflex.com or
 api.scoreflex.com domains depending whether you are in development or in
 production.
@@ -91,7 +91,7 @@ The REST API is two-part:
 Any HTTP-enabled client can interact directly with Scoreflex through the
 REST API. +
 For more convenience, we provide
-http://en.wikipedia.org/wiki/Software_development_kit[SDKs] for the main
+http://en.wikipedia.org/wiki/Software_development_kit["SDKs", window="_blank"] for the main
 languages and platforms (Android, iOS, Web, Unity, Corona).
 
 In addition, any webview-capable client can make use of our provided
@@ -169,7 +169,7 @@ should never use the sandbox for a game in production.
 [[guide-concepts-security-http-https-calls]]
 ==== HTTP/HTTPS calls
 
-All API access is over http://en.wikipedia.org/wiki/HTTP_Secure[HTTPS].
+All API access is over http://en.wikipedia.org/wiki/HTTP_Secure["HTTPS", window="_blank"].
 
 [[guide-concepts-security-api-access]]
 ==== API access
@@ -220,7 +220,7 @@ If you are using one of our SDKs, you do not need to take care of this,
 the SDKs do it for you.
 
 The signature algorithm is inspired by OAuth 1.0, described
-https://tools.ietf.org/html/rfc5849#section-3.4[here], using HMAC-SHA1
+https://tools.ietf.org/html/rfc5849#section-3.4["here", window="_blank"], using HMAC-SHA1
 keyed with the game's client_secret. The signature has to be given as a
 header with the following format:
 
@@ -265,7 +265,7 @@ This string contains all the information we will sign, hence protecting
 you against tampering.
 
 The encoding method is as follows as defined in
-https://tools.ietf.org/html/rfc5849#section-3.6[here]:
+https://tools.ietf.org/html/rfc5849#section-3.6["here", window="_blank"]:
 
 * Text values are first encoded as UTF-8 octets if they are not
 already. +
@@ -290,7 +290,7 @@ this secret, and hence permits not to disclose it in the request.
 The calculated signature should further be:
 
 * base64 encoded (as per
-https://tools.ietf.org/html/rfc2045#section-6.8[RFC2045 §6.8], using the
+https://tools.ietf.org/html/rfc2045#section-6.8["RFC2045 §6.8", window="_blank"], using the
 charset A-Za-z0-9+/ and padding "=")
 * then percent encoded (for "+", "/", and "=")
 

@@ -72,7 +72,7 @@ players work or change the gameplay will imply a version bump.
 ==== Handling challenge start
 
 If you use the REST API in your game, check that the challenge instance
-status is +RUNNING+, and start your game loop. You're done!
+status is +"running"+, and start your game loop. You're done!
 
 If you use the Scoreflex Webview, you will need to handle the challenge
 start callback of your SDK, or to listen to the appropriate web callback
@@ -85,11 +85,11 @@ http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_callback[web ca
 First, always make sure to be in sync with the server.
 
 . Check the instance status:
-..  If the instance is +WAITING+ or +ABORTED+, you could display the invited
+..  If the instance is +"waiting"+ or +"aborted"+, you could display the invited
     players' statuses.
-..  If the instance is +ENDED+, you should display the challenge outcome,
+..  If the instance is +"ended"+, you should display the challenge outcome,
     the winners and losers.
-. Otherwise, if the instance is +RUNNING+, you should fetch every turn
+. Otherwise, if the instance is +"running"+, you should fetch every turn
   messages and challenge state, depending on your needs, and start the
   game loop.
 . The game loop should start by replaying the opponents moves since
