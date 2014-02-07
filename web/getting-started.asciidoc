@@ -7,7 +7,7 @@
   Don't forget to validate your account if you signed up via an email and
   password pair before continuing.
 . Download the latest Javascript SDK release on GitHub at
-  https://github.com/scoreflex/scoreflex-javascript-sdk/releases[https://github.com/scoreflex/scoreflex-javascript-sdk/releases]
+  https://github.com/scoreflex/scoreflex-javascript-sdk/releases[https://github.com/scoreflex/scoreflex-javascript-sdk/releases/latest]
 . Import the SDK and the webclient style if you intend to use it in
   your javascript game.
 +
