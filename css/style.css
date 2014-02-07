@@ -192,6 +192,10 @@
   min-height:1000px; /* hmmm */
 }
 
+#main.developerDocsPage A[target=_blank]:after {
+  content:" ➚";
+}
+
 
 /***********
  * Article *
