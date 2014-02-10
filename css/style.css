@@ -180,7 +180,7 @@
  * Designer styles *
  *******************/
 
-#main.developerDocsPage>.widthFull > .widthColumn {
+#main.developerDocsPage > .widthFull > .widthColumn {
   background-color:#EFEFEF;
 }
 #main.developerDocsPage .developerDocsMenuSection {
@@ -194,6 +194,27 @@
 
 #main.developerDocsPage A[target=_blank]:after {
   content:" ➚";
+}
+
+/*******************
+ * full-width page *
+ *******************/
+@media screen and (min-width:1001px) {
+  #main.developerDocsPage > .widthFull > .widthColumn {
+    width:auto;
+    padding-left:200px;
+    position:relative;
+    /* limiting the width of the doc page */
+    max-width:1700px;
+  }
+  #main.developerDocsPage .halfMenu {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+  #main.developerDocsPage .halfContentWrap {
+    width:auto;
+  }
 }
 
 
