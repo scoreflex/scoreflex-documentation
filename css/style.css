@@ -365,7 +365,7 @@
   font-family: Cousine,"Liberation Mono",monospace;
   /*font-weight: normal;*/
   font-size:0.9em;
-  white-space: nowrap;
+  white-space: pre-wrap;
   padding: 2px 3px 0px;
   background-color: #EFEFEF;
   border: 1px solid #e2e2e2;

@@ -149,9 +149,8 @@ local intent broadcast in order to start the game.
 
 To broadcast an event, Scoreflex uses the +LocalBroadcastManager+, a class
 that can be found in the android support library. This library
-is available in the Android SDK folder. For more information about the
-+LocalBroadcastManager+ see:
-http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html
+is available in the Android SDK folder. For more information, see
+http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html[LocalBroadcastManager]
 
 First create a Broadcast Receiver implementation:
 
