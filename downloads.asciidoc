@@ -41,7 +41,7 @@ Dive into our Getting Started guides and integrate with your app in minutes.
 [icon icon-web]#{empty}#
 
 * <<web-sdk,SDK>>
-* https://github.com/scoreflex/scoreflex-samples/tree/master/javascript[Samples]
+* https://github.com/scoreflex/scoreflex-web-samples[Samples]
 --
 
 [role="clear"]

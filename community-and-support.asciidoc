@@ -18,8 +18,8 @@ Scoreflex and its community.
 == Follow us
 
 Want to know what's going on, get the latest news about Scoreflex and
-have a glimpse at what cool new features we are preparing for you? Follow us 
-on image:twitter_20.png["Scoreflex on Twitter"] http://www.twitter.com/scoreflex[Twitter@scoreflex], 
+have a glimpse at what cool new features we are preparing for you? Follow us
+on image:twitter_20.png["Scoreflex on Twitter"] http://www.twitter.com/scoreflex[Twitter@scoreflex],
 on image:googleplus_20.png["Scoreflex on Google"] https://www.google.com/\+Scoreflex[Google/+Scoreflex],
 or on image:facebook_20.png["Scoreflex on Facebook"] http://www.facebook.com/Scoreflex[Facebook/Scoreflex].
 
@@ -27,9 +27,9 @@ or on image:facebook_20.png["Scoreflex on Facebook"] http://www.facebook.com/Sco
 [[community-and-support-blog]]
 == Blog
 
-Get alerted when we make Scoreflex updates, read about Scoreflex day to day 
-iterations and inner life, learn about the industry and technologies of 
-indie games. That's image:scoreflex_20.png["Scoreflex blog"] http://blog.scoreflex.com[Scoreflex Blog]. 
+Get alerted when we make Scoreflex updates, read about Scoreflex day to day
+iterations and inner life, learn about the industry and technologies of
+indie games. That's image:scoreflex_20.png["Scoreflex blog"] http://blog.scoreflex.com[Scoreflex Blog].
 
 [[community-and-support-irc]]
 == IRC
@@ -63,9 +63,12 @@ https://github.com/scoreflex[GitHub]:
 
 * https://github.com/scoreflex/scoreflex[Scoreflex backend]
 * https://github.com/scoreflex/scoreflex-documentation[Scoreflex documentation]
-* https://github.com/scoreflex/scoreflex-samples[Scoreflex sample games]
+* https://github.com/scoreflex/scoreflex-unity-plugin[Scoreflex Unity Plugin]
 * https://github.com/scoreflex/scoreflex-ios-sdk[Scoreflex iOS SDK]
 * https://github.com/scoreflex/scoreflex-android-sdk[Scoreflex Android SDK]
 * https://github.com/scoreflex/scoreflex-javascript-sdk[Scoreflex Javascript SDK]
-* https://github.com/scoreflex/scoreflex-unity-plugin[Scoreflex Unity Plugin]
 * https://github.com/scoreflex/scoreflex-corona-plugin[Scoreflex Corona Plugin]
+* https://github.com/scoreflex/scoreflex-unity-samples[Scoreflex Unity sample games]
+* https://github.com/scoreflex/scoreflex-android-samples[Scoreflex Android sample games]
+* https://github.com/scoreflex/scoreflex-ios-samples[Scoreflex iOS sample games]
+* https://github.com/scoreflex/scoreflex-web-samples[Scoreflex Web sample games]
