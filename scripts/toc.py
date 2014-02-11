@@ -87,6 +87,12 @@ class TocEntry():
             return 0
         return 1 + self.parent.depth()
 
+    def has_unskipped_children(self):
+        for child in self.children:
+            if not child.skipToc:
+                return True
+        return False
+
     def walk_id(self, id):
         match = []
         def callback(entry):
@@ -160,7 +166,7 @@ class TocEntry():
             + (' […]' if self.chunkToc else '') \
             + (' [PAGE]' if self.chunkPage else '') \
             + (' [TOC]' if self.rootToc else '') \
-            + (' [LEAF]' if len(self.children) == 0 else '') \
+            + (' [LEAF]' if not self.has_unskipped_children() else '') \
             + (' [LINK]' if self.linkedTo is not None else '') \
             + ' #' + unicode(self.id).encode('utf-8') \
             + ' href:' + self.link(self.get_root()).encode('utf-8')
@@ -199,7 +205,7 @@ class TocEntry():
             indent += 1
             strIndent = '  ' * indent
             clazz = ''
-            if len(self.children) > 0:
+            if self.has_unskipped_children():
                 if not self.linkedTo or ':' in self.linkedTo:
                     # No link, or external link (http://, mailto:, etc.)
                     target = self
@@ -217,7 +223,7 @@ class TocEntry():
                 f.write('%s</span>\n' % strIndent)
             else:
                 f.write('%s<a href="%s">%s</a>\n' % (strIndent, self.link(pageRoot).encode('utf-8'), self.title.encode('utf-8')))
-        if len(self.children) > 0:
+        if self.has_unskipped_children():
             f.write('%s<ul class="menuRetractable%s">\n' % (strIndent, ' opened' if open == True else ''))
             for child in self.children:
                 if child.skipToc: continue
