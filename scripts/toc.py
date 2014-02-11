@@ -200,9 +200,10 @@ class TocEntry():
             strIndent = '  ' * indent
             clazz = ''
             if len(self.children) > 0:
-                if not self.linkedTo:
+                if not self.linkedTo or ':' in self.linkedTo:
+                    # No link, or external link (http://, mailto:, etc.)
                     target = self
-                else:
+                else: # Internal link (a TocEntry id)
                     target = self.get_root().walk_id(self.linkedTo)
                     if target is None:
                         print >> sys.stderr, 'WARNING: Broken link from %s to "%s"' % (self.id, self.linkedTo)
