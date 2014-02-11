@@ -419,7 +419,7 @@ service to link this service with his current account
 |===
 
 The callbacks reference can be found
-http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_callback[here].
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_web_callback[here].
 
 [[guide-concepts-web-endpoints-handled-services]]
 ==== Handled Services

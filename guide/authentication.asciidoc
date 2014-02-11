@@ -82,7 +82,7 @@ You now have a guest player, an access token and a sid you can use to interact w
 [[guide-authentication-guest-authentication-reference]]
 ==== Reference
 
-http://developer.scoreflex.com/docs/reference/api/v1#post__v1_oauth_anonymousAccessToken[anonymousAccessToken reference].
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_oauth_anonymousAccessToken[anonymousAccessToken reference].
 
 [[guide-authentication-web-authentication]]
 === Web authentication
@@ -215,7 +215,7 @@ You now have an authenticated player, an access token and a sid you can use to i
 [[guide-authentication-client-side-authentication-reference]]
 ==== Reference
 
-http://developer.scoreflex.com/docs/reference/api/v1#post__v1_oauth_accessTokenExternallyAuthenticated[accessTokenExternallyAuthenticated reference].
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_oauth_accessTokenExternallyAuthenticated[accessTokenExternallyAuthenticated reference].
 
 
 [[guide-authentication-merging-guest-player]]

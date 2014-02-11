@@ -31,11 +31,11 @@
 A REST Management API is also opened for developers who wish to
 programmatically create (many) challenges. See the corresponding calls
 to
-http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_management_games_gameId_challenges_configs[list all configs],
-http://developer.scoreflex.com/docs/reference/api/v1#post_\_v1_management_games_gameId_challenges_configs_challengeId[create or update a config],
-http://developer.scoreflex.com/docs/reference/api/v1#get_\_v1_management_games_gameId_challenges_configs_challengeId[read a config],
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_management_games_gameId_challenges_configs[list all configs],
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_management_games_gameId_challenges_configs_challengeId[create or update a config],
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_management_games_gameId_challenges_configs_challengeId[read a config],
 and
-http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_management_games_gameId_challenges_configs_challengeId[delete a config].
+http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_management_games_gameId_challenges_configs_challengeId[delete a config].
 
 Note that all the changes are done in the sandbox. Don't forget to
 synchronize your changes in production when ready.
@@ -45,7 +45,7 @@ synchronize your changes in production when ready.
 
 You can edit the challenge configuration in the same way you created it,
 using the same form, or
-http://developer.scoreflex.com/docs/reference/api/v1#post__v1_management_games_gameId_challenges_configs_challengeId[the same REST Management call].
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_management_games_gameId_challenges_configs_challengeId[the same REST Management call].
 
 However, note that the configurations have an associated version, and
 modifying some properties imply bumping the version.
@@ -77,7 +77,7 @@ status is +"running"+, and start your game loop. You're done!
 If you use the Scoreflex Webview, you will need to handle the challenge
 start callback of your SDK, or to listen to the appropriate web callback
 code in the
-http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_callback[web callback endpoint].
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_web_callback[web callback endpoint].
 
 [[guide-challenges-interact-implementing-challenge-into-the-game]]
 ==== Implementing challenge into the game

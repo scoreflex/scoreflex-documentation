@@ -485,15 +485,15 @@ update the application.
 
 By players (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_configs[List available challenge configurations]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_configs_challengeId[Read a given challenge configuration]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_configs[List available challenge configurations]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_configs_challengeId[Read a given challenge configuration]
 
 By the developer (Management API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_management_games_gameId_challenges_configs[List available challenge configurations]
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_management_games_gameId_challenges_configs_challengeId[Create/update a given challenge configuration]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_management_games_gameId_challenges_configs_challengeId[Read a given challenge configuration]
-* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_management_games_gameId_challenges_configs_challengeId[Delete a given challenge configuration]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_management_games_gameId_challenges_configs[List available challenge configurations]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_management_games_gameId_challenges_configs_challengeId[Create/update a given challenge configuration]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_management_games_gameId_challenges_configs_challengeId[Read a given challenge configuration]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_management_games_gameId_challenges_configs_challengeId[Delete a given challenge configuration]
 
 [[guide-challenges-reference-challengerequest]]
 ==== ChallengeRequest
@@ -700,10 +700,10 @@ have, or a match would be disfavored.
 
 By players (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_requests[Create a challenge request]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_requests[List your challenge requests]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_requests_requestId[Read a given challenge request]
-* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_challenges_requests_requestId[Delete a given challenge request]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_requests[Create a challenge request]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_requests[List your challenge requests]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_requests_requestId[Read a given challenge request]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_challenges_requests_requestId[Delete a given challenge request]
 
 [[guide-challenges-reference-challengeinstance]]
 ==== ChallengeInstance
@@ -974,15 +974,15 @@ This list is modified with each xref:guide-challenges-reference-challengeturn[+C
 
 By the player (Web API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_challenges[Display the list of the player's challenge instances]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_web_challenges_instances_challengeId[Display a challenge instance]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_web_challenges[Display the list of the player's challenge instances]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_web_challenges_instances_challengeId[Display a challenge instance]
 
 By the player (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances[List all the player's challenge instances]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId[Get a challenge instance]
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_invitations[Answer a challenge instance invitation]
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_resignation[Resign from a challenge instance]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_instances[List all the player's challenge instances]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_instances_instanceId[Get a challenge instance]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_instances_instanceId_invitations[Answer a challenge instance invitation]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_instances_instanceId_resignation[Resign from a challenge instance]
 
 [[guide-challenges-reference-state]]
 ==== State
@@ -1006,10 +1006,10 @@ See xref:guide-api-conventions-json-object-updates[JSON object updates]
 
 By the player (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_state[Read a part of the challenge instance state]
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_state[Replace a part of the challenge instance state]
-* http://developer.scoreflex.com/docs/reference/api/v1#put__v1_challenges_instances_instanceId_state[Merge and update a part of the challenge instance state]
-* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_challenges_instances_instanceId_state[Remove a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_instances_instanceId_state[Read a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_instances_instanceId_state[Replace a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#put_{empty}_v1_challenges_instances_instanceId_state[Merge and update a part of the challenge instance state]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_challenges_instances_instanceId_state[Remove a part of the challenge instance state]
 
 [[guide-challenges-reference-challengeturn]]
 ==== ChallengeTurn
@@ -1130,8 +1130,8 @@ fields that are edited while posting a turn message.
 
 By player (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_turns[Post a new turn message]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_turns[Read a challenge instance turns]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_instances_instanceId_turns[Post a new turn message]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_instances_instanceId_turns[Read a challenge instance turns]
 
 [[guide-challenges-reference-challengereplay]]
 ==== ChallengeReplay
@@ -1176,8 +1176,8 @@ associated +ChallengeTurn+. You should not use to this field.
 
 By players (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_replays[Create a replay]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_replays_replayId[Read a replay]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_instances_instanceId_replays[Create a replay]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_instances_instanceId_replays_replayId[Read a replay]
 
 See xref:guide-challenges-reference-challengereplaymessage-methods[+ChallengeReplayMessage+] methods.
 
@@ -1236,7 +1236,7 @@ Any custom value, meaningful to your game.
 
 By players (API):
 
-* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_challenges_instances_instanceId_replays_replayId_messages[Add a message to a replay]
-* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_challenges_instances_instanceId_replays_replayId_messages[Read replay messages]
+* http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_challenges_instances_instanceId_replays_replayId_messages[Add a message to a replay]
+* http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_challenges_instances_instanceId_replays_replayId_messages[Read replay messages]
 
 See xref:guide-challenges-reference-challengereplay-methods[ChallengeReplay methods]
