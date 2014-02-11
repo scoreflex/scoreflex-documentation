@@ -1,5 +1,5 @@
 [[unity-getting-started]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Getting started
 
 NOTE: As of now, the Unity plugin is only compatible with Android and iOS. We are actively working on making our plugin cross-platform within Unity.
