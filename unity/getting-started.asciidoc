@@ -2,5 +2,177 @@
 [role="chunk-page"]
 == Getting started
 
+Log in or sign up by creating a Scoreflex developer account.
+https://developer.scoreflex.com/account/login
+
+// TODO: [screenshot creation compte]
+_Screenshot coming soon._
+
+[[unity-getting-started-create-the-first-game]]
+=== 1. Create the first game
+
+Go to http://developer.scoreflex.com/games/new
+
+// TODO: [screenshot creation game]
+_Screenshot coming soon._
+
+[[android-getting-started-create-a-leaderboard-configuration-on-your-scoreflex-developer-page]]
+=== 2. Create a leaderboard configuration on your Scoreflex developer page
+
+// TODO: [screenshot creation leaderboard]
+_Screenshot coming soon._
+
+[[unity-getting-started-download-unity-scoreflex-sdk]]
+=== 3. Download Unity Scoreflex plugin
+
+https://github.com/scoreflex/scoreflex-unity-plugin/
+
+[[unity-getting-started-setup-your-project]]
+=== 4. Setup your project
+
+Import the Scoreflex plugin in your unity workspace 
+
+ * Click Assets > Import Package > Custom Package
+ * Browse and select the Scoreflex unity plugin downloaded on the previous step
+
+A prefab named Scoreflex should be visible in Plugins > Scoreflex. 
+Add it to your scene and fill the Cliend Id and Client Secret field with your informations 
+
+The Plugin will be initialized automatically in its Awake() method 
+
+[[unity-getting-started-using-the-leaderboards]]
+=== 6. Using the leaderboards
+
+Create a leaderboard configuration on your Scoreflex Developer page.
+
+// TODO: [screenshot]
+_Screenshot coming soon._
+
+[[unity-getting-started-submit-a-score]]
+=== 7. Submit a score
+
+At the end of a level, if you want to publish the player's score to the leaderboard you should use the following code :
+
+[source, csharp]
+----
+String leaderboardId = "<MY_LEADERBOARD>";
+Long score = 14000;
+Scoreflex.Instance.SubmitScore(LeaderboardID, score);
+----
+
+You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created on your developer page.
+
+[[unity-getting-started-display-a-leaderboard]]
+=== 8. Display a leaderboard
+
+[source,csharp]
+----
+String leaderboardId = "<MY_LEADERBOARD>";
+Scoreflex.Instance.ShowLeaderboard(GameStateController.leaderboardId);
+----
+
+You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created on your developer page.
+
+[[unity-getting-started-play-with-friends]]
+=== 9. Play with friends
+
+
+In order to play with friends in Scoreflex, you will have to create what we call Challenge.
+
+A Challenge represents a turn by turn game session with up to 64 players.
+A challenge is composed of players and turns object, a turn object represents
+all the action of a player at a certain turn of play.
+
+But first create a challenge on your Scoreflex Developer page:
+
+Create a challenge configuration:
+
+// TODO: [screenshot]
+_Screenshot coming soon._
+
+Display the challenge view:
+
+[source,csharp]
+----
+Scoreflex.Instance.ShowPlayerChallenges();
+----
+// TODO: [screenshot]
+_Screenshot coming soon._
+
+This view guides the player while he sets the challenge up (invitations,random opponent)
+
+It is used to display:
+
+* invitations received from other players
+* on-going challenges
+* finished challenges
+
+Once the player clicks the “play now” button your game will receive a
+local intent broadcast in order to start the game.
+
+[[unity-getting-started-handle-challenge-start]]
+=== 10. Handle challenge start
+
+When the player launches a chanllenge by pushing the "play now" button Scoreflex calls the method that is set in the member : 
+
+[source,csharp]
+----
+Scoreflex.Instance.ChallengeHandlers
+----
+
+There are many ways to set the ChallengeHandlers but if you want to do it in a MonoBehaviour implementation here is how 
+
+[source,csharp]
+----
+using UnityEngine;
+using System.Collections.Generic;
+
+public class ChallengeHandler : MonoBehaviour
+{
+	void Start()
+	{
+		Scoreflex.Instance.ChallengeHandlers += HandleChallenge;
+	}
+
+	public static string turnSequence;
+
+	void HandleChallenge(Dictionary<string,object> challengeSpecifications)
+	{
+		string challengeId = challengeSpecifications["id"].ToString();
+
+		Dictionary<string,object> turnFigures = challengeSpecifications["turn"] as Dictionary<string,object>;
+		turnSequence = turnFigures["sequence"] as string;
+		
+		// Start your game here ! 
+	}
+
+	void OnDestroy()
+	{
+		Scoreflex.Instance.ChallengeHandlers -= HandleChallenge;
+	}
+}
+----
+
+When the HandleChallenge method is called you have to start the game and
+let the player play according to the challenge Instance configuration.
+
+Once the player has completed the challenge, you need to submit the
+actions they did during their turn.
+
+If your game only requires a score to decide who won you can use the
+following code
+
+[source,csharp]
+----
+var param = new Dictionary<string,object>();
+long Score = 2000;
+if(ChallengeHandler.turnSequence != null) param["turnSequence"] = (object) ChallengeHandler.turnSequence;
+
+Scoreflex.Instance.SubmitTurnAndShowChallengeDetail(<ChallengeInstanceId>,Score, param);s
+----
+
+You will have to replace the +<ChallengeInstanceId>+ by the challengeId retreived in the HandleCallenge method.
+
+
 // TODO: TODO
-_Coming soon._
+//_Coming soon._
