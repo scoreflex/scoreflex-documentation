@@ -2,7 +2,7 @@
 [role="chunk-page"]
 == Getting started
 
-It is important to note that for now the Unity plugin is only compatible with Android and iOS but we are actively working on making our plugin cross platform within unity. 
+NOTE: As of now, the Unity plugin is only compatible with Android and iOS. We are actively working on making our plugin cross-platform within Unity.
 
 
 Log in or sign up by creating a Scoreflex developer account.
