@@ -230,8 +230,10 @@ class TocEntry():
 
 
 
-def isNodeTag(node, tag):
-    return node.nodeType == minidom.Node.ELEMENT_NODE and node.nodeName == tag
+def getNodeTag(node):
+    if node.nodeType == minidom.Node.ELEMENT_NODE:
+        return node.nodeName
+    return None
 
 def getText(node):
     rc = []
@@ -244,7 +246,7 @@ def getText(node):
 
 def getTitle(node):
     for title in node.childNodes:
-        if not isNodeTag(title, 'title'): continue
+        if getNodeTag(title) != 'title': continue
         return getText(title)
     return None
 
@@ -264,23 +266,30 @@ def getLinkedTo(node):
     if not 'section-link' in node.getAttribute('role'):
         return None
     for title in node.childNodes:
-        if not isNodeTag(title, 'title'): continue
+        if getNodeTag(title) !=  'title': continue
         for link in title.childNodes:
-            if not isNodeTag(link, 'link'): continue
+            if getNodeTag(link) != 'link': continue
             return link.getAttribute('linkend')
         for ulink in title.childNodes:
-            if not isNodeTag(ulink, 'ulink'): continue
+            if getNodeTag(ulink) != 'ulink': continue
             return ulink.getAttribute('url')
 
 def parseLevels(node, chunkToc, levels, currToc, silent=False):
     sublevels = levels[1:]
     if len(sublevels) == 0: sublevels = levels
     for part in node.childNodes:
-        if not isNodeTag(part, levels[0]): continue
+        forceSkipToc = False
+        if getNodeTag(part) != levels[0]:
+            # Allow a few [float] elements to be recognized in the ToC
+            # but make sure they don't affect written HTML by setting skipToc
+            if getNodeTag(part) in ['simpara', 'bridgehead']:
+                forceSkipToc = True
+            else:
+                continue
         partId = part.getAttribute('id')
         partTitle = getTitle(part)
         childToc = TocEntry(partId, partTitle)
-        childToc.skipToc = shouldSkipToc(part)
+        childToc.skipToc = shouldSkipToc(part) or forceSkipToc
         childToc.linkedTo = getLinkedTo(part)
         childToc.chunkPage = shouldChunkPage(part)
         childToc.chunkToc = shouldChunkToc(part)
@@ -297,7 +306,7 @@ def parseLevels(node, chunkToc, levels, currToc, silent=False):
 def extractToc(dom, chunkToc, silent=False):
     toc = TocEntry()
     for book in dom.childNodes:
-        if not isNodeTag(book, 'book'): continue
+        if getNodeTag(book) != 'book': continue
         parseLevels(book, chunkToc, ['part', 'chapter', 'section'], toc, silent)
         break
     return toc
