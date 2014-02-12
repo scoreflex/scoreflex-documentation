@@ -161,13 +161,13 @@ and http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_oauth_a
 [[guide-authentication-client-side-authentication-concepts]]
 ==== Concepts
 
-We encourage you to define your own Facebook and Google+ applications for your mobile games and to enable native login. In this approach,
+We encourage you to define your own Facebook, Google+ and Twitter applications for your mobile games and to enable native login. In this approach,
 your player won't have to type his login and password to authenticate himself and the authentication process will be smoother.
 
 [[guide-authentication-client-side-authentication-interact]]
 ==== Interact
 
-. Obtain an access token on Facebook or Google+ by authentication your player via your Facebook or Google+ application
+. Obtain an access token on Facebook, Google+ or Twitter by authentication your player via your Facebook, Google+ or Twitter application
 . Give this access token to scoreflex with the following call:
 
 [source,sh]
@@ -211,6 +211,16 @@ $> curl -XPOST 'https://sandbox.api.scoreflex.com/v1/oauth/accessTokenExternally
 ----
 
 You now have an authenticated player, an access token and a sid you can use to interact with Scoreflex API and Scoreflex Web components.
+
+[NOTE]
+====
+The +serviceAccessToken+ parameter can be a simple or a complex JSON +string+. For example, when authenticating via Twitter
+the +serviceAccessToken+ parameter will look like this: +
+[source,js]
+----
+serviceAccessToken={"access_token":"<ACCESS_TOKEN>","access_token_secret":"<ACCESS_TOKEN_SECRET"}
+----
+====
 
 [[guide-authentication-client-side-authentication-reference]]
 ==== Reference
