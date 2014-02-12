@@ -281,6 +281,7 @@ Add the permission to your +AndroidManifest.xml+ to receive push notification:
 
 [source,xml]
 ----
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <permission android:name="[YOUR_APPLICATION_PACKAGE].permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
