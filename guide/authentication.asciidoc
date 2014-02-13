@@ -95,8 +95,8 @@ The web authentication workflow is very similar to http://oauth.net/2/["OAuth 2.
 
 . Open a web view to +http://{sandbox.}api.scoreflex.com/v1/oauth/web/authorize+.
 . Your player will be asked to choose a social network.
-. Your player will have to log in the selected social network if he is not already logged.
-. Your player will have to authorize Scoreflex to access his information.
+. Your player will have to log in to the selected social network if they are not already logged in.
+. Your player will have to authorize Scoreflex to access their information.
 . If everything goes well a code is returned by Scoreflex to your game via a web callback.
 . You can trade this code with an access token for your player.
 
