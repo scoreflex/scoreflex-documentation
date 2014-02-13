@@ -82,9 +82,9 @@ You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created on 
 
 In order to play with friends in Scoreflex, you will have to create what we call a Challenge.
 
-A Challenge represents a turn by turn game session with up to 64 players.
-A challenge is composed of players and +turns+ object, a turn object represents
-all the action of a player at a certain turn of play.
+A Challenge represents a turn by turn game session with up to 16 players.
+It is composed of Player and Turn objects.
+A Turn object represents all the actions of a Player at a given turn of play.
 
 But first create a challenge on your Scoreflex Developer page:
 
