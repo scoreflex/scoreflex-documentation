@@ -145,7 +145,7 @@ left off even if their device is lost, destroyed, or traded in for a
 newer model.
 
 Typical examples of data that can be saved are player's preferences,
-progression and everything that should be restore to ensure the best
+progression and everything that should be restored to ensure the best
 possible cross-device experience for a player playing on more than one
 device. You don't need to use the player storage to maintain your
 players' high scores or achievements as these data are automatically
