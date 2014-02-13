@@ -12,7 +12,7 @@
 ==== Concepts
 
 Your game often comes bundled with configurations and various assets. It
-can be painful to wait for a validation process to make some changes in
+can be painful to wait for a validation process in order to make changes in
 your game. That's why we offer a key/value storage for your game that
 you can use to instantly update some of your game resources.
 
@@ -26,13 +26,13 @@ time you change your mind. Here is how you can do it easily:
   otherwise use the default configuration bundled with your game
 
 The game storage can be viewed as a shared key/value storage for one of
-your game. Only the game developer has write access to it. The games
-only have a read access to it.
+your games. Only the game developer has the right to access it. The games
+only have read access.
 
 How you represent this data within your application is completely up to
 you, but we recommend choosing a platform-independent format so that the
 data can easily be read and written from any of the platforms your
-application supports. For instance, consider using a platform-neutral
+application supports. For example, consider using a platform-neutral
 format such as a JSON-encoded string.
 
 [[guide-cloud-storage-game-storage-interact]]
