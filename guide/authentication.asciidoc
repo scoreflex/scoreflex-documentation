@@ -162,7 +162,7 @@ and http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_oauth_a
 ==== Concepts
 
 We encourage you to define your own Facebook, Google+ and Twitter applications for your mobile games and to enable native login. In this approach,
-your player won't have to type his login and password to authenticate himself and the authentication process will be smoother.
+your player won't have to type their login and password to authenticate themselves and the authentication process will be smoother.
 
 [[guide-authentication-client-side-authentication-interact]]
 ==== Interact
