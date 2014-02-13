@@ -1,8 +1,8 @@
 [[unity-getting-started]]
 [role="chunk-page chunk-toc"]
-== Getting started
+== Getting Started
 
-NOTE: As of now, the Unity plugin is only compatible with Android and iOS. We are actively working on making our plugin cross-platform within Unity.
+NOTE: As of now, the Unity plugin is only compatible with Android and iOS. We are actively working on making our plugin cross-platform capable within Unity.
 
 
 Log in or sign up by creating a Scoreflex developer account.
@@ -80,10 +80,10 @@ You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created on 
 === 9. Play with friends
 
 
-In order to play with friends in Scoreflex, you will have to create what we call Challenge.
+In order to play with friends in Scoreflex, you will have to create what we call a Challenge.
 
 A Challenge represents a turn by turn game session with up to 64 players.
-A challenge is composed of players and turns object, a turn object represents
+A challenge is composed of players and +turns+ object, a turn object represents
 all the action of a player at a certain turn of play.
 
 But first create a challenge on your Scoreflex Developer page:
@@ -102,7 +102,7 @@ Scoreflex.Instance.ShowPlayerChallenges();
 // TODO: [screenshot]
 _Screenshot coming soon._
 
-This view guides the player while he sets the challenge up (invitations,random opponent)
+This view guides the player while they set the challenge up (invitations,random opponent)
 
 It is used to display:
 
@@ -116,7 +116,7 @@ local intent broadcast in order to start the game.
 [[unity-getting-started-handle-challenge-start]]
 === 10. Handle challenge start
 
-When the player launches a chanllenge by pushing the "play now" button Scoreflex calls the method that is set in the member : 
+When the player launches a challenge by pushing the "play now" button Scoreflex calls the method that is set in the member : 
 
 [source,csharp]
 ----
