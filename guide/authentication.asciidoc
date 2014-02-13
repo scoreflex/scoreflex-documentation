@@ -89,7 +89,7 @@ http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_oauth_anony
 
 [[guide-authentication-web-authentication-concepts]]
 ==== Concepts
-If you don't want to create a Facebook or a Google+ application for your game, Scoreflex allows you to authenticate your players via Facebook or Google+ inside a web view. This method can also be useful if your game is only running on a web browser. This will work out of the box without any configuration from your part.
+If you don't want to create a Facebook or a Google+ application for your game, Scoreflex allows you to authenticate your players via Facebook or Google+ inside a web view. This method can also be useful if your game is only running on a web browser. This will work out of the box without any configuration on your part.
 
 The web authentication workflow is very similar to http://oauth.net/2/["OAuth 2.0", window="_blank"]:
 
