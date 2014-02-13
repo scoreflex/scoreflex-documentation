@@ -8,12 +8,94 @@
 [[guide-social-networks-authentication]]
 === Authentication
 
-_Help coming soon._
+The following social networks are currently supported:
+
+* http://www.facebook.com["Facebook", window="_blank"]
+* http://plus.google.com["Google+", window="_blank"]
+* http://www.twitter.com["Twitter", window="_blank"]
+
+In order to interact with the Scoreflex API you have first to authenticate your player. You can allow your players
+to play and take part to your game competition as a guest. You can also authenticate your players via a social network.
+
+The authentication with social networks can be done inside a webview server side. You can also
+use native authentication client-side.
+
+To get more information please refer to the <<guide-authentication,Scoreflex authentication section>>.
+
+[[guide-social-networks-link-multiple-accounts]]
+=== Link multiple accounts
+
+[[guide-social-networks-link-multiple-accounts-concepts]]
+==== Concepts
+
+In Scoreflex, your players can link their account with multiple social services allowing them to play with their friends
+from Google+, Facebook, Twitter and to interact with multiple services at once.
+
+Like for authentication, Scoreflex can handle the linking of a service for you via our webview UI. You can also use native authentication
+client-side and link the current player account to a service via the REST API.
+
+[[guide-social-networks-link-multiple-accounts-interact]]
+==== Interact
+
+[[guide-social-networks-link-multiple-accounts-interact-link-player-with-service]]
+===== Link player with a new social service
+
+[source,sh]
+----
+$> curl -XPOST 'https://sandbox.api.scoreflex.com/v1/social/links/<SERVICE>'\
+'?accessToken=<ACCESS_TOKEN>'\
+'&serviceAccessToken=<SERVICE_ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+NOTE: you can only link an already authenticated player to another service.
+
+WARNING: we currently don't support the linking of an already registered account in Scoreflex,
+meaning that we don't merge two existing Scoreflex authenticated players.
+
+[[guide-social-networks-link-multiple-accounts-interact-unlink-player-with-service]]
+===== Unlink player with a social service
+
+[source,sh]
+----
+$> curl -XDELETE 'https://sandbox.api.scoreflex.com/v1/social/links/<SERVICE>?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+NOTE: If the current player is only linked to one service you can't unlink them from this service.
+
+
+[[guide-social-networks-link-multiple-accounts-reference]]
+==== Reference
+
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_links_service[link reference]
+and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_links_service[unlink reference].
+
+
 
 [[guide-social-networks-friends-and-contacts]]
 === Friends and contacts
 
-_Help coming soon._
+[[guide-social-networks-friends-and-contacts-concepts]]
+==== Concepts
+
+[[guide-social-networks-friends-and-contacts-interact]]
+==== Interact
+
+[[guide-social-networks-friends-and-contacts-reference]]
+==== Reference
 
 [[guide-social-networks-invitations]]
 === Invitations
