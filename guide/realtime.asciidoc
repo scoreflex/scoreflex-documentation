@@ -41,14 +41,14 @@ without connection before being closed. If a new connection is opened
 for an existing player session, the old one is automatically closed and
 replaced by the new one.
 
-All network aspects are handled by the Scoreflex SDKs, hiding you all
-the complexity of the connections management. the only thing you need to
-care about is the player's connection and disconnection.
+All network aspects are handled by the Scoreflex SDKs, hiding all
+the complexity of the connections management. The only thing you need to
+worry about are the player's connection and disconnection.
 
-The player session is automatically created during his first connection.
+The player session is automatically created during their first connection.
 From your game's point of view, a player can only ever have more than
 one opened session. Because this session is attached to a device, it
-means that he cannot open 2 sessions on the same game with 2 different
+means that they cannot open 2 sessions on the same game with 2 different
 devices.
 
 [[guide-realtime-concepts-rooms]]
