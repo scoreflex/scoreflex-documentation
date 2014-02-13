@@ -42,8 +42,8 @@ http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_leaderboards
 (API reference) which returns a JSON structure. Scoreflex also
 provides a web interface to display leaderboards right into your game.
 
-The web interface displays scores according to the 
-configured xref:guide-leaderboards-reference-attributes-scoreformatter[formatting]. 
+The web interface displays scores according to the
+configured xref:guide-leaderboards-reference-attributes-scoreformatter[formatting].
 Two interfaces exists. The
 http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_web_leaderboards_leaderboardId_overview[leaderboard overview]
 (API reference) displays a summary of the scores of a
@@ -58,7 +58,7 @@ leaderboards in this menu, and thus the navigation.
 
 Scores are also displayed in the
 http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_web_scores_leaderboardId_ranks[rankbox]
-(API reference). The rankbox is a small web view that can be easily displayed
+(API reference). The rankbox is a small webview that can be easily displayed
 after a score submission to display the rank to the player without
 displaying a full leaderboard.
 

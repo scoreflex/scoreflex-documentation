@@ -96,7 +96,7 @@ languages and platforms (Android, iOS, Web, Unity, Corona).
 
 In addition, any webview-capable client can make use of our provided
 full-featured interface and widgets. Our SDKs come with handy ways to
-display those web views to your players and interact with them.
+display those webviews to your players and interact with them.
 
 For a deeper integration with your game, you can use the raw data
 exposed by the REST API and build your own native interface. At any time
@@ -345,7 +345,7 @@ you can ignore this section.
 When you are using our web endpoints in a webview, some player actions
 need to be communicated back to the game so that it can react
 accordingly. The communication between webviews and the game is
-currently done via web callbacks. A client using web views should
+currently done via web callbacks. A client using webviews should
 therefore properly listen to url updates and react if the url is of the
 form /web/callback.*.
 
