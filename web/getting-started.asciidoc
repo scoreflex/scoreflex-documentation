@@ -1,5 +1,5 @@
 [[web-getting-started]]
-[role="chunk-page"]
+[role="chunk-page chunk-toc"]
 == Getting started
 
 Create a Scoreflex developer account at
