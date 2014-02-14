@@ -2,27 +2,194 @@
 [role="chunk-page"]
 == Getting started
 
-. Create a Scoreflex developer account at
-  https://developer.scoreflex.com/account/login[https://developer.scoreflex.com/account/login].
-  Don't forget to validate your account if you signed up via an email and
-  password pair before continuing.
-. Download the latest Javascript SDK release on GitHub at
-  https://github.com/scoreflex/scoreflex-javascript-sdk/releases/latest[https://github.com/scoreflex/scoreflex-javascript-sdk/releases/latest]
-. Import the SDK and the webclient style if you intend to use it in
-  your javascript game.
-+
+Create a Scoreflex developer account at
+https://developer.scoreflex.com/account/login[https://developer.scoreflex.com/account/login].
+Don't forget to validate your account if you signed up via an email and
+password pair before continuing.
+  
+[[web-getting-started-create-the-first-game]]
+=== 1. Create the first game
+
+Go to http://developer.scoreflex.com/games/new
+
+[[web-getting-started-download-android-scoreflex-sdk]]
+=== 2. Download Javascript Scoreflex SDK
+
+Download the latest Javascript SDK release on GitHub at 
+https://github.com/scoreflex/scoreflex-javascript-sdk/releases/latest[https://github.com/scoreflex/scoreflex-javascript-sdk/releases/latest]
+  
+[[web-getting-started-import-the-sdk]]
+=== 3. Import the SDK
+
+Import the SDK and the webclient style if you intend to use it in your
+javascript game.
+
 [source,html]
 ----
 <script type="text/javascript" src="scoreflex-full.js"></script>
 <link href="style/styles.css" type="text/css" rel="stylesheet">
 ----
-+
-. Start using the Scoreflex Javascript SDK. Your clientId and
-clientSecret are indicated on the game page of your Scoreflex developer
-account.
-+
+
+[[web-getting-started-initialize-the-sdk]]
+=== 4. Initialize the SDK  
+ 
+Start using the Scoreflex Javascript SDK. Your clientId and clientSecret 
+are indicated on the game page of your Scoreflex developer account.
+
 [source,js]
 ----
 var useSandbox = true;
 var ScoreflexSDK = Scoreflex("<CLIENT_ID>", "<CLIENT_SECRET>", useSandbox);
+----
+
+[[web-getting-started-using-the-leaderboards]]
+=== 5. Using the leaderboards
+
+Create a leaderboard configuration on your Scoreflex Developer page.
+
+// TODO: [screenshot]
+_Screenshot coming soon._
+
+[[web-getting-started-submit-a-score]]
+=== 6. Submit a score
+
+At the end of a level, if you want to publish the player's score to the
+leaderboard.
+
+[source,js]
+----
+var leaderboardId = "<MY_LEADERBOARD>";
+var leaderboard = ScoreflexSDK.Leaderboards.get(leaderboardId);
+
+var score = 1500;
+var parameters = {};
+var handlers = {
+  onload:function() {console.log("score sent");},
+  onerror:function() {console.log("error");}
+};
+leaderboard.submitScore(score, parameters, handlers);
+----
+
+You must replace +<MY_LEADERBOARD>+ by the id of the leaderboard you created
+on your developer page.
+
+[[web-getting-started-display-a-leaderboard]]
+=== 7. Display a leaderboard
+
+[source,js]
+----
+var leaderboardId = "<MY_LEADERBOARD>";
+var leaderboard = ScoreflexSDK.Leaderboards.get(leaderboardId);
+
+var parameters = {};
+leaderboard.showLeaderboard(parameters);
+----
+
+[[web-getting-started-play-with-friends]]
+=== 8. Play with friends
+
+In order to play with friends in Scoreflex, you will have to create what
+we call Challenge.
+
+A Challenge represents a turn by turn game session with up to 16 players.
+It is composed of Player and Turn objects.
+A Turn object represents all the actions of a Player at a given turn of play.
+
+But first create a challenge on your Scoreflex Developer page:
+
+Create a challenge configuration:
+
+// TODO: [screenshot]
+_Screenshot coming soon._
+
+Display the challenge view:
+
+[source,js]
+----
+ScoreflexSDK.Challenges.showChallenges();
+----
+
+/ TODO: [screenshot]
+_Screenshot coming soon._
+
+This view guides the player while he sets the challenge up (invitations,
+random opponent)
+
+It is used to display:
+
+* invitations received from other players
+* on-going challenges
+* finished challenges
+
+Once the player clicks the “play now” button a ScoreflexChallengeEvent 
+will be fired in the +window+ scope.
+
+[[web-getting-started-handle-challenge-start]]
+=== 9. Handle challenge start
+
+First listen for +ScorefleEvent+ events:
+
+[source,js]
+----
+var scoreflexEventHandler = function(event) {
+  var detail = event.detail || {};
+  var name = detail.name;
+  if (name === "challenge") {
+    var challengeInstance = detail.challenge;
+    playChallenge(challengeInstance);
+  }
+};
+window.addEventListener("ScoreflexEvent", scoreflexEventHandler, false);
+
+var playChallenge = function(challengeInstance) {
+  /* implement your gameplay */
+}
+----
+
+Once the player has completed the challenge, you need to submit the
+actions they did  during their turn.
+
+If your game only requires a score to decide who won you can use the
+following method
+
+[source,js]
+----
+var score = 2000;
+
+challengeInstance.submitTurnScore(
+  score,
+  {},
+  {
+    onload: function() { /* ... */ },
+    onerror: function() { /* ... */ }
+  }
+);
+----
+
+If your game requires more information than just a score as turn data,
+you can check xref:guide-challenges-reference-challengeturn[the accepted fields]
+and use the +submitTurn+ method as follow:
+
+[source,js]
+----
+/* Submit a turn body */
+// -- get the current player's id
+var currentPlayerId = scoreflex.Players.getCurrent().getId();
+
+// -- prepare the turn's body
+var body = {};
+// Set the turn score for this player
+body.score = 800;
+// Indicate the player ended the challenge (and cannot send new turn)
+body.instance = {participants: {}};
+body.instance.participants[currentPlayerId] = {status: "FINISHED"};
+
+challengeInstance.submitTurn(
+  body,
+  {},
+  {
+    onload: function() { /* ... */ },
+    onerror: function() { /* ... */ }
+  }
+);
 ----
