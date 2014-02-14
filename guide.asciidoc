@@ -19,6 +19,8 @@ include::guide/gaming-devices.asciidoc[]
 
 include::guide/authentication.asciidoc[]
 
+include::guide/social-networks.asciidoc[]
+
 include::guide/scores.asciidoc[]
 
 include::guide/leaderboards.asciidoc[]
@@ -34,8 +36,6 @@ include::guide/cloud-storage.asciidoc[]
 include::guide/chat.asciidoc[]
 
 include::guide/realtime.asciidoc[]
-
-include::guide/social-networks.asciidoc[]
 
 include::guide/push-notifications.asciidoc[]
 

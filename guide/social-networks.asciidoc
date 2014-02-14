@@ -84,23 +84,249 @@ http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_link
 and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_links_service[unlink reference].
 
 
-
 [[guide-social-networks-friends-and-contacts]]
 === Friends and contacts
 
 [[guide-social-networks-friends-and-contacts-concepts]]
 ==== Concepts
 
+When players authenticate to Scoreflex via a social network all their contacts from the social networks are fetched.
+In the Scoreflex terminology a player's contact is someone related to the player via a social service that is not
+yet registered to Scoreflex.
+
+All imported contacts of a player that are already registered to Scoreflex are automatically added to their Scoreflex
+friends. Scoreflex players can manage their friends list by adding or removing friends manually.
+
+In Scoreflex, the friendship relation is asymmetric. Players can add players to their friends list without others
+authorization. This can be viewed as a following relationship.
+
+The list of contacts and friends are shared across all games.
+
 [[guide-social-networks-friends-and-contacts-interact]]
 ==== Interact
+
+[[guide-social-networks-friends-and-contacts-interact-listing-own-friends]]
+===== Listing own friends
+
+[source,sh]
+----
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/friends?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "friends": [
+    {
+      "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/players/0189oiu428700181/",
+      "challengeCounters": {
+      "1": {
+        "lost": 0,
+        "played": 1337
+        }
+      },
+      "firstName": "Chuck",
+      "friend": true,
+      "friends": [
+      "018blql3fmd1vu81"
+      ],
+      "gameSkill": "God",
+      "geo": {
+        "id": "cYjPGhGBlgP",
+        "title": "San Francisco 94133",
+        "formatted": "San Francisco 94133, CA, United States",
+        "adminLevel": "postalCode",
+        "countryCode": "US"
+      },
+      "id": "0189oiu428700181",
+      "language": "en_US",
+      "lastName": "Norris",
+      "nationality": "US",
+      "nickName": "Chuck",
+      "serviceIds": {
+        "Facebook": "1",
+        "Google": "1",
+        "Twitter": "1"
+      },
+      "url": "http://sandbox.api.scoreflex.com/v1/web/players/0189oiu428700181"
+   }
+  ],
+  "friendsCount": 1
+}
+----
+
+You can use the +filter+ parameter to filter listed friends as follows:
+
+[source,sh]
+----
+# Returns only the friends that are playing the current game.
+# This call can be useful for example to challenge these friends.
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/friends?accessToken=<ACCESS_TOKEN>&filter=gamePlayers'
+----
+
+[source,sh]
+----
+# Returns only the friends that are not playing the current game.
+# This call can be useful for example to invite these friends to join the game.
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/friends?accessToken=<ACCESS_TOKEN>&filter=gameNonPlayers'
+----
+
+===== Listing another player friends
+
+[source,sh]
+----
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/<PLAYER_ID>/friends?accessToken=<ACCESS_TOKEN>'
+----
+
+You can also use the +filter+ parameter to filter listed friends.
+
+===== Listing own contacts
+
+[source,sh]
+----
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/contacts?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "contacts": [
+    {
+      "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/contacts/327a2f0a69bb9f0502af9cd2faebbfdf/",
+      "id": "Facebook:1000012836862302",
+      "locale": "fr_FR",
+      "name": "Donkey Kong",
+      "profile": "https://www.facebook.com/donkeykong",
+      "service": "Facebook",
+      "serviceId": "1000012836862302"
+    },
+    {
+      "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/contacts/82aea1d7e13dd1b1c93a3bbc43e5e4d3/",
+      "description": "person",
+      "id": "Google:106189723444098348647",
+      "name": "Billy",
+      "profile": "https://plus.google.com/+Billy",
+      "service": "Google",
+      "serviceId": "106189723444098348647"
+    },
+    {
+      "avatarUrl": "https://www.scoreflex.com/sandbox/avatars/contacts/68535c6c237951f4c639808da9a2f8d4/",
+      "description": "Cool description",
+      "id": "Twitter:1510909501",
+      "locale": "en",
+      "name": "Steve",
+      "profile": "http://twitter.com/Steve",
+      "service": "Twitter",
+      "serviceId": "1510909501"
+    }
+  ]
+}
+----
+
+You can use the +services+ parameter to filter listed contacts as follows:
+
+[source,sh]
+----
+# Returns only the contacts on Facebook
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/contacts?accessToken=<ACCESS_TOKEN>&services=Facebook'
+----
+
+[source,sh]
+----
+# Returns only the contacts on Twitter or Google+
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/contacts?accessToken=<ACCESS_TOKEN>&services=Google,Twitter'
+----
 
 [[guide-social-networks-friends-and-contacts-reference]]
 ==== Reference
 
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_players_me_friends[friends reference]
+and http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_players_me_contacts[contacts reference].
+
 [[guide-social-networks-invitations]]
 === Invitations
 
-_Help coming soon._
+[[guide-social-networks-invitations-concepts]]
+==== Concepts
+
+Players can invite their friends and contacts to join them in a game. This is handled automatically by our SDKs
+and our default UI components.
+
+You can also decide to handle invitations yourself. To that purpose, invitations APIs (described in the next
+section) are available.
+
+[[guide-social-networks-invitations-interact]]
+==== Interact
+
+[[guide-social-networks-invitations-interact-marking-contacts-and-friends-as-invited]]
+===== Marking some contacts and friends as invited
+
+[source,sh]
+----
+$> curl -XPOST 'https://sandbox.api.scoreflex.com/v1/social/invitations/018blql3fmd1vu81,Twitter:1510909501,Facebook:1000012836862302?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "018blql3fmd1vu81": true,
+  "Twitter:1510909501": true,
+  "Facebook:1000012836862302": true
+}
+----
+
+[[guide-social-networks-invitations-interact-getting-contacts-and-friends-invitation-status]]
+===== Getting contacts and friends invitation status
+
+[source,sh]
+----
+$> curl -XGET 'https://sandbox.api.scoreflex.com/v1/social/invitations/018blql3fmd1vu81,Twitter:123,Twitter:1510909501,Facebook:1000012836862302?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "018blql3fmd1vu81": true,
+  "Twitter:123": false,
+  "Twitter:1510909501": true,
+  "Facebook:1000012836862302": true
+}
+----
+
+[[guide-social-networks-invitations-interact-marking-contacts-as-uninvited]]
+===== Marking some contacts and friends as uninvited
+
+[source,sh]
+----
+$> curl -XDELETE 'https://sandbox.api.scoreflex.com/v1/social/invitations/018blql3fmd1vu81,Twitter:1510909501,Facebook:1000012836862302?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "success": true
+}
+----
+
+[[guide-social-networks-invitations-interact-marking-all-contacts-as-uninvited]]
+===== Marking all contacts as uninvited
+
+[source,sh]
+----
+$> curl -XDELETE 'https://sandbox.api.scoreflex.com/v1/social/invitations?accessToken=<ACCESS_TOKEN>'
+----
+
+[source,js]
+----
+{
+  "success": true,
+}
+----
+
+[[guide-social-networks-invitations-interact-reference]]
+==== Reference
+
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_invitations_ids[mark as invited reference], http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_social_invitations_ids[get invited status reference], http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_invitations_ids[delete invited status reference] and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_invitations[reset invited status reference].
 
 [[guide-social-networks-sharing]]
 === Sharing
