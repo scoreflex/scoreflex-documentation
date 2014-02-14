@@ -201,7 +201,7 @@ Scoreflex.submitTurn(challengeInstanceId, params, respHandler);
 ----
 
 If your game requires more information than just a score as turn data,
-you can check the accepted fields here [link to turn documentation]
+you can check xref:guide-challenges-reference-challengeturn[the accepted fields].
 
 [[android-getting-started-handling-native-social-login]]
 === 11. Handling native social login
