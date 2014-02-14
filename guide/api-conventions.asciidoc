@@ -321,6 +321,22 @@ instance.turn.currentPlayers
 |12056
 |403
 |When the sandbox players quota for a game is exceeded
+
+|12057
+|403
+|When trying to link with an already linked service
+
+|12058
+|403
+|When trying to link a player to a service account already used by another player
+
+|12059
+|403
+|When not linked with service
+
+|12060
+|403
+|When only one service is linked
 |===
 
 [[guide-api-conventions-pretty-printing]]
