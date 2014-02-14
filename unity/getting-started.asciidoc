@@ -33,15 +33,15 @@ https://github.com/scoreflex/scoreflex-unity-plugin/
 [[unity-getting-started-setup-your-project]]
 === 4. Setup your project
 
-Import the Scoreflex plugin in your unity workspace 
+Import the Scoreflex plugin in your unity workspace
 
  * Click Assets > Import Package > Custom Package
  * Browse and select the Scoreflex unity plugin downloaded on the previous step
 
-A prefab named Scoreflex should be visible in Plugins > Scoreflex. 
-Add it to your scene and fill the Cliend Id and Client Secret field with your informations 
+A prefab named Scoreflex should be visible in Plugins > Scoreflex.
+Add it to your scene and fill the Cliend Id and Client Secret field with your informations
 
-The Plugin will be initialized automatically in its Awake() method 
+The Plugin will be initialized automatically in its Awake() method
 
 [[unity-getting-started-using-the-leaderboards]]
 === 6. Using the leaderboards
@@ -116,14 +116,14 @@ local intent broadcast in order to start the game.
 [[unity-getting-started-handle-challenge-start]]
 === 10. Handle challenge start
 
-When the player launches a challenge by pushing the "play now" button Scoreflex calls the method that is set in the member : 
+When the player launches a challenge by pushing the "play now" button Scoreflex calls the method that is set in the member :
 
 [source,csharp]
 ----
 Scoreflex.Instance.ChallengeHandlers
 ----
 
-There are many ways to set the ChallengeHandlers but if you want to do it in a MonoBehaviour implementation here is how 
+There are many ways to set the ChallengeHandlers but if you want to do it in a MonoBehaviour implementation here is how
 
 [source,csharp]
 ----
@@ -145,8 +145,8 @@ public class ChallengeHandler : MonoBehaviour
 
 		Dictionary<string,object> turnFigures = challengeSpecifications["turn"] as Dictionary<string,object>;
 		turnSequence = turnFigures["sequence"] as string;
-		
-		// Start your game here ! 
+
+		// Start your game here !
 	}
 
 	void OnDestroy()
@@ -167,11 +167,11 @@ following code
 
 [source,csharp]
 ----
-var param = new Dictionary<string,object>();
+var params = new Dictionary<string,object>();
 long Score = 2000;
-if(ChallengeHandler.turnSequence != null) param["turnSequence"] = (object) ChallengeHandler.turnSequence;
+if(ChallengeHandler.turnSequence != null) params["turnSequence"] = (object) ChallengeHandler.turnSequence;
 
-Scoreflex.Instance.SubmitTurnAndShowChallengeDetail(<ChallengeInstanceId>,Score, param);s
+Scoreflex.Instance.SubmitTurnAndShowChallengeDetail(<ChallengeInstanceId>, Score, params);
 ----
 
 You will have to replace the +<ChallengeInstanceId>+ by the challengeId retreived in the HandleCallenge method.
