@@ -13,7 +13,7 @@
 +
 [source,html]
 ----
-<script type="text/javascript" src="scoreflexSDK-full-min.js"></script>
+<script type="text/javascript" src="scoreflex-full.js"></script>
 <link href="style/styles.css" type="text/css" rel="stylesheet">
 ----
 +
