@@ -164,6 +164,9 @@ $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/018blql3fmd1vu81?acce
 [[guide-players-reference]]
 === Reference
 
+[[guide-players-reference-player]]
+==== Player
+
 A player contains the following fields that can be returned or not by
 the API depending on the context and the accessing rights of the caller:
 

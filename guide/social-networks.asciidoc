@@ -80,8 +80,11 @@ NOTE: If the current player is only linked to one service you can't unlink them 
 [[guide-social-networks-link-multiple-accounts-reference]]
 ==== Reference
 
-http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_links_service[link reference]
-and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_links_service[unlink reference].
+[[guide-social-networks-link-multiple-accounts-reference-apis]]
+===== APIs
+
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_links_service[link API reference]
+and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_links_service[unlink API reference].
 
 
 [[guide-social-networks-friends-and-contacts]]
@@ -240,8 +243,30 @@ $> curl -XGET 'https://sandbox.api.scoreflex.com/v1/players/me/contacts?accessTo
 [[guide-social-networks-friends-and-contacts-reference]]
 ==== Reference
 
-http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_players_me_friends[friends reference]
-and http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_players_me_contacts[contacts reference].
+[[guide-social-networks-friends-and-contacts-reference-friend]]
+===== Friend
+A player's friend is a player and therefore contains the same fields as any
+ player, please
+refer to the <<guide-players-reference-player,player reference section>> for more.
+
+[[guide-social-networks-friends-and-contacts-reference-contact]]
+===== Contact
+
+A contact contains the following fields that can be returned or not by
+the API depending on the context and the accessing rights of the caller:
+
+* +id+
+* +name+
+* +avatarUrl+
+* +locale+
+* +profile+
+* +service+
+* +serviceId+
+
+[[guide-social-networks-friends-and-contacts-reference-apis]]
+===== APIs
+http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_players_me_friends[friends API reference]
+and http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_players_me_contacts[contacts API reference].
 
 [[guide-social-networks-invitations]]
 === Invitations
@@ -326,7 +351,10 @@ $> curl -XDELETE 'https://sandbox.api.scoreflex.com/v1/social/invitations?access
 [[guide-social-networks-invitations-interact-reference]]
 ==== Reference
 
-http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_invitations_ids[mark as invited reference], http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_social_invitations_ids[get invited status reference], http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_invitations_ids[delete invited status reference] and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_invitations[reset invited status reference].
+[[guide-social-networks-invitations-interact-reference-apis]]
+===== APIs
+
+http://developer.scoreflex.com/docs/reference/api/v1#post_{empty}_v1_social_invitations_ids[mark as invited API reference], http://developer.scoreflex.com/docs/reference/api/v1#get_{empty}_v1_social_invitations_ids[get invited status API reference], http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_invitations_ids[delete invited status API reference] and http://developer.scoreflex.com/docs/reference/api/v1#delete_{empty}_v1_social_invitations[reset invited status API reference].
 
 [[guide-social-networks-sharing]]
 === Sharing
