@@ -501,3 +501,17 @@ Payload:
 
 * +leaderboardId+
 * +friendId+
+
+
+[[guide-push-notifications-reference-apis]]
+==== APIs
+
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_management_games_gameId_certificates_platforms_platform[update certificate API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_management_games_gameId_certificates_platforms_platform[get certificate API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_management_games_gameId_certificates_platforms_platform[delete certificate API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_notifications_deviceTokens[register device token API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_notifications_deviceTokens[unregister device token API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_notifications_deviceTokens_subscriptions_channels[subscribe to channels API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_notifications_deviceTokens_subscriptions_channels[unsubscribe from channels API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_notifications_deviceTokens_subscriptions[unsubscribe from all channels API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_notifications_track[tracking push notifications API reference]

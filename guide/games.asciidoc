@@ -22,6 +22,9 @@ set up and manage your games.
 [[guide-games-reference]]
 === Reference
 
+[[guide-games-reference-game]]
+==== Game
+
 A game contains the following fields that can be returned or not by the
 API depending on the accessing rights of the caller:
 

@@ -186,3 +186,8 @@ the API depending on the context and the accessing rights of the caller:
 * +challengeCounters+
 * +gameSkill+
 * +serviceIds+
+
+[[guide-players-reference-apis]]
+==== APIs
+
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_players_id[get player API reference]

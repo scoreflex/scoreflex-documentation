@@ -112,6 +112,9 @@ $> curl -XGET \
 [[guide-cloud-storage-game-storage-reference]]
 ==== Reference
 
+[[guide-cloud-storage-game-storage-reference-storage-entry]]
+===== Storage Entry
+
 A storage entry has the following attributes:
 
 * +key+. String matching +[0-9a-zA-Z_]{1,20}+. Used to get/set an item
@@ -120,6 +123,14 @@ A storage entry has the following attributes:
   live forever.
 * +contentType+. The content type of the body. It is included in the
   header of the response when getting the storage entry.
+
+[[guide-cloud-storage-game-storage-reference-apis]]
+===== APIs
+
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_management_games_gameId_storage_key[set value API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_management_games_gameId_storage_key[get value API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_management_games_gameId_storage_key[delete value API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_storage_game_key[get value from game API reference]
 
 [[guide-cloud-storage-player-storage]]
 === Player storage
@@ -215,6 +226,9 @@ $> curl -XDELETE \
 [[guide-cloud-storage-player-storage-reference]]
 ==== Reference
 
+[[guide-cloud-storage-player-storage-reference-storage-entry]]
+===== Storage Entry
+
 A storage entry has the following attributes:
 
 * +key+. String matching +[0-9a-zA-Z_]{1,20}+. Used to get/set an item
@@ -223,3 +237,10 @@ A storage entry has the following attributes:
   live forever.
 * +contentType+. The content type of the body. It is included in the
   header of the response when getting the storage entry.
+
+[[guide-cloud-storage-player-storage-reference-apis]]
+===== APIs
+
+* http://developer.scoreflex.com/docs/reference/api/v1#post__v1_storage_key[set value API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#get__v1_storage_key[get value API reference]
+* http://developer.scoreflex.com/docs/reference/api/v1#delete__v1_storage_key[delete value API reference]

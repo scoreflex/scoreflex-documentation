@@ -9,8 +9,8 @@
 === Concepts
 
 In order to integrate Scoreflex to your games you have to create a
-developer account https://developer.scoreflex.com/account/signup[here]. 
-You can use your http://www.github.com["GitHub", window="_blank"], http://www.facebook.com["Facebook", window="_blank"] 
+developer account https://developer.scoreflex.com/account/signup[here].
+You can use your http://www.github.com["GitHub", window="_blank"], http://www.facebook.com["Facebook", window="_blank"]
 or http://plus.google.com["Google+", window="_blank"] account to ease
 the sign up process.
 
@@ -25,6 +25,9 @@ access token is a confidential information that must not be shared.
 
 [[guide-developers-reference]]
 === Reference
+
+[[guide-developers-reference-developer]]
+==== Developer
 
 A developer contains the following fields that can be returned or not by
 the API depending on the accessing rights of the caller:
