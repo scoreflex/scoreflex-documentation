@@ -304,6 +304,38 @@ You can use the REST API to send push notifications from your games.
 
 _More coming soon on this topic._
 
+[[guide-push-notifications-interact-tracking]]
+==== Tracking
+
+[[guide-push-notifications-interact-tracking-push-notifications]]
+===== Tracking push notifications opening
+
+NOTE: If you are using one of our SDKs, push notifications tracking is handled automatically for you.
+This part is mainly interesting for you if you are developing your own SDK.
+
+Tracking push notifications should be called when one of your player clicks on a push notification
+for your game. This serves two main purposes:
+
+* giving you a precise view to how your push notifications are transformed
+* resetting the throttling mechanism for your player. If a player interacts with a push notification
+they are immediatly eligible to receive another push notification as they have shown some interest.
+
+[source,sh]
+----
+$> curl -XPOST \
+   'https://sandbox.api.scoreflex.com/v1/notifications/track?code=<PUSH_NOTIFICATION_CODE>&accessToken=<ACCESS_TOKEN>'
+----
+
+
+[source,js]
+----
+{"success":true}
+----
+
+The +code+ parameter is included in the received push notification. For the list of possible codes and their meaning
+please refer to the <<guide-push-notifications-reference-push-notifications-types,push notifications types section>>
+
+
 [[guide-push-notifications-reference]]
 === Reference
 
@@ -361,14 +393,33 @@ security measure, you should always check if the provided target player id
 matches your current player and discard the push notification if it is
 not the case.
 
-[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players]]
-==== Automatic Notifications from Scoreflex to Players
+
+[[guide-push-notifications-reference-push-notifications-types]]
+==== Push notifications types
+
+[[guide-push-notifications-reference-push-notifications-types-developer-to-players]]
+===== Developer to players notifications
+
+These push notifications are sent when you, as a developer, decide to target your players.
+
+Code: +1+.
+
+[[guide-push-notifications-reference-push-notifications-types-players-to-players]]
+===== Players to players notifications
+
+These push notifications are sent by using the dedicated push notifications API using
+a player access token from your game.
+
+Code: +2+.
+
+[[guide-push-notifications-reference-push-notifications-types-automatic-notifications-from-scoreflex-to-players]]
+===== Automatic Notifications from Scoreflex to Players
 
 This section describes automatic notifications that can be sent by
 Scoreflex.
 
-[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-challenge-invitation]]
-===== Challenge invitation
+[[guide-push-notifications-reference-push-notifications-types-automatic-notifications-from-scoreflex-to-players-challenge-invitation]]
+====== Challenge invitation
 
 This push notification is sent when a player is invited by another
 player to a challenge.
@@ -382,8 +433,8 @@ Payload:
 * +inviterId+
 * +challengeInstanceId+
 
-[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-challenge-ended]]
-===== Challenge ended
+[[guide-push-notifications-reference-push-notifications-types-automatic-notifications-from-scoreflex-to-players-challenge-ended]]
+====== Challenge ended
 
 This push notification is sent when a challenge you have taken part in
 has ended.
@@ -408,8 +459,8 @@ Payload:
 
 * +challengeInstanceId+
 
-[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-your-turn-in-challenge]]
-===== Your turn in challenge
+[[guide-push-notifications-reference-push-notifications-types-automatic-notifications-from-scoreflex-to-players-your-turn-in-challenge]]
+====== Your turn in challenge
 
 This push notification is sent when it is the player's turn to play in a
 turn-based challenge.
@@ -422,8 +473,8 @@ Payload:
 
 * +challengeInstanceId+
 
-[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-friend-joined-game]]
-===== Friend joined game
+[[guide-push-notifications-reference-push-notifications-types-automatic-notifications-from-scoreflex-to-players-friend-joined-game]]
+====== Friend joined game
 
 This push notification is sent when a friend has joined a game.
 
@@ -436,8 +487,8 @@ Payload:
 * +friendId+
 * +gameId+
 
-[[guide-push-notifications-reference-automatic-notifications-from-scoreflex-to-players-friend-beat-your-high-score]]
-===== Friend beat your high score
+[[guide-push-notifications-reference-push-notifications-types-automatic-notifications-from-scoreflex-to-players-friend-beat-your-high-score]]
+====== Friend beat your high score
 
 This push notification is sent when a friend has beaten one of your high
 scores.
