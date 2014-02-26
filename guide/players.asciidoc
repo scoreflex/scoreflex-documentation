@@ -106,6 +106,7 @@ $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/me?accessToken=<ACCES
   "lastName": "Norris",
   "me": true,
   "nationality": "US",
+  "age": 73,
   "nickName": "Chuck",
   "serviceIds": {
     "Facebook": "1",
@@ -133,6 +134,7 @@ $> curl -GET 'https://sandbox.api.scoreflex.com/v1/players/018blql3fmd1vu81?acce
   "lastName": "Dupont",
   "language": "fr",
   "nationality": "FR",
+  "age": 34,
   "friends": [
     "0189ojk920f00081",
     "0189om3kqcu003o1"
@@ -179,6 +181,7 @@ the API depending on the context and the accessing rights of the caller:
 * +geo+
 * +nationality+
 * +language+
+* +age+
 * +me+
 * +friend+
 * +friends+
