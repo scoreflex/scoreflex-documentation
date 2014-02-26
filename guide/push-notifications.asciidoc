@@ -196,7 +196,7 @@ corresponding device token to Scoreflex from your game code.
 [source,sh]
 ----
 $> curl -XPOST \
-   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=]<DEVICE_TOKEN>&accessToken=<ACCESS_TOKEN>'
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=<DEVICE_TOKEN>&accessToken=<ACCESS_TOKEN>'
 ----
 
 
@@ -210,8 +210,8 @@ $> curl -XPOST \
 
 [source,sh]
 ----
-$> curl \
-   -XDELETE'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?]accessToken=<ACCESS_TOKEN>'
+$> curl -XDELETE \
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?accessToken=<ACCESS_TOKEN>'
 ----
 
 
@@ -232,7 +232,7 @@ channels when registering a device token or by explicitly calling:
 [source,sh]
 ----
 $> curl -XPOST \
-   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions/channel1,channel2?]accessToken=<ACCESS_TOKEN>'
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions/channel1,channel2?accessToken=<ACCESS_TOKEN>'
 ----
 
 
@@ -247,7 +247,7 @@ $> curl -XPOST \
 [source,sh]
 ----
 $> curl -XGET \
-   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions?]accessToken=<ACCESS_TOKEN>&pretty=true'
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions?accessToken=<ACCESS_TOKEN>&pretty=true'
 ----
 
 
@@ -265,7 +265,7 @@ $> curl -XGET \
 [source,sh]
 ----
 $> curl -XDELETE \
-   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions/channel1?]accessToken=<ACCESS_TOKEN>'
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions/channel1?accessToken=<ACCESS_TOKEN>'
 ----
 
 
@@ -280,7 +280,7 @@ $> curl -XDELETE \
 [source,sh]
 ----
 $> curl -XDELETE \
-   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens?token=[https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions?]accessToken=<ACCESS_TOKEN>'
+   'https://sandbox.api.scoreflex.com/v1/notifications/deviceTokens/subscriptions?accessToken=<ACCESS_TOKEN>'
 ----
 
 
