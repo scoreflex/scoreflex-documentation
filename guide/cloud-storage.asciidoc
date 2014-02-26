@@ -5,6 +5,12 @@
 --
 --
 
+Scoreflex provides two kinds of storage:
+
+* The game storage is a shared storage accessible by all your game's clients.
+* The player storage is a restricted storage for each of your player/game pair.
+
+
 [[guide-cloud-storage-game-storage]]
 === Game storage
 
