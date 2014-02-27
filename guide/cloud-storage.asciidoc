@@ -164,7 +164,9 @@ newer model.
 Typical examples of data that can be saved are player's preferences,
 progression and everything that should be restored to ensure the best
 possible cross-device experience for a player playing on more than one
-device. You don't need to use the player storage to maintain your
+device.
+
+NOTE: You don't need to use the player storage to maintain your
 players' high scores or achievements as these data are automatically
 saved and retrievable from dedicated APIs.
 
@@ -176,6 +178,48 @@ you, but we recommend choosing a platform-independent format so that the
 data can easily be read and written from any of the platforms your
 application supports. For instance, consider using a platform-neutral
 format such as a JSON-encoded string.
+
+[[guide-cloud-storage-player-storage-conflicts]]
+===== Conflicts
+
+When using the player storage service, your application may encounter conflicts when
+attempting to save data. These conflicts can occur when a player is running more than
+one instance of your game on different devices or computers. Your game
+can resolve these conflicts in a way that provides the best user experience.
+
+Typically, data conflicts occur when an instance of your application is unable to
+reach the storage service while attempting to load data or save it. In general, the
+best way to avoid data conflicts is to always load the latest data from the service
+when your application starts up or resumes, and save data to the service with
+reasonable frequency. However, it is not always possible to avoid data conflicts.
+Your application should make every effort to handle conflicts such that your
+users' data is preserved and that they have a good experience.
+
+The following scenario describes how the storage service detects and responds to data
+state conflict for a game application that tracks the total of stars earnt in the game.
+
+. A player runs a game on their phone and has a total of 100 stars, which the game sends to the storage service and is automatically marked as version T1.
+. The player later runs the same game on their tablet device, which retrieves the T1 state and updates the game progress.
+. The player continues playing the game from where they left off and has a total of 300 stars, which the game saves to the cloud and is marked as version T2.
+. Later on, the player is commuting home on the train and pulls out their phone to continue playing the game.
+  However, the train doesn't have wireless service, so the application cannot retrieve the currently saved state from the cloud.
+. The player plays the game and has a total of 200 stars.
+. Eventually, the player reaches a location where they can get wireless service and the game attempts to save their progress, sending
+state data and the last version string it knows about (T1).
+. The storage service checks the provided version string T1 against the currently saved version string T2, recognizes the conflict and returns
+  a conflict message to the application.
+
+To sum up you can decide to ignore the conflicts by not providing +version+ parameter when saving a value to the storage service. If you want to address
+this issue for a better user experience you would proceed as follows:
+
+. When getting a value from the storage service the current version will be returned in the +X-Version+ HTTP header.
+. When you save a value from the storage service you set the +version+ parameter with the last version you are aware of. Two situations
+can then happen:
+.. The currently saved version matches the one you have provided, the new value is saved and everything is fine.
+.. The currently saved version differs from the one you have provided. You need to get the value and version saved in the cloud. You can then merge the changes
+you wanted to save initially in the value you have just retrieved from the cloud. You can then retry to save the merged value in the cloud by giving
+the version you have just retrieved.
+
 
 [[guide-cloud-storage-player-storage-interact]]
 ==== Interact
@@ -243,6 +287,8 @@ A storage entry has the following attributes:
   live forever.
 * +contentType+. The content type of the body. It is included in the
   header of the response when getting the storage entry.
+* +version+. It is the timestamp of the last update for the entry.
+It can be used for conflicts resolution.
 
 [[guide-cloud-storage-player-storage-reference-apis]]
 ===== APIs

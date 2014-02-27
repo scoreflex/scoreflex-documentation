@@ -56,6 +56,9 @@ In case of errors, the following HTTP statuses can be used:
 |404
 |Not Found. The resource does not exist.
 
+|409
+|Conflict. Version control conflict.
+
 |500
 |Internal Server Error. There is an error server side. This should not happen.
 |===
@@ -337,6 +340,10 @@ instance.turn.currentPlayers
 |12060
 |403
 |When only one service is linked
+
+|12061
+|409
+|When there is a version conflict
 |===
 
 [[guide-api-conventions-pretty-printing]]
