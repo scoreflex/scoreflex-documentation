@@ -53,7 +53,8 @@ ASCIIDOC_ARGS := \
 	--attribute toc \
 	--attribute disable-javascript \
 	--attribute linkattrs \
-	--conf-file $(CONF_DIR)/links.conf
+	--conf-file $(CONF_DIR)/links.conf \
+	--conf-file $(CONF_DIR)/sections.conf
 
 #
 # Auto-generated part
