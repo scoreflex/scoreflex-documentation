@@ -2,5 +2,5 @@
 [role="chunk-page"]
 == SDK
 
-// TODO: TODO
-_Coming soon._
+The Scoreflex Unity SDK is available on GitHub at
+https://github.com/scoreflex/scoreflex-unity-plugin/
