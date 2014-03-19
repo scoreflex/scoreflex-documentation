@@ -2,5 +2,102 @@
 [role="chunk-page"]
 == Developer's guide
 
-// TODO: TODO
-_Coming soon._
+
+[[unity-developers-guide-handling-push-notifications]]
+
+=== 1. Push notifications
+
+Handling push notification in Unity has to be done in native code, that is why you will have to configure your project differently on iOS and Android.
+
+==== Android
+By default the Scoreflex plugin is already fully configured to receive push notification from scoreflex, However if you are using a different AndroidManifest.xml you will have to be sure that your have the following permissions set :
+
+[source,xml]
+----
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+<permission android:name="[yourpackagename].permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+<uses-permission android:name="[yourpackagename].permission.C2D_MESSAGE" />
+----
+
+The scoreflex plugin then uses a value in the manifest to register to Google C2DM service, if you want to use the scoreflex account simply add the following lines:
+
+In your AndroidManifest.xml in the <application> node:
+[source,xml]
+----
+<receiver android:name="com.scoreflex.ScoreflexBroadcastReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND">
+		<meta-data android:name="notificationIcon" android:resource="@drawable/app_icon" />
+		<meta-data android:name="activityName" android:value="com.scoreflex.unity3d.ScoreflexUnityActivity" />
+		<intent-filter>
+		<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+			<category android:name="[yourpackagename]" />
+		</intent-filter>
+</receiver>
+<meta-data android:name="com.scoreflex.push.SenderId" android:value="@string/push_sender_id" />
+----
+
+then in your res/values/string.xml:
+[source,xml]
+----
+<string name="push_sender_id">191777458062</string>
+----
+
+And that's it, your are all set you can now receive C2D messages on your android application.
+
+==== iOS
+
+With iOS, sending push notifications requires certificates. First you
+will have to obtain those certificates, then follow the steps described
+here :
+https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ProvisioningDevelopment.html#//apple_ref/doc/uid/TP40008194-CH104-SW2[Local
+and Push Notification Programming Guide]
+
+Once you generated your .pem files (one for sandbox and one for
+production environment) go to your game administration page on
+developer.scoreflex.com and click on the push notification section and
+upload both files.
+
+And you are set !
+
+=== 2. Native social login
+Native social login is very handy when you want to facilitate the user authentication, activating social login will allow the player to be authenticated on scoreflex using its registered credential in his Facebook/Google+ installed application.
+
+==== Android
+
+===== Facebook
+In order to handle facebook native login you will have to create a Facebook application by following this step of the facebook documentation
+https://developers.facebook.com/docs/android/getting-started/#create-app[5. Create a Facebook App]
+
+Once you have your Application ID you simply have to set it in the AndroidManifest.xml in your <application> node
+[source,xml]
+----
+<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="[your application id]"/>
+----
+now your user can login using their facebook credential
+
+===== Google+
+
+In order to handle Google plus native login you will have to create a Google plus applciation by following this step of the google plus documentation
+https://developers.google.com/+/mobile/android/getting-started#step_1_enable_the_google_api[Step 1: Enable the Google+ API]
+Once done, the native login is ready to be used
+
+==== iOS
+
+===== Facebook
+In order to handle facebook native login you will have to create a Facebook application by following this step of the facebook documentation
+https://developers.facebook.com/docs/ios/getting-started/#appid[Step 3: Obtain a Facebook App ID]
+
+Then add your Facebook application Id and your Facebook application name to the .plist file contained in Plugin/Scoreflex as described here :
+https://developers.facebook.com/docs/ios/getting-started/#configure[Configure the .plist]
+
+===== Google
+In order to handle Google plus native login you will have to create a Google plus applciation by following this step of the google plus documentation
+https://developers.google.com/+/mobile/ios/getting-started#step_1_creating_the_apis_console_project[Step 1. Creating the APIs Console project]
+Once done, the native login is ready to be used
+
+Then add your Google application Id to the .plist file contained in Plugin/Scoreflex in the GoogleAppID field.
+then add the url handling as described here :
+https://developers.google.com/+/mobile/ios/getting-started#step_4_add_a_url_type[Step 4. Add a URL type]
+
+
