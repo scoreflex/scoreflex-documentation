@@ -103,4 +103,4 @@ Once done, the native login is ready to be used
 
 Then add your Google application Id to the .plist file contained in Plugin/Scoreflex in the GoogleAppID field.
 then add the url handling as described here :
-https://developers.google.com/\+/mobile/ios/getting-started#step_4_add_a_url_type[Step 4. Add a URL type]
+https://developers.google.com/\+/mobile/ios/getting-started#step_3_add_a_url_type[Step 3. Add a URL type]
