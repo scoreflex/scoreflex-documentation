@@ -81,7 +81,7 @@ now your user can login using their facebook credential
 
 ===== Google+
 
-In order to handle Google plus native login you will have to create a Google plus applciation by following this step of the google plus documentation
+In order to handle Google plus native login you will have to create a Google plus application by following this step of the google plus documentation
 https://developers.google.com/\+/mobile/android/getting-started#step_1_enable_the_google_api[Step 1: Enable the Google+ API]
 Once done, the native login is ready to be used
 
@@ -95,14 +95,12 @@ https://developers.facebook.com/docs/ios/getting-started/#appid[Step 3: Obtain a
 Then add your Facebook application Id and your Facebook application name to the .plist file contained in Plugin/Scoreflex as described here :
 https://developers.facebook.com/docs/ios/getting-started/#configure[Configure the .plist]
 
-===== Google
+===== Google+
 
-In order to handle Google plus native login you will have to create a Google plus applciation by following this step of the google plus documentation
+In order to handle Google plus native login you will have to create a Google plus application by following this step of the google plus documentation
 https://developers.google.com/\+/mobile/ios/getting-started#step_1_creating_the_apis_console_project[Step 1. Creating the APIs Console project]
 Once done, the native login is ready to be used
 
 Then add your Google application Id to the .plist file contained in Plugin/Scoreflex in the GoogleAppID field.
 then add the url handling as described here :
 https://developers.google.com/\+/mobile/ios/getting-started#step_4_add_a_url_type[Step 4. Add a URL type]
-
-
