@@ -209,14 +209,12 @@ you can check xref:guide-challenges-reference-challengeturn[the accepted fields]
 [[android-getting-started-handling-native-social-login-facebook]]
 ==== Facebook
 
-In order to handle facebook native login you will have to first follow
-the guide
+In order to handle facebook native login you will have to:
 
-https://developers.facebook.com/docs/android/getting-started/[Getting
-Started with the Facebook SDK for Android] until you finish step 6:
-Link to the SDK project and configure the Facebook app ID.
-
-The last thing you need to do is to make any activity that shows a
+. follow the guide https://developers.facebook.com/docs/android/getting-started/[Getting
+Started with the Facebook SDK for Android] until you finish _step 6:
+Link to the SDK project and configure the Facebook app ID_.
+. the last thing you need to do is to make any activity that shows a
 Scoreflex view to subclass the +ScoreflexActivity+ class.
 
 If you can't, and only if you can't, subclass the +ScoreflexActivity+
@@ -232,16 +230,17 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ----
 
+WARNING: make sure not to set your Facebook application id in the +AndroidManifest.xml+ while your Facebook App is not properly set up for Android.
+
 [[android-getting-started-handling-native-social-login-google]]
 ==== Google+
 
-In order to handle Google+ native login you will have to follow this guide.
+In order to handle Google+ native login you will have to:
 
-https://developers.google.com/\+/mobile/android/getting-started[Getting
-Started with the Google+ Platform for Android] until you finish step 3:
-Declare permissions.
-
-As for Facebook, the last thing you need to do is to make any activity
+. follow the https://developers.google.com/\+/mobile/android/getting-started[Getting
+Started with the Google+ Platform for Android] guide until you finish _step 3:
+Declare permissions_.
+. as for Facebook, the last thing you need to do is to make any activity
 that shows a +ScoreflexView+ to subclass the +ScoreflexActivity+ class.
 
 If you can't, and only if you can't, subclass the +ScoreflexActivity+
@@ -256,6 +255,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     Scoreflex.onActivityResult(this, requestCode, resultCode, data);
 }
 ----
+
+WARNING: make sure not to forget to declare the right permissions in the +AndroidManifest.xml+ file.
+
+WARNING: make sure not to forget to enable the Google+ API in the services pane of the Google APIs Console.
 
 [[android-getting-started-handling-c2d-messages]]
 === 12. Handling C2D Messages

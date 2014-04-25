@@ -8,10 +8,10 @@
 [[ios-developers-guide-handling-native-social-login-facebook]]
 ==== Facebook
 
-In order to handle facebook native login you will have to first follow the guide
-https://developers.facebook.com/docs/ios/getting-started/[Getting started with Facebook SDK for iOS].
+In order to handle facebook native login you will have to:
 
-Finally  you have to overload the
+. follow the guide https://developers.facebook.com/docs/ios/getting-started/[Getting started with Facebook SDK for iOS].
+. Finally  you have to overload the
 +-(BOOL)application:openURL:sourceApplication:annotation+
 method of your application delegate to handle the login here is the code
 you should add to your +UIApplicationDelegate+:
@@ -26,6 +26,10 @@ you should add to your +UIApplicationDelegate+:
     return [Scoreflex handleURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 ----
+
+WARNING: do not forget to set the +URL types+
+
+WARNING: make sure not to set your Facebook application id in the +.plist+ while your Facebook App is not properly set up for iOS.
 
 [[ios-developers-guide-handling-native-social-login-google]]
 ==== Google+
