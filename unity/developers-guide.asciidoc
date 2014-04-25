@@ -71,7 +71,6 @@ In order to handle Facebook native login you will have to:
 
 . create a Facebook application by following this step of the Facebook documentation
 https://developers.facebook.com/docs/android/getting-started/#create-app[5. Create a Facebook App].
-
 . once you have your Application ID you simply have to set it in the +AndroidManifest.xml+ in your <application> node:
 
 [source,xml]
@@ -80,6 +79,9 @@ https://developers.facebook.com/docs/android/getting-started/#create-app[5. Crea
 ----
 
 WARNING: make sure not to set your Facebook application id in the +AndroidManifest.xml+ while your Facebook App is not properly set up for Android.
+
+WARNING: make sure to set two key hashes, one for your developement and one for your production application, in your Facebook App configuration as
+mentioned in the https://developers.facebook.com/docs/android/getting-started/#login[6. Create a new Android Project with Facebook Login].
 
 Now your user can login using their Facebook credential.
 
@@ -100,6 +102,9 @@ https://developers.google.com/\+/mobile/android/getting-started#step_1_enable_th
 Once done, the native login is ready to be used.
 
 WARNING: make sure not to forget to enable the Google+ API in the services pane of the Google APIs Console.
+
+WARNING: make sure not to forget to create a new OAuth 2.0 client ID for your production app as mentioned
+in the https://developers.google.com/\+/mobile/android/getting-started#step_1_enable_the_google_api[Step 1: Enable the Google+ API].
 
 ==== iOS
 
@@ -127,5 +132,7 @@ https://developers.google.com/\+/mobile/ios/getting-started#step_1_creating_the_
 https://developers.google.com/\+/mobile/ios/getting-started#step_3_add_a_url_type[Step 3. Add a URL type].
 
 Once done, the native login is ready to be used.
+
+WARNING: do not forget to set the +URL types+
 
 WARNING: make sure not to forget to enable the Google+ API in the services pane of the Google APIs Console.

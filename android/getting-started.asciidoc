@@ -232,6 +232,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 WARNING: make sure not to set your Facebook application id in the +AndroidManifest.xml+ while your Facebook App is not properly set up for Android.
 
+WARNING: make sure to set two key hashes, one for your developement and one for your production application, in your Facebook App configuration as
+mentioned in the https://developers.facebook.com/docs/android/getting-started/#login[6. Create a new Android Project with Facebook Login].
+
 [[android-getting-started-handling-native-social-login-google]]
 ==== Google+
 
@@ -259,6 +262,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 WARNING: make sure not to forget to declare the right permissions in the +AndroidManifest.xml+ file.
 
 WARNING: make sure not to forget to enable the Google+ API in the services pane of the Google APIs Console.
+
+WARNING: make sure not to forget to create a new OAuth 2.0 client ID for your production app as mentioned
+in the https://developers.google.com/\+/mobile/android/getting-started#step_1_enable_the_google_api[Step 1: Enable the Google+ API].
 
 [[android-getting-started-handling-c2d-messages]]
 === 12. Handling C2D Messages
