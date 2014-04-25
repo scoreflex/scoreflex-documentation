@@ -232,10 +232,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ----
 
-[[android-getting-started-handling-native-social-login-googleplus]]
-==== GooglePlus
+[[android-getting-started-handling-native-social-login-google]]
+==== Google+
 
-In order to handle GooglePlus native login you will have to follow this guide.
+In order to handle Google+ native login you will have to follow this guide.
 
 https://developers.google.com/\+/mobile/android/getting-started[Getting
 Started with the Google+ Platform for Android] until you finish step 3:

@@ -81,7 +81,7 @@ now your user can login using their facebook credential
 
 ===== Google+
 
-In order to handle Google plus native login you will have to create a Google plus application by following this step of the google plus documentation
+In order to handle Google+ native login you will have to create a Google+ application by following this step of the Google+ documentation
 https://developers.google.com/\+/mobile/android/getting-started#step_1_enable_the_google_api[Step 1: Enable the Google+ API]
 Once done, the native login is ready to be used
 
@@ -97,7 +97,7 @@ https://developers.facebook.com/docs/ios/getting-started/#configure[Configure th
 
 ===== Google+
 
-In order to handle Google plus native login you will have to create a Google plus application by following this step of the google plus documentation
+In order to handle Google+ native login you will have to create a Google+ application by following this step of the Google+ documentation
 https://developers.google.com/\+/mobile/ios/getting-started#step_1_creating_the_apis_console_project[Step 1. Creating the APIs Console project]
 Once done, the native login is ready to be used
 

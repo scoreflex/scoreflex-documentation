@@ -27,8 +27,8 @@ you should add to your +UIApplicationDelegate+:
 }
 ----
 
-[[ios-developers-guide-handling-native-social-login-googleplus]]
-==== GooglePlus
+[[ios-developers-guide-handling-native-social-login-google]]
+==== Google+
 
 // TODO: (Julien)
 _Help coming soon._
