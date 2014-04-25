@@ -71,14 +71,22 @@ In order to handle Facebook native login you will have to:
 
 . create a Facebook application by following this step of the Facebook documentation
 https://developers.facebook.com/docs/android/getting-started/#create-app[5. Create a Facebook App].
-. once you have your Application ID you simply have to set it in the +AndroidManifest.xml+ in your <application> node:
-
+. once you have your Application ID open up the +strings.xml+ file in the +res/values+ folder and set it in +app_id+ section. It
+should looks something like this
++
 [source,xml]
 ----
-<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="[your application id]"/>
+<string name="app_id">[your application id]</string>
+----
++
+. Make sure that you have the following line in your +AndroidManifest.xml+:
++
+[source,xml]
+----
+<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
 ----
 
-WARNING: make sure not to set your Facebook application id in the +AndroidManifest.xml+ while your Facebook App is not properly set up for Android.
+WARNING: make sure not to set your Facebook application id while your Facebook App is not properly set up for Android.
 
 WARNING: make sure to set two key hashes, one for your developement and one for your production application, in your Facebook App configuration as
 mentioned in the https://developers.facebook.com/docs/android/getting-started/#login[6. Create a new Android Project with Facebook Login].
@@ -92,7 +100,7 @@ In order to handle Google+ native login you will have to:
 . create a Google+ application by following this step of the Google+ documentation
 https://developers.google.com/\+/mobile/android/getting-started#step_1_enable_the_google_api[Step 1: Enable the Google+ API].
 . Make sure to declare the right permissions in the +AndroidManifest.xml+ file:
-
++
 [source,xml]
 ----
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
